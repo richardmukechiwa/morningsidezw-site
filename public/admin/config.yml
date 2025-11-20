@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: richardmukechiwa/morningsidezw
+  repo: richardmukechiwa/morningsidezw-site
   branch: main
   base_url: https://api.netlify.com
 
