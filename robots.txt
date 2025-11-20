@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Sitemap: https://morningsidezw.com/sitemap.xml
+Host: https://morningsidezw.com
