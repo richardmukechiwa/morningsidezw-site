@@ -11,6 +11,34 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   font-family: Arial, sans-serif;
   z-index: 9999;
+  transition: transform 0.3s;
+}
+
+#chat-widget.minimized {
+  transform: translateY(360px);
+  height: 40px;
+}
+
+#chat-widget.hidden {
+  display: none;
+}
+
+#chat-header {
+  background: #0078d7;
+  color: white;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+#chat-header button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 #chat-messages {
@@ -25,4 +53,32 @@
   border-top: 1px solid #ccc;
   padding: 10px;
   font-size: 14px;
+}
+
+#theme-toggle {
+  position: absolute;
+  top: 5px;
+  right: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#chat-show {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10000;
+  display: none; /* initial state */
+}
+
+body.dark #chat-widget {
+  background: #333;
+  color: white;
+}
+
+body.dark #chat-input {
+  background: #555;
+  color: white;
 }

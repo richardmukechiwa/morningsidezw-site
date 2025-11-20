@@ -10,15 +10,34 @@
   <link rel="stylesheet" href="styles/tailwind-custom.css">
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </head>
-<!-- GPT Chat Widget -->
-<link rel="stylesheet" href="chat-widget.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MorningsideZW Chat Widget</title>
+  <link rel="stylesheet" href="chat-widget.css">
+</head>
+<body>
 
-<div id="chat-widget">
-  <div id="chat-messages"></div>
-  <input id="chat-input" type="text" placeholder="Type a message...">
-</div>
+  <!-- GPT Chat Widget -->
+  <div id="chat-widget" class="open">
+    <div id="chat-header">
+      <span>Chat with GPT</span>
+      <button id="chat-toggle">_</button>
+    </div>
+    <div id="chat-messages"></div>
+    <input id="chat-input" type="text" placeholder="Type a message...">
+    <button id="theme-toggle">🌙</button>
+  </div>
 
-<script src="chat-widget.js"></script>
+  <!-- Button to reopen hidden chat -->
+  <button id="chat-show">Chat</button>
+
+  <script src="chat-widget.js"></script>
+</body>
+</html>
+
 
 <body class="bg-gray-50 text-gray-900">
   <!-- Nav -->
