@@ -1,24 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="n8n automation services for finance and small business teams" />
   <title>Richard Mukechiwa | n8n Automation</title>
-  <!-- Tailwind CDN for easiest deploy -->
+
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles/tailwind-custom.css">
+  <link rel="stylesheet" href="chat-widget.css">
+
+  <!-- Calendly Widget -->
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </head>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MorningsideZW Chat Widget</title>
-  <link rel="stylesheet" href="chat-widget.css">
-</head>
-<body>
+<body class="bg-gray-50 text-gray-900">
 
   <!-- GPT Chat Widget -->
   <div id="chat-widget" class="open">
@@ -34,13 +30,7 @@
   <!-- Button to reopen hidden chat -->
   <button id="chat-show">Chat</button>
 
-  <script src="chat-widget.js"></script>
-</body>
-</html>
-
-
-<body class="bg-gray-50 text-gray-900">
-  <!-- Nav -->
+  <!-- Site Header -->
   <header class="bg-white shadow">
     <div class="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
       <a href="/" class="flex items-center gap-3" aria-label="Home">
@@ -73,7 +63,7 @@
     </div>
   </header>
 
-  <!-- Hero (scrollable landing) -->
+  <!-- Hero Section -->
   <main class="max-w-5xl mx-auto px-6 py-12">
     <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <div>
@@ -108,7 +98,7 @@
       </div>
     </section>
 
-    <!-- Case study -->
+    <!-- Case Study -->
     <section id="case-preview" class="mt-12">
       <h2 class="text-2xl font-semibold mb-4">Case Study</h2>
       <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col md:flex-row gap-6">
@@ -135,11 +125,16 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="bg-white border-t mt-12">
     <div class="max-w-5xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
       <p>© 2025 Richard Mukechiwa</p>
       <p><a href="mailto:hello@morningsidezw.com" class="text-orange-500">hello@morningsidezw.com</a></p>
     </div>
   </footer>
+
+  <!-- Scripts -->
+  <script src="chat-widget.js"></script>
+
 </body>
 </html>
