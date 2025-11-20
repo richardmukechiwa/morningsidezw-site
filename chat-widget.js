@@ -4,14 +4,15 @@ const widget = document.getElementById('chat-widget');
 const toggle = document.getElementById('chat-toggle');
 const themeToggle = document.getElementById('theme-toggle');
 const header = document.getElementById('chat-header');
+const showBtn = document.getElementById('chat-show');
 
-// Replace with your deployed Worker URL
 const workerUrl = "https://gpt-chat-widget.mukechiwarichard.workers.dev";
 
-// Load chat history from localStorage
+// Load chat history
 let history = JSON.parse(localStorage.getItem('chatHistory')) || [];
 history.forEach(msg => appendMessage(msg.who, msg.text));
 
+// Append message helper
 function appendMessage(who, text) {
   const div = document.createElement('div');
   div.innerHTML = `<strong>${who}:</strong> ${text}`;
@@ -19,30 +20,35 @@ function appendMessage(who, text) {
   messages.appendChild(div);
   messages.scrollTop = messages.scrollHeight;
 
-  // Save to localStorage
   history.push({ who, text });
   localStorage.setItem('chatHistory', JSON.stringify(history));
 }
 
-// Minimize / maximize with toggle button
+// Minimize / maximize
 toggle.addEventListener('click', () => {
   widget.classList.toggle('minimized');
 });
 
-// Also toggle when clicking the header
 header.addEventListener('click', () => {
   widget.classList.toggle('minimized');
 });
 
-// Collapse widget when clicking outside
+// Hide widget when clicking outside
 document.addEventListener('click', (e) => {
-  if (!widget.contains(e.target) && !widget.classList.contains('minimized')) {
-    widget.classList.add('minimized');
+  if (!widget.contains(e.target) && !widget.classList.contains('hidden')) {
+    widget.classList.add('hidden');
+    showBtn.style.display = "block"; // show reopen button
   }
 });
 
-// Prevent click inside the widget from propagating
+// Prevent inside clicks from hiding
 widget.addEventListener('click', (e) => e.stopPropagation());
+
+// Reopen hidden widget
+showBtn.addEventListener('click', () => {
+  widget.classList.remove('hidden');
+  showBtn.style.display = "none";
+});
 
 // Dark / light mode
 themeToggle.addEventListener('click', () => {
@@ -50,7 +56,7 @@ themeToggle.addEventListener('click', () => {
   themeToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
 });
 
-// Typing indicator helper
+// Typing indicator
 function botTyping() {
   const div = document.createElement('div');
   div.innerHTML = `<strong>Bot:</strong> <em>typing...</em>`;
