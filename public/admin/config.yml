@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: richardmukechiwa/morningsidezw-site/site
+  repo: richardmukechiwa/morningsidezw-site
   base_url: "https://morningside-decapsso.mukechiwarichard.workers.dev"
   auth_endpoint: auth
 
