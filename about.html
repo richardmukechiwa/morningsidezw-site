@@ -1,21 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="About — n8n automation for finance teams" />
   <title>About — n8n Automation</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="styles/tailwind-custom.css">
+
+  <!-- Tailwind CSS (compiled) -->
+  <link rel="stylesheet" href="output.css" />
+  <link rel="stylesheet" href="styles/tailwind-custom.css" />
 </head>
+
 <body class="bg-gray-50 text-gray-900">
-  <header class="bg-white shadow"><div class="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between"><a href="/" class="flex items-center gap-3" aria-label="Home"><svg width="40" height="40" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#0A1B2A"/><text x="50%" y="54%" text-anchor="middle" fill="#FF6A00" font-family="Inter, sans-serif" font-size="24" font-weight="700">RM</text></svg></a></div></header>
-  <main class="max-w-4xl mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-4">About</h1>
-    <p class="text-gray-700 mb-4">I build reliable n8n workflows for finance teams and small businesses. My focus is fast delivery, clean documentation, and maintainable automations.</p>
-    <h2 class="text-xl font-semibold mt-6 mb-2">Why automation?</h2>
-    <p class="text-gray-700">Automation reduces manual errors, speeds up reporting, and frees your team to work on strategic tasks. I specialise in accounts payable, reporting pipelines, and glue-code integrations using n8n.</p>
+
+  <!-- Header -->
+  <header class="bg-white shadow">
+    <div class="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3" aria-label="Home">
+        <svg width="48" height="48" viewBox="0 0 64 64" fill="none">
+          <rect width="64" height="64" rx="12" fill="#0A1B2A" />
+          <text x="50%" y="54%" text-anchor="middle" fill="#FF6A00"
+                font-family="Inter, sans-serif" font-size="28" font-weight="700">RM</text>
+        </svg>
+      </a>
+
+      <nav class="hidden md:flex gap-6 items-center text-sm font-medium text-gray-700">
+        <a href="/" class="hover:text-gray-900">Home</a>
+        <a href="services.html" class="hover:text-gray-900">Services</a>
+        <a href="blog/index.html" class="hover:text-gray-900">Blog</a>
+        <a href="about.html" class="hover:text-gray-900 text-orange-600 font-semibold">About</a>
+        <a href="contact.html" class="hover:text-gray-900">Contact</a>
+        <a href="admin/" class="ml-4 inline-flex items-center px-3 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600">Admin</a>
+      </nav>
+
+      <button class="md:hidden" aria-label="Open menu"
+              onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M4 6h16M4 12h16M4 18h16"
+                stroke="#0A1B2A" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+      <div class="px-6 py-4 flex flex-col gap-3">
+        <a href="/" class="py-2">Home</a>
+        <a href="services.html" class="py-2">Services</a>
+        <a href="blog/index.html" class="py-2">Blog</a>
+        <a href="about.html" class="py-2 text-orange-600 font-semibold">About</a>
+        <a href="contact.html" class="py-2">Contact</a>
+        <a href="admin/" class="py-2 bg-orange-500 text-white rounded text-center">Admin</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="max-w-5xl mx-auto px-6 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-6">About</h1>
+
+    <p class="text-lg text-gray-700 mb-6">
+      I help finance teams and small businesses remove manual work and reduce errors
+      using stable, maintainable n8n workflows.
+    </p>
+
+    <h2 class="text-2xl font-semibold mb-3">My focus</h2>
+    <p class="text-gray-700 mb-6">
+      I build workflows that speed up reporting, automate
+      data movement and integrate systems reliably. My work
+      emphasises clear documentation, fast delivery and long-term stability.
+    </p>
+
+    <h2 class="text-2xl font-semibold mb-3">Why automation</h2>
+    <p class="text-gray-700">
+      Automation reduces manual errors, shortens reporting cycles and frees your team
+      to focus on strategic work instead of repetitive tasks. I specialise in accounts
+      payable flows, financial reporting pipelines and custom integrations built
+      using n8n.
+    </p>
   </main>
-  <footer class="bg-white border-t mt-12"><div class="max-w-5xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600"><p>© 2025 Richard Mukechiwa</p><p><a href="mailto:hello@morningsidezw.com" class="text-orange-500">hello@morningsidezw.com</a></p></div></footer>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t mt-12">
+    <div class="max-w-5xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
+      <p>© 2025 Richard Mukechiwa</p>
+      <p><a href="mailto:hello@morningsidezw.com" class="text-orange-500">hello@morningsidezw.com</a></p>
+    </div>
+  </footer>
+
 </body>
 </html>
