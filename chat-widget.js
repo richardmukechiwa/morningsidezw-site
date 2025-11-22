@@ -1,107 +1,93 @@
-const input = document.getElementById('chat-input');
-const messages = document.getElementById('chat-messages');
-const widget = document.getElementById('chat-widget');
-const toggle = document.getElementById('chat-toggle');
-const themeToggle = document.getElementById('theme-toggle');
-const header = document.getElementById('chat-header');
-const showBtn = document.getElementById('chat-show');
+// DOM elements
+const input = document.getElementById("chat-input");
+const messages = document.getElementById("chat-messages");
+const widget = document.getElementById("chat-widget");
+const toggle = document.getElementById("chat-toggle");
+const themeToggle = document.getElementById("theme-toggle");
+const showBtn = document.getElementById("chat-show");
 
 const workerUrl = "https://gpt-chat-widget.mukechiwarichard.workers.dev";
 
 // Load chat history
-let history = JSON.parse(localStorage.getItem('chatHistory')) || [];
-history.forEach(msg => appendMessage(msg.who, msg.text));
+let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
+history.forEach((msg) => appendMessage(msg.who, msg.text));
 
 // Load widget state
-const widgetState = localStorage.getItem('widgetState') || 'open';
-if (widgetState === 'minimized') {
-  widget.classList.add('minimized');
+const widgetState = localStorage.getItem("widgetState") || "open";
+if (widgetState === "minimized") {
+  widget.classList.add("minimized");
   showBtn.style.display = "block";
 } else {
-  widget.classList.remove('minimized');
+  widget.classList.remove("minimized");
   showBtn.style.display = "none";
 }
 
 // Append message helper
 function appendMessage(who, text) {
-  const div = document.createElement('div');
+  if (!messages) return; // safety check
+  const div = document.createElement("div");
   div.innerHTML = `<strong>${who}:</strong> ${text}`;
   div.style.marginBottom = "8px";
   messages.appendChild(div);
   messages.scrollTop = messages.scrollHeight;
 
   history.push({ who, text });
-  localStorage.setItem('chatHistory', JSON.stringify(history));
+  localStorage.setItem("chatHistory", JSON.stringify(history));
 }
 
-// Minimize / maximize
+// Toggle widget
 function toggleWidget() {
-  widget.classList.toggle('minimized');
-  if (widget.classList.contains('minimized')) {
+  if (!widget) return;
+  widget.classList.toggle("minimized");
+  if (widget.classList.contains("minimized")) {
     showBtn.style.display = "block";
-    localStorage.setItem('widgetState', 'minimized');
+    localStorage.setItem("widgetState", "minimized");
   } else {
     showBtn.style.display = "none";
-    localStorage.setItem('widgetState', 'open');
+    localStorage.setItem("widgetState", "open");
   }
 }
 
-toggle.addEventListener('click', toggleWidget);
-header.addEventListener('click', toggleWidget);
-
-// Hide widget only when clicking outside **if it is not minimized**
-document.addEventListener('click', (e) => {
-  if (!widget.contains(e.target) && !widget.classList.contains('minimized')) {
-    widget.classList.add('hidden');
-    showBtn.style.display = "block";
-  }
-});
-
-// Prevent inside clicks from hiding
-widget.addEventListener('click', (e) => e.stopPropagation());
+if (toggle) toggle.addEventListener("click", toggleWidget);
 
 // Reopen hidden widget
-showBtn.addEventListener('click', () => {
-  widget.classList.remove('hidden');
-  if (!widget.classList.contains('minimized')) showBtn.style.display = "none";
+if (showBtn) showBtn.addEventListener("click", () => {
+  widget.classList.remove("hidden");
+  if (!widget.classList.contains("minimized")) showBtn.style.display = "none";
 });
 
-// Dark / light mode
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark');
-  themeToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
-});
-
-// Typing indicator
-function botTyping() {
-  const div = document.createElement('div');
-  div.innerHTML = `<strong>Bot:</strong> <em>typing...</em>`;
-  div.style.marginBottom = "8px";
-  messages.appendChild(div);
-  messages.scrollTop = messages.scrollHeight;
-  return div;
-}
+// Theme toggle
+if (themeToggle)
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  });
 
 // Handle user input
-input.addEventListener('keydown', async (e) => {
-  if (e.key === 'Enter' && input.value.trim() !== "") {
-    const msg = input.value;
-    appendMessage('You', msg);
-    input.value = "";
+if (input)
+  input.addEventListener("keydown", async (e) => {
+    if (e.key === "Enter" && input.value.trim() !== "") {
+      const msg = input.value.trim();
+      appendMessage("You", msg);
+      input.value = "";
 
-    const typingDiv = botTyping();
+      const typingDiv = document.createElement("div");
+      typingDiv.innerHTML = `<strong>Bot:</strong> <em>typing...</em>`;
+      typingDiv.style.marginBottom = "8px";
+      messages.appendChild(typingDiv);
+      messages.scrollTop = messages.scrollHeight;
 
-    try {
-      const res = await fetch(workerUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: msg })
-      });
-      const data = await res.json();
-      typingDiv.innerHTML = `<strong>Bot:</strong> ${data.reply}`;
-    } catch (err) {
-      typingDiv.innerHTML = `<strong>Bot:</strong> Error, try again.`;
-      console.error(err);
+      try {
+        const res = await fetch(workerUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: msg }),
+        });
+        const data = await res.json();
+        typingDiv.innerHTML = `<strong>Bot:</strong> ${data.reply}`;
+      } catch (err) {
+        typingDiv.innerHTML = `<strong>Bot:</strong> Error, try again.`;
+        console.error(err);
+      }
     }
-  }
-});
+  });
