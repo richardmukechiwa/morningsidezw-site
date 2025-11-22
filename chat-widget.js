@@ -27,7 +27,7 @@ function appendMessage(who, text) {
   const div = document.createElement('div');
   div.innerHTML = `<strong>${who}:</strong> ${text}`;
   div.style.marginBottom = "8px";
-  //messages.appendChild(div);
+  messages.appendChild(div);
   messages.scrollTop = messages.scrollHeight;
 
   history.push({ who, text });
