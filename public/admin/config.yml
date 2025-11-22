@@ -1,23 +1,20 @@
 backend:
   name: github
   repo: richardmukechiwa/morningsidezw-site
-  base_url: "https://morningside-decapsso.mukechiwarichard.workers.dev"
-  auth_endpoint: auth
-
-media_folder: "public/uploads"
-public_folder: "/uploads"
+  branch: main
+  base_url: "https://morningside-decapsso.mukechiwarichard.workers.dev"   # The URL of your OAuth proxy
+  auth_endpoint: "/auth"                       # OAuth route on your proxy
 
 publish_mode: editorial_workflow
 
 collections:
   - name: "posts"
-    label: "Blog Posts"
+    label: "Posts"
     folder: "posts"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Summary", name: "summary", widget: "text" }
-      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
+
