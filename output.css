@@ -1,1 +1,51 @@
+/* Step 1: @import rules at the very top */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Step 2: Tailwind layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Step 3: Any Tailwind-generated overrides (if needed) */
+/* ... no other CSS before @import or @tailwind rules ... */
+
+
+
+
 /*! tailwindcss v4.1.17 | MIT License | https://tailwindcss.com */
+
+/* Base styles */
+@layer base {
+  html {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    tab-size: 4;                
+    font-family: 'Inter', sans-serif;
+
+    }
+
+    body {
+    margin: 0;
+    line-height: inherit;
+    }
+}
+
+/* Component styles */
+@layer components {
+    .btn {
+    @apply px-4 py-2 bg-blue-500 text-white rounded;
+    }
+}
+/* Utility styles */
+@layer utilities {
+    .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0
+        
+        
+        
+        
+, 0, 0.5);
+    }
+}   
+    
