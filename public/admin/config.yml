@@ -2,8 +2,9 @@ backend:
   name: github
   repo: richardmukechiwa/morningsidezw-site
   branch: main
-  base_url: "https://admin.morningsidezw.com"  # your Worker URL handling OAuth
-  auth_endpoint: "/auth"                        # OAuth route on your Worker
+  base_url: "https://admin.morningsidezw.com"   # Your Worker domain
+  auth_endpoint: "/auth"                         # OAuth route handled by Worker
+  api_root: "/"                                  # Root for CMS API calls
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
@@ -20,5 +21,3 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Summary", name: "summary", widget: "text" }
-      - { label: "Featured Image", name: "image", widget: "image" }
