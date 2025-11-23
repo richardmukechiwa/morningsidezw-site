@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Testimonials | MorningsideZW</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/services.html">Services</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/testimonials.html" class="active">Testimonials</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Client Testimonials</h1>
+  <p>Hear what clients say about working with MorningsideZW.</p>
+</section>
+
+
+<section class="testimonial-section">
+
+  <h2>Submit Your Testimonial</h2>
+
+  <form id="testimonial-form" class="testimonial-form">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="text" name="company" placeholder="Company (optional)" />
+    <textarea name="message" placeholder="Your Testimonial" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2>What Clients Say</h2>
+  <div id="testimonial-list">Loading testimonials...</div>
+
+</section>
+
+
+<script>
+const WORKER = "https://YOUR_WORKER_URL/workers.dev";
+
+document.getElementById("testimonial-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(e.target).entries());
+
+  const res = await fetch(`${WORKER}/submit`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+
+  alert(await res.text());
+  e.target.reset();
+});
+
+
+async function loadTestimonials() {
+  const res = await fetch(`${WORKER}/all`);
+  const items = await res.json();
+
+  document.getElementById("testimonial-list").innerHTML =
+    items
+      .map(t => {
+        const o = JSON.parse(t);
+        return `
+          <div class="testimonial">
+            <p>${o.message}</p>
+            <strong>- ${o.name}${o.company ? ", " + o.company : ""}</strong>
+          </div>
+        `;
+      })
+      .join("");
+}
+
+loadTestimonials();
+</script>
+
+</body>
+</html>
