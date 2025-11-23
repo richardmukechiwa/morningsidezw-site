@@ -3,7 +3,7 @@ backend:
   repo: richardmukechiwa/morningsidezw-site
   branch: main
   base_url: "https://admin.morningsidezw.com"   # Your Worker domain
-  auth_endpoint: "/auth"                         # OAuth route handled by Worker
+  auth_endpoint: "/nyama"                         # OAuth route handled by Worker
   api_root: "/"                                  # Root for CMS API calls
 
 media_folder: "public/uploads"
