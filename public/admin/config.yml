@@ -2,8 +2,11 @@ backend:
   name: github
   repo: richardmukechiwa/morningsidezw-site
   branch: main
-  base_url: "https://morningside-decapsso.mukechiwarichard.workers.dev"   # The URL of your OAuth proxy
-  auth_endpoint: "/auth"                       # OAuth route on your proxy
+  base_url: "https://admin.morningsidezw.com"  # your Worker URL handling OAuth
+  auth_endpoint: "/auth"                        # OAuth route on your Worker
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
 
 publish_mode: editorial_workflow
 
@@ -17,4 +20,5 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
-
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Featured Image", name: "image", widget: "image" }
