@@ -226,5 +226,16 @@
     </div>
   </footer>
 
+  <!-- Admin visibility logic -->
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const isAdmin = params.get("admin") === "1";
+
+    if (isAdmin) {
+      document.getElementById("admin-link")?.classList.remove("hidden");
+      document.getElementById("admin-link-mobile")?.classList.remove("hidden");
+    }
+  </script>
+
 </body>
 </html>
