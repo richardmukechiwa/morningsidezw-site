@@ -1,0 +1,31 @@
+backend:
+  name: github
+  repo: richardmukechiwa/morningsidezw-site
+  branch: main
+  base_url: https://morningsidezw.com
+  auth_endpoint: admin/auth
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "content/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "content/testimonials"
+    create: true
+    format: "json"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Company", name: "company", widget: "string", required: false }
+      - { label: "Message", name: "message", widget: "text" }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
