@@ -4,13 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Admin — MorningsideZW</title>
+
+  <!-- Decap CMS JS -->
   <script src="https://unpkg.com/decap-cms@3.2.0/dist/decap-cms.js"></script>
+
+  <!-- Optional CSS -->
   <link rel="stylesheet" href="/output.css" />
 </head>
-<body>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center">
+
+  <!-- Required root element for CMS -->
+  <decap-cms-app id="nc-root" class="w-full max-w-4xl p-6 bg-white shadow rounded"></decap-cms-app>
+
+  <!-- Initialize CMS -->
   <script>
+    // Ensure CMS points to the correct config file
     window.DecapCMS = window.DecapCMS || {};
+    DecapCMS.init({
+      config: '/admin/config.yml'
+    });
   </script>
-  <decap-cms-app></decap-cms-app>
 </body>
 </html>
