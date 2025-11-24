@@ -17,25 +17,26 @@ body {
 a:focus { outline: 3px solid rgba(255,106,0,0.25); outline-offset: 2px; }
 img { max-width: 100%; height: auto; }
 
+/* Updated container to remove excessive side gaps */
 .container {
-  max-width: 80rem;
+  width: 100%;
+  max-width: 100%;      /* Removed fixed max-width to avoid 5cm margins */
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
+  padding-left: 1rem;   /* Keep internal spacing */
   padding-right: 1rem;
+  box-sizing: border-box; /* Ensure padding stays inside width */
 }
 
 footer p { margin: 0; }
-/* No other CSS before @import or @tailwind rules */
+
 /* Step 1: @import rules at the very top */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');    
+
 /* Step 2: Tailwind layers */
 @tailwind base; 
-
 @tailwind components;
-
 @tailwind utilities;  
-
 
 /* Step 3: Any Tailwind-generated overrides (if needed) */
 /* ... no other CSS before @import or @tailwind rules ... */
