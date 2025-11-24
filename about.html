@@ -48,14 +48,14 @@
   </footer>
 
   <!-- SCRIPT TO HIGHLIGHT CURRENT PAGE IN NAV -->
-  <script>
+  <!--script>
     const page = window.location.pathname.split("/").pop() || "index.html";
     document.querySelectorAll("nav a").forEach(a => {
       if(a.getAttribute("href") === "/" + page || (page === "index.html" && a.getAttribute("href") === "/")) {
         a.classList.add("text-accent","font-semibold");
       }
     });
-  </script>
+  </!--script>
 
 </body>
 </html>
