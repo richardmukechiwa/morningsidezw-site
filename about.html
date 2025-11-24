@@ -1,9 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="About — n8n automation for finance teams" />
+  <title>About — n8n Automation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles/tailwind-custom.css">
+</head>
 <body class="bg-gray-50 text-gray-900">
 
+  <!-- UPDATED HEADER WITH NAV -->
   <header class="bg-white shadow">
     <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
       <a href="/" class="flex items-center gap-3" aria-label="Home">
-        <!-- logo SVG -->
+        <svg width="40" height="40" viewBox="0 0 64 64">
+          <rect width="64" height="64" rx="12" fill="#0A1B2A"/>
+          <text x="50%" y="54%" text-anchor="middle" fill="#FF6A00" font-family="Inter, sans-serif" font-size="24" font-weight="700">RM</text>
+        </svg>
       </a>
 
       <nav class="hidden md:flex gap-6 text-sm text-gray-700">
@@ -17,15 +31,23 @@
     </div>
   </header>
 
+  <!-- ORIGINAL MAIN CONTENT (UNCHANGED) -->
   <main class="max-w-4xl mx-auto p-6">
-    <!-- page content -->
+    <h1 class="text-3xl font-bold mb-4">About</h1>
+    <p class="text-gray-700 mb-4">I build reliable n8n workflows for finance teams and small businesses. My focus is fast delivery, clean documentation, and maintainable automations.</p>
+    <h2 class="text-xl font-semibold mt-6 mb-2">Why automation?</h2>
+    <p class="text-gray-700">Automation reduces manual errors, speeds up reporting, and frees your team to work on strategic tasks. I specialise in accounts payable, reporting pipelines, and glue-code integrations using n8n.</p>
   </main>
 
+  <!-- ORIGINAL FOOTER (UNCHANGED) -->
   <footer class="bg-white border-t mt-12">
-    <!-- footer content -->
+    <div class="max-w-5xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
+      <p>© 2025 Richard Mukechiwa</p>
+      <p><a href="mailto:hello@morningsidezw.com" class="text-accent">hello@morningsidezw.com</a></p>
+    </div>
   </footer>
 
-  <!-- Script to highlight current page in nav -->
+  <!-- SCRIPT TO HIGHLIGHT CURRENT PAGE IN NAV -->
   <script>
     const page = window.location.pathname.split("/").pop() || "index.html";
     document.querySelectorAll("nav a").forEach(a => {
@@ -34,4 +56,6 @@
       }
     });
   </script>
+
 </body>
+</html>
