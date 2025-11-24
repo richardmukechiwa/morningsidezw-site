@@ -1,13 +1,18 @@
+# Backend: GitHub repository
 backend:
   name: github
   repo: richardmukechiwa/morningsidezw-site
   branch: main
-  base_url: https://morningsidezw.com
-  auth_endpoint: admin/auth
+  # GitHub personal access token method for local/dev testing
+  # For production, use OAuth app (recommended)
+  # leave empty to use OAuth in the browser
+  # token: YOUR_GITHUB_PERSONAL_ACCESS_TOKEN
 
+# Media settings
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
+# Collections (editable content types)
 collections:
   - name: "posts"
     label: "Posts"
