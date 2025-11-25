@@ -1,1 +1,52 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Post</title><link rel="stylesheet" href="../styles/tailwind-custom.css" /></head><body class="bg-white text-gray-800"><header class="p-6 border-b bg-brand-navy text-white"><a href="../index.html" class="text-xl font-bold">RM</a></header><main class="max-w-3xl mx-auto p-6"><h1 id="post-title" class="text-4xl font-bold mb-4"></h1><p id="post-date" class="text-gray-500 mb-8"></p><article id="post-content" class="prose prose-lg"></article></main><script src="../assets/js/marked.min.js"></script><script>const params=new URLSearchParams(location.search);const file=params.get('post')||'example-post';fetch(`../posts/${file}.md`).then(r=>r.text()).then(md=>{document.getElementById('post-content').innerHTML=marked.parse(md);});</script></body></html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary SEO -->
+  <title id="seo-title">Post — MorningsideZW Blog</title>
+  <meta name="description" content="Read this blog post on MorningsideZW Automation — insights on automation, workflow design, and integrations." />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://morningsidezw.com/blog/post.html" />
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Post — MorningsideZW Blog" />
+  <meta property="og:description" content="Insights, tutorials, and case studies from MorningsideZW Automation." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://morningsidezw.com/blog/post.html" />
+  <meta property="og:site_name" content="MorningsideZW" />
+  <meta property="og:image" content="https://morningsidezw.com/public/og-default.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Post — MorningsideZW Blog" />
+  <meta name="twitter:description" content="Insights, tutorials, and case studies from MorningsideZW Automation." />
+  <meta name="twitter:image" content="https://morningsidezw.com/public/og-default.png" />
+
+  <!-- JSON-LD BlogPosting -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Post — MorningsideZW Blog",
+    "url": "https://morningsidezw.com/blog/post.html",
+    "author": {
+      "@type": "Person",
+      "name": "Richard Mukechiwa"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "MorningsideZW",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://morningsidezw.com/public/og-default.png"
+      }
+    },
+    "datePublished": "2025-01-01"
+  }
+  </script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/tailwind-custom.css" />
+</head>
+<body class="bg-white text-gray-800"><header class="p-6 border-b bg-brand-navy text-white"><a href="../index.html" class="text-xl font-bold">RM</a></header><main class="max-w-3xl mx-auto p-6"><h1 id="post-title" class="text-4xl font-bold mb-4"></h1><p id="post-date" class="text-gray-500 mb-8"></p><article id="post-content" class="prose prose-lg"></article></main><script src="../assets/js/marked.min.js"></script><script>const params=new URLSearchParams(location.search);const file=params.get('post')||'example-post';fetch(`../posts/${file}.md`).then(r=>r.text()).then(md=>{document.getElementById('post-content').innerHTML=marked.parse(md);});</script></body></html>

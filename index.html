@@ -3,11 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Automation & integrations for finance teams — MorningsideZW" />
-  <title>Richard Mukechiwa — Automation</title>
+  
+  <!-- Primary SEO -->
+  <meta name="description" content="Automation, AI integrations, process optimization, and data-driven workflow solutions for businesses. Freelance automation engineer helping teams save time, reduce costs, and scale operations." />
+  <meta name="keywords" content="automation, AI automation, workflow automation, Zapier, Make.com, custom integrations, freelance automation expert, business automation" />
+  <meta name="author" content="Morningside Automation" />
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Open Graph (Facebook, LinkedIn) -->
+  <meta property="og:title" content="Morningside Automation – AI & Business Workflow Automation" />
+  <meta property="og:description" content="Automations that save time, reduce costs, and optimize operations. Zapier, Make, Python, APIs, and custom workflow engineering." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://morningsidezw.github.io/" />
+  <meta property="og:image" content="https://morningsidezw.github.io/assets/og-image.jpg" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Morningside Automation – AI & Workflow Automation" />
+  <meta name="twitter:description" content="Freelance automation expert building efficient, scalable business automations." />
+  <meta name="twitter:image" content="https://morningsidezw.github.io/assets/og-image.jpg" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://morningsidezw.github.io/" />
+
+  <!-- Tailwind local build -->
   <link rel="stylesheet" href="styles/tailwind-custom.css">
 
   <style>
@@ -23,7 +41,7 @@
   <header class="bg-white shadow">
     <div class="max-w-full mx-auto px-6 py-5 flex items-center justify-between">
       <a href="/" class="flex items-center gap-3" aria-label="Home">
-        <div class="w-10 h-10 rounded-lg" style="background:var(--brand-navy);display:flex;align-items:center;justify-content:center;color:var(--brand-accent);font-weight:700">RM</div>
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-brand-navy text-accent font-bold">RM</div>
       </a>
 
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
@@ -33,7 +51,6 @@
         <a href="/blog/index.html" class="hover:text-gray-900">Blog</a>
         <a href="/about.html" class="hover:text-gray-900">About</a>
         <a href="/contact.html" class="hover:text-gray-900">Contact</a>
-         <!-- Admin (hidden unless ?admin=1) -->
         <a id="admin-link" href="/admin/" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
       </nav>
 
@@ -50,9 +67,7 @@
         <a href="/blog/index.html" class="py-2">Blog</a>
         <a href="/about.html" class="py-2">About</a>
         <a href="/contact.html" class="py-2">Contact</a>
-        <!-- Admin (hidden unless ?admin=1) -->
         <a id="admin-link-mobile" href="/admin/" class="py-2 bg-accent text-white rounded text-center hidden">Admin</a>
-      </div>
       </div>
     </div>
   </header>
@@ -64,11 +79,10 @@
         <h1 class="text-3xl md:text-4xl font-bold mb-4">Automation & integrations for finance teams</h1>
         <p class="text-lg text-gray-700 mb-6">Save time, reduce errors, and scale processes with reliable, maintainable automation and integrations.</p>
         <div class="flex gap-4">
-          <a href="/contact.html" class="inline-block px-5 py-3 bg-accent text-white rounded-md font-semibold">Schedule a 30-Minute Demo</a>
-          <a href="/services.html" class="inline-block px-5 py-3 border border-transparent text-accent rounded-md font-medium">View Services</a>
+          <a href="https://calendly.com/your-calendly-link" target="_blank" class="inline-block px-5 py-3 bg-accent text-white rounded-md font-semibold">Book a Call</a>
+          <a href="/contact.html" class="inline-block px-5 py-3 border border-transparent text-accent rounded-md font-medium">Contact Form</a>
         </div>
       </div>
-
       <div>
         <img src="assets/hero.jpg" alt="Abstract automation illustration" class="w-full h-64 md:h-80 object-cover rounded-lg shadow-sm">
       </div>
@@ -78,17 +92,29 @@
     <section class="mt-12">
       <h2 class="text-2xl font-semibold mb-4">Services</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded-lg shadow-sm">
-          <h3 class="font-semibold mb-2">Workflow Setup</h3>
+        <!-- Workflow Setup -->
+        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col gap-3">
+          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-3-3v6"/>
+          </svg>
+          <h3 class="font-semibold mb-1">Workflow Setup</h3>
           <p class="text-sm text-gray-600">Design and implement reliable automations and workflows.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-sm">
-          <h3 class="font-semibold mb-2">System Integrations</h3>
-          <p class="text-sm text-gray-600">Connect apps, databases and services into unified systems.</p>
+        <!-- System Integrations -->
+        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col gap-3">
+          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m4-4H8"/>
+          </svg>
+          <h3 class="font-semibold mb-1">System Integrations</h3>
+          <p class="text-sm text-gray-600">Connect apps, databases, and services into unified systems.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-sm">
-          <h3 class="font-semibold mb-2">Support & Maintenance</h3>
-          <p class="text-sm text-gray-600">Debug, optimize and document workflows for ongoing reliability.</p>
+        <!-- Support & Maintenance -->
+        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col gap-3">
+          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+          </svg>
+          <h3 class="font-semibold mb-1">Support & Maintenance</h3>
+          <p class="text-sm text-gray-600">Debug, optimize, and document workflows for ongoing reliability.</p>
         </div>
       </div>
     </section>
