@@ -42,8 +42,8 @@
   }
   </script>
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CSS (compiled) -->
+  <link rel="stylesheet" href="../output.css">
   <link rel="stylesheet" href="../styles/tailwind-custom.css">
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -57,6 +57,30 @@
           <text x="50%" y="54%" text-anchor="middle" fill="#FF6A00" font-family="Inter, sans-serif" font-size="24" font-weight="700">RM</text>
         </svg>
       </a>
+
+      <nav class="hidden md:flex gap-6 text-sm text-gray-700">
+        <a href="../index.html">Home</a>
+        <a href="../services.html">Services</a>
+        <a href="../testimonials.html">Testimonials</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a id="admin-link" href="../admin/index.html" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
+      </nav>
+
+      <button class="md:hidden" aria-label="Open menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+      <div class="px-6 py-4 flex flex-col gap-3">
+        <a href="../index.html" class="py-2">Home</a>
+        <a href="../services.html" class="py-2">Services</a>
+        <a href="../testimonials.html" class="py-2">Testimonials</a>
+        <a href="../about.html" class="py-2">About</a>
+        <a href="../contact.html" class="py-2">Contact</a>
+        <a id="admin-link-mobile" href="../admin/index.html" class="py-2 bg-accent text-white rounded text-center hidden">Admin</a>
+      </div>
     </div>
   </header>
 

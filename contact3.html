@@ -25,7 +25,8 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://www.morningsidezw.com/contact.html" />
 
-  <!-- Tailwind local build -->
+  <!-- Tailwind CSS (compiled) -->
+  <link rel="stylesheet" href="output.css">
   <link rel="stylesheet" href="styles/tailwind-custom.css">
 
   <!-- Calendly popup script -->
@@ -42,16 +43,16 @@
   <!-- Header -->
   <header class="bg-white shadow">
     <div class="max-w-full mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3" aria-label="Home">
+      <a href="index.html" class="flex items-center gap-3" aria-label="Home">
         <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-brand-navy text-accent font-bold">RM</div>
       </a>
       <nav class="hidden md:flex gap-6 text-sm text-gray-700">
-        <a href="/">Home</a>
-        <a href="/services.html">Services</a>
-        <a href="/testimonials.html">Testimonials</a>
-        <a href="/about.html">About</a>
-        <a href="/contact.html">Contact</a>
-        <a id="admin-link" href="/admin/" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a id="admin-link" href="admin/index.html" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
       </nav>
     </div>
   </header>
@@ -100,7 +101,7 @@
     <!-- Optional WhatsApp Contact -->
     <section>
       <h2 class="text-2xl font-semibold mb-4">Quick Chat</h2>
-      <a href="https://wa.me/2637XXXXXXX" target="_blank" class="inline-flex items-center gap-2 px-5 py-3 border border-accent text-accent rounded-md font-semibold hover:bg-accent hover:text-white transition">
+      <a href="https://wa.me/2637XXXXXXX" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 border border-accent text-accent rounded-md font-semibold hover:bg-accent hover:text-white transition">
         WhatsApp
       </a>
     </section>
@@ -113,8 +114,8 @@
       <p>© 2025 RM Connect</p>
       <div class="flex gap-4 items-center mt-2 md:mt-0">
         <a href="mailto:hello@morningsidezw.com" class="text-accent">hello@morningsidezw.com</a>
-        <a href="https://calendly.com/mukechiwarichard/30min" target="_blank" class="text-accent">Book a Call</a>
-        <a href="https://wa.me/2637XXXXXXX" target="_blank" class="text-accent flex items-center gap-1">WhatsApp</a>
+        <a href="https://calendly.com/mukechiwarichard/30min" target="_blank" rel="noopener noreferrer" class="text-accent">Book a Call</a>
+        <a href="https://wa.me/2637XXXXXXX" target="_blank" rel="noopener noreferrer" class="text-accent flex items-center gap-1">WhatsApp</a>
       </div>
     </div>
   </footer>

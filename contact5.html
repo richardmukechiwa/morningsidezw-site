@@ -31,8 +31,9 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 
   <!-- ⚠ Tailwind: using CDN for now (local build recommended for production) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="styles/tailwind-custom.css">
+   <link rel="stylesheet" href="output.css">
+   <link rel="stylesheet" href="styles/tailwind-custom.css">
+   <!-- Tailwind CSS (compiled) -->
 
   <!-- ✅ Calendly script -->
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
@@ -57,7 +58,7 @@
         <a href="/testimonials.html">Testimonials</a>
         <a href="/about.html">About</a>
         <a href="/contact.html">Contact</a>
-        <a id="admin-link" href="/admin/" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
+        <a id="admin-link" href="admin/index.html" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
       </nav>
     </div>
   </header>
@@ -73,8 +74,8 @@
 
     <!-- WhatsApp button -->
     <div class="mt-4">
-      <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank"
-         class="inline-block px-5 py-3 bg-green-500 text-white rounded-md font-medium mb-4">
+        <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" rel="noopener noreferrer"
+           class="inline-block px-5 py-3 bg-green-500 text-white rounded-md font-medium mb-4">
         Chat on WhatsApp
       </a>
     </div>

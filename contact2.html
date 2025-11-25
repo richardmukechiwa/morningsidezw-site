@@ -31,7 +31,7 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 
   <!-- ⚠ Tailwind: using CDN for now (local build recommended for production) -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="output.css">
   <link rel="stylesheet" href="styles/tailwind-custom.css">
 
   <!-- ✅ FIX: Calendly script -->
@@ -42,7 +42,7 @@
 
   <header class="bg-white shadow">
     <div class="max-w-full mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3" aria-label="Home">
+      <a href="index.html" class="flex items-center gap-3" aria-label="Home">
         <svg width="40" height="40" viewBox="0 0 64 64">
           <rect width="64" height="64" rx="12" fill="#0A1B2A"/>
           <text x="50%" y="54%" text-anchor="middle" fill="#FF6A00"
@@ -51,12 +51,12 @@
       </a>
 
       <nav class="hidden md:flex gap-6 text-sm text-gray-700">
-        <a href="/">Home</a>
-        <a href="/services.html">Services</a>
-        <a href="/testimonials.html">Testimonials</a>
-        <a href="/about.html">About</a>
-        <a href="/contact.html">Contact</a>
-        <a id="admin-link" href="/admin/" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a id="admin-link" href="admin/index.html" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
       </nav>
     </div>
   </header>
