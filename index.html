@@ -26,7 +26,9 @@
   <!-- Canonical -->
   <link rel="canonical" href="https://morningsidezw.github.io/" />
 
-  <!-- Tailwind CSS (local) -->
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="styles/tailwind-custom.css">
 
   <style>
@@ -40,6 +42,10 @@
     .logo-badge {
       background: var(--brand-navy);
       color: var(--brand-accent);
+      flex-shrink: 0 !important;
+    }
+    .hidden {
+      display: none !important;
     }
   </style>
 </head>
@@ -254,12 +260,11 @@
       const adminLink = document.getElementById("admin-link");
       const adminLinkMobile = document.getElementById("admin-link-mobile");
 
-      if (isAdmin) {
-        if (adminLink) adminLink.classList.remove("hidden");
-        if (adminLinkMobile) adminLinkMobile.classList.remove("hidden");
-      } else {
-        if (adminLink) adminLink.classList.add("hidden");
-        if (adminLinkMobile) adminLinkMobile.classList.add("hidden");
+      if (adminLink) {
+        adminLink.classList.toggle("hidden", !isAdmin);
+      }
+      if (adminLinkMobile) {
+        adminLinkMobile.classList.toggle("hidden", !isAdmin);
       }
     }
 

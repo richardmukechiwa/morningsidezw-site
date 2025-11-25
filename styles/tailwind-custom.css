@@ -25,7 +25,11 @@ body {
 .logo-badge {
   background-color: var(--brand-navy);
   color: var(--brand-accent);
-  flex-shrink: 0;
+  flex-shrink: 0 !important;
+}
+
+.hidden {
+  display: none !important;
 }
 
 a:focus {
