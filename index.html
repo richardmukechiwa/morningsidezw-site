@@ -49,6 +49,14 @@
       flex-shrink: 0 !important;
     }
     /* Note: rely on Tailwind's .hidden utility (defined in output.css) */
+    /* Temporary desktop fallbacks in case responsive utilities are missing */
+    @media (min-width: 768px) {
+      nav.md-desktop { display: flex !important; }
+      #mobile-menu { display: none !important; }
+      .logo-badge { width: 2.5rem; height: 2.5rem; }
+      .hero-two-col { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 2rem; }
+      .hero-img { height: 20rem !important; }
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -59,7 +67,7 @@
         <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold logo-badge">RM</div>
       </a>
 
-      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700 md-desktop">
         <a href="index.html" class="hover:text-gray-900">Home</a>
         <a href="services.html" class="hover:text-gray-900">Services</a>
         <a href="testimonials.html" class="hover:text-gray-900">Testimonials</a>
@@ -92,7 +100,7 @@
 
   <!-- Hero -->
   <main class="max-w-5xl mx-auto px-6 py-12">
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center hero-two-col">
       <div>
         <h1 class="text-3xl md:text-4xl font-bold mb-4">Automation & integrations for finance teams</h1>
         <p class="text-lg text-gray-700 mb-6">Save time, reduce errors, and scale processes with reliable, maintainable automation and integrations.</p>
@@ -102,7 +110,7 @@
         </div>
       </div>
       <div>
-        <img src="assets/hero.jpg" alt="Automation hero" class="w-full h-64 md:h-80 object-cover rounded-lg shadow-sm" loading="lazy">
+        <img src="assets/hero.jpg" alt="Automation hero" class="w-full h-64 md:h-80 object-cover rounded-lg shadow-sm hero-img" loading="lazy">
       </div>
     </section>
 

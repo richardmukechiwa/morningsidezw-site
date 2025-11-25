@@ -42,8 +42,8 @@
   }
   </script>
 
-  <!-- Tailwind CSS (compiled) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@4.1.17/dist/tailwind.min.css">
+  <!-- Tailwind CSS (compiled, local) -->
+  <link rel="stylesheet" href="output.css">
   <link rel="stylesheet" href="styles/tailwind-custom.css">
 
   <!-- Brand styles -->
@@ -63,14 +63,11 @@
 <!-- HEADER -->
 <header class="bg-white shadow">
   <div class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
-    <a href="index.html" class="flex items-center gap-3">
-      <div style="width:42px;height:42px;background:var(--brand-navy);color:var(--brand-accent);
-      display:flex;align-items:center;justify-content:center;border-radius:10px;font-weight:700">
-        RM
-      </div>
+    <a href="index.html" class="flex items-center gap-3" aria-label="Home">
+      <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold logo-badge">RM</div>
     </a>
 
-    <nav class="hidden md:flex gap-6 text-sm text-gray-700">
+    <nav class="hidden md:flex gap-6 text-sm text-gray-700 md-desktop">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="testimonials.html" class="text-accent font-semibold">Testimonials</a>
@@ -83,7 +80,7 @@
 </header>
 
 <!-- MAIN -->
-<main class="max-w-4xl mx-auto px-6 py-12">
+<main class="max-w-5xl mx-auto px-6 py-12">
   <h1 class="text-3xl font-bold mb-6">What clients say</h1>
 
   <div id="testimonials-grid"
