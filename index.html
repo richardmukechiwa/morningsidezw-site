@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Richard Mukechiwa — Automation</title>
   <meta name="description" content="Automation, AI integrations, process optimization, and data-driven workflow solutions for businesses. Freelance automation engineer helping teams save time, reduce costs, and scale operations." />
   <meta name="keywords" content="automation, AI automation, workflow automation, Zapier, Make.com, custom integrations, freelance automation expert, business automation" />
@@ -21,23 +21,26 @@
   <meta name="twitter:description" content="Freelance automation expert building efficient, scalable business automations." />
   <meta name="twitter:image" content="https://morningsidezw.github.io/assets/og-image.jpg" />
 
+  <!-- Canonical -->
   <link rel="canonical" href="https://morningsidezw.github.io/" />
+
+  <!-- Local Tailwind CSS -->
   <link rel="stylesheet" href="styles/tailwind-custom.css">
 
   <style>
-    :root { --brand-navy:#0A1B2A; --brand-accent:#FF6A00; }
-    html, body { margin:0; padding:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial; }
-    .bg-accent { background:var(--brand-accent); }
-    .text-accent { color:var(--brand-accent); }
+    :root{ --brand-navy:#0A1B2A; --brand-accent:#FF6A00; }
+    html,body{margin:0;padding:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial}
+    .bg-accent{background:var(--brand-accent)}
+    .text-accent{color:var(--brand-accent)}
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
   <!-- Header -->
   <header class="bg-white shadow">
-    <div class="max-w-screen-xl mx-auto px-6 py-5 flex items-center justify-between">
+    <div class="max-w-full mx-auto px-6 py-5 flex items-center justify-between">
       <a href="/" class="flex items-center gap-3" aria-label="Home">
-        <div class="w-10 h-10 rounded-lg bg-brand-navy flex items-center justify-center text-brand-accent font-bold">RM</div>
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold" style="background:var(--brand-navy); color:var(--brand-accent)">RM</div>
       </a>
 
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
@@ -47,7 +50,7 @@
         <a href="/blog/index.html" class="hover:text-gray-900">Blog</a>
         <a href="/about.html" class="hover:text-gray-900">About</a>
         <a href="/contact.html" class="hover:text-gray-900">Contact</a>
-        <a id="admin-link" href="/admin/" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hidden">Admin</a>
+        <a id="admin-link" href="/admin/" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
       </nav>
 
       <button class="md:hidden" aria-label="Open menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
@@ -69,59 +72,40 @@
   </header>
 
   <!-- Hero -->
-  <main class="max-w-screen-xl mx-auto px-6 py-12">
+  <main class="max-w-full mx-auto px-6 py-12">
     <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <div>
         <h1 class="text-3xl md:text-4xl font-bold mb-4">Automation & integrations for finance teams</h1>
         <p class="text-lg text-gray-700 mb-6">Save time, reduce errors, and scale processes with reliable, maintainable automation and integrations.</p>
-        <div class="flex gap-4 flex-wrap">
-          <a href="/contact.html" class="inline-block px-5 py-3 bg-accent text-white rounded-md font-semibold">Schedule a 30-Minute Demo</a>
+        <div class="flex gap-4">
+          <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/mukechiwarichard/30min'}); return false;" class="inline-block px-5 py-3 bg-accent text-white rounded-md font-semibold">Schedule a 30-Minute Demo</a>
           <a href="/services.html" class="inline-block px-5 py-3 border border-transparent text-accent rounded-md font-medium">View Services</a>
         </div>
       </div>
+
       <div>
-        <img src="assets/hero.jpg" alt="Abstract automation illustration" class="w-full max-w-full h-auto md:h-80 object-cover rounded-lg shadow-sm">
+        <img src="assets/hero.jpg" alt="Abstract automation illustration" class="w-full h-64 md:h-80 object-cover rounded-lg shadow-sm">
       </div>
     </section>
 
-    <!-- Services preview -->
+    <!-- Services -->
     <section class="mt-12">
       <h2 class="text-2xl font-semibold mb-4">Services</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-start">
-          <div class="mb-2 w-6 h-6 text-accent">⚡</div>
-          <h3 class="font-semibold mb-2">Workflow Setup</h3>
+        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-start gap-2">
+          <div class="text-orange-500 text-xl">⚙️</div>
+          <h3 class="font-semibold">Workflow Setup</h3>
           <p class="text-sm text-gray-600">Design and implement reliable automations and workflows.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-start">
-          <div class="mb-2 w-6 h-6 text-accent">🔗</div>
-          <h3 class="font-semibold mb-2">System Integrations</h3>
+        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-start gap-2">
+          <div class="text-orange-500 text-xl">🔗</div>
+          <h3 class="font-semibold">System Integrations</h3>
           <p class="text-sm text-gray-600">Connect apps, databases and services into unified systems.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-start">
-          <div class="mb-2 w-6 h-6 text-accent">🛠️</div>
-          <h3 class="font-semibold mb-2">Support & Maintenance</h3>
+        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-start gap-2">
+          <div class="text-orange-500 text-xl">🛠️</div>
+          <h3 class="font-semibold">Support & Maintenance</h3>
           <p class="text-sm text-gray-600">Debug, optimize and document workflows for ongoing reliability.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects preview -->
-    <section class="mt-12">
-      <h2 class="text-2xl font-semibold mb-4">Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Example project cards -->
-        <div class="bg-white p-6 rounded-lg shadow-sm">
-          <h3 class="font-semibold mb-2">Finance Dashboard Automation</h3>
-          <p class="text-sm text-gray-600">Automated reports and workflows for financial teams.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-sm">
-          <h3 class="font-semibold mb-2">Invoice Processing Bot</h3>
-          <p class="text-sm text-gray-600">Streamlined invoice handling and payment reconciliation.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-sm">
-          <h3 class="font-semibold mb-2">CRM Data Sync</h3>
-          <p class="text-sm text-gray-600">Automated data sync between multiple customer management platforms.</p>
         </div>
       </div>
     </section>
@@ -263,5 +247,8 @@
     }
   </script>
 
+
+  <!-- Calendly script -->
+   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
