@@ -1,4 +1,12 @@
-/* No @import here; all imports must stay in output.css */
+/* Step 1: @import MUST be the first line */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Step 2: Tailwind layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Step 3: Your custom CSS */
 :root {
   --brand-navy: #0A1B2A;
   --brand-accent: #FF6A00;
@@ -14,29 +22,21 @@ body {
 .bg-accent { background-color: var(--brand-accent); }
 .text-navy { color: var(--brand-navy); }
 
-a:focus { outline: 3px solid rgba(255,106,0,0.25); outline-offset: 2px; }
+a:focus {
+  outline: 3px solid rgba(255,106,0,0.25);
+  outline-offset: 2px;
+}
+
 img { max-width: 100%; height: auto; }
 
-/* Updated container to remove excessive side gaps */
 .container {
   width: 100%;
-  max-width: 100%;      /* Removed fixed max-width to avoid 5cm margins */
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;   /* Keep internal spacing */
+  padding-left: 1rem;
   padding-right: 1rem;
-  box-sizing: border-box; /* Ensure padding stays inside width */
+  box-sizing: border-box;
 }
 
 footer p { margin: 0; }
-
-/* Step 1: @import rules at the very top */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');    
-
-/* Step 2: Tailwind layers */
-@tailwind base; 
-@tailwind components;
-@tailwind utilities;  
-
-/* Step 3: Any Tailwind-generated overrides (if needed) */
-/* ... no other CSS before @import or @tailwind rules ... */
