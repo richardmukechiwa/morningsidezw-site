@@ -247,15 +247,27 @@
   </footer>
   <!-- Admin visibility logic -->
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    function showAdminIfNeeded() {
       const params = new URLSearchParams(window.location.search);
       const isAdmin = params.get("admin") === "1";
 
+      const adminLink = document.getElementById("admin-link");
+      const adminLinkMobile = document.getElementById("admin-link-mobile");
+
       if (isAdmin) {
-        document.getElementById("admin-link")?.classList.remove("hidden");
-        document.getElementById("admin-link-mobile")?.classList.remove("hidden");
+        if (adminLink) adminLink.classList.remove("hidden");
+        if (adminLinkMobile) adminLinkMobile.classList.remove("hidden");
+      } else {
+        if (adminLink) adminLink.classList.add("hidden");
+        if (adminLinkMobile) adminLinkMobile.classList.add("hidden");
       }
-    });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", showAdminIfNeeded);
+    } else {
+      showAdminIfNeeded();
+    }
   </script>
 
 
