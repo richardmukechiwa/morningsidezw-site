@@ -246,6 +246,19 @@
     }
   </script>
 
+     <!-- Admin visibility logic -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const params = new URLSearchParams(window.location.search);
+      const isAdmin = params.get("admin") === "1";
+
+      if (isAdmin) {
+        document.getElementById("admin-link")?.classList.remove("hidden");
+        document.getElementById("admin-link-mobile")?.classList.remove("hidden");
+      }
+    });
+  </script>
+
 
   <!-- Calendly script -->
    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
