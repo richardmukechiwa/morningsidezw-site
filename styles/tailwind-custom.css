@@ -4,38 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom colors and fonts */
+
 :root {
   --brand-navy: #0A1B2A;
   --brand-accent: #FF6A00;
-  --font-inter: 'Inter', sans-serif;
 }
-
-/* Logo fix */
-.logo-badge {
-  flex-shrink: 0 !important;
-  background-color: var(--brand-navy);
-  color: var(--brand-accent);
-}
-
-/* Hero image fix */
-.hero-image {
-  object-fit: cover;
-  height: 24rem; /* adjust for mobile */
-}
-@media (min-width: 768px) {
-  .hero-image {
-    height: 32rem; /* adjust for desktop */
-  }
-}
-
-/* Custom buttons if needed */
-.nav-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Any additional utility classes you were using */
+body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+.brand-accent { color: var(--brand-accent); }
 .bg-accent { background-color: var(--brand-accent); }
-.text-accent { color: var(--brand-accent); }
+.text-navy { color: var(--brand-navy); }
+a:focus { outline: 3px solid rgba(255,106,0,0.25); outline-offset: 2px; }
+img { max-width: 100%; height: auto; }
+.container { max-width: 68rem; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+footer p { margin: 0; }
