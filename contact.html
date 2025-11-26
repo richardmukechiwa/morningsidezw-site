@@ -130,10 +130,25 @@
 
   <!-- Admin visibility logic -->
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const isAdmin = params.get("admin") === "1";
-    if (isAdmin) {
-      document.getElementById("admin-link")?.classList.remove("hidden");
+    function showAdminIfNeeded() {
+      const params = new URLSearchParams(window.location.search);
+      const isAdmin = params.get("admin") === "1";
+
+      const adminLink = document.getElementById("admin-link");
+      const adminLinkMobile = document.getElementById("admin-link-mobile");
+
+      if (adminLink) {
+        adminLink.classList.toggle("hidden", !isAdmin);
+      }
+      if (adminLinkMobile) {
+        adminLinkMobile.classList.toggle("hidden", !isAdmin);
+      }
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", showAdminIfNeeded);
+    } else {
+      showAdminIfNeeded();
     }
   </script>
 
