@@ -50,20 +50,5 @@ img { max-width: 100%; height: auto; }
 }
 
 footer p { margin: 0; }
-
-/* Desktop (md) explicit fallbacks: ensure core responsive utilities are present
-   These are lightweight, only for a few classes used by the templates while
-   the primary Tailwind output is being stabilized. */
-@media (min-width: 48rem) {
-  .md\:flex { display: flex !important; }
-  .md\:hidden { display: none !important; }
-  .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-  .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
-  .md\:h-80 { height: 20rem !important; }
-  .md\:text-4xl { font-size: 2.25rem !important; line-height: 2.5rem !important; }
-  .md\:mt-0 { margin-top: 0 !important; }
-  .md\:flex-row { flex-direction: row !important; }
-  .md\:justify-end { justify-content: flex-end !important; }
-  /* helper used in index.html for fallback nav display */
-  nav.md-desktop { display: flex !important; }
+footer p + p { margin-top: 0.5rem;
 }
