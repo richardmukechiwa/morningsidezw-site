@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
 
-    "build": "tailwindcss -i ./styles/tw.css -o ./public/prod.css --minify",
+    "build": "tailwindcss -i ./styles/tw.css -o ./styles/prod.css --minify",
 
-    "watch": "tailwindcss -i ./styles/tw.css -o ./public/prod.css --watch"
+    "watch": "tailwindcss -i ./styles/tw.css -o ./styles/prod.css --watch"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.17",
