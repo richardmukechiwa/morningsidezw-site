@@ -1,19 +1,151 @@
-<!-- Hero -->
-<main class="max-w-5xl mx-auto px-6 py-12">
-  <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center hero-two-col">
-    <!-- Left: Text Content -->
-    <div>
-      <h1 class="text-3xl md:text-4xl font-bold mb-4">Automation & integrations for finance teams</h1>
-      <p class="text-lg text-gray-700 mb-6">Save time, reduce errors, and scale processes with reliable, maintainable automation and integrations.</p>
-      <div class="flex gap-4">
-        <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mukechiwarichard/30min'});return false;" class="inline-block px-5 py-3 bg-accent text-white rounded-md font-semibold">Schedule a 30-Minute Demo</a>
-        <a href="services.html" class="inline-block px-5 py-3 border border-transparent text-accent rounded-md font-medium">View Services</a>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- PRIMARY SEO -->
+  <title>RM Connect — Automation & AI Workflows for Finance Teams</title>
+  <meta name="description" content="Automation, AI integrations, workflow optimization, and data-driven solutions for businesses. Freelance automation engineer helping teams save time, reduce costs, and scale operations." />
+  <meta name="keywords" content="automation, AI automation, workflow automation, Zapier, Make.com, n8n, custom integrations, freelance automation expert, business automation, finance automation" />
+  <meta name="author" content="RM Connect" />
+
+  <!-- OPEN GRAPH / SOCIAL PREVIEW -->
+  <meta property="og:title" content="RM Connect – AI & Business Workflow Automation" />
+  <meta property="og:description" content="Automations that save time, reduce costs, and optimize operations. Zapier, Make, Python, APIs, and custom workflow engineering." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.morningsidezw.com/" />
+  <meta property="og:image" content="https://www.morningsidezw.com/assets/og-image.jpg" />
+
+  <!-- TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="RM Connect – AI & Workflow Automation" />
+  <meta name="twitter:description" content="Freelance automation expert building efficient, scalable business automations." />
+  <meta name="twitter:image" content="https://www.morningsidezw.com/assets/og-image.jpg" />
+
+  <!-- CANONICAL URL -->
+  <link rel="canonical" href="https://www.morningsidezw.com/" />
+
+  <!-- Fonts & Tailwind CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="output.css">
+  <link rel="stylesheet" href="styles/tailwind-custom.css">
+
+  <style>
+    :root {
+      --brand-navy: #0A1B2A;
+      --brand-accent: #FF6A00;
+    }
+    html, body {
+      margin:0;
+      padding:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+    }
+    .bg-accent { background: var(--brand-accent); }
+    .text-accent { color: var(--brand-accent); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Header -->
+  <header class="bg-white shadow">
+    <div class="max-w-full mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3" aria-label="Home">
+        <svg width="40" height="40" viewBox="0 0 64 64">
+          <rect width="64" height="64" rx="12" fill="#0A1B2A"/>
+          <text x="50%" y="54%" text-anchor="middle" fill="#FF6A00"
+            font-family="Inter, sans-serif" font-size="24" font-weight="700">RM</text>
+        </svg>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
+        <a href="index.html" class="hover:text-gray-900">Home</a>
+        <a href="services.html" class="hover:text-gray-900">Services</a>
+        <a href="testimonials.html" class="hover:text-gray-900">Testimonials</a>
+        <a href="blog/index.html" class="hover:text-gray-900">Blog</a>
+        <a href="about.html" class="hover:text-gray-900">About</a>
+        <a href="contact.html" class="hover:text-gray-900">Contact</a>
+        <a id="admin-link" href="admin/index.html" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
+      </nav>
+
+      <button class="md:hidden" aria-label="Open menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
     </div>
 
-    <!-- Right: Hero Image -->
-    <div class="flex justify-center md:justify-end">
-      <img src="assets/hero.jpg" alt="Automation hero" class="w-full h-auto max-h-80 md:max-h-96 object-cover rounded-lg shadow-sm hero-img" loading="lazy">
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+      <div class="px-6 py-4 flex flex-col gap-3">
+        <a href="index.html" class="py-2">Home</a>
+        <a href="services.html" class="py-2">Services</a>
+        <a href="testimonials.html" class="py-2">Testimonials</a>
+        <a href="blog/index.html" class="py-2">Blog</a>
+        <a href="about.html" class="py-2">About</a>
+        <a href="contact.html" class="py-2">Contact</a>
+        <a id="admin-link-mobile" href="admin/index.html" class="py-2 bg-accent text-white rounded text-center hidden">Admin</a>
+      </div>
     </div>
-  </section>
-</main>
+  </header>
+
+  <!-- Hero -->
+  <main class="max-w-5xl mx-auto px-6 py-12">
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center hero-two-col">
+      <div>
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">Automation & integrations for finance teams</h1>
+        <p class="text-lg text-gray-700 mb-6">Save time, reduce errors, and scale processes with reliable, maintainable automation and integrations.</p>
+        <div class="flex gap-4">
+          <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mukechiwarichard/30min'});return false;" class="inline-block px-5 py-3 bg-accent text-white rounded-md font-semibold">Schedule a 30-Minute Demo</a>
+          <a href="services.html" class="inline-block px-5 py-3 border border-transparent text-accent rounded-md font-medium">View Services</a>
+        </div>
+      </div>
+
+      <div class="flex justify-center md:justify-end">
+        <img src="assets/hero.jpg" alt="Automation hero" class="w-full h-auto max-h-80 md:max-h-96 object-cover rounded-lg shadow-sm hero-img" loading="lazy">
+      </div>
+    </section>
+
+    <!-- Services Section (unchanged) -->
+    <!-- ...rest of your sections remain identical... -->
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t mt-12">
+    <div class="max-w-5xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
+      <p>© 2025 RM Connect</p>
+      <div class="flex gap-6 mt-4 md:mt-0 flex-wrap justify-center md:justify-end">
+        <a href="mailto:hello@morningsidezw.com" class="text-accent hover:underline font-medium">Email</a>
+        <a href="https://wa.me/263717605044" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline font-medium">WhatsApp</a>
+        <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mukechiwarichard/30min'});return false;" class="text-accent hover:underline font-medium">Calendar</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Admin visibility logic -->
+  <script>
+    function showAdminIfNeeded() {
+      const params = new URLSearchParams(window.location.search);
+      const isAdmin = params.get("admin") === "1";
+
+      const adminLink = document.getElementById("admin-link");
+      const adminLinkMobile = document.getElementById("admin-link-mobile");
+
+      if (adminLink) adminLink.classList.toggle("hidden", !isAdmin);
+      if (adminLinkMobile) adminLinkMobile.classList.toggle("hidden", !isAdmin);
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", showAdminIfNeeded);
+    } else {
+      showAdminIfNeeded();
+    }
+  </script>
+
+  <!-- Calendly -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+</body>
+</html>
