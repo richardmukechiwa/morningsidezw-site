@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  
+  <!-- 🔥 PRIMARY SEO -->
+  <title>RM Connect — Automation & AI Workflows for Finance Teams</title>
+  <meta name="description" content="Automation, AI integrations, workflow optimization, and data-driven solutions for businesses. Freelance automation engineer helping teams save time, reduce costs, and scale operations." />
+  <meta name="keywords" content="automation, AI automation, workflow automation, Zapier, Make.com, n8n, custom integrations, freelance automation expert, business automation, finance automation" />
+  <meta name="author" content="RM Connect" />
+  
+  <!-- 🔥 OPEN GRAPH / SOCIAL PREVIEW -->
+  <meta property="og:title" content="RM Connect – AI & Business Workflow Automation" />
+  <meta property="og:description" content="Automations that save time, reduce costs, and optimize operations. Zapier, Make, Python, APIs, and custom workflow engineering." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.morningsidezw.com/" />
+  <meta property="og:image" content="https://www.morningsidezw.com/assets/og-image.jpg" />
+  
+  <!-- 🔥 TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="RM Connect – AI & Workflow Automation" />
+  <meta name="twitter:description" content="Freelance automation expert building efficient, scalable business automations." />
+  <meta name="twitter:image" content="https://www.morningsidezw.com/assets/og-image.jpg" />
+  
+  <!-- 🧭 CANONICAL URL -->
+  <link rel="canonical" href="https://www.morningsidezw.com/" />
+  
+  <!-- Fonts & Tailwind -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@4.1.17/dist/tailwind.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles/tailwind-custom.css">
+  <style>
+    :root {
+      --brand-navy: #0A1B2A;
+      --brand-accent: #FF6A00;
+    }
+    html, body {margin:0; padding:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial;}
+    .bg-accent {background: var(--brand-accent);}
+    .text-accent {color: var(--brand-accent);}
+    .logo-badge { background: var(--brand-navy); color: var(--brand-accent); flex-shrink: 0 !important; }
+    .hidden { display: none !important; }
+    img { max-width: 100%; height: auto; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Header -->
+  <header class="bg-white shadow">
+    <div class="max-w-full mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3" aria-label="Home">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold logo-badge">RM</div>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
+        <a href="index.html" class="hover:text-gray-900">Home</a>
+        <a href="services.html" class="hover:text-gray-900">Services</a>
+        <a href="testimonials.html" class="hover:text-gray-900">Testimonials</a>
+        <a href="blog/index.html" class="hover:text-gray-900">Blog</a>
+        <a href="about.html" class="hover:text-gray-900">About</a>
+        <a href="contact.html" class="hover:text-gray-900">Contact</a>
+        <a id="admin-link" href="admin/index.html" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
+      </nav>
+      <button class="md:hidden" aria-label="Open menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+      <div class="px-6 py-4 flex flex-col gap-3">
+        <a href="index.html" class="py-2">Home</a>
+        <a href="services.html" class="py-2">Services</a>
+        <a href="testimonials.html" class="py-2">Testimonials</a>
+        <a href="blog/index.html" class="py-2">Blog</a>
+        <a href="about.html" class="py-2">About</a>
+        <a href="contact.html" class="py-2">Contact</a>
+        <a id="admin-link-mobile" href="admin/index.html" class="py-2 bg-accent text-white rounded text-center hidden">Admin</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="max-w-full mx-auto px-6">
+
+    <!-- Hero -->
+    <section id="hero-section" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-12"></section>
+
+    <!-- Services -->
+    <section id="services-section" class="mt-12">
+      <h2 class="text-2xl font-semibold mb-4">Services</h2>
+      <div id="services-container" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- Projects -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold mb-6">Automation Projects</h2>
+      <div id="projects-container" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- Lead Generation CTA -->
+    <section class="mt-16 bg-accent text-white py-12 px-6 rounded-lg text-center w-full">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Automate Your Workflows?</h2>
+      <p class="text-lg mb-6 max-w-2xl mx-auto">Book a free 30-minute consultation to discuss your automation goals and discover how we can transform your operations.</p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mukechiwarichard/30min'});return false;" class="inline-block px-6 py-3 bg-white text-accent rounded-md font-semibold hover:shadow-lg transition-shadow">Schedule Demo</a>
+        <a href="contact.html" class="inline-block px-6 py-3 border-2 border-white text-white rounded-md font-semibold hover:bg-white hover:text-accent transition-colors">Contact Us</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t mt-12">
+    <div class="max-w-full mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
+      <p>© 2025 RM Connect</p>
+      <div class="flex gap-6 mt-4 md:mt-0 flex-wrap justify-center md:justify-end">
+        <a href="mailto:hello@morningsidezw.com" class="text-accent hover:underline font-medium">Email</a>
+        <a href="https://wa.me/263717605044" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline font-medium">WhatsApp</a>
+        <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mukechiwarichard/30min'});return false;" class="text-accent hover:underline font-medium">Calendar</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Data-Driven JS -->
+  <script>
+    // Admin toggle
+    function showAdminIfNeeded() {
+      const params = new URLSearchParams(window.location.search);
+      const isAdmin = params.get("admin") === "1";
+      const adminLink = document.getElementById("admin-link");
+      const adminLinkMobile = document.getElementById("admin-link-mobile");
+      if (adminLink) adminLink.classList.toggle("hidden", !isAdmin);
+      if (adminLinkMobile) adminLinkMobile.classList.toggle("hidden", !isAdmin);
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", showAdminIfNeeded);
+    } else { showAdminIfNeeded(); }
+
+    // Hero Section
+    const heroData = {
+      heading: "Automation & integrations for finance teams",
+      description: "Save time, reduce errors, and scale processes with reliable, maintainable automation and integrations.",
+      ctaPrimary: { text: "Schedule a 30-Minute Demo", onclick: "Calendly.initPopupWidget({url:'https://calendly.com/mukechiwarichard/30min'}); return false;", classes: "inline-block px-5 py-3 bg-accent text-white rounded-md font-semibold" },
+      ctaSecondary: { text: "View Services", href: "services.html", classes: "inline-block px-5 py-3 border border-transparent text-accent rounded-md font-medium" },
+      image: { src: "assets/hero.jpg", alt: "Automation hero", classes: "w-full h-64 md:h-80 object-cover rounded-lg shadow-sm" }
+    };
+    const heroSection = document.getElementById("hero-section");
+    heroSection.innerHTML = `
+      <div>
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">${heroData.heading}</h1>
+        <p class="text-lg text-gray-700 mb-6">${heroData.description}</p>
+        <div class="flex gap-4">
+          <a href="#" onclick="${heroData.ctaPrimary.onclick}" class="${heroData.ctaPrimary.classes}">${heroData.ctaPrimary.text}</a>
+          <a href="${heroData.ctaSecondary.href}" class="${heroData.ctaSecondary.classes}">${heroData.ctaSecondary.text}</a>
+        </div>
+      </div>
+      <div>
+        <img src="${heroData.image.src}" alt="${heroData.image.alt}" class="${heroData.image.classes}" loading="lazy">
+      </div>
+    `;
+
+    // Services
+    const services = [
+      { icon: "⚙️", title: "Workflow Setup", description: "Design and implement reliable automations and workflows." },
+      { icon: "🔗", title: "System Integrations", description: "Connect apps, databases and services into unified systems." },
+      { icon: "🛠️", title: "Support & Maintenance", description: "Debug, optimize and document workflows for ongoing reliability." }
+    ];
+    const servicesContainer = document.getElementById("services-container");
+    services.forEach(service => {
+      const card = document.createElement("div");
+      card.className = "bg-white p-6 rounded-lg shadow-sm flex flex-col gap-2 items-start";
+      card.innerHTML = `<div class="text-orange-500 text-2xl">${service.icon}</div><h3 class="font-semibold">${service.title}</h3><p class="text-sm text-gray-600">${service.description}</p>`;
+      servicesContainer.appendChild(card);
+    });
+
+    // Projects
+    const projects = [
+      { title: "Smart Client Insight Dashboard", pain: "Client reports take hours weekly, insights often missed.", solution: "Auto-fetch data, summarize with AI, generate PDF/email weekly." },
+      { title: "WhatsApp Lead Qualification Bot", pain: "Leads sit unanswered → lost revenue.", solution: "Auto-classify messages, respond with relevant info, push qualified leads to CRM." },
+      { title: "Transaction & Anomaly Detection", pain: "Manual monitoring misses errors/fraud.", solution: "Detect anomalies in transaction streams automatically." },
+      { title: "Compliance & Audit Auto-Documentation", pain: "Manual compliance reports are error-prone.", solution: "Auto-generate audit-ready PDFs with traceable logs." },
+      { title: "SME Productivity Automation Suite", pain: "Repetitive tasks waste time for SMEs.", solution: "Auto-invoicing, lead follow-ups, data syncing." },
+      { title: "Dynamic Credit Risk Scoring Engine", pain: "Manual credit assessment is slow and error-prone.", solution: "Auto-score clients based on transaction history and patterns." },
+      { title: "Smart Reconciliation & Exception Handling", pain: "Manual reconciliation is slow, prone to errors.", solution: "Match bank vs accounting records, flag mismatches automatically." },
+      { title: "Personalized Client Financial Nudges", pain: "Missed cross-sell/up-sell opportunities.", solution: "Auto-analyze transactions → send nudges via WhatsApp/Email." },
+      { title: "Automated Loan Application & Verification", pain: "Manual loan approval is slow.", solution: "Auto-extract info from documents, validate compliance." },
+      { title: "AI-Powered Contract & KYC Automation", pain: "Manual review is slow, error-prone.", solution: "Auto-review contracts & KYC docs, flag anomalies." },
+      { title: "Cross-Platform SME Financial Dashboard", pain: "SMEs struggle to see real-time cash flow.", solution: "Pull all financial data → generate predictive dashboard." },
+      { title: "Event-Triggered Automation Marketplace", pain: "SMEs lack plug-and-play automation for everyday events.", solution: "Trigger workflows based on events: new client, invoice sent, payment received." }
+    ];
+    const projectsContainer = document.getElementById("projects-container");
+    projects.forEach(project => {
+      const card = document.createElement("div");
+      card.className = "bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200";
+      card.innerHTML = `<h3 class="font-semibold mb-2 text-brand-navy">${project.title}</h3><p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> ${project.pain}</p><p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> ${project.solution}</p><div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div><a href="#" class="mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>`;
+      projectsContainer.appendChild(card);
+    });
+  </script>
+
+  <!-- Calendly -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</body>
+</html>
