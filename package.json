@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "echo 'No build required (Tailwind CDN). If you want to build, run Tailwind CLI.'"
+    
+    "build": "tailwindcss -i ./styles/tw.css -o ./public/prod.css --minify"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.17",
