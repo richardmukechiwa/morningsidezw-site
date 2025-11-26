@@ -1,40 +1,11 @@
 {
-  "name": "morningsidezw-site",
+  "name": "rm-connect",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
-
-    "build": "tailwindcss -i ./styles/tw.css -o ./styles/prod.css --minify",
-
-    "watch": "tailwindcss -i ./styles/tw.css -o ./styles/prod.css --watch"
+    "build:css": "tailwindcss -i ./styles/tailwind-custom.css -o ./output.css --minify",
+    "watch:css": "tailwindcss -i ./styles/tailwind-custom.css -o ./output.css --watch"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.17",
-    "@tailwindcss/postcss": "^4.1.17",
-    "autoprefixer": "^10.4.22",
-    "postcss": "^8.5.6",
-    "postcss-cli": "^11.0.1",
-    "postcss-nesting": "^13.0.2",
     "tailwindcss": "^4.1.17"
-  },
-  "main": "tailwind.config.js",
-  "dependencies": {
-    "baseline-browser-mapping": "^2.8.30",
-    "browserslist": "^4.28.0",
-    "caniuse-lite": "^1.0.30001756",
-    "electron-to-chromium": "^1.5.259",
-    "escalade": "^3.2.0",
-    "fraction.js": "^5.3.4",
-    "nanoid": "^3.3.11",
-    "node-releases": "^2.0.27",
-    "normalize-range": "^0.1.2",
-    "picocolors": "^1.1.1",
-    "postcss-value-parser": "^4.2.0",
-    "source-map-js": "^1.2.1",
-    "update-browserslist-db": "^1.1.4"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  }
 }
