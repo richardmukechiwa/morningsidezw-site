@@ -45,7 +45,6 @@
     .text-accent { color: var(--brand-accent); }
   </style>
 </head>
-
 <body class="bg-gray-50 text-gray-900">
 
   <!-- Header -->
@@ -92,14 +91,15 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Main Content -->
   <main class="max-w-full mx-auto px-6 py-12">
+
+    <!-- Hero -->
     <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <div>
         <h1 class="text-3xl md:text-4xl font-bold mb-4">Automation, AI & Data Solutions for Finance Teams</h1>
         <p class="text-lg text-gray-700 mb-6">Save time, reduce errors, and scale processes with reliable automation, data analysis, and machine learning workflows.</p>
       </div>
-
       <div class="flex justify-center md:justify-end">
         <img src="assets/hero.jpg" alt="Automation hero" class="w-full h-auto max-h-80 md:max-h-96 object-cover rounded-lg shadow-sm">
       </div>
@@ -126,138 +126,18 @@
         </div>
       </div>
     </section>
-    <!-- Projects Showcase -->
+
+    <!-- Projects -->
     <section class="mt-12" id="projects">
       <h2 class="text-2xl font-semibold mb-6">Projects</h2>
-
-      <!-- Always visible projects -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="projects-visible">
-
-        <!-- 1 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-            data-images='["assets/Dashboard.svg","assets/Dashboard-2.svg","assets/Dashboard-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Smart Client Insight Dashboard</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Client reports take hours weekly, insights often missed.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-fetch data, summarize with AI, generate PDF/email weekly.</p>
-          <img src="assets/Dashboard.svg" alt="Smart Client Insight Dashboard" class="rounded-lg h-32 w-full object-contain mb-4">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 2 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-            data-images='["assets/Dashboard.svg","assets/Dashboard-2.svg","assets/Dashboard-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">WhatsApp Lead Qualification Bot</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Leads sit unanswered → lost revenue.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-classify messages, respond with relevant info, push qualified leads to CRM.</p>
-          <img src="assets/Dashboard.svg" alt="WhatsApp Lead Qualification Bot" class="rounded-lg h-32 w-full object-contain mb-4">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 3 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-            data-images='["assets/Monitor.svg","assets/Monitor-2.svg","assets/Monitor-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Transaction & Anomaly Detection</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual monitoring misses errors/fraud.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Detect anomalies in transaction streams automatically.</p>
-          <img src="assets/Monitor.svg" alt="Transaction & Anomaly Detection" class="rounded-lg h-32 w-full object-contain mb-4">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 4 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-            data-images='["assets/placeholder.svg","assets/placeholder-2.svg","assets/placeholder-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Compliance & Audit Auto-Documentation</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual compliance reports are error-prone.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-generate audit-ready PDFs with traceable logs.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 5 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-            data-images='["assets/placeholder.svg","assets/placeholder-2.svg","assets/placeholder-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">SME Productivity Automation Suite</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Repetitive tasks waste time for SMEs.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-invoicing, lead follow-ups, data syncing.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 6 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-            data-images='["assets/placeholder.svg","assets/placeholder-2.svg","assets/placeholder-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Dynamic Credit Risk Scoring Engine</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual credit assessment is slow and error-prone.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-score clients based on transaction history and patterns.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
+        <!-- Visible projects (1-6) -->
+        <!-- [Insert project cards 1–6 here] -->
       </div>
 
-      <!-- Hidden projects -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 hidden" id="projects-hidden">
-
-        <!-- 7 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-            data-images='["assets/placeholder.svg","assets/placeholder-2.svg","assets/placeholder-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Smart Reconciliation & Exception Handling</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual reconciliation is slow, prone to errors.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Match bank vs accounting records, flag mismatches automatically.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 8 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-          data-images='["assets/placeholder.svg","assets/placeholder-2.svg","assets/placeholder-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Personalized Client Financial Nudges</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Missed cross-sell/up-sell opportunities.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-analyze transactions → send nudges via WhatsApp/Email.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 9 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-            data-images='["assets/placeholder.svg","assets/placeholder-2.svg","assets/placeholder-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Automated Loan Application & Verification</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual loan approval is slow.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-extract info from documents, validate compliance.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 10 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-            data-images='["assets/placeholder.svg","assets/placeholder-2.svg","assets/placeholder-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">AI-Powered Contract & KYC Automation</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual review is slow, error-prone.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-review contracts & KYC docs, flag anomalies.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 11 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-            data-images='["assets/placeholder.svg","assets/placeholder-2.svg","assets/placeholder-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Cross-Platform SME Financial Dashboard</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> SMEs struggle to see real-time cash flow.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Pull all financial data → generate predictive dashboard.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 12 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-          data-images='["assets/placeholder.svg","assets/placeholder-2.svg","assets/placeholder-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Event-Triggered Automation Marketplace</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> SMEs lack plug-and-play automation for everyday events.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Trigger workflows based on events: new client, invoice sent, payment received.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
+        <!-- Hidden projects (7-12) -->
+        <!-- [Insert project cards 7–12 here] -->
       </div>
 
       <div class="text-center mt-6">
@@ -265,16 +145,7 @@
       </div>
     </section>
 
-
-      <div class="text-center mt-6">
-        <button id="toggle-projects"
-            class="px-6 py-3 bg-accent text-white rounded-md font-semibold hover:opacity-90 transition">
-            Show More Projects
-        </button>
-      </div>
-    </section>
-
-    <!-- Lead Generation CTA -->
+    <!-- Lead CTA -->
     <section class="mt-16 bg-accent text-white py-12 px-6 rounded-lg text-center w-full">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">Accelerate Your Automation & Data Projects</h2>
       <p class="text-lg mb-6 max-w-2xl mx-auto">
@@ -292,26 +163,21 @@
       </div>
     </section>
 
-    <!-- Contact Form Section -->
+    <!-- Contact -->
     <section id="contact" class="mt-12 bg-white p-6 rounded-lg shadow max-w-lg mx-auto">
       <h2 class="text-2xl font-semibold mb-4 text-center">Or Send Us a Message</h2>
-
       <form action="https://formspree.io/f/xkgljppq" method="POST" class="flex flex-col gap-4" id="contactForm">
         <input type="text" name="name" placeholder="Your Name" required autocomplete="name" class="border p-3 rounded w-full">
         <input type="email" name="email" placeholder="Your Email" required autocomplete="email" class="border p-3 rounded w-full">
         <textarea name="message" placeholder="Your Message" required autocomplete="off" class="border p-3 rounded w-full"></textarea>
-
         <label for="contact-method" class="text-sm font-medium">Preferred Contact Method:</label>
         <select id="contact-method" name="contact_method" class="border p-3 rounded w-full">
           <option value="email" selected>Email</option>
           <option value="whatsapp">WhatsApp</option>
         </select>
-
         <button type="submit" class="bg-accent text-white px-5 py-3 rounded hover:opacity-90 transition">Send Message</button>
       </form>
-
       <p id="formMessage" class="text-center text-green-600 mt-2 hidden">Thank you! Your message has been sent.</p>
-
       <div class="mt-6 text-center">
         <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" 
            target="_blank" rel="noopener noreferrer"
@@ -320,7 +186,6 @@
         </a>
       </div>
     </section>
-
   </main>
 
   <!-- Footer -->
@@ -330,12 +195,12 @@
     </div>
   </footer>
 
-  <!-- FormSpree JS -->
+  <!-- Scripts -->
   <script>
+    // Contact Form
     document.addEventListener("DOMContentLoaded", function() {
       const form = document.getElementById('contactForm');
       const formMessage = document.getElementById('formMessage');
-
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         fetch(form.action, {
@@ -351,136 +216,129 @@
               alert(data.errors ? data.errors.map(err => err.message).join(", ") : "Oops! There was a problem.");
             });
           }
-        }).catch(() => {
-          alert("Oops! There was a problem submitting the form.");
-        });
+        }).catch(() => alert("Oops! There was a problem submitting the form."));
       });
     });
+
+    // Toggle Projects
+    const toggleBtn = document.getElementById("toggle-projects");
+    const hiddenProjects = document.getElementById("projects-hidden");
+    toggleBtn.addEventListener("click", () => {
+      const isHidden = hiddenProjects.classList.contains("hidden");
+      hiddenProjects.classList.toggle("hidden");
+      toggleBtn.textContent = isHidden ? "Show Less" : "Show More Projects";
+    });
+
+    // Workflow Modal
+    const workflowModal = document.getElementById("workflowModal");
+    const modalImg = document.getElementById("modalImage");
+    const prevBtn = document.getElementById("prevImage");
+    const nextBtn = document.getElementById("nextImage");
+    const closeModalBtn = document.getElementById("closeModal");
+    const modalPager = document.getElementById("modalPager");
+    const slideCounter = document.getElementById("slideCounter");
+    let workflowImages = [];
+    let currentIndex = 0;
+    let autoPlayTimer;
+    const autoPlayInterval = 5000;
+
+    function openModal(images, index) {
+      workflowImages = images;
+      currentIndex = index;
+      workflowModal.classList.remove("hidden");
+      workflowModal.classList.add("flex");
+      document.documentElement.style.overflow = 'hidden';
+      loadModalImage();
+      startAutoPlay();
+    }
+
+    function closeModal() {
+      workflowModal.classList.add("hidden");
+      workflowModal.classList.remove("flex");
+      document.documentElement.style.overflow = '';
+      stopAutoPlay();
+    }
+
+    function loadModalImage() {
+      modalImg.src = workflowImages[currentIndex];
+      updatePager();
+      if(slideCounter) slideCounter.textContent = `${currentIndex + 1} / ${workflowImages.length}`;
+      // Preload next
+      const next = new Image(); next.src = workflowImages[(currentIndex+1)%workflowImages.length];
+    }
+
+    function nextImage() { currentIndex = (currentIndex+1)%workflowImages.length; loadModalImage(); }
+    function prevImageFunc() { currentIndex = (currentIndex-1+workflowImages.length)%workflowImages.length; loadModalImage(); }
+
+    function buildPager() {
+      modalPager.innerHTML = '';
+      workflowImages.forEach((src,i)=>{
+        const dot=document.createElement('button');
+        dot.className='w-2 h-2 rounded-full';
+        dot.style.opacity = i===currentIndex ? '1':'0.35';
+        dot.addEventListener('click',()=>{ currentIndex=i; loadModalImage(); });
+        modalPager.appendChild(dot);
+      });
+    }
+
+    function updatePager() {
+      [...modalPager.children].forEach((dot,i)=>{ dot.style.opacity=i===currentIndex?'1':'0.35'; });
+    }
+
+    function startAutoPlay() { stopAutoPlay(); autoPlayTimer=setInterval(()=>{ if(!workflowModal.classList.contains("hidden")) nextImage(); }, autoPlayInterval); }
+    function stopAutoPlay() { if(autoPlayTimer) clearInterval(autoPlayTimer); }
+
+    document.querySelectorAll('.open-workflow').forEach(btn=>{
+      btn.addEventListener('click', e=>{
+        e.preventDefault();
+        const card = btn.closest('.project-card');
+        let imgs = [];
+        try { imgs = JSON.parse(card.getAttribute('data-images')||'[]'); } catch { imgs=[]; }
+        if(imgs.length===0 && card.querySelector('img')) imgs=[card.querySelector('img').src];
+        openModal(imgs,0);
+      });
+    });
+
+    closeModalBtn.addEventListener('click', closeModal);
+    workflowModal.addEventListener('click', e=>{ if(e.target===workflowModal) closeModal(); });
+    prevBtn.addEventListener('click',prevImageFunc);
+    nextBtn.addEventListener('click',nextImage);
+    document.addEventListener('keydown', e=>{
+      if(workflowModal.classList.contains("hidden")) return;
+      if(e.key==='Escape') closeModal();
+      if(e.key==='ArrowLeft') prevImageFunc();
+      if(e.key==='ArrowRight') nextImage();
+    });
+
+    // Focus trap for modal
+    workflowModal.addEventListener('keydown', e=>{
+      if(!workflowModal.classList.contains('hidden') && e.key==='Tab'){
+        const focusable = workflowModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        const first = focusable[0], last = focusable[focusable.length-1];
+        if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+        else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+      }
+    });
+
+    // Admin links
+    const showAdmin = new URLSearchParams(window.location.search).get('admin')==='1';
+    if(showAdmin){ document.getElementById('admin-link').classList.remove('hidden'); document.getElementById('admin-link-mobile').classList.remove('hidden'); }
   </script>
 
-  <script>
-      const toggleBtn = document.getElementById("toggle-projects");
-      const hiddenProjects = document.getElementById("projects-hidden");
-
-      toggleBtn.onclick = () => {
-        const isHidden = hiddenProjects.classList.contains("hidden");
-        hiddenProjects.classList.toggle("hidden");
-        toggleBtn.textContent = isHidden ? "Show Less" : "Show More Projects";
-      };
-  </script>
-
-    <!-- Modal + Slideshow -->
+  <!-- Workflow Modal HTML -->
   <div id="workflowModal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center p-4 z-50">
     <div class="bg-white rounded-lg max-w-3xl w-full relative">
       <button id="closeModal" class="absolute top-3 right-3 text-gray-600 text-2xl leading-none">×</button>
-
       <div class="relative">
         <img id="modalImage" src="" class="w-full max-h-[80vh] object-contain rounded-t-lg" alt="Workflow image">
         <button id="prevImage" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow">‹</button>
         <button id="nextImage" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow">›</button>
       </div>
-
-      <!-- small pager -->
       <div id="modalPager" class="flex items-center justify-center gap-2 p-3"></div>
-    
-
-    <p id="esc-hint"
-      class="text-xs text-gray-500 text-center mt-3">
-      Press ESC to close
-    </p>
-
+      <p id="slideCounter" class="text-xs text-gray-500 text-center mt-2">1 / 3</p>
+      <p class="text-xs text-gray-500 text-center mt-3">Press ESC to close</p>
+    </div>
   </div>
-
-  <script>
-  (function(){
-    const openBtns = document.querySelectorAll('.open-workflow');
-    const modal = document.getElementById('workflowModal');
-    const modalImg = document.getElementById('modalImage');
-    const prevBtn = document.getElementById('prevImage');
-    const nextBtn = document.getElementById('nextImage');
-    const closeBtn = document.getElementById('closeModal');
-    const pager = document.getElementById('modalPager');
-
-    let images = [];
-    let index = 0;
-
-    function showImage(i){
-      if(!images || images.length === 0) return;
-      index = (i + images.length) % images.length;
-      modalImg.src = images[index];
-      updatePager();
-    }
-
-    function updatePager(){
-      pager.innerHTML = '';
-      images.forEach((src, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'w-2 h-2 rounded-full';
-        dot.style.opacity = i === index ? '1' : '0.35';
-        dot.addEventListener('click', () => showImage(i));
-        pager.appendChild(dot);
-      });
-    }
-
-    openBtns.forEach(btn => {
-      btn.addEventListener('click', function(e){
-        e.preventDefault();
-        const card = this.closest('.project-card');
-        const raw = card.getAttribute('data-images') || '[]';
-        try {
-          images = JSON.parse(raw);
-        } catch (err) {
-          images = [];
-        }
-        if(images.length === 0){
-          // fallback to the card <img> if data-images missing
-          const cardImg = card.querySelector('img');
-          if(cardImg) images = [cardImg.src];
-        }
-        showImage(0);
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        // lock scroll
-        document.documentElement.style.overflow = 'hidden';
-      });
-    });
-
-    function closeModal(){
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      document.documentElement.style.overflow = '';
-    }
-
-    closeBtn.addEventListener('click', closeModal);
-
-    modal.addEventListener('click', function(e){
-      if(e.target === modal) closeModal(); // click overlay to close
-    });
-
-    prevBtn.addEventListener('click', () => showImage(index - 1));
-    nextBtn.addEventListener('click', () => showImage(index + 1));
-
-    document.addEventListener('keydown', function(e){
-      if(modal.classList.contains('hidden')) return;
-      if(e.key === 'Escape') closeModal();
-      if(e.key === 'ArrowLeft') showImage(index - 1);
-      if(e.key === 'ArrowRight') showImage(index + 1);
-    });
-
-    // Toggle show more / less button (keeps your existing behavior)
-    const toggleBtn = document.getElementById('toggle-projects');
-    const hiddenGrid = document.getElementById('projects-hidden');
-    if(toggleBtn && hiddenGrid){
-      toggleBtn.addEventListener('click', function(){
-        const isHidden = hiddenGrid.classList.contains('hidden');
-        hiddenGrid.classList.toggle('hidden');
-        this.textContent = isHidden ? 'Show Less' : 'Show More Projects';
-      });
-    }
-
-  })();
-  </script>
-
 
 </body>
 </html>
