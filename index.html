@@ -339,15 +339,15 @@
   </script>
 
   <script>
-  const toggleBtn = document.getElementById("toggle-projects");
-  const hiddenProjects = document.getElementById("projects-hidden");
+      const toggleBtn = document.getElementById("toggle-projects");
+      const hiddenProjects = document.getElementById("projects-hidden");
 
-  toggleBtn.onclick = () => {
-    const isHidden = hiddenProjects.classList.contains("hidden");
-    hiddenProjects.classList.toggle("hidden");
-    toggleBtn.textContent = isHidden ? "Show Less" : "Show More Projects";
-  };
-</script>
+      toggleBtn.onclick = () => {
+        const isHidden = hiddenProjects.classList.contains("hidden");
+        hiddenProjects.classList.toggle("hidden");
+        toggleBtn.textContent = isHidden ? "Show Less" : "Show More Projects";
+      };
+  </script>
 
 </body>
 </html>
