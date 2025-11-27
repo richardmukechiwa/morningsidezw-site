@@ -305,30 +305,7 @@
 </section>
 
 <!-- JS for Formspree inline thank-you message -->
-<script>
-  document.getElementById('contactForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const form = this;
-    const formMessage = document.getElementById('formMessage');
 
-    fetch(form.action, {
-      method: form.method,
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    }).then(response => {
-      if (response.ok) {
-        formMessage.classList.remove('hidden');
-        form.reset();
-      } else {
-        response.json().then(data => {
-          alert(data.errors ? data.errors.map(err => err.message).join(", ") : "Oops! There was a problem.");
-        });
-      }
-    }).catch(() => {
-      alert("Oops! There was a problem submitting the form.");
-    });
-  });
-</script>
 </main>
 
   <!-- Footer -->
@@ -388,6 +365,31 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
+</script>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = this;
+    const formMessage = document.getElementById('formMessage');
+
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        formMessage.classList.remove('hidden');
+        form.reset();
+      } else {
+        response.json().then(data => {
+          alert(data.errors ? data.errors.map(err => err.message).join(", ") : "Oops! There was a problem.");
+        });
+      }
+    }).catch(() => {
+      alert("Oops! There was a problem submitting the form.");
+    });
+  });
 </script>
 
 
