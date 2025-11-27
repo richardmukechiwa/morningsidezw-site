@@ -272,27 +272,61 @@
 
 
     <!-- Contact Form Section (Below Lead CTA) -->
+<!-- Contact Form Section (Below Lead CTA) -->
 <section id="contact" class="mt-12 bg-white p-6 rounded-lg shadow max-w-lg mx-auto">
   <h2 class="text-2xl font-semibold mb-4 text-center">Or Send Us a Message</h2>
 
   <form action="https://formspree.io/f/xkgljppq" method="POST" class="flex flex-col gap-4" id="contactForm">
-    <input type="text" name="name" placeholder="Your Name" required class="border p-3 rounded w-full">
-    <input type="email" name="email" placeholder="Your Email" required class="border p-3 rounded w-full">
-    <textarea name="message" placeholder="Your Message" required class="border p-3 rounded w-full"></textarea>
+    
+    <!-- Name -->
+    <input 
+      type="text" 
+      name="name" 
+      placeholder="Your Name" 
+      required 
+      autocomplete="name"
+      class="border p-3 rounded w-full">
+
+    <!-- Email -->
+    <input 
+      type="email" 
+      name="email" 
+      placeholder="Your Email" 
+      required 
+      autocomplete="email"
+      class="border p-3 rounded w-full">
+
+    <!-- Message -->
+    <textarea 
+      name="message" 
+      placeholder="Your Message" 
+      required 
+      autocomplete="off"
+      class="border p-3 rounded w-full"></textarea>
 
     <!-- WhatsApp Contact Choice -->
     <label for="contact-method" class="text-sm font-medium">Preferred Contact Method:</label>
-    <select id="contact-method" name="contact_method" class="border p-3 rounded w-full">
+    <select 
+      id="contact-method" 
+      name="contact_method" 
+      class="border p-3 rounded w-full">
       <option value="email" selected>Email</option>
       <option value="whatsapp">WhatsApp</option>
     </select>
 
-    <button type="submit" class="bg-accent text-white px-5 py-3 rounded hover:opacity-90 transition">
+    <!-- Submit Button -->
+    <button 
+      type="submit" 
+      class="bg-accent text-white px-5 py-3 rounded hover:opacity-90 transition">
       Send Message
     </button>
+
   </form>
 
-  <p id="formMessage" class="text-center text-green-600 mt-2 hidden">Thank you! Your message has been sent.</p>
+  <p id="formMessage" class="text-center text-green-600 mt-2 hidden">
+    Thank you! Your message has been sent.
+  </p>
+</section>
 
   <!-- Optional direct WhatsApp link below form -->
   <div class="mt-6 text-center">
