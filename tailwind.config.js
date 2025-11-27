@@ -39,6 +39,8 @@ module.exports = {
     // Buttons / interactive
     { pattern: /(hover:bg-|hover:text-|hover:opacity-|active:bg-|focus:bg-).*/ },
 
+    
+
     // Specific hero, project, modal classes
     'project-card',
     'open-workflow',
