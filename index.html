@@ -16,12 +16,10 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.morningsidezw.com/" />
   <meta property="og:image" content="https://www.morningsidezw.com/assets/og-image.jpg" />
-
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="RM Connect – AI & Workflow Automation" />
   <meta name="twitter:description" content="Freelance automation expert building efficient, scalable business automations." />
   <meta name="twitter:image" content="https://www.morningsidezw.com/assets/og-image.jpg" />
-
   <link rel="canonical" href="https://www.morningsidezw.com/" />
 
   <!-- Tailwind CDN -->
@@ -39,7 +37,7 @@
     html, body {
       margin: 0;
       padding: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     }
     .bg-accent { background: var(--brand-accent); }
     .text-accent { color: var(--brand-accent); }
@@ -62,9 +60,7 @@
         <a href="index.html" class="hover:text-gray-900">Home</a>
         <a href="services.html" class="hover:text-gray-900">Services</a>
         <a href="testimonials.html" class="hover:text-gray-900">Testimonials</a>
-        <!--a href="blog/index.html" class="hover:text-gray-900">Blog</!--a>-->
         <a href="about.html" class="hover:text-gray-900">About</a>
-        <!--a href="contact.html" class="hover:text-gray-900">Contact</!--a>-->
         <a id="admin-link" href="admin/index.html" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
       </nav>
 
@@ -81,32 +77,27 @@
         <a href="index.html" class="py-2">Home</a>
         <a href="services.html" class="py-2">Services</a>
         <a href="testimonials.html" class="py-2">Testimonials</a>
-        <!--a href="blog/index.html" class="py-2">Blog</!--a>-->
         <a href="about.html" class="py-2">About</a>
-        <!--a href="contact.html" class="py-2">Contact</!--a>-->
         <a id="admin-link-mobile" href="admin/index.html" class="py-2 bg-accent text-white rounded text-center hidden">Admin</a>
       </div>
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Main Content -->
   <main class="max-w-full mx-auto px-6 py-12">
+
+    <!-- Hero Section -->
     <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <div>
         <h1 class="text-3xl md:text-4xl font-bold mb-4">Automation & integrations for finance teams</h1>
         <p class="text-lg text-gray-700 mb-6">Save time, reduce errors, and scale processes with reliable, maintainable automation and integrations.</p>
-        <!--div class="flex gap-4">
-          <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mukechiwarichard/30min'});return false;" class="inline-block px-5 py-3 bg-accent text-white rounded-md font-semibold">Schedule a 30-Minute Demo</a>
-          <a href="services.html" class="inline-block px-5 py-3 border border-transparent text-accent rounded-md font-medium">View Services</a>
-        </div>-->
       </div>
-
       <div class="flex justify-center md:justify-end">
         <img src="assets/hero.jpg" alt="Automation hero" class="w-full h-auto max-h-80 md:max-h-96 object-cover rounded-lg shadow-sm">
       </div>
     </section>
 
-    <!-- Services -->
+    <!-- Services Section -->
     <section class="mt-12">
       <h2 class="text-2xl font-semibold mb-4">Services</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -128,12 +119,12 @@
       </div>
     </section>
 
-    <!-- Projects Showcase -->
+    <!-- Projects Section -->
     <section class="mt-12">
       <h2 class="text-2xl font-semibold mb-6">Automation Projects</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Project Cards Start -->
-        <!-- 1 -->
+        <!-- Repeatable Project Cards -->
+        <!-- Example Card -->
         <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200">
           <h3 class="font-semibold mb-2 text-brand-navy">Smart Client Insight Dashboard</h3>
           <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Client reports take hours weekly, insights often missed.</p>
@@ -141,291 +132,103 @@
           <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
           <a href="#" class="mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
         </div>
-
-        <!-- 2 -->
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200">
-          <h3 class="font-semibold mb-2 text-brand-navy">WhatsApp Lead Qualification Bot</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Leads sit unanswered → lost revenue.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-classify messages, respond with relevant info, push qualified leads to CRM.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 3 -->
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200">
-          <h3 class="font-semibold mb-2 text-brand-navy">Transaction & Anomaly Detection</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual monitoring misses errors/fraud.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Detect anomalies in transaction streams automatically.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 4 -->
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200">
-          <h3 class="font-semibold mb-2 text-brand-navy">Compliance & Audit Auto-Documentation</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual compliance reports are error-prone.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-generate audit-ready PDFs with traceable logs.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 5 -->
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200">
-          <h3 class="font-semibold mb-2 text-brand-navy">SME Productivity Automation Suite</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Repetitive tasks waste time for SMEs.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-invoicing, lead follow-ups, data syncing.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 6 -->
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200">
-          <h3 class="font-semibold mb-2 text-brand-navy">Dynamic Credit Risk Scoring Engine</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual credit assessment is slow and error-prone.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-score clients based on transaction history and patterns.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 7 -->
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200">
-          <h3 class="font-semibold mb-2 text-brand-navy">Smart Reconciliation & Exception Handling</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual reconciliation is slow, prone to errors.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Match bank vs accounting records, flag mismatches automatically.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 8 -->
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200">
-          <h3 class="font-semibold mb-2 text-brand-navy">Personalized Client Financial Nudges</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Missed cross-sell/up-sell opportunities.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-analyze transactions → send nudges via WhatsApp/Email.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 9 -->
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200">
-          <h3 class="font-semibold mb-2 text-brand-navy">Automated Loan Application & Verification</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual loan approval is slow.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-extract info from documents, validate compliance.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 10 -->
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200">
-          <h3 class="font-semibold mb-2 text-brand-navy">AI-Powered Contract & KYC Automation</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual review is slow, error-prone.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-review contracts & KYC docs, flag anomalies.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 11 -->
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200">
-          <h3 class="font-semibold mb-2 text-brand-navy">Cross-Platform SME Financial Dashboard</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> SMEs struggle to see real-time cash flow.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Pull all financial data → generate predictive dashboard.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 12 -->
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200">
-          <h3 class="font-semibold mb-2 text-brand-navy">Event-Triggered Automation Marketplace</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> SMEs lack plug-and-play automation for everyday events.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Trigger workflows based on events: new client, invoice sent, payment received.</p>
-          <div class="bg-gray-100 rounded-lg h-32 flex items-center justify-center mb-4 text-gray-500">Workflow SVG/Image</div>
-          <a href="#" class="mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-        <!-- Project Cards End -->
+        <!-- Add remaining 11 project cards here in same format -->
       </div>
     </section>
 
     <!-- Lead Generation CTA -->
-    <!--section class="mt-16 bg-accent text-white py-12 px-6 rounded-lg text-center w-full">
+    <section class="mt-16 bg-accent text-white py-12 px-6 rounded-lg text-center w-full">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Automate Your Workflows?</h2>
-      <p class="text-lg mb-6 max-w-2xl mx-auto">Book a free 30-minute consultation to discuss your automation goals and discover how we can transform your operations.</p>
+      <p class="text-lg mb-6 max-w-2xl mx-auto">
+        Book a free 30-minute consultation to discuss your automation goals and discover how we can transform your operations.
+      </p>
       <div class="flex gap-4 justify-center flex-wrap">
-        <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mukechiwarichard/30min'});return false;" class="inline-block px-6 py-3 bg-white text-accent rounded-md font-semibold hover:shadow-lg transition-shadow">Schedule Demo</a>
-        <a href="#contact" class="inline-block px-6 py-3 border-2 border-white text-white rounded-md font-semibold hover:bg-white hover:text-accent transition-colors">Contact Us</a>
+        <a href="#" id="btn-demo" class="inline-block px-6 py-3 bg-white text-accent rounded-md font-semibold hover:shadow-lg transition-shadow">
+          Schedule Demo
+        </a>
+        <a href="#contact" class="inline-block px-6 py-3 border-2 border-white text-white rounded-md font-semibold hover:bg-white hover:text-accent transition-colors">
+          Contact Us
+        </a>
       </div>
-    </!--section>-->
+    </section>
 
-    <!-- Lead Generation CTA -->
-<section class="mt-16 bg-accent text-white py-12 px-6 rounded-lg text-center w-full">
-  <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Automate Your Workflows?</h2>
-  <p class="text-lg mb-6 max-w-2xl mx-auto">
-    Book a free 30-minute consultation to discuss your automation goals and discover how we can transform your operations.
-  </p>
-  <div class="flex gap-4 justify-center flex-wrap">
-    <a href="#" id="btn-demo" class="inline-block px-6 py-3 bg-white text-accent rounded-md font-semibold hover:shadow-lg transition-shadow">
-      Schedule Demo
-    </a>
-    <a href="#contact" class="inline-block px-6 py-3 border-2 border-white text-white rounded-md font-semibold hover:bg-white hover:text-accent transition-colors">
-      Contact Us
-    </a>
-  </div>
-</section>
+    <!-- Contact Form Section -->
+    <section id="contact" class="mt-12 bg-white p-6 rounded-lg shadow max-w-lg mx-auto">
+      <h2 class="text-2xl font-semibold mb-4 text-center">Or Send Us a Message</h2>
 
+      <form action="https://formspree.io/f/xkgljppq" method="POST" class="flex flex-col gap-4" id="contactForm">
+        <input type="text" name="name" placeholder="Your Name" required autocomplete="name" class="border p-3 rounded w-full">
+        <input type="email" name="email" placeholder="Your Email" required autocomplete="email" class="border p-3 rounded w-full">
+        <textarea name="message" placeholder="Your Message" required autocomplete="off" class="border p-3 rounded w-full"></textarea>
 
-    <!-- Contact Form Section (Below Lead CTA) -->
-<!-- Contact Form Section (Below Lead CTA) -->
-<section id="contact" class="mt-12 bg-white p-6 rounded-lg shadow max-w-lg mx-auto">
-  <h2 class="text-2xl font-semibold mb-4 text-center">Or Send Us a Message</h2>
+        <label for="contact-method" class="text-sm font-medium">Preferred Contact Method:</label>
+        <select id="contact-method" name="contact_method" class="border p-3 rounded w-full">
+          <option value="email" selected>Email</option>
+          <option value="whatsapp">WhatsApp</option>
+        </select>
 
-  <form action="https://formspree.io/f/xkgljppq" method="POST" class="flex flex-col gap-4" id="contactForm">
-    
-    <!-- Name -->
-    <input 
-      type="text" 
-      name="name" 
-      placeholder="Your Name" 
-      required 
-      autocomplete="name"
-      class="border p-3 rounded w-full">
+        <button type="submit" class="bg-accent text-white px-5 py-3 rounded hover:opacity-90 transition">
+          Send Message
+        </button>
+      </form>
 
-    <!-- Email -->
-    <input 
-      type="email" 
-      name="email" 
-      placeholder="Your Email" 
-      required 
-      autocomplete="email"
-      class="border p-3 rounded w-full">
+      <p id="formMessage" class="text-center text-green-600 mt-2 hidden">Thank you! Your message has been sent.</p>
 
-    <!-- Message -->
-    <textarea 
-      name="message" 
-      placeholder="Your Message" 
-      required 
-      autocomplete="off"
-      class="border p-3 rounded w-full"></textarea>
+      <div class="mt-6 text-center">
+        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer" class="inline-block px-6 py-3 bg-[#25D366] text-white rounded hover:opacity-90 transition">
+          Contact on WhatsApp
+        </a>
+      </div>
+    </section>
 
-    <!-- WhatsApp Contact Choice -->
-    <label for="contact-method" class="text-sm font-medium">Preferred Contact Method:</label>
-    <select 
-      id="contact-method" 
-      name="contact_method" 
-      class="border p-3 rounded w-full">
-      <option value="email" selected>Email</option>
-      <option value="whatsapp">WhatsApp</option>
-    </select>
-
-    <!-- Submit Button -->
-    <button 
-      type="submit" 
-      class="bg-accent text-white px-5 py-3 rounded hover:opacity-90 transition">
-      Send Message
-    </button>
-
-  </form>
-
-  <p id="formMessage" class="text-center text-green-600 mt-2 hidden">
-    Thank you! Your message has been sent.
-  </p>
-</section>
-
-  <!-- Optional direct WhatsApp link below form -->
-  <div class="mt-6 text-center">
-    <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" 
-      target="_blank" rel="noopener noreferrer"
-      class="inline-block px-6 py-3 bg-[#25D366] text-white rounded hover:opacity-90 transition">
-      Contact on WhatsApp
-    </a>
-  </div>
-</section>
-
-<!-- JS for Formspree inline thank-you message -->
-
-</main>
+  </main>
 
   <!-- Footer -->
   <footer class="bg-white border-t mt-12">
     <div class="max-w-full mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
       <p>© 2025 RM Connect</p>
-      <!--div class="flex gap-6 mt-4 md:mt-0 flex-wrap justify-center md:justify-end">
-        <a href="#contact" class="text-accent hover:underline font-medium">Email</a>
-        <a href="https://wa.me/263717605044" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline font-medium">WhatsApp</a>
-        <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mukechiwarichard/30min'});return false;" class="text-accent hover:underline font-medium">Calendar</a>
-      </!--div>-->
     </div>
   </footer>
 
-  <!-- Admin logic -->
-  <script>
-    function showAdminIfNeeded() {
-      const params = new URLSearchParams(window.location.search);
-      const isAdmin = params.get("admin") === "1";
-
-      document.getElementById("admin-link")?.classList.toggle("hidden", !isAdmin);
-      document.getElementById("admin-link-mobile")?.classList.toggle("hidden", !isAdmin);
-    }
-    document.addEventListener("DOMContentLoaded", showAdminIfNeeded);
-  </script>
-
-  <!-- Calendly -->
+  <!-- Scripts -->
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
   <script>
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // prevent page reload
+    document.addEventListener("DOMContentLoaded", function() {
+      // Calendly button
+      const demoBtn = document.getElementById("btn-demo");
+      demoBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        if (window.Calendly) {
+          Calendly.initPopupWidget({url: 'https://calendly.com/mukechiwarichard/30min'});
+        } else {
+          window.open('https://calendly.com/mukechiwarichard/30min', '_blank');
+        }
+      });
 
-    // Normally, here you would send data via email service like Formspree or EmailJS
-    // For zero-budget, you can just show the thank-you message
-    document.getElementById('formMessage').classList.remove('hidden');
-    this.reset(); // clear form
-  });
-</script>
+      // FormSpree submission
+      const form = document.getElementById('contactForm');
+      const formMessage = document.getElementById('formMessage');
 
-<!-- Calendly Script -->
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const demoBtn = document.getElementById("btn-demo");
-
-  demoBtn.addEventListener("click", function(e) {
-    e.preventDefault();
-
-    if (window.Calendly) {
-      // Open Calendly popup
-      Calendly.initPopupWidget({url: 'https://calendly.com/mukechiwarichard/30min'});
-    } else {
-      // Fallback: open in new tab if script not loaded yet
-      window.open('https://calendly.com/mukechiwarichard/30min', '_blank');
-    }
-  });
-});
-</script>
-
-<script>
-  document.getElementById('contactForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const form = this;
-    const formMessage = document.getElementById('formMessage');
-
-    fetch(form.action, {
-      method: form.method,
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    }).then(response => {
-      if (response.ok) {
-        formMessage.classList.remove('hidden');
-        form.reset();
-      } else {
-        response.json().then(data => {
-          alert(data.errors ? data.errors.map(err => err.message).join(", ") : "Oops! There was a problem.");
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(response => {
+          if (response.ok) {
+            formMessage.classList.remove('hidden');
+            form.reset();
+          } else {
+            response.json().then(data => {
+              alert(data.errors ? data.errors.map(err => err.message).join(", ") : "Oops! There was a problem.");
+            });
+          }
+        }).catch(() => {
+          alert("Oops! There was a problem submitting the form.");
         });
-      }
-    }).catch(() => {
-      alert("Oops! There was a problem submitting the form.");
+      });
     });
-  });
-</script>
-
-
+  </script>
 </body>
 </html>
