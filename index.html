@@ -254,6 +254,66 @@
       </div>
     </section>
 
+    <!-- Contact Form Section (Below Lead CTA) -->
+<section id="contact" class="mt-12 bg-white p-6 rounded-lg shadow max-w-lg mx-auto">
+  <h2 class="text-2xl font-semibold mb-4 text-center">Or Send Us a Message</h2>
+
+  <form action="https://formspree.io/f/xkgljppq" method="POST" class="flex flex-col gap-4" id="contactForm">
+    <input type="text" name="name" placeholder="Your Name" required class="border p-3 rounded w-full">
+    <input type="email" name="email" placeholder="Your Email" required class="border p-3 rounded w-full">
+    <textarea name="message" placeholder="Your Message" required class="border p-3 rounded w-full"></textarea>
+
+    <!-- WhatsApp Contact Choice -->
+    <label for="contact-method" class="text-sm font-medium">Preferred Contact Method:</label>
+    <select id="contact-method" name="contact_method" class="border p-3 rounded w-full">
+      <option value="email" selected>Email</option>
+      <option value="whatsapp">WhatsApp</option>
+    </select>
+
+    <button type="submit" class="bg-accent text-white px-5 py-3 rounded hover:opacity-90 transition">
+      Send Message
+    </button>
+  </form>
+
+  <p id="formMessage" class="text-center text-green-600 mt-2 hidden">Thank you! Your message has been sent.</p>
+
+  <!-- Optional direct WhatsApp link below form -->
+  <div class="mt-6 text-center">
+    <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" 
+      target="_blank" rel="noopener noreferrer"
+      class="inline-block px-6 py-3 bg-accent text-white rounded hover:opacity-90 transition">
+      Contact on WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- JS for Formspree inline thank-you message -->
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = this;
+    const formMessage = document.getElementById('formMessage');
+
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        formMessage.classList.remove('hidden');
+        form.reset();
+      } else {
+        response.json().then(data => {
+          alert(data.errors ? data.errors.map(err => err.message).join(", ") : "Oops! There was a problem.");
+        });
+      }
+    }).catch(() => {
+      alert("Oops! There was a problem submitting the form.");
+    });
+  });
+</script>
+
+
     <!--Contact Us Section (Enhanced)-->
     <section id="contact" class="p-6 bg-gray-50 mt-16">
       <!--h2 class="text-2xl font-bold mb-6 text-center">Contact Us</!--h2>-->
