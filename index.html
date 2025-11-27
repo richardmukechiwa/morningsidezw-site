@@ -287,6 +287,23 @@
           </button>
         </form>
 
+        <section id="contact" class="mt-16 bg-white p-6 rounded-lg shadow max-w-lg mx-auto">
+          <h2 class="text-2xl font-semibold mb-4 text-center">Get in Touch</h2>
+          <form id="contactForm" class="flex flex-col gap-4">
+            <input type="text" name="name" placeholder="Your Name" required
+                  class="border p-3 rounded w-full">
+            <input type="email" name="email" placeholder="Your Email" required
+                  class="border p-3 rounded w-full">
+            <textarea name="message" placeholder="Your Message" required
+                      class="border p-3 rounded w-full"></textarea>
+            <button type="submit" class="bg-accent text-white px-5 py-3 rounded hover:opacity-90 transition">
+              Send Message
+            </button>
+          </form>
+          <p id="formMessage" class="text-center text-green-600 mt-2 hidden">Thank you! Your message has been sent.</p>
+        </section>
+
+
         <!-- WhatsApp & Phone -->
         <div class="flex flex-col justify-center gap-4 p-6 bg-white rounded-lg shadow hover:shadow-lg transition-shadow duration-200">
           <h3 class="text-xl font-semibold flex items-center gap-2">
@@ -340,6 +357,17 @@
 
   <!-- Calendly -->
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // prevent page reload
+
+    // Normally, here you would send data via email service like Formspree or EmailJS
+    // For zero-budget, you can just show the thank-you message
+    document.getElementById('formMessage').classList.remove('hidden');
+    this.reset(); // clear form
+  });
+</script>
 
 </body>
 </html>
