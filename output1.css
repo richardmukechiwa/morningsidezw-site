@@ -1,25 +1,8 @@
 /*! tailwindcss v4.1.17 | MIT License | https://tailwindcss.com */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @layer properties;
-.visible {
-  visibility: visible;
-}
-.absolute {
-  position: absolute;
-}
-.fixed {
-  position: fixed;
-}
-.relative {
-  position: relative;
-}
 .static {
   position: static;
-}
-.top-1\/2 {
-  top: calc(1/2 * 100%);
-}
-.z-50 {
-  z-index: 50;
 }
 .container {
   width: 100%;
@@ -57,9 +40,6 @@
 .h-full {
   height: 100%;
 }
-.max-h-\[80vh\] {
-  max-height: 80vh;
-}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -71,14 +51,6 @@
 }
 .flex-shrink {
   flex-shrink: 1;
-}
-.-translate-y-1\/2 {
-  --tw-translate-y: calc(calc(1/2 * 100%) * -1);
-  translate: var(--tw-translate-x) var(--tw-translate-y);
-}
-.translate-y-1\/2 {
-  --tw-translate-y: calc(1/2 * 100%);
-  translate: var(--tw-translate-x) var(--tw-translate-y);
 }
 .transform {
   transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
@@ -107,9 +79,6 @@
 .overflow-hidden {
   overflow: hidden;
 }
-.rounded-full {
-  border-radius: calc(infinity * 1px);
-}
 .border {
   border-style: var(--tw-border-style);
   border-width: 1px;
@@ -129,21 +98,11 @@
 .border-transparent {
   border-color: transparent;
 }
-.bg-\[\#25D366\] {
-  background-color: #25D366;
-}
-.object-contain {
-  object-fit: contain;
-}
 .object-cover {
   object-fit: cover;
 }
 .text-center {
   text-align: center;
-}
-.leading-none {
-  --tw-leading: 1;
-  line-height: 1;
 }
 .italic {
   font-style: italic;
@@ -189,13 +148,6 @@
     }
   }
 }
-.hover\:opacity-90 {
-  &:hover {
-    @media (hover: hover) {
-      opacity: 90%;
-    }
-  }
-}
 .hover\:opacity-95 {
   &:hover {
     @media (hover: hover) {
@@ -207,26 +159,35 @@
   --brand-navy: #0A1B2A;
   --brand-accent: #FF6A00;
 }
-.bg-accent {
-  background: var(--brand-accent);
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
-.text-accent {
+.brand-accent {
   color: var(--brand-accent);
 }
-@property --tw-translate-x {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
+.bg-accent {
+  background-color: var(--brand-accent);
 }
-@property --tw-translate-y {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
+.text-navy {
+  color: var(--brand-navy);
 }
-@property --tw-translate-z {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
+a:focus {
+  outline: 3px solid rgba(255,106,0,0.25);
+  outline-offset: 2px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.container {
+  max-width: 68rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+footer p {
+  margin: 0;
 }
 @property --tw-rotate-x {
   syntax: "*";
@@ -253,10 +214,6 @@
   inherits: false;
   initial-value: solid;
 }
-@property --tw-leading {
-  syntax: "*";
-  inherits: false;
-}
 @property --tw-duration {
   syntax: "*";
   inherits: false;
@@ -279,16 +236,12 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
-      --tw-translate-x: 0;
-      --tw-translate-y: 0;
-      --tw-translate-z: 0;
       --tw-rotate-x: initial;
       --tw-rotate-y: initial;
       --tw-rotate-z: initial;
       --tw-skew-x: initial;
       --tw-skew-y: initial;
       --tw-border-style: solid;
-      --tw-leading: initial;
       --tw-duration: initial;
       --tw-scale-x: 1;
       --tw-scale-y: 1;
