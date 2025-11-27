@@ -1,0 +1,13 @@
+/* input.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom colors */
+:root {
+  --brand-navy: #0A1B2A;
+  --brand-accent: #FF6A00;
+}
+
+.bg-accent { background: var(--brand-accent); }
+.text-accent { color: var(--brand-accent); }
