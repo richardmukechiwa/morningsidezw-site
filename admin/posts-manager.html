@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog Post Editor</title>
+  <link href="/css/tailwind.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+  <div class="max-w-3xl mx-auto py-10">
+    <h1 class="text-3xl font-bold mb-6">Blog Post Editor</h1>
+
+    <!-- Title -->
+    <label class="block text-lg font-medium mb-2">Post Title</label>
+    <input id="title" type="text" class="w-full p-3 border rounded mb-6">
+
+    <!-- Slug -->
+    <label class="block text-lg font-medium mb-2">Slug (example: ai-reporting-workflow-2025)</label>
+    <input id="slug" type="text" class="w-full p-3 border rounded mb-6">
+
+    <!-- Content -->
+    <label class="block text-lg font-medium mb-2">Markdown Content</label>
+    <textarea id="content" class="w-full h-64 p-3 border rounded mb-6"></textarea>
+
+    <button
+      onclick="downloadPost()"
+      class="px-6 py-3 bg-blue-600 text-white rounded">
+      Download .md File
+    </button>
+  </div>
+
+<script>
+function downloadPost() {
+  const title = document.getElementById('title').value.trim();
+  const slug = document.getElementById('slug').value.trim();
+  const content = document.getElementById('content').value;
+
+  if (!title || !slug || !content) {
+    alert("Please fill all fields.");
+    return;
+  }
+
+  const fileName = `${slug}.md`;
+  const fileContent = content;
+  const blob = new Blob([fileContent], { type: "text/markdown" });
+
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = fileName;
+  link.click();
+}
+</script>
+
+</body>
+</html>

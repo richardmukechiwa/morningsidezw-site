@@ -1,0 +1,23 @@
+name: Nightly Backup
+
+on:
+  schedule:
+    - cron: "0 2 * * *"  # Runs daily at 02:00 UTC
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Create backup ZIP
+        run: |
+          zip -r site-backup.zip . -x "*.git*"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-site-backup
+          path: site-backup.zip

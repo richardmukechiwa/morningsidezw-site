@@ -1,0 +1,44 @@
+<!-- blog/post-template.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title><!-- TITLE --> — RM Connect</title>
+  <meta name="description" content="<!-- DESCRIPTION -->" />
+  <link rel="stylesheet" href="/styles/tailwind-custom.css">
+  <link rel="stylesheet" href="/css/blog.css">
+  <link rel="canonical" href="<!-- CANONICAL_URL -->">
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <header class="bg-white shadow">
+    <div class="container px-6 py-5 flex items-center justify-between">
+      <a href="/" class="font-bold">RM</a>
+      <nav class="hidden md:flex gap-4 text-sm">
+        <a href="/">Home</a>
+        <a href="/blog/index.html" aria-current="page">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container px-6 py-12 max-w-3xl">
+    <article>
+      <h1 class="text-3xl font-bold mb-2"><!-- TITLE --></h1>
+      <div class="text-sm text-gray-500 mb-6"><time datetime="<!-- DATE_ISO -->"><!-- DATE_READABLE --></time> — <!-- TAGS --></div>
+      <div class="prose max-w-none">
+        <!-- POST_HTML -->
+      </div>
+    </article>
+    <p class="mt-8"><a href="/blog/index.html" class="text-accent">← Back to Blog</a></p>
+  </main>
+
+  <footer class="bg-white border-t mt-12">
+    <div class="container px-6 py-6 text-sm text-gray-600">
+      © 2025 RM Connect
+    </div>
+  </footer>
+
+  <script src="/js/tracker.js" defer></script>
+  <script>tracker('pageview', {page: 'blog-post', title: '<!-- TITLE -->'});</script>
+</body>
+</html>
