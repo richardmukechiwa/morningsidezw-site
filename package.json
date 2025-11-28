@@ -2,13 +2,12 @@
   "name": "rm-connect",
   "version": "1.0.0",
   "scripts": {
-  "dev": "postcss ./styles/input.css -o ./styles/tailwind-custom.css --watch",
-  "build:css": "postcss ./styles/input.css -o ./styles/tailwind-custom.css --env production"                                                 
+    "dev": "npx tailwindcss -i ./src/input.css -o ./styles/tailwind.css --watch",
+    "build": "npx tailwindcss -i ./src/input.css -o ./styles/tailwind.min.css --minify"
   },
-
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.17",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.17"
+    "tailwindcss": "^3.4.0",
+    "postcss": "^8.4.0",
+    "autoprefixer": "^10.4.0"
   }
 }
