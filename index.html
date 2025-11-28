@@ -335,120 +335,132 @@
 
  <!-- Scripts -->
   <script>
-    // Contact Form
-    document.addEventListener("DOMContentLoaded", function() {
-      const form = document.getElementById('contactForm');
-      const formMessage = document.getElementById('formMessage');
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        fetch(form.action, {
-          method: form.method,
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        }).then(response => {
-          if (response.ok) {
-            formMessage.classList.remove('hidden');
-            form.reset();
-          } else {
-            response.json().then(data => {
-              alert(data.errors ? data.errors.map(err => err.message).join(", ") : "Oops! There was a problem.");
-            });
-          }
-        }).catch(() => alert("Oops! There was a problem submitting the form."));
-      });
-    });
+document.addEventListener("DOMContentLoaded", function() {
 
-    // Toggle Projects
-    const toggleBtn = document.getElementById("toggle-projects");
-    const hiddenProjects = document.getElementById("projects-hidden");
+  // ----- Contact Form -----
+  const form = document.getElementById('contactForm');
+  const formMessage = document.getElementById('formMessage');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          formMessage.classList.remove('hidden');
+          form.reset();
+        } else {
+          response.json().then(data => {
+            alert(data.errors ? data.errors.map(err => err.message).join(", ") : "Oops! There was a problem.");
+          });
+        }
+      }).catch(() => alert("Oops! There was a problem submitting the form."));
+    });
+  }
+
+  // ----- Toggle Projects -----
+  const toggleBtn = document.getElementById("toggle-projects");
+  const hiddenProjects = document.getElementById("projects-hidden");
+  if (toggleBtn && hiddenProjects) {
     toggleBtn.addEventListener("click", () => {
       const isHidden = hiddenProjects.classList.contains("hidden");
       hiddenProjects.classList.toggle("hidden");
       toggleBtn.textContent = isHidden ? "Show Less" : "Show More Projects";
     });
+  }
 
-    // Workflow Modal
-    const workflowModal = document.getElementById("workflowModal");
-    const modalImg = document.getElementById("modalImage");
-    const prevBtn = document.getElementById("prevImage");
-    const nextBtn = document.getElementById("nextImage");
-    const closeModalBtn = document.getElementById("closeModal");
-    const modalPager = document.getElementById("modalPager");
-    const slideCounter = document.getElementById("slideCounter");
-    let workflowImages = [];
-    let currentIndex = 0;
-    let autoPlayTimer;
-    const autoPlayInterval = 5000;
+  // ----- Workflow Modal -----
+  const workflowModal = document.getElementById("workflowModal");
+  const modalImg = document.getElementById("modalImage");
+  const prevBtn = document.getElementById("prevImage");
+  const nextBtn = document.getElementById("nextImage");
+  const closeModalBtn = document.getElementById("closeModal");
+  const modalPager = document.getElementById("modalPager");
+  const slideCounter = document.getElementById("slideCounter");
 
-    function openModal(images, index) {
-      workflowImages = images;
-      currentIndex = index;
-      workflowModal.classList.remove("hidden");
-      workflowModal.classList.add("flex");
-      document.documentElement.style.overflow = 'hidden';
-      loadModalImage();
-      startAutoPlay();
-    }
+  let workflowImages = [];
+  let currentIndex = 0;
+  let autoPlayTimer;
+  const autoPlayInterval = 5000;
 
-    function closeModal() {
-      workflowModal.classList.add("hidden");
-      workflowModal.classList.remove("flex");
-      document.documentElement.style.overflow = '';
-      stopAutoPlay();
-    }
+  function openModal(images, index) {
+    if (!workflowModal || !modalImg) return;
+    workflowImages = images;
+    currentIndex = index;
+    workflowModal.classList.remove("hidden");
+    workflowModal.classList.add("flex");
+    document.documentElement.style.overflow = 'hidden';
+    loadModalImage();
+    startAutoPlay();
+  }
 
-    function loadModalImage() {
-      modalImg.src = workflowImages[currentIndex];
-      updatePager();
-      if(slideCounter) slideCounter.textContent = `${currentIndex + 1} / ${workflowImages.length}`;
-      // Preload next
-      const next = new Image(); next.src = workflowImages[(currentIndex+1)%workflowImages.length];
-    }
+  function closeModal() {
+    if (!workflowModal) return;
+    workflowModal.classList.add("hidden");
+    workflowModal.classList.remove("flex");
+    document.documentElement.style.overflow = '';
+    stopAutoPlay();
+  }
 
-    function nextImage() { currentIndex = (currentIndex+1)%workflowImages.length; loadModalImage(); }
-    function prevImageFunc() { currentIndex = (currentIndex-1+workflowImages.length)%workflowImages.length; loadModalImage(); }
+  function loadModalImage() {
+    if (!modalImg) return;
+    modalImg.src = workflowImages[currentIndex];
+    updatePager();
+    if(slideCounter) slideCounter.textContent = `${currentIndex + 1} / ${workflowImages.length}`;
+    const next = new Image(); 
+    next.src = workflowImages[(currentIndex+1)%workflowImages.length];
+  }
 
-    function buildPager() {
-      modalPager.innerHTML = '';
-      workflowImages.forEach((src,i)=>{
-        const dot=document.createElement('button');
-        dot.className='w-2 h-2 rounded-full';
-        dot.style.opacity = i===currentIndex ? '1':'0.35';
-        dot.addEventListener('click',()=>{ currentIndex=i; loadModalImage(); });
-        modalPager.appendChild(dot);
-      });
-    }
+  function nextImage() { currentIndex = (currentIndex+1)%workflowImages.length; loadModalImage(); }
+  function prevImageFunc() { currentIndex = (currentIndex-1+workflowImages.length)%workflowImages.length; loadModalImage(); }
 
-    function updatePager() {
-      [...modalPager.children].forEach((dot,i)=>{ dot.style.opacity=i===currentIndex?'1':'0.35'; });
-    }
-
-    function startAutoPlay() { stopAutoPlay(); autoPlayTimer=setInterval(()=>{ if(!workflowModal.classList.contains("hidden")) nextImage(); }, autoPlayInterval); }
-    function stopAutoPlay() { if(autoPlayTimer) clearInterval(autoPlayTimer); }
-
-    document.querySelectorAll('.open-workflow').forEach(btn=>{
-      btn.addEventListener('click', e=>{
-        e.preventDefault();
-        const card = btn.closest('.project-card');
-        let imgs = [];
-        try { imgs = JSON.parse(card.getAttribute('data-images')||'[]'); } catch { imgs=[]; }
-        if(imgs.length===0 && card.querySelector('img')) imgs=[card.querySelector('img').src];
-        openModal(imgs,0);
-      });
+  function buildPager() {
+    if (!modalPager) return;
+    modalPager.innerHTML = '';
+    workflowImages.forEach((src,i)=>{
+      const dot=document.createElement('button');
+      dot.className='w-2 h-2 rounded-full';
+      dot.style.opacity = i===currentIndex ? '1':'0.35';
+      dot.addEventListener('click',()=>{ currentIndex=i; loadModalImage(); });
+      modalPager.appendChild(dot);
     });
+  }
 
-    closeModalBtn.addEventListener('click', closeModal);
-    workflowModal.addEventListener('click', e=>{ if(e.target===workflowModal) closeModal(); });
-    prevBtn.addEventListener('click',prevImageFunc);
-    nextBtn.addEventListener('click',nextImage);
-    document.addEventListener('keydown', e=>{
-      if(workflowModal.classList.contains("hidden")) return;
-      if(e.key==='Escape') closeModal();
-      if(e.key==='ArrowLeft') prevImageFunc();
-      if(e.key==='ArrowRight') nextImage();
+  function updatePager() {
+    if (!modalPager) return;
+    [...modalPager.children].forEach((dot,i)=>{ dot.style.opacity=i===currentIndex?'1':'0.35'; });
+  }
+
+  function startAutoPlay() { stopAutoPlay(); autoPlayTimer=setInterval(()=>{ if(!workflowModal.classList.contains("hidden")) nextImage(); }, autoPlayInterval); }
+  function stopAutoPlay() { if(autoPlayTimer) clearInterval(autoPlayTimer); }
+
+  const workflowBtns = document.querySelectorAll('.open-workflow');
+  workflowBtns.forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      e.preventDefault();
+      const card = btn.closest('.project-card');
+      let imgs = [];
+      try { imgs = JSON.parse(card.getAttribute('data-images')||'[]'); } catch { imgs=[]; }
+      if(imgs.length===0 && card.querySelector('img')) imgs=[card.querySelector('img').src];
+      openModal(imgs,0);
     });
+  });
 
-    // Focus trap for modal
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+  if (workflowModal) workflowModal.addEventListener('click', e=>{ if(e.target===workflowModal) closeModal(); });
+  if (prevBtn) prevBtn.addEventListener('click',prevImageFunc);
+  if (nextBtn) nextBtn.addEventListener('click',nextImage);
+
+  document.addEventListener('keydown', e=>{
+    if(!workflowModal || workflowModal.classList.contains("hidden")) return;
+    if(e.key==='Escape') closeModal();
+    if(e.key==='ArrowLeft') prevImageFunc();
+    if(e.key==='ArrowRight') nextImage();
+  });
+
+  if (workflowModal) {
     workflowModal.addEventListener('keydown', e=>{
       if(!workflowModal.classList.contains('hidden') && e.key==='Tab'){
         const focusable = workflowModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
@@ -457,11 +469,20 @@
         else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
       }
     });
+  }
 
-    // Admin links
-    const showAdmin = new URLSearchParams(window.location.search).get('admin')==='1';
-    if(showAdmin){ document.getElementById('admin-link').classList.remove('hidden'); document.getElementById('admin-link-mobile').classList.remove('hidden'); }
-  </script>
+  // ----- Admin Links -----
+  const showAdmin = new URLSearchParams(window.location.search).get('admin')==='1';
+  if(showAdmin){
+    const adminLink = document.getElementById('admin-link');
+    const adminLinkMobile = document.getElementById('admin-link-mobile');
+    if(adminLink) adminLink.classList.remove('hidden');
+    if(adminLinkMobile) adminLinkMobile.classList.remove('hidden');
+  }
+
+});
+</script>
+
 
   <!-- Workflow Modal HTML -->
   <div id="workflowModal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center p-4 z-50">
