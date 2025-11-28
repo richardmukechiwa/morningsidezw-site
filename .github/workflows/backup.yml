@@ -1,23 +1,142 @@
-name: Nightly Backup
+name: Weekly backup — repo + CF KV (optional)
 
 on:
   schedule:
-    - cron: "0 2 * * *"  # Runs daily at 02:00 UTC
+    # weekly: every Sunday at 02:00 UTC — change to suit you
+    - cron: "0 2 * * 0"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write  # needed to push commits to backup branch
+
+env:
+  BACKUP_BRANCH: backup-archives
 
 jobs:
-  backup:
+  create-zip-and-commit:
+    name: Create repo ZIP and commit to backup branch
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Create backup ZIP
+      - name: Show repo info
         run: |
-          zip -r site-backup.zip . -x "*.git*"
+          echo "Repository: $GITHUB_REPOSITORY"
+          git --version
 
-      - name: Upload artifact
+      - name: Create timestamped ZIP (exclude backup branch storage)
+        run: |
+          TIMESTAMP=$(date -u +"%Y%m%dT%H%M%SZ")
+          ZIPNAME="backup-${TIMESTAMP}.zip"
+          # exclude .git and backup output folder if present
+          zip -r "$ZIPNAME" . -x ".git/*" "backup-output/*" || true
+          mkdir -p backup-output
+          mv "$ZIPNAME" backup-output/
+
+      - name: Commit ZIP to backup branch
+        env:
+          GIT_AUTHOR_NAME: "github-actions[bot]"
+          GIT_AUTHOR_EMAIL: "41898282+github-actions[bot]@users.noreply.github.com"
+        run: |
+          git config user.name "${GIT_AUTHOR_NAME}"
+          git config user.email "${GIT_AUTHOR_EMAIL}"
+
+          # create / switch to backup branch
+          git checkout -B $BACKUP_BRANCH
+
+          # copy zip into repo and commit
+          git add -A backup-output
+          if git diff --cached --quiet; then
+            echo "No changes to commit (no new backup?)"
+          else
+            git commit -m "chore: repo backup $(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+            git push --set-upstream origin $BACKUP_BRANCH --force
+          fi
+
+      - name: Upload artifact (zip) for quick download
         uses: actions/upload-artifact@v4
         with:
-          name: daily-site-backup
-          path: site-backup.zip
+          name: repo-backup
+          path: backup-output
+
+  export-cf-kv:
+    name: (Optional) Export Cloudflare KV and commit
+    runs-on: ubuntu-latest
+    needs: create-zip-and-commit
+    if: secrets.CF_ACCOUNT_ID && secrets.CF_API_TOKEN && secrets.CF_KV_NAMESPACE_ID
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: List KV keys (paginated) and fetch values
+        env:
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_KV_NAMESPACE_ID: ${{ secrets.CF_KV_NAMESPACE_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: |
+          echo "Starting KV export..."
+          OUTDIR="backup-output"
+          mkdir -p $OUTDIR
+          TIMESTAMP=$(date -u +"%Y%m%dT%H%M%SZ")
+          OUTFILE="$OUTDIR/kv-backup-${TIMESTAMP}.json"
+          echo "[" > $OUTFILE
+          # paginate
+          cursor=""
+          first=true
+          while :; do
+            if [ -z "$cursor" ]; then
+              resp=$(curl -s -X GET "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/storage/kv/namespaces/${CF_KV_NAMESPACE_ID}/keys?limit=1000" \
+                -H "Authorization: Bearer ${CF_API_TOKEN}" -H "Content-Type: application/json")
+            else
+              resp=$(curl -s -X GET "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/storage/kv/namespaces/${CF_KV_NAMESPACE_ID}/keys?limit=1000&cursor=${cursor}" \
+                -H "Authorization: Bearer ${CF_API_TOKEN}" -H "Content-Type: application/json")
+            fi
+
+            keys=$(echo "$resp" | jq -r '.result[]?.name' || true)
+            if [ -z "$keys" ]; then
+              break
+            fi
+
+            for key in $keys; do
+              # fetch value (base64)
+              val=$(curl -s -X GET "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/storage/kv/namespaces/${CF_KV_NAMESPACE_ID}/values/${key}" \
+                -H "Authorization: Bearer ${CF_API_TOKEN}")
+              # append JSON item
+              item=$(jq -n --arg k "$key" --arg v "$val" '{key:$k, value:$v}')
+              if [ "$first" = true ]; then
+                echo "$item" >> $OUTFILE
+                first=false
+              else
+                echo ",$item" >> $OUTFILE
+              fi
+            done
+
+            # check for cursor
+            cursor=$(echo "$resp" | jq -r '.result_info?.cursor // empty')
+            if [ -z "$cursor" ]; then break; fi
+          done
+
+          echo "]" >> $OUTFILE
+          echo "KV export written to $OUTFILE"
+          ls -lh $OUTFILE
+
+      - name: Commit KV export to backup branch
+        env:
+          GIT_AUTHOR_NAME: "github-actions[bot]"
+          GIT_AUTHOR_EMAIL: "41898282+github-actions[bot]@users.noreply.github.com"
+          BACKUP_BRANCH: ${{ env.BACKUP_BRANCH }}
+        run: |
+          git config user.name "${GIT_AUTHOR_NAME}"
+          git config user.email "${GIT_AUTHOR_EMAIL}"
+          git checkout -B $BACKUP_BRANCH
+          git add -f backup-output
+          git commit -m "chore: kv backup $(date -u +"%Y-%m-%dT%H:%M:%SZ")" || echo "nothing to commit"
+          git push --set-upstream origin $BACKUP_BRANCH --force
