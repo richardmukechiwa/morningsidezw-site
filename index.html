@@ -24,6 +24,7 @@
 
   <link rel="canonical" href="https://www.morningsidezw.com/" />
 
+  <!-- Tailwind -->
   <link rel="stylesheet" href="./styles/tailwind.min.css">
 
   <style>
@@ -38,27 +39,6 @@
     }
     .bg-accent { background: var(--brand-accent); }
     .text-accent { color: var(--brand-accent); }
-
-    /* Zoom Modal Styles */
-    #imageZoomModal button {
-        transition: background 0.2s ease, opacity 0.2s ease;
-    }
-    #imageZoomModal button:hover {
-        background: rgba(255, 255, 255, 0.9);
-        opacity: 0.9;
-    }
-    #zoomedImage {
-        cursor: zoom-out;
-    }
-    @media (max-width: 768px) {
-        #prevZoom, #nextZoom {
-            p: 1.5rem;
-            text-size: 1.75rem;
-        }
-        #zoomCounter {
-            font-size: 0.875rem;
-        }
-    }
   </style>
 </head>
 
@@ -117,7 +97,6 @@
         <h1 class="text-3xl md:text-4xl font-bold mb-4">Automation, AI & Data Solutions for Finance Teams</h1>
         <p class="text-lg text-gray-700 mb-6">Save time, reduce errors, and scale processes with reliable automation, data analysis, and machine learning workflows.</p>
       </div>
-
       <div class="flex justify-center md:justify-end">
         <img src="assets/hero.jpg" alt="Automation hero" class="w-full h-auto max-h-80 md:max-h-96 object-cover rounded-lg shadow-sm">
       </div>
@@ -145,49 +124,26 @@
       </div>
     </section>
 
-    <!-- Projects Showcase -->
+    <!-- Projects Section -->
     <section class="mt-12" id="projects">
       <h2 class="text-2xl font-semibold mb-6">Projects</h2>
 
-      <!-- Always visible projects -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="projects-visible">
-
-        <!-- 1 -->
+        <!-- Example Project Card (WhatsApp Bot) -->
         <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-            data-images='["assets/Dashboard.svg","assets/Dashboard-2.svg","assets/Dashboard-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Smart Client Insight Dashboard</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Client reports take hours weekly, insights often missed.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-fetch data, summarize with AI, generate PDF/email weekly.</p>
-          <img src="assets/Dashboard.svg" alt="Smart Client Insight Dashboard" class="rounded-lg h-32 w-full object-contain mb-4 cursor-zoom-in">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- 2 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-            data-images='["assets/uploads/Whatsapp-1.svg","assets/uploads/Whatsapp-2.svg","assets/uploads/Whatsapp-3.svg"]'>
+             data-images='["assets/uploads/Whatsapp-1.svg","assets/uploads/Whatsapp-2.svg","assets/uploads/Whatsapp-3.svg"]'>
           <h3 class="font-semibold mb-2 text-brand-navy">WhatsApp Lead Qualification Bot</h3>
           <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Leads sit unanswered → lost revenue.</p>
           <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-classify messages, respond with relevant info, push qualified leads to CRM.</p>
-          <img src="assets/uploads/Whatsapp-1.svg" alt="WhatsApp Lead Qualification Bot" class="rounded-lg h-32 w-full object-contain mb-4 cursor-zoom-in">
+          <img src="assets/uploads/Whatsapp-1.svg" alt="WhatsApp Lead Qualification Bot" class="rounded-lg h-32 w-full object-contain mb-4 workflow-image">
           <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
         </div>
 
-        <!-- 3 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-            data-images='["assets/Monitor.svg","assets/Monitor-2.svg","assets/Monitor-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Transaction & Anomaly Detection</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual monitoring misses errors/fraud.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Detect anomalies in transaction streams automatically.</p>
-          <img src="assets/Monitor.svg" alt="Transaction & Anomaly Detection" class="rounded-lg h-32 w-full object-contain mb-4 cursor-zoom-in">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
-        </div>
-
-        <!-- Other projects... remain unchanged -->
+        <!-- Keep all other project cards as in original, unchanged -->
       </div>
 
-      <!-- Hidden projects -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 hidden" id="projects-hidden">
-        <!-- 7–12 project cards remain unchanged, add cursor-zoom-in to all images -->
+        <!-- Hidden project cards remain unchanged -->
       </div>
 
       <div class="text-center mt-6">
@@ -195,117 +151,164 @@
       </div>
     </section>
 
-    <!-- Lead Generation CTA & Contact Form remain unchanged -->
+    <!-- Lead Generation CTA and Contact Form remain unchanged -->
 
   </main>
 
   <!-- Footer remains unchanged -->
 
+  <!-- Workflow Modal HTML -->
+  <div id="workflowModal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-lg max-w-3xl w-full relative">
+      <button id="closeModal" class="absolute top-3 right-3 text-gray-600 text-2xl leading-none">×</button>
+      <div class="relative">
+        <img id="modalImage" src="" class="w-full max-h-[80vh] object-contain rounded-t-lg" alt="Workflow image">
+        <button id="prevImage" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow">‹</button>
+        <button id="nextImage" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow">›</button>
+      </div>
+      <div id="modalPager" class="flex items-center justify-center gap-2 p-3"></div>
+      <p id="slideCounter" class="text-xs text-gray-500 text-center mt-2">1 / 3</p>
+      <p class="text-xs text-gray-500 text-center mt-3">Press ESC to close</p>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script>
 document.addEventListener("DOMContentLoaded", function() {
-  // --- Existing scripts: contact form, workflow modal, toggle projects, admin links ---
-});
-</script>
 
-<!-- Image Zoom Modal -->
-<div id="imageZoomModal"
-     class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50 p-4">
-  <span id="closeZoom"
-        class="absolute top-4 right-6 text-white text-4xl cursor-pointer select-none z-50">&times;</span>
-
-  <button id="prevZoom"
-          class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 md:p-3 shadow text-2xl md:text-3xl z-50">
-    ‹
-  </button>
-
-  <button id="nextZoom"
-          class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 md:p-3 shadow text-2xl md:text-3xl z-50">
-    ›
-  </button>
-
-  <img id="zoomedImage"
-       class="max-h-[90vh] max-w-[90vw] rounded-lg object-contain shadow-xl mx-auto" />
-
-  <p id="zoomCounter" class="absolute bottom-4 md:bottom-6 text-white text-sm md:text-base text-center w-full z-50">
-    1 / 3
-  </p>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const modal = document.getElementById("imageZoomModal");
-    const zoomedImage = document.getElementById("zoomedImage");
-    const closeZoom = document.getElementById("closeZoom");
-    const prevZoom = document.getElementById("prevZoom");
-    const nextZoom = document.getElementById("nextZoom");
-    const zoomCounter = document.getElementById("zoomCounter");
-
-    let currentImages = [];
-    let currentIndex = 0;
-    let startX = 0, endX = 0;
-
-    function updateZoom() {
-        zoomedImage.src = currentImages[currentIndex];
-        if(zoomCounter) zoomCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
-    }
-
-    document.querySelectorAll(".project-card img").forEach(img => {
-        img.addEventListener("click", e => {
-            const card = e.target.closest(".project-card");
-            try {
-                currentImages = JSON.parse(card.getAttribute('data-images') || '[]');
-            } catch { currentImages = []; }
-
-            if(currentImages.length === 0) currentImages = [e.target.src];
-            currentIndex = currentImages.indexOf(e.target.src) >= 0 ? currentImages.indexOf(e.target.src) : 0;
-
-            updateZoom();
-            modal.classList.remove("hidden");
-            modal.classList.add("flex");
-        });
-    });
-
-    closeZoom.addEventListener("click", () => {
-        modal.classList.add("hidden");
-        modal.classList.remove("flex");
-        zoomedImage.src = "";
-    });
-
-    prevZoom.addEventListener("click", () => {
-        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-        updateZoom();
-    });
-    nextZoom.addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % currentImages.length;
-        updateZoom();
-    });
-
-    modal.addEventListener("click", e => {
-        if(e.target === modal) {
-            modal.classList.add("hidden");
-            modal.classList.remove("flex");
-            zoomedImage.src = "";
+  // Contact Form
+  const form = document.getElementById('contactForm');
+  const formMessage = document.getElementById('formMessage');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          formMessage.classList.remove('hidden');
+          form.reset();
+        } else {
+          response.json().then(data => {
+            alert(data.errors ? data.errors.map(err => err.message).join(", ") : "Oops! There was a problem.");
+          });
         }
+      }).catch(() => alert("Oops! There was a problem submitting the form."));
     });
+  }
 
-    document.addEventListener("keydown", e => {
-        if(modal.classList.contains("hidden")) return;
-        if(e.key === "ArrowLeft") prevZoom.click();
-        if(e.key === "ArrowRight") nextZoom.click();
-        if(e.key === "Escape") closeZoom.click();
+  // Toggle Projects
+  const toggleBtn = document.getElementById("toggle-projects");
+  const hiddenProjects = document.getElementById("projects-hidden");
+  if (toggleBtn && hiddenProjects) {
+    toggleBtn.addEventListener("click", () => {
+      const isHidden = hiddenProjects.classList.contains("hidden");
+      hiddenProjects.classList.toggle("hidden");
+      toggleBtn.textContent = isHidden ? "Show Less" : "Show More Projects";
     });
+  }
 
-    zoomedImage.addEventListener("touchstart", e => { startX = e.touches[0].clientX; });
-    zoomedImage.addEventListener("touchmove", e => { endX = e.touches[0].clientX; });
-    zoomedImage.addEventListener("touchend", e => {
-        const diff = startX - endX;
-        if(Math.abs(diff) > 50){
-            if(diff > 0) nextZoom.click();
-            else prevZoom.click();
-        }
-        startX = 0; endX = 0;
+  // Workflow Modal & Zoom
+  const workflowModal = document.getElementById("workflowModal");
+  const modalImg = document.getElementById("modalImage");
+  const prevBtn = document.getElementById("prevImage");
+  const nextBtn = document.getElementById("nextImage");
+  const closeModalBtn = document.getElementById("closeModal");
+  const modalPager = document.getElementById("modalPager");
+  const slideCounter = document.getElementById("slideCounter");
+
+  let workflowImages = [];
+  let currentIndex = 0;
+  let autoPlayTimer;
+  const autoPlayInterval = 5000;
+
+  function openModal(images, index) {
+    if (!workflowModal || !modalImg) return;
+    workflowImages = images;
+    currentIndex = index;
+    workflowModal.classList.remove("hidden");
+    workflowModal.classList.add("flex");
+    document.documentElement.style.overflow = 'hidden';
+    loadModalImage();
+    buildPager();
+    startAutoPlay();
+  }
+
+  function closeModal() {
+    if (!workflowModal) return;
+    workflowModal.classList.add("hidden");
+    workflowModal.classList.remove("flex");
+    document.documentElement.style.overflow = '';
+    stopAutoPlay();
+  }
+
+  function loadModalImage() {
+    if (!modalImg) return;
+    modalImg.src = workflowImages[currentIndex];
+    updatePager();
+    if(slideCounter) slideCounter.textContent = `${currentIndex + 1} / ${workflowImages.length}`;
+    const next = new Image();
+    next.src = workflowImages[(currentIndex+1)%workflowImages.length];
+  }
+
+  function nextImage() { currentIndex = (currentIndex+1)%workflowImages.length; loadModalImage(); }
+  function prevImageFunc() { currentIndex = (currentIndex-1+workflowImages.length)%workflowImages.length; loadModalImage(); }
+
+  function buildPager() {
+    if (!modalPager) return;
+    modalPager.innerHTML = '';
+    workflowImages.forEach((src,i)=>{
+      const dot=document.createElement('button');
+      dot.className='w-2 h-2 rounded-full';
+      dot.style.opacity = i===currentIndex ? '1':'0.35';
+      dot.addEventListener('click',()=>{ currentIndex=i; loadModalImage(); });
+      modalPager.appendChild(dot);
     });
+  }
+
+  function updatePager() {
+    if (!modalPager) return;
+    [...modalPager.children].forEach((dot,i)=>{ dot.style.opacity=i===currentIndex?'1':'0.35'; });
+  }
+
+  function startAutoPlay() { stopAutoPlay(); autoPlayTimer=setInterval(()=>{ if(!workflowModal.classList.contains("hidden")) nextImage(); }, autoPlayInterval); }
+  function stopAutoPlay() { if(autoPlayTimer) clearInterval(autoPlayTimer); }
+
+  const workflowBtns = document.querySelectorAll('.open-workflow');
+  workflowBtns.forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      e.preventDefault(); // prevents scrolling to top
+      const card = btn.closest('.project-card');
+      let imgs = [];
+      try { imgs = JSON.parse(card.getAttribute('data-images')||'[]'); } catch { imgs=[]; }
+      if(imgs.length===0 && card.querySelector('img')) imgs=[card.querySelector('img').src];
+      openModal(imgs,0);
+    });
+  });
+
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+  if (workflowModal) workflowModal.addEventListener('click', e=>{ if(e.target===workflowModal) closeModal(); });
+  if (prevBtn) prevBtn.addEventListener('click',prevImageFunc);
+  if (nextBtn) nextBtn.addEventListener('click',nextImage);
+
+  document.addEventListener('keydown', e=>{
+    if(!workflowModal || workflowModal.classList.contains("hidden")) return;
+    if(e.key==='Escape') closeModal();
+    if(e.key==='ArrowLeft') prevImageFunc();
+    if(e.key==='ArrowRight') nextImage();
+  });
+
+  // Admin Links
+  const showAdmin = new URLSearchParams(window.location.search).get('admin')==='1';
+  if(showAdmin){
+    const adminLink = document.getElementById('admin-link');
+    const adminLinkMobile = document.getElementById('admin-link-mobile');
+    if(adminLink) adminLink.classList.remove('hidden');
+    if(adminLinkMobile) adminLinkMobile.classList.remove('hidden');
+  }
+
 });
 </script>
 
