@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About – RM Connect</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Learn more about RM Connect – automation, AI agents, dashboards, workflow engineering, and data systems built for real business impact." />
+    <meta property="og:title" content="About – RM Connect" />
+    <meta property="og:description" content="Automation, AI systems, dashboards, monitoring tools, workflow optimization and intelligent operations." />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    
+
+    <!-- Animations -->
+    <style>
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <!-- Mobile Menu -->
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- HEADER -->
+    <header class="bg-white shadow-sm fixed top-0 left-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-semibold text-xl">RM Connect</a>
+
+            <nav class="hidden md:flex space-x-8 text-gray-700">
+                <a href="index.html" class="hover:text-blue-600">Home</a>
+                <a href="services.html" class="hover:text-blue-600">Services</a>
+                <a href="about.html" class="text-blue-600 font-semibold">About</a>
+                <a href="contact.html" class="hover:text-blue-600">Contact</a>
+            </nav>
+
+            <button onclick="toggleMenu()" class="md:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-4 space-y-4">
+            <a href="index.html" class="block">Home</a>
+            <a href="services.html" class="block">Services</a>
+            <a href="about.html" class="block font-semibold text-blue-600">About</a>
+            <a href="contact.html" class="block">Contact</a>
+        </div>
+    </header>
+
+
+    <!-- HERO -->
+    <section class="pt-32 pb-20 bg-gradient-to-b from-blue-600 to-blue-500 text-white text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold fade-up">Behind the Work</h1>
+        <p class="mt-4 max-w-2xl mx-auto text-lg fade-up" style="animation-delay:0.15s">
+            Automation, intelligence, and systems engineering for teams that want to move faster and operate smarter.
+        </p>
+    </section>
+
+
+    <!-- ABOUT CONTENT -->
+    <main class="max-w-5xl mx-auto px-6 py-20 space-y-16">
+
+        <!-- Section 1 -->
+        <section class="fade-up">
+            <h2 class="text-3xl font-bold mb-6">My Mission</h2>
+            <p class="text-gray-700 leading-relaxed text-lg">
+                I build reliable automation systems, dashboards, AI agents and workflow tools that help businesses 
+                operate with more speed, clarity, and efficiency. My background spans finance systems, data engineering, 
+                analytics, and intelligent automation — giving me a unique perspective on how to design tools that 
+                actually solve real operational problems.
+            </p>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="fade-up" style="animation-delay:0.15s">
+            <h2 class="text-3xl font-bold mb-6">How I Work</h2>
+            <p class="text-gray-700 leading-relaxed text-lg mb-6">
+                My process is built around clarity, speed, and maintainability:
+            </p>
+
+            <ul class="space-y-4 text-gray-800 text-lg">
+                <li>• Rapid execution without compromising structure</li>
+                <li>• Clean documentation for every deliverable</li>
+                <li>• Fully maintainable workflows, dashboards, and tools</li>
+                <li>• Transparent communication and iterative delivery</li>
+                <li>• Systems designed for long-term stability</li>
+            </ul>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="fade-up" style="animation-delay:0.25s">
+            <h2 class="text-3xl font-bold mb-6">Why Automation?</h2>
+            <p class="text-gray-700 leading-relaxed text-lg">
+                Automation eliminates repetitive work, reduces errors, and speeds up reporting and decision cycles.  
+                With a background in finance operations and data workflows, I specialize in connecting systems, 
+                reducing bottlenecks, streamlining processes, and creating intelligent tools that scale.
+            </p>
+        </section>
+
+    </main>
+
+
+    <!-- CTA -->
+    <section class="py-20 bg-blue-600 text-white text-center">
+        <h2 class="text-3xl md:text-4xl font-extrabold fade-up">Want to see what we can build together?</h2>
+        <a href="contact.html" class="mt-8 inline-block bg-white text-blue-600 px-8 py-3 rounded-xl font-semibold shadow hover:shadow-lg fade-up" style="animation-delay:0.15s">
+            Get in Touch
+        </a>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="py-8 text-center text-gray-600 bg-white">
+        <p>© 2025 RM Connect. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
