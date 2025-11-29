@@ -6,31 +6,22 @@
   <title>RM Connect — Automation, Data Analysis & AI Workflows for Finance Teams</title>
   <link rel="stylesheet" href="./styles/tailwind.min.css">
   <style>
-    :root{--brand-navy:#0A1B2A;--brand-accent:#FF6A00;}
+    :root { --brand-navy:#0A1B2A; --brand-accent:#FF6A00; }
     html,body{margin:0;padding:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial;}
     .bg-accent{background:var(--brand-accent);} .text-accent{color:var(--brand-accent);}
-
-    /* Card micro-animations */
-    .project-card{transform-origin:center; transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s; will-change:transform;}
-    .project-card:hover{transform:translateY(-6px) scale(1.02); box-shadow:0 12px 30px rgba(10,27,42,0.12);}
-    .project-card img{transition:transform .28s ease; will-change:transform;}
-    .project-card img:hover{transform:scale(1.04);}
-
-    /* Modal */
-    .modal-backdrop{background:linear-gradient(rgba(3,7,18,0.6), rgba(3,7,18,0.6));}
-    .btn-ghost{background:rgba(255,255,255,0.9); border-radius:9999px; padding:.45rem .55rem;}
-
-    /* pager */
-    .modal-dot{width:10px;height:10px;border-radius:9999px;background:#e5e7eb;margin:0 6px;display:inline-block;cursor:pointer;box-shadow:inset 0 0 0 2px rgba(255,255,255,0.02);}
-    .modal-dot.active{background:var(--brand-accent); box-shadow:0 2px 6px rgba(255,106,0,0.24);}
-
-    /* Press ESC emphasis */
-    .press-esc{color:var(--brand-accent); font-weight:600; letter-spacing:.2px;}
+    /* subtle hover */
+    .project-card { transition: transform .18s ease, box-shadow .18s ease; }
+    .project-card:focus-within, .project-card:hover { transform: translateY(-4px) scale(1.01); box-shadow:0 10px 25px rgba(10,27,42,0.08);}
+    /* pager active dot */
+    .modal-dot { width:10px; height:10px; border-radius:9999px; background:#d1d5db; display:inline-block; margin:0 6px; }
+    .modal-dot.active { background:var(--brand-accent); }
+    /* modal basics */
+    .modal-backdrop { background: rgba(0,0,0,0.6); }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
-<!-- Header -->
+<!-- Header (unchanged) -->
 <header class="bg-white shadow">
   <div class="max-w-full mx-auto px-6 py-5 flex items-center justify-between">
     <a href="index.html" class="flex items-center gap-3" aria-label="Home">
@@ -45,7 +36,7 @@
       <a href="testimonials.html" class="hover:text-gray-900">Testimonials</a>
       <a href="blog/index.html" class="py-2">Blog</a>
       <a href="about.html" class="hover:text-gray-900">About</a>
-      <a href="https://wa.me/263717605044" target="_blank" rel="noopener noreferrer" class="ml-4 inline-flex items-center px-3 py-2 bg-[#25D366] text-white rounded-md hover:opacity-95">WhatsApp</a>
+      <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer" class="ml-4 inline-flex items-center px-3 py-2 bg-[#25D366] text-white rounded-md hover:opacity-95">WhatsApp</a>
       <a id="admin-link" href="admin/index.html" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
     </nav>
     <button class="md:hidden" aria-label="Open menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
@@ -59,7 +50,7 @@
       <a href="testimonials.html" class="py-2">Testimonials</a>
       <a href="blog/index.html" class="py-2">Blog</a>
       <a href="about.html" class="py-2">About</a>
-      <a href="https://wa.me/263717605044" target="_blank" rel="noopener noreferrer" class="py-2 bg-[#25D366] text-white rounded text-center">WhatsApp</a>
+      <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer" class="py-2 bg-[#25D366] text-white rounded text-center">WhatsApp</a>
       <a id="admin-link-mobile" href="admin/index.html" class="py-2 bg-accent text-white rounded text-center hidden">Admin</a>
     </div>
   </div>
@@ -78,7 +69,7 @@
     </div>
   </section>
 
-  <!-- Services -->
+  <!-- Services (unchanged) -->
   <section class="mt-12">
     <h2 class="text-2xl font-semibold mb-4">Services</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -100,14 +91,15 @@
     </div>
   </section>
 
-  <!-- Projects -->
+  <!-- Projects: only 1-3 enabled; others commented out for future -->
   <section class="mt-12" id="projects">
     <h2 class="text-2xl font-semibold mb-6">Projects</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="projects-visible">
 
-      <!-- 1 -->
-      <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col" data-images='["assets/uploads/Dashboard.svg","assets/uploads/Dashboard-2.svg","assets/uploads/Dashboard-3.svg"]'>
+      <!-- Project 1 -->
+      <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col" 
+           data-images='["assets/uploads/Dashboard.svg","assets/uploads/Dashboard-2.svg","assets/uploads/Dashboard-3.svg"]'>
         <h3 class="font-semibold mb-2 text-brand-navy">Smart Client Insight Dashboard</h3>
         <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Client reports take hours weekly, insights often missed.</p>
         <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-fetch data, summarize with AI, generate PDF/email weekly.</p>
@@ -115,17 +107,19 @@
         <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
       </div>
 
-      <!-- 2 -->
-      <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col" data-images='["assets/uploads/Whatsapp.svg","assets/uploads/Whatsapp-2.svg","assets/uploads/Whatsapp-3.svg"]'>
+      <!-- Project 2 -->
+      <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col" 
+           data-images='["assets/uploads/Whatsapp-1.svg","assets/uploads/Whatsapp-2.svg","assets/uploads/Whatsapp-3.svg"]'>
         <h3 class="font-semibold mb-2 text-brand-navy">WhatsApp Lead Qualification Bot</h3>
         <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Leads sit unanswered → lost revenue.</p>
         <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-classify messages, respond with relevant info, push qualified leads to CRM.</p>
-        <img src="assets/uploads/Whatsapp.svg" alt="WhatsApp Lead Qualification Bot — screenshot" class="rounded-lg h-32 w-full object-contain mb-4" />
+        <img src="assets/uploads/Whatsapp-1.svg" alt="WhatsApp Lead Qualification Bot — screenshot" class="rounded-lg h-32 w-full object-contain mb-4" />
         <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
       </div>
 
-      <!-- 3 -->
-      <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col" data-images='["assets/uploads/Monitor.svg","assets/uploads/Monitor-2.svg","assets/uploads/Monitor-3.svg"]'>
+      <!-- Project 3 -->
+      <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col" 
+           data-images='["assets/uploads/Monitor.svg","assets/uploads/Monitor-2.svg","assets/uploads/Monitor-3.svg"]'>
         <h3 class="font-semibold mb-2 text-brand-navy">Transaction & Anomaly Detection</h3>
         <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual monitoring misses errors/fraud.</p>
         <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Detect anomalies in transaction streams automatically.</p>
@@ -135,14 +129,14 @@
 
     </div>
 
-    <!-- Commented-out placeholders for future projects (4-12) -->
+    <!-- Hidden projects (commented out) -->
     <!--
     <div id="projects-hidden" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 hidden">
-      ... paste / uncomment projects 4-12 here as ready ...
+      ... (projects 4-12: paste as you develop and then uncomment) ...
     </div>
     -->
-
-    <div id="hidden-placeholder" class="hidden mt-6 text-center text-gray-600">More projects coming — uncomment placeholders when ready.</div>
+    <!-- Placeholder for hidden area (revealed when "Show More" clicked if no commented projects) -->
+    <div id="hidden-placeholder" class="hidden mt-6 text-center text-gray-600">More projects coming soon — uncomment placeholders when ready.</div>
 
     <div class="text-center mt-6">
       <button id="toggle-projects" class="px-6 py-3 bg-accent text-white rounded-md font-semibold hover:opacity-90 transition">Show More Projects</button>
@@ -159,7 +153,7 @@
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- Contact Form -->
   <section id="contact" class="mt-12 bg-white p-6 rounded-lg shadow max-w-lg mx-auto">
     <h2 class="text-2xl font-semibold mb-4 text-center">Or Send Us a Message</h2>
     <form action="https://formspree.io/f/xkgljppq" method="POST" id="contactForm" class="flex flex-col gap-4">
@@ -179,36 +173,34 @@
 
 </main>
 
+<!-- Footer -->
 <footer class="bg-white border-t mt-12">
   <div class="max-w-full mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
     <p>© 2025 RM Connect</p>
   </div>
 </footer>
 
-<!-- Modal (polished) -->
-<div id="workflowModal" class="fixed inset-0 modal-backdrop hidden items-center justify-center p-6 z-50">
-  <div class="bg-white rounded-xl max-w-4xl w-full relative shadow-2xl overflow-hidden">
-    <button id="modalCloseBtn" type="button" class="absolute top-4 right-4 btn-ghost text-lg leading-none">×</button>
-    <div class="relative p-6">
+<!-- Workflow Modal (single modal used for slideshow & zoom) -->
+<div id="workflowModal" class="fixed inset-0 modal-backdrop hidden items-center justify-center p-4 z-50">
+  <div class="bg-white rounded-lg max-w-3xl w-full relative">
+    <button id="modalCloseBtn" type="button" class="absolute top-3 right-3 text-gray-600 text-2xl leading-none">×</button>
+    <div class="relative p-4">
       <img id="modalImage" src="" alt="Workflow slide" class="w-full max-h-[75vh] object-contain rounded-lg mx-auto">
-      <button id="prevBtn" aria-label="Previous" type="button" class="absolute left-4 top-1/2 -translate-y-1/2 btn-ghost">‹</button>
-      <button id="nextBtn" aria-label="Next" type="button" class="absolute right-4 top-1/2 -translate-y-1/2 btn-ghost">›</button>
+      <button id="prevBtn" aria-label="Previous" type="button" class="absolute left-3 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow">‹</button>
+      <button id="nextBtn" aria-label="Next" type="button" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow">›</button>
     </div>
-    <div class="flex flex-col items-center gap-2 pb-6">
-      <div id="modalPager" class="flex items-center justify-center gap-2 p-2"></div>
-      <div class="flex items-center gap-4">
-        <p id="slideCounter" class="text-xs text-gray-500">1 / 3</p>
-        <p class="press-esc text-sm">Press ESC to close</p>
-      </div>
-    </div>
+
+    <div id="modalPager" class="flex items-center justify-center gap-2 p-3"></div>
+    <p id="slideCounter" class="text-xs text-gray-500 text-center mt-2">1 / 3</p>
+    <p class="text-center text-accent text-sm mt-2">Press ESC to close</p>
   </div>
 </div>
 
 <!-- Scripts -->
 <script>
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function() {
 
-  // Form
+  // Contact form logic (Formspree)
   const form = document.getElementById('contactForm');
   const formMessage = document.getElementById('formMessage');
   if(form){
@@ -217,22 +209,23 @@ document.addEventListener('DOMContentLoaded', function(){
       fetch(form.action, { method: form.method, body: new FormData(form), headers:{'Accept':'application/json'} })
         .then(res => {
           if(res.ok){ formMessage.classList.remove('hidden'); form.reset(); }
-          else res.json().then(data => alert(data.errors ? data.errors.map(x=>x.message).join(', ') : 'Error submitting form.'));
+          else res.json().then(data=> alert(data.errors ? data.errors.map(x=>x.message).join(', ') : 'Error submitting form.'));
         }).catch(()=> alert('Error submitting form.'));
     });
   }
 
-  // Show more: reveal placeholder if hidden
+  // Show More toggle: if hidden placeholder exists we show it when clicked
   const toggleBtn = document.getElementById('toggle-projects');
   const hiddenPlaceholder = document.getElementById('hidden-placeholder');
   if(toggleBtn){
     toggleBtn.addEventListener('click', function(){
+      // if there's a real #projects-hidden container uncommented in future, you can toggle that instead
       hiddenPlaceholder.classList.toggle('hidden');
       toggleBtn.textContent = hiddenPlaceholder.classList.contains('hidden') ? 'Show More Projects' : 'Show Less';
     });
   }
 
-  // Modal slideshow with pager
+  // Workflow modal and slideshow
   const workflowModal = document.getElementById('workflowModal');
   const modalImage = document.getElementById('modalImage');
   const modalCloseBtn = document.getElementById('modalCloseBtn');
@@ -241,86 +234,95 @@ document.addEventListener('DOMContentLoaded', function(){
   const modalPager = document.getElementById('modalPager');
   const slideCounter = document.getElementById('slideCounter');
 
-  let slides = [], idx = 0, autoplay = null;
-  const DELAY = 4500;
+  let slides = [], current = 0, autoplayTimer = null;
+  const AUTOPLAY_MS = 5000;
 
-  function renderPager(){
+  function buildPager(){
     modalPager.innerHTML = '';
     slides.forEach((_, i) => {
       const dot = document.createElement('button');
       dot.type = 'button';
-      dot.className = 'modal-dot' + (i===idx ? ' active' : '');
-      dot.setAttribute('aria-label', 'Slide ' + (i+1));
-      dot.addEventListener('click', () => { idx = i; showSlide(); stopAutoplay(); });
+      dot.className = 'modal-dot' + (i===current ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to slide ' + (i+1));
+      dot.addEventListener('click', ()=> { current = i; showSlide(); });
       modalPager.appendChild(dot);
     });
   }
   function showSlide(){
     if(!slides.length) return;
-    modalImage.src = slides[idx];
-    modalImage.alt = 'Slide ' + (idx+1);
-    slideCounter.textContent = (idx+1) + ' / ' + slides.length;
-    Array.from(modalPager.children).forEach((el, i) => el.classList.toggle('active', i===idx));
+    modalImage.src = slides[current];
+    modalImage.alt = 'Slide ' + (current+1);
+    slideCounter.textContent = (current+1) + ' / ' + slides.length;
+    // update pager dots active class
+    Array.from(modalPager.children).forEach((el, idx) => {
+      el.classList.toggle('active', idx===current);
+    });
   }
-  function openModal(images, start=0){
-    slides = images.slice();
-    idx = start || 0;
-    renderPager();
+  function openModal(images, startIndex=0){
+    slides = images || [];
+    current = startIndex || 0;
+    buildPager();
     showSlide();
     workflowModal.classList.remove('hidden');
     workflowModal.classList.add('flex');
     document.documentElement.style.overflow = 'hidden';
     startAutoplay();
   }
-  function closeModal(){ workflowModal.classList.add('hidden'); workflowModal.classList.remove('flex'); document.documentElement.style.overflow = ''; stopAutoplay(); }
-  function next(){ if(slides.length) { idx = (idx + 1) % slides.length; showSlide(); } }
-  function prev(){ if(slides.length) { idx = (idx - 1 + slides.length) % slides.length; showSlide(); } }
-  function startAutoplay(){ stopAutoplay(); autoplay = setInterval(next, DELAY); }
-  function stopAutoplay(){ if(autoplay){ clearInterval(autoplay); autoplay = null; } }
+  function closeModal(){
+    workflowModal.classList.add('hidden');
+    workflowModal.classList.remove('flex');
+    document.documentElement.style.overflow = '';
+    stopAutoplay();
+  }
+  function nextSlide(){ if(slides.length) { current = (current+1) % slides.length; showSlide(); } }
+  function prevSlide(){ if(slides.length) { current = (current-1 + slides.length) % slides.length; showSlide(); } }
+  function startAutoplay(){ stopAutoplay(); autoplayTimer = setInterval(nextSlide, AUTOPLAY_MS); }
+  function stopAutoplay(){ if(autoplayTimer){ clearInterval(autoplayTimer); autoplayTimer = null; } }
 
-  // Hook view workflow buttons
+  // Hook up View Workflow buttons
   document.querySelectorAll('.open-workflow').forEach(btn => {
     btn.addEventListener('click', function(e){
       e.preventDefault();
       const card = btn.closest('.project-card');
       let imgs = [];
-      try{ imgs = JSON.parse(card.getAttribute('data-images') || '[]'); }catch(e){ imgs=[]; }
+      try { imgs = JSON.parse(card.getAttribute('data-images') || '[]'); } catch(e) { imgs = []; }
       if(!imgs.length && card.querySelector('img')) imgs = [card.querySelector('img').src];
       openModal(imgs, 0);
     });
   });
 
-  // click on card image to open at that slide
-  document.querySelectorAll('.project-card img').forEach(img => {
-    img.style.cursor = 'zoom-in';
-    img.addEventListener('click', function(){
-      const card = img.closest('.project-card');
+  // Clicking an image in the card opens modal at that image (if it exists in data-images)
+  document.querySelectorAll('.project-card img').forEach(imgEl => {
+    imgEl.style.cursor = 'zoom-in';
+    imgEl.addEventListener('click', function(e){
+      const card = imgEl.closest('.project-card');
       let imgs = [];
-      try{ imgs = JSON.parse(card.getAttribute('data-images') || '[]'); }catch(e){ imgs=[]; }
-      let start = imgs.findIndex(s => s === img.src || s === img.getAttribute('src'));
-      if(start === -1) start = 0;
-      openModal(imgs.length ? imgs : [img.src], start);
+      try { imgs = JSON.parse(card.getAttribute('data-images') || '[]'); } catch(e){ imgs=[]; }
+      // find index by filename match (handles absolute vs relative)
+      const srcMatch = imgs.findIndex(src => src === imgEl.src || src === imgEl.getAttribute('src'));
+      openModal(imgs.length ? imgs : [imgEl.src], srcMatch >= 0 ? srcMatch : 0);
     });
   });
 
   // modal controls
   modalCloseBtn.addEventListener('click', closeModal);
   workflowModal.addEventListener('click', function(e){ if(e.target === workflowModal) closeModal(); });
-  prevBtn.addEventListener('click', function(){ prev(); stopAutoplay(); });
-  nextBtn.addEventListener('click', function(){ next(); stopAutoplay(); });
+  prevBtn.addEventListener('click', function(){ prevSlide(); stopAutoplay(); });
+  nextBtn.addEventListener('click', function(){ nextSlide(); stopAutoplay(); });
 
   document.addEventListener('keydown', function(e){
     if(workflowModal.classList.contains('hidden')) return;
     if(e.key === 'Escape') closeModal();
-    if(e.key === 'ArrowLeft') prev();
-    if(e.key === 'ArrowRight') next();
+    if(e.key === 'ArrowLeft') prevSlide();
+    if(e.key === 'ArrowRight') nextSlide();
   });
 
-  // admin toggle
+  // Admin link toggle via ?admin=1
   if(new URLSearchParams(window.location.search).get('admin') === '1'){
     document.getElementById('admin-link')?.classList.remove('hidden');
     document.getElementById('admin-link-mobile')?.classList.remove('hidden');
   }
+
 });
 </script>
 </body>
