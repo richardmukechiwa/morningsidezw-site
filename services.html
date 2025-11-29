@@ -1,230 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Services - RM Connect</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services - FLD TECH Solutions Ltd</title>
+  <link rel="stylesheet" href="./styles/tailwind.min.css" />
 
-    <!-- SEO -->
-    <meta name="description" content="Automation, AI agents, dashboards, workflow optimization and data solutions tailored for businesses." />
-    <meta property="og:title" content="Services - RM Connect" />
-    <meta property="og:description" content="Automation, AI agents, dashboards, workflow optimization and data solutions tailored for businesses." />
-    <meta property="og:type" content="website" />
+  <!-- Inter Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 
-    <!-- Styles -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Animations -->
-    <style>
-        .fade-up {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 0.8s ease-out forwards;
-        }
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .hover-card {
-            transition: all 0.25s ease;
-        }
-        .hover-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
-        }
-    </style>
-
-    <!-- Mobile Menu Script -->
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-    </script>
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+    .gradient-border:hover {
+      box-shadow: 0 0 25px rgba(255, 106, 0, 0.35);
+      border-color: #ff6a00;
+    }
+  </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-[#F7F9FC] text-gray-800">
+  <!-- Header -->
+  <header class="bg-white/80 backdrop-blur-md shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-3">
+        <img src="./assets/logo.png" alt="FLD TECH Logo" class="w-12 h-12" />
+        <span class="text-2xl font-bold tracking-tight text-gray-900">FLD TECH Solutions Ltd</span>
+      </a>
 
-    <!-- HEADER -->
-    <header class="bg-white shadow-sm fixed top-0 left-0 w-full z-50">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="font-semibold text-xl">RM Connect</a>
+      <nav class="hidden md:flex space-x-8 text-[17px] font-medium">
+        <a href="index.html" class="hover:text-[#FF6A00] transition">Home</a>
+        <a href="services.html" class="text-[#FF6A00] font-semibold">Services</a>
+        <a href="about.html" class="hover:text-[#FF6A00] transition">About</a>
+        <a href="contact.html" class="hover:text-[#FF6A00] transition">Contact</a>
+      </nav>
 
-            <!-- Desktop Nav -->
-            <nav class="hidden md:flex space-x-8">
-                <a href="index.html" class="hover:text-blue-600">Home</a>
-                <a href="services.html" class="text-blue-600 font-semibold">Services</a>
-                <a href="contact.html" class="hover:text-blue-600">Contact</a>
-            </nav>
+      <a href="contact.html">
+        <button class="hidden md:block bg-[#FF6A00] hover:bg-[#e45f00] text-white px-5 py-2.5 rounded-lg font-semibold shadow-md transition">
+          Get a Quote
+        </button>
+      </a>
+    </div>
+  </header>
 
-            <!-- Mobile Button -->
-            <button onclick="toggleMenu()" class="md:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" stroke="currentColor">
-                    <path stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
+  <!-- Hero Section -->
+  <section class="bg-[#0A1B2A] text-white py-24">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+        Professional Services Tailored to Your Business
+      </h1>
+      <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+        From automation to analytics, we deliver powerful digital solutions that accelerate growth.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-14">
+        What We Offer
+      </h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        
+        <!-- Service Card -->
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 hover:shadow-xl gradient-border transition duration-300">
+          <h3 class="text-xl font-semibold mb-4 text-[#0A1B2A]">AI Automation</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Streamline your workflows with custom AI-driven automations to cut costs, save time, and eliminate manual tasks.
+          </p>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white border-t p-4 space-y-4">
-            <a href="index.html" class="block">Home</a>
-            <a href="services.html" class="block font-semibold text-blue-600">Services</a>
-            <a href="contact.html" class="block">Contact</a>
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 hover:shadow-xl gradient-border transition duration-300">
+          <h3 class="text-xl font-semibold mb-4 text-[#0A1B2A]">Machine Learning Models</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Predictive analytics, forecasting, classification, and custom ML models designed for real-world performance.
+          </p>
         </div>
-    </header>
 
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 hover:shadow-xl gradient-border transition duration-300">
+          <h3 class="text-xl font-semibold mb-4 text-[#0A1B2A]">Business Data Analytics</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Convert raw business data into actionable insights using dashboards, reports, and advanced analytics.
+          </p>
+        </div>
 
-    <!-- HERO -->
-    <section class="pt-32 pb-20 bg-gradient-to-b from-blue-600 to-blue-500 text-white text-center">
-        <h1 class="text-4xl md:text-5xl font-extrabold fade-up">Automation. Intelligence. Optimization.</h1>
-        <p class="mt-4 text-lg max-w-2xl mx-auto fade-up" style="animation-delay:0.15s">
-            Smart systems designed to accelerate your business through AI, automation, and data-driven tools.
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 hover:shadow-xl gradient-border transition duration-300">
+          <h3 class="text-xl font-semibold mb-4 text-[#0A1B2A]">Web App Development</h3>
+          <p class="text-gray-600 leading-relaxed">
+            High-performance websites and applications built for scalability and modern user experience.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 hover:shadow-xl gradient-border transition duration-300">
+          <h3 class="text-xl font-semibold mb-4 text-[#0A1B2A]">Custom Software Solutions</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Tailored software tools designed specifically to meet the needs of your business operations.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 hover:shadow-xl gradient-border transition duration-300">
+          <h3 class="text-xl font-semibold mb-4 text-[#0A1B2A]">Consulting & Strategy</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Expert guidance on digital transformation, automation opportunities, and data strategy.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-[#0A1B2A] text-white text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+      Ready to Transform Your Business?
+    </h2>
+    <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
+      Let’s build intelligent systems that streamline your operations and unlock new growth opportunities.
+    </p>
+    <a href="contact.html">
+      <button class="bg-[#FF6A00] hover:bg-[#e45f00] text-white px-10 py-3.5 rounded-xl font-semibold shadow-md transition text-lg">
+        Get in Touch
+      </button>
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t">
+    <div class="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-10">
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">FLD TECH Solutions Ltd</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">
+          Empowering businesses through automation, AI, and intelligent software systems.
         </p>
-        <a href="contact.html" class="mt-8 inline-block bg-white text-blue-600 px-6 py-3 rounded-xl font-semibold shadow hover:shadow-lg fade-up" style="animation-delay:0.3s">
-            Work With Me
-        </a>
-    </section>
+      </div>
 
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+        <ul class="space-y-2 text-gray-600">
+          <li><a href="index.html" class="hover:text-[#FF6A00]">Home</a></li>
+          <li><a href="services.html" class="hover:text-[#FF6A00]">Services</a></li>
+          <li><a href="about.html" class="hover:text-[#FF6A00]">About</a></li>
+          <li><a href="contact.html" class="hover:text-[#FF6A00]">Contact</a></li>
+        </ul>
+      </div>
 
-    <!-- SERVICES GRID -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto px-6">
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Contact</h3>
+        <p class="text-gray-600 text-sm">
+          Email: info@fldtechsolutions.com<br />
+          Phone: +44 0000 000000
+        </p>
+      </div>
+    </div>
 
-            <h2 class="text-3xl font-bold text-center fade-up">What I Offer</h2>
-            <p class="text-center text-gray-600 mt-2 mb-12 fade-up" style="animation-delay:0.15s">
-                High-impact services tailored for startups, founders, and teams.
-            </p>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-
-                <!-- SERVICE 1 -->
-                <div class="bg-white rounded-2xl p-8 hover-card fade-up" style="animation-delay:0.2s">
-                    <h3 class="text-xl font-semibold mb-4">AI Agents & Automation</h3>
-                    <p class="text-gray-600 mb-4">
-                        Custom-built automation systems that reduce manual work, improve efficiency, and run 24/7.
-                    </p>
-                    <ul class="text-gray-700 space-y-2 text-sm">
-                        <li>• Task automation</li>
-                        <li>• Agent workflows</li>
-                        <li>• Integration into business tools</li>
-                    </ul>
-                </div>
-
-                <!-- SERVICE 2 -->
-                <div class="bg-white rounded-2xl p-8 hover-card fade-up" style="animation-delay:0.3s">
-                    <h3 class="text-xl font-semibold mb-4">Dashboards & Monitoring</h3>
-                    <p class="text-gray-600 mb-4">
-                        Real-time dashboards that give you full visibility into performance, operations, and metrics.
-                    </p>
-                    <ul class="text-gray-700 space-y-2 text-sm">
-                        <li>• KPI dashboards</li>
-                        <li>• Live monitoring</li>
-                        <li>• Custom analytics</li>
-                    </ul>
-                </div>
-
-                <!-- SERVICE 3 -->
-                <div class="bg-white rounded-2xl p-8 hover-card fade-up" style="animation-delay:0.4s">
-                    <h3 class="text-xl font-semibold mb-4">AI Chatbots & Assistants</h3>
-                    <p class="text-gray-600 mb-4">
-                        Smart conversational systems designed to streamline support, sales, and internal queries.
-                    </p>
-                    <ul class="text-gray-700 space-y-2 text-sm">
-                        <li>• WhatsApp bots</li>
-                        <li>• Knowledgebase assistants</li>
-                        <li>• Lead qualification</li>
-                    </ul>
-                </div>
-
-                <!-- SERVICE 4 -->
-                <div class="bg-white rounded-2xl p-8 hover-card fade-up" style="animation-delay:0.5s">
-                    <h3 class="text-xl font-semibold mb-4">Workflow Optimization</h3>
-                    <p class="text-gray-600 mb-4">
-                        Process refinement using automation, AI, and smart logic — cutting hours of manual work.
-                    </p>
-                    <ul class="text-gray-700 space-y-2 text-sm">
-                        <li>• Bottleneck analysis</li>
-                        <li>• System redesign</li>
-                        <li>• End-to-end automation</li>
-                    </ul>
-                </div>
-
-                <!-- SERVICE 5 -->
-                <div class="bg-white rounded-2xl p-8 hover-card fade-up" style="animation-delay:0.6s">
-                    <h3 class="text-xl font-semibold mb-4">Data Engineering</h3>
-                    <p class="text-gray-600 mb-4">
-                        Clean, structured data pipelines that power analysis, automation, and decisions.
-                    </p>
-                    <ul class="text-gray-700 space-y-2 text-sm">
-                        <li>• Data models</li>
-                        <li>• ETL automation</li>
-                        <li>• Warehouse design</li>
-                    </ul>
-                </div>
-
-                <!-- SERVICE 6 -->
-                <div class="bg-white rounded-2xl p-8 hover-card fade-up" style="animation-delay:0.7s">
-                    <h3 class="text-xl font-semibold mb-4">Custom Tools & Mini-Apps</h3>
-                    <p class="text-gray-600 mb-4">
-                        Lightweight tools tailored to your team — saving time, clicks, and frustration.
-                    </p>
-                    <ul class="text-gray-700 space-y-2 text-sm">
-                        <li>• Internal apps</li>
-                        <li>• Automation toolkits</li>
-                        <li>• Scripts & utilities</li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-    <!-- WHY CHOOSE ME -->
-    <section class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-
-            <h2 class="text-3xl font-bold fade-up">Why Work With Me?</h2>
-
-            <div class="grid md:grid-cols-3 gap-12 mt-12">
-
-                <div class="fade-up bg-gray-50 p-8 rounded-2xl hover-card" style="animation-delay:0.1s">
-                    <h3 class="font-semibold text-xl mb-2">Fast Delivery</h3>
-                    <p class="text-gray-600">Rapid execution without compromising quality.</p>
-                </div>
-
-                <div class="fade-up bg-gray-50 p-8 rounded-2xl hover-card" style="animation-delay:0.2s">
-                    <h3 class="font-semibold text-xl mb-2">Custom Solutions</h3>
-                    <p class="text-gray-600">Every system is tailored to your workflow.</p>
-                </div>
-
-                <div class="fade-up bg-gray-50 p-8 rounded-2xl hover-card" style="animation-delay:0.3s">
-                    <h3 class="font-semibold text-xl mb-2">Real Business Impact</h3>
-                    <p class="text-gray-600">Solutions that save time, reduce cost, and scale.</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- CTA SECTION -->
-    <section class="py-20 bg-blue-600 text-white text-center">
-        <h2 class="text-3xl md:text-4xl font-extrabold fade-up">Ready to Build Something Powerful?</h2>
-        <p class="mt-4 fade-up" style="animation-delay:0.15s">Let’s create tools that give you leverage.</p>
-        <a href="contact.html" class="mt-8 inline-block bg-white text-blue-600 px-8 py-3 rounded-xl font-semibold shadow hover:shadow-lg fade-up" style="animation-delay:0.3s">
-            Contact Me
-        </a>
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer class="py-8 text-center text-gray-600 bg-white">
-        <p>© 2025 RM Connect. All rights reserved.</p>
-    </footer>
-
+    <div class="text-center text-gray-500 text-sm py-5 border-t">
+      © 2025 FLD TECH Solutions Ltd. All rights reserved.
+    </div>
+  </footer>
 </body>
 </html>
