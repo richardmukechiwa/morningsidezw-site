@@ -258,6 +258,24 @@
         <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center">View Workflow</a>
       </div>
 
+      <!-- Modal / Carousel Template -->
+      <div id="project-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="relative bg-white p-4 rounded-lg max-w-lg w-full">
+        <!-- Press ESC Text -->
+        <p class="absolute top-2 right-2 text-sm text-brand-primary">Press ESC</p>
+
+        <!-- Carousel Image -->
+        <img src="" id="modal-image" class="h-64 w-full object-contain rounded-lg">
+
+        <!-- Pager Dots -->
+        <div id="pager-dots" class="flex justify-center mt-4 gap-2"></div>
+
+        <!-- Close Button (optional) -->
+        <button id="close-modal" class="absolute top-2 left-2 text-gray-600 hover:text-black font-bold">&times;</button>
+      </div>
+
+      
+
   </div>
 </section>
 
@@ -437,6 +455,92 @@
     });
   });
   </script>
+
+  <!-- Modal Overlay -->
+<div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+  <!-- Modal Content -->
+  <div class="bg-white p-6 rounded-lg relative w-11/12 md:w-3/4 lg:w-1/2">
+    <!-- Close Button -->
+    <button id="modal-close" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-lg font-bold">&times;</button>
+
+    <!-- Image -->
+    <img id="modal-image" src="assets/placeholder.svg" alt="Project workflow screenshot" class="h-64 w-full object-contain rounded-lg mb-4" />
+
+    <!-- Pager Dots -->
+    <div id="pager-dots" class="flex justify-center space-x-2 mb-2">
+      <!-- Dots dynamically added here -->
+    </div>
+
+    <!-- Press ESC -->
+    <p class="text-center text-accent text-sm">Press ESC</p>
+
+    <!-- Navigation -->
+    <div class="flex justify-between mt-4">
+      <button id="prev-btn" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Prev</button>
+      <button id="next-btn" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Next</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("modal");
+  const modalImage = document.getElementById("modal-image");
+  const modalClose = document.getElementById("modal-close");
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
+  const pagerDots = document.getElementById("pager-dots");
+
+  let currentImages = [];
+  let currentIndex = 0;
+  let currentTitle = "";
+
+  // Open modal on project click
+  document.querySelectorAll(".project-card").forEach(card => {
+    card.addEventListener("click", () => {
+      currentImages = JSON.parse(card.getAttribute("data-images"));
+      currentTitle = card.querySelector("h3").textContent;
+      currentIndex = 0;
+      updateModal();
+      modal.classList.remove("hidden");
+    });
+  });
+
+  // Update modal image, alt, and pager
+  function updateModal() {
+    modalImage.src = currentImages[currentIndex];
+    modalImage.alt = "Screenshot of " + currentTitle + " - slide " + (currentIndex + 1);
+    updatePagerDots();
+  }
+
+  // Pager dots
+  function updatePagerDots() {
+    pagerDots.innerHTML = "";
+    currentImages.forEach((_, idx) => {
+      const dot = document.createElement("span");
+      dot.className = "h-2 w-2 rounded-full inline-block " + (idx === currentIndex ? "bg-accent" : "bg-gray-300");
+      pagerDots.appendChild(dot);
+    });
+  }
+
+  // Navigation buttons
+  prevBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    updateModal();
+  });
+  nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    updateModal();
+  });
+
+  // Close modal
+  modalClose.addEventListener("click", () => modal.classList.add("hidden"));
+
+  // Close on ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") modal.classList.add("hidden");
+  });
+</script>
+
 
 </body>
 </html>
