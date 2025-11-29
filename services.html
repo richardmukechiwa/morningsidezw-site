@@ -1,116 +1,230 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Meta -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services - RM Connect</title>
 
-  <title>Services — RM Connect</title>
-  <meta name="description" content="Automation, integrations, workflow design, troubleshooting and training services by RM Connect." />
+    <!-- SEO -->
+    <meta name="description" content="Automation, AI agents, dashboards, workflow optimization and data solutions tailored for businesses." />
+    <meta property="og:title" content="Services - RM Connect" />
+    <meta property="og:description" content="Automation, AI agents, dashboards, workflow optimization and data solutions tailored for businesses." />
+    <meta property="og:type" content="website" />
 
-  <link rel="canonical" href="https://morningsidezw.github.io/services.html" />
+    <!-- Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <meta property="og:title" content="Services — RM Connect" />
-  <meta property="og:description" content="Automation, integrations, workflow design, troubleshooting and training services." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://morningsidezw.github.io/services.html" />
-  <meta property="og:site_name" content="RM Connect" />
-  <meta property="og:image" content="https://morningsidezw.github.io/public/og-default.png" />
+    <!-- Animations -->
+    <style>
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hover-card {
+            transition: all 0.25s ease;
+        }
+        .hover-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+        }
+    </style>
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Services — RM Connect" />
-  <meta name="twitter:description" content="Automation, integrations, workflow design, troubleshooting and training services." />
-  <meta name="twitter:image" content="https://morningsidezw.github.io/public/og-default.png" />
-
-
-  <link rel="stylesheet" href="./styles/tailwind.min.css">
-
+    <!-- Mobile Menu Script -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
 </head>
-<body class="bg-gray-50 text-gray-900">
 
-<header class="bg-white shadow">
-  <div class="max-w-full mx-auto px-6 py-5 flex items-center justify-between">
-    <a href="index.html" class="flex items-center gap-3" aria-label="Home">
-      <svg width="40" height="40" viewBox="0 0 64 64">
-        <rect width="64" height="64" rx="12" fill="#0A1B2A" />
-        <text x="50%" y="54%" text-anchor="middle" fill="#FF6A00" font-family="Inter, sans-serif" font-size="24" font-weight="700">RM</text>
-      </svg>
-    </a>
+<body class="bg-gray-50 text-gray-800">
 
-    <nav class="hidden md:flex gap-6 text-sm text-gray-700">
-      <a href="index.html">Home</a>
-      <a href="services.html" class="font-semibold text-accent">Services</a>
-      <a href="testimonials.html">Testimonials</a>
-      <a href="about.html">About</a>
-      <a id="admin-link" href="admin/index.html" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
-    </nav>
-  </div>
-</header>
+    <!-- HEADER -->
+    <header class="bg-white shadow-sm fixed top-0 left-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-semibold text-xl">RM Connect</a>
 
-<main class="max-w-4xl mx-auto p-6">
-  <h1 class="text-3xl font-bold mb-8 text-center">Services</h1>
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="hover:text-blue-600">Home</a>
+                <a href="services.html" class="text-blue-600 font-semibold">Services</a>
+                <a href="contact.html" class="hover:text-blue-600">Contact</a>
+            </nav>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Mobile Button -->
+            <button onclick="toggleMenu()" class="md:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" stroke="currentColor">
+                    <path stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
 
-    <div class="bg-white p-6 rounded-lg shadow-sm flex gap-4 items-start">
-      <div class="text-orange-500 text-3xl">⚙️</div>
-      <div>
-        <h3 class="font-semibold mb-2">Workflow Setup</h3>
-        <p class="text-gray-700">Design and implement custom workflows tailored for finance operations and other businesses.</p>
-      </div>
-    </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t p-4 space-y-4">
+            <a href="index.html" class="block">Home</a>
+            <a href="services.html" class="block font-semibold text-blue-600">Services</a>
+            <a href="contact.html" class="block">Contact</a>
+        </div>
+    </header>
 
-    <div class="bg-white p-6 rounded-lg shadow-sm flex gap-4 items-start">
-      <div class="text-orange-500 text-3xl">🔗</div>
-      <div>
-        <h3 class="font-semibold mb-2">System Integrations</h3>
-        <p class="text-gray-700">Connect apps, databases and third-party services into unified systems.</p>
-      </div>
-    </div>
 
-    <div class="bg-white p-6 rounded-lg shadow-sm flex gap-4 items-start">
-      <div class="text-orange-500 text-3xl">🛠️</div>
-      <div>
-        <h3 class="font-semibold mb-2">Troubleshooting</h3>
-        <p class="text-gray-700">Debug, optimize and maintain workflows for peak performance.</p>
-      </div>
-    </div>
+    <!-- HERO -->
+    <section class="pt-32 pb-20 bg-gradient-to-b from-blue-600 to-blue-500 text-white text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold fade-up">Automation. Intelligence. Optimization.</h1>
+        <p class="mt-4 text-lg max-w-2xl mx-auto fade-up" style="animation-delay:0.15s">
+            Smart systems designed to accelerate your business through AI, automation, and data-driven tools.
+        </p>
+        <a href="contact.html" class="mt-8 inline-block bg-white text-blue-600 px-6 py-3 rounded-xl font-semibold shadow hover:shadow-lg fade-up" style="animation-delay:0.3s">
+            Work With Me
+        </a>
+    </section>
 
-    <div class="bg-white p-6 rounded-lg shadow-sm flex gap-4 items-start">
-      <div class="text-orange-500 text-3xl">📚</div>
-      <div>
-        <h3 class="font-semibold mb-2">Training & Handover</h3>
-        <p class="text-gray-700">Documentation, training and handover so your team can run workflows independently.</p>
-      </div>
-    </div>
 
-  </div>
-</main>
+    <!-- SERVICES GRID -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
 
-<footer class="bg-white border-t mt-12">
-  <div class="max-w-full mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
-    <p>© 2025 RM Connect</p>
-    <!--p><a href="mailto:rmconnectzw@gmail.com" class="text-orange-500">rmconnectzw@gmail.com</a></!--p>-->
-  </div>
-</footer>
+            <h2 class="text-3xl font-bold text-center fade-up">What I Offer</h2>
+            <p class="text-center text-gray-600 mt-2 mb-12 fade-up" style="animation-delay:0.15s">
+                High-impact services tailored for startups, founders, and teams.
+            </p>
 
-<script>
-  function showAdminIfNeeded() {
-    const params = new URLSearchParams(window.location.search);
-    const isAdmin = params.get("admin") === "1";
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-    const adminLink = document.getElementById("admin-link");
-    const adminLinkMobile = document.getElementById("admin-link-mobile");
+                <!-- SERVICE 1 -->
+                <div class="bg-white rounded-2xl p-8 hover-card fade-up" style="animation-delay:0.2s">
+                    <h3 class="text-xl font-semibold mb-4">AI Agents & Automation</h3>
+                    <p class="text-gray-600 mb-4">
+                        Custom-built automation systems that reduce manual work, improve efficiency, and run 24/7.
+                    </p>
+                    <ul class="text-gray-700 space-y-2 text-sm">
+                        <li>• Task automation</li>
+                        <li>• Agent workflows</li>
+                        <li>• Integration into business tools</li>
+                    </ul>
+                </div>
 
-    if (adminLink) adminLink.classList.toggle("hidden", !isAdmin);
-    if (adminLinkMobile) adminLinkMobile.classList.toggle("hidden", !isAdmin);
-  }
+                <!-- SERVICE 2 -->
+                <div class="bg-white rounded-2xl p-8 hover-card fade-up" style="animation-delay:0.3s">
+                    <h3 class="text-xl font-semibold mb-4">Dashboards & Monitoring</h3>
+                    <p class="text-gray-600 mb-4">
+                        Real-time dashboards that give you full visibility into performance, operations, and metrics.
+                    </p>
+                    <ul class="text-gray-700 space-y-2 text-sm">
+                        <li>• KPI dashboards</li>
+                        <li>• Live monitoring</li>
+                        <li>• Custom analytics</li>
+                    </ul>
+                </div>
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", showAdminIfNeeded);
-  } else {
-    showAdminIfNeeded();
-  }
-</script>
+                <!-- SERVICE 3 -->
+                <div class="bg-white rounded-2xl p-8 hover-card fade-up" style="animation-delay:0.4s">
+                    <h3 class="text-xl font-semibold mb-4">AI Chatbots & Assistants</h3>
+                    <p class="text-gray-600 mb-4">
+                        Smart conversational systems designed to streamline support, sales, and internal queries.
+                    </p>
+                    <ul class="text-gray-700 space-y-2 text-sm">
+                        <li>• WhatsApp bots</li>
+                        <li>• Knowledgebase assistants</li>
+                        <li>• Lead qualification</li>
+                    </ul>
+                </div>
+
+                <!-- SERVICE 4 -->
+                <div class="bg-white rounded-2xl p-8 hover-card fade-up" style="animation-delay:0.5s">
+                    <h3 class="text-xl font-semibold mb-4">Workflow Optimization</h3>
+                    <p class="text-gray-600 mb-4">
+                        Process refinement using automation, AI, and smart logic — cutting hours of manual work.
+                    </p>
+                    <ul class="text-gray-700 space-y-2 text-sm">
+                        <li>• Bottleneck analysis</li>
+                        <li>• System redesign</li>
+                        <li>• End-to-end automation</li>
+                    </ul>
+                </div>
+
+                <!-- SERVICE 5 -->
+                <div class="bg-white rounded-2xl p-8 hover-card fade-up" style="animation-delay:0.6s">
+                    <h3 class="text-xl font-semibold mb-4">Data Engineering</h3>
+                    <p class="text-gray-600 mb-4">
+                        Clean, structured data pipelines that power analysis, automation, and decisions.
+                    </p>
+                    <ul class="text-gray-700 space-y-2 text-sm">
+                        <li>• Data models</li>
+                        <li>• ETL automation</li>
+                        <li>• Warehouse design</li>
+                    </ul>
+                </div>
+
+                <!-- SERVICE 6 -->
+                <div class="bg-white rounded-2xl p-8 hover-card fade-up" style="animation-delay:0.7s">
+                    <h3 class="text-xl font-semibold mb-4">Custom Tools & Mini-Apps</h3>
+                    <p class="text-gray-600 mb-4">
+                        Lightweight tools tailored to your team — saving time, clicks, and frustration.
+                    </p>
+                    <ul class="text-gray-700 space-y-2 text-sm">
+                        <li>• Internal apps</li>
+                        <li>• Automation toolkits</li>
+                        <li>• Scripts & utilities</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- WHY CHOOSE ME -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+
+            <h2 class="text-3xl font-bold fade-up">Why Work With Me?</h2>
+
+            <div class="grid md:grid-cols-3 gap-12 mt-12">
+
+                <div class="fade-up bg-gray-50 p-8 rounded-2xl hover-card" style="animation-delay:0.1s">
+                    <h3 class="font-semibold text-xl mb-2">Fast Delivery</h3>
+                    <p class="text-gray-600">Rapid execution without compromising quality.</p>
+                </div>
+
+                <div class="fade-up bg-gray-50 p-8 rounded-2xl hover-card" style="animation-delay:0.2s">
+                    <h3 class="font-semibold text-xl mb-2">Custom Solutions</h3>
+                    <p class="text-gray-600">Every system is tailored to your workflow.</p>
+                </div>
+
+                <div class="fade-up bg-gray-50 p-8 rounded-2xl hover-card" style="animation-delay:0.3s">
+                    <h3 class="font-semibold text-xl mb-2">Real Business Impact</h3>
+                    <p class="text-gray-600">Solutions that save time, reduce cost, and scale.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CTA SECTION -->
+    <section class="py-20 bg-blue-600 text-white text-center">
+        <h2 class="text-3xl md:text-4xl font-extrabold fade-up">Ready to Build Something Powerful?</h2>
+        <p class="mt-4 fade-up" style="animation-delay:0.15s">Let’s create tools that give you leverage.</p>
+        <a href="contact.html" class="mt-8 inline-block bg-white text-blue-600 px-8 py-3 rounded-xl font-semibold shadow hover:shadow-lg fade-up" style="animation-delay:0.3s">
+            Contact Me
+        </a>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="py-8 text-center text-gray-600 bg-white">
+        <p>© 2025 RM Connect. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Services — RM Connect</title>
+  <meta name="description" content="Automation, integrations, workflow design, troubleshooting and training services by RM Connect." />
+
+  <link rel="canonical" href="https://morningsidezw.github.io/services.html" />
+
+  <meta property="og:title" content="Services — RM Connect" />
+  <meta property="og:description" content="Automation, integrations, workflow design, troubleshooting and training services." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://morningsidezw.github.io/services.html" />
+  <meta property="og:site_name" content="RM Connect" />
+  <meta property="og:image" content="https://morningsidezw.github.io/public/og-default.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Services — RM Connect" />
+  <meta name="twitter:description" content="Automation, integrations, workflow design, troubleshooting and training services." />
+  <meta name="twitter:image" content="https://morningsidezw.github.io/public/og-default.png" />
+
+
+  <link rel="stylesheet" href="./styles/tailwind.min.css">
+
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+<header class="bg-white shadow">
+  <div class="max-w-full mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3" aria-label="Home">
+      <svg width="40" height="40" viewBox="0 0 64 64">
+        <rect width="64" height="64" rx="12" fill="#0A1B2A" />
+        <text x="50%" y="54%" text-anchor="middle" fill="#FF6A00" font-family="Inter, sans-serif" font-size="24" font-weight="700">RM</text>
+      </svg>
+    </a>
+
+    <nav class="hidden md:flex gap-6 text-sm text-gray-700">
+      <a href="index.html">Home</a>
+      <a href="services.html" class="font-semibold text-accent">Services</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="about.html">About</a>
+      <a id="admin-link" href="admin/index.html" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
+    </nav>
+  </div>
+</header>
+
+<main class="max-w-4xl mx-auto p-6">
+  <h1 class="text-3xl font-bold mb-8 text-center">Services</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <div class="bg-white p-6 rounded-lg shadow-sm flex gap-4 items-start">
+      <div class="text-orange-500 text-3xl">⚙️</div>
+      <div>
+        <h3 class="font-semibold mb-2">Workflow Setup</h3>
+        <p class="text-gray-700">Design and implement custom workflows tailored for finance operations and other businesses.</p>
+      </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-sm flex gap-4 items-start">
+      <div class="text-orange-500 text-3xl">🔗</div>
+      <div>
+        <h3 class="font-semibold mb-2">System Integrations</h3>
+        <p class="text-gray-700">Connect apps, databases and third-party services into unified systems.</p>
+      </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-sm flex gap-4 items-start">
+      <div class="text-orange-500 text-3xl">🛠️</div>
+      <div>
+        <h3 class="font-semibold mb-2">Troubleshooting</h3>
+        <p class="text-gray-700">Debug, optimize and maintain workflows for peak performance.</p>
+      </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-sm flex gap-4 items-start">
+      <div class="text-orange-500 text-3xl">📚</div>
+      <div>
+        <h3 class="font-semibold mb-2">Training & Handover</h3>
+        <p class="text-gray-700">Documentation, training and handover so your team can run workflows independently.</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="bg-white border-t mt-12">
+  <div class="max-w-full mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
+    <p>© 2025 RM Connect</p>
+    <!--p><a href="mailto:rmconnectzw@gmail.com" class="text-orange-500">rmconnectzw@gmail.com</a></!--p>-->
+  </div>
+</footer>
+
+<script>
+  function showAdminIfNeeded() {
+    const params = new URLSearchParams(window.location.search);
+    const isAdmin = params.get("admin") === "1";
+
+    const adminLink = document.getElementById("admin-link");
+    const adminLinkMobile = document.getElementById("admin-link-mobile");
+
+    if (adminLink) adminLink.classList.toggle("hidden", !isAdmin);
+    if (adminLinkMobile) adminLinkMobile.classList.toggle("hidden", !isAdmin);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", showAdminIfNeeded);
+  } else {
+    showAdminIfNeeded();
+  }
+</script>
+
+</body>
+</html>
