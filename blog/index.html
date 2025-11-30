@@ -33,7 +33,7 @@
   <script>
     async function loadPosts(){
       try {
-        const res = await fetch('/posts/index.json'); // <-- make sure this path matches where you put the JSON
+        const res = await fetch('blog/posts/index.json'); // <-- make sure this path matches where you put the JSON
         if(!res.ok) throw new Error('posts index not found: ' + res.status);
         const posts = await res.json();
         const container = document.getElementById('posts');
