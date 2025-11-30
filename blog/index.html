@@ -1,9 +1,11 @@
 <!doctype html>
 <html lang="en">
-</head>
+<head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Blog — RM Connect</title>
+
+  <!-- Styles -->
   <link rel="stylesheet" href="/styles/tailwind-custom.css">
 
   <style>
@@ -11,20 +13,28 @@
       --brand-navy: #0A1B2A;
       --brand-accent: #FF6A00;
     }
-    html, body { margin:0; padding:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial; }
-    .bg-accent { background: var(--brand-accent); }
+    html, body {
+      margin:0;
+      padding:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    }
+    .container {
+      max-width: 900px;
+      margin: 32px auto;
+      padding: 0 16px;
+    }
     .text-accent { color: var(--brand-accent); }
-    .container{max-width:900px;margin:32px auto;padding:0 16px}
+    .bg-accent { background: var(--brand-accent); }
   </style>
-
 </head>
 
 <body class="bg-gray-50 text-gray-900">
-  
+
+  <!-- HEADER -->
   <header class="bg-white shadow">
     <div class="max-w-full mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3" aria-label="Home">
-        <svg width="40" height="40" viewBox="0 0 64 64" role="img" aria-hidden="true">
+      <a href="/index.html" class="flex items-center gap-3" aria-label="Home">
+        <svg width="40" height="40" viewBox="0 0 64 64" role="img">
           <rect width="64" height="64" rx="12" fill="#0A1B2A"/>
           <text x="50%" y="54%" text-anchor="middle" fill="#FF6A00"
             font-family="Inter, sans-serif" font-size="24" font-weight="700">RM</text>
@@ -32,80 +42,98 @@
       </a>
 
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
-        <!--a href="index.html" class="hover:text-gray-900">Home</!--a>-->
-        <a href="index.html" class="hover:text-gray-900">Home</a>
-        <a href="services.html" class="hover:text-gray-900">Services</a>
-        <a href="testimonials.html" class="hover:text-gray-900">Testimonials</a>
-        <!--a href="blog/index.html" class="py-2">Blog</!--a>-->
-        <a href="blog/index.html" class="text-accent font-semibold">Blog</a>
-        <a href="about.html" class="hover:text-gray-900">About</a>
-        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer"
-           class="ml-4 inline-flex items-center px-3 py-2 bg-[#25D366] text-white rounded-md hover:opacity-95">WhatsApp</a>
-        <a id="admin-link" href="admin/index.html" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
+        <a href="/index.html" class="hover:text-gray-900">Home</a>
+        <a href="/services.html" class="hover:text-gray-900">Services</a>
+        <a href="/testimonials.html" class="hover:text-gray-900">Testimonials</a>
+        <a href="/blog/index.html" class="text-accent font-semibold">Blog</a>
+        <a href="/about.html" class="hover:text-gray-900">About</a>
+
+        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services"
+           target="_blank"
+           class="ml-4 inline-flex items-center px-3 py-2 bg-[#25D366] text-white rounded-md hover:opacity-95">
+           WhatsApp
+        </a>
+
+        <a id="admin-link"
+           href="/admin/index.html"
+           class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">
+           Admin
+        </a>
       </nav>
 
-      <button class="md:hidden" aria-label="Open menu" type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <button class="md:hidden" type="button" aria-label="Open menu"
+              onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path d="M4 6h16M4 12h16M4 18h16"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </button>
     </div>
 
-    <!-- Mobile Menu -->
+    <!-- MOBILE MENU -->
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
       <div class="px-6 py-4 flex flex-col gap-3">
-        <!--a href="index.html" class="py-2">Home</!--a>-->
-        <a href="index.html" class="hover:text-gray-900">Home</a>
-        <a href="services.html" class="py-2">Services</a>
-        <a href="testimonials.html" class="py-2">Testimonials</a>
-        <!--a href="blog/index.html" class="py-2">Blog</!--a>-->
-        <a href="blog/index.html" class="text-accent font-semibold">Blog</a>
-        <a href="about.html" class="py-2">About</a>
-        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer"
-           class="py-2 bg-[#25D366] text-white rounded text-center">WhatsApp</a>
-        <a id="admin-link-mobile" href="admin/index.html" class="py-2 bg-accent text-white rounded text-center hidden">Admin</a>
+        <a href="/index.html">Home</a>
+        <a href="/services.html">Services</a>
+        <a href="/testimonials.html">Testimonials</a>
+        <a href="/blog/index.html" class="text-accent font-semibold">Blog</a>
+        <a href="/about.html">About</a>
+
+        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services"
+           class="py-2 bg-[#25D366] text-white rounded text-center">
+           WhatsApp
+        </a>
+
+        <a id="admin-link-mobile"
+           href="/admin/index.html"
+           class="py-2 bg-accent text-white rounded text-center hidden">
+           Admin
+        </a>
       </div>
     </div>
   </header>
 
-<body>
-  <main class="max-w-full mx-auto px-6 py-12">
-
-  <div class="container">
-    <!--header style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-      <a href="/" aria-label="Home" style="display:flex;align-items:center;gap:8px;text-decoration:none">
-        <div style="width:44px;height:44px;background:#0A1B2A;color:#FF6A00;display:flex;align-items:center;justify-content:center;border-radius:8px">RM</div>
-        <div style="font-weight:700">RM Connect — Blog</div>
-      </a>
-    </!--header>-->
-
-    <h1>Blog</h1>
+  <!-- CONTENT -->
+  <main class="container py-12">
+    <h1 class="text-3xl font-bold mb-6">Blog</h1>
     <div id="posts"></div>
-  </div>
   </main>
+
+  <!-- SCRIPT: Load blog posts -->
   <script>
-    async function loadPosts(){
+    async function loadPosts() {
       try {
-        const res = await fetch('posts/posts.json'); // <-- make sure this path matches where you put the JSON
-        if(!res.ok) throw new Error('posts index not found: ' + res.status);
+        const res = await fetch('/posts/index.json');
+        if (!res.ok) throw new Error('Posts file missing: ' + res.status);
+
         const posts = await res.json();
         const container = document.getElementById('posts');
-        if(!Array.isArray(posts) || posts.length === 0) {
+
+        if (!Array.isArray(posts) || posts.length === 0) {
           container.innerHTML = '<p>No posts yet.</p>';
           return;
         }
-        posts.forEach(p=>{
-          const el = document.createElement('div');
-          el.style.padding = '16px 0';
-          el.innerHTML = `<a href="${p.url}" style="text-decoration:none;color:inherit"><h2 style="margin:0">${p.title}</h2><p style="margin:6px 0;color:#475569">${p.description}</p><small style="color:#94a3b8">${p.date}</small></a>`;
-          container.appendChild(el);
+
+        posts.forEach(p => {
+          const div = document.createElement('div');
+          div.className = "py-4 border-b border-gray-200";
+          div.innerHTML = `
+            <a href="${p.url}" class="block">
+              <h2 class="text-xl font-semibold">${p.title}</h2>
+              <p class="text-gray-600">${p.description}</p>
+              <small class="text-gray-400">${p.date}</small>
+            </a>
+          `;
+          container.appendChild(div);
         });
       } catch (err) {
-        document.getElementById('posts').innerHTML = '<p style="color:#ef4444">Failed to load posts. ' + err.message + '</p>';
-        console.error(err);
+        document.getElementById('posts').innerHTML =
+          '<p class="text-red-500">Failed to load posts: ' + err.message + '</p>';
       }
     }
+
     loadPosts();
   </script>
+
 </body>
 </html>

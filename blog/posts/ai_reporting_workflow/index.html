@@ -14,7 +14,6 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href="https://morningsidezw.com/blog/posts/ai_reporting_workflow/index.html" />
 
-  <!-- Local styles (must exist at this path) -->
   <link rel="stylesheet" href="/styles/tailwind-custom.css">
   <style>
     :root{ --brand-navy:#0A1B2A; --brand-accent:#FF6A00; }
@@ -23,11 +22,14 @@
     a{color:var(--brand-accent)}
   </style>
 </head>
+
 <body class="bg-gray-50 text-gray-900">
+
+  <!-- HEADER -->
   <header class="bg-white shadow">
     <div class="max-w-full mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3" aria-label="Home">
-        <svg width="40" height="40" viewBox="0 0 64 64" role="img" aria-hidden="true">
+      <a href="/index.html" class="flex items-center gap-3" aria-label="Home">
+        <svg width="40" height="40" viewBox="0 0 64 64" role="img">
           <rect width="64" height="64" rx="12" fill="#0A1B2A"/>
           <text x="50%" y="54%" text-anchor="middle" fill="#FF6A00"
             font-family="Inter, sans-serif" font-size="24" font-weight="700">RM</text>
@@ -35,74 +37,61 @@
       </a>
 
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
-        <!--a href="index.html" class="hover:text-gray-900">Home</!--a>-->
-        <a href="index.html" class="hover:text-gray-900">Home</a>
-        <a href="services.html" class="hover:text-gray-900">Services</a>
-        <a href="testimonials.html" class="hover:text-gray-900">Testimonials</a>
-        <!--a href="blog/index.html" class="py-2">Blog</!--a>-->
-        <a href="blog/index.html" class="text-accent font-semibold">Blog</a>
-        <a href="about.html" class="hover:text-gray-900">About</a>
-        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer"
+        <a href="/index.html" class="hover:text-gray-900">Home</a>
+        <a href="/services.html" class="hover:text-gray-900">Services</a>
+        <a href="/testimonials.html" class="hover:text-gray-900">Testimonials</a>
+        <a href="/blog/index.html" class="text-accent font-semibold">Blog</a>
+        <a href="/about.html" class="hover:text-gray-900">About</a>
+        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services"
            class="ml-4 inline-flex items-center px-3 py-2 bg-[#25D366] text-white rounded-md hover:opacity-95">WhatsApp</a>
-        <a id="admin-link" href="admin/index.html" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
+        <a id="admin-link" href="/admin/index.html"
+           class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
       </nav>
-
-      <button class="md:hidden" aria-label="Open menu" type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-      <div class="px-6 py-4 flex flex-col gap-3">
-        <!--a href="index.html" class="py-2">Home</!--a>-->
-        <a href="index.html" class="hover:text-gray-900">Home</a>
-        <a href="services.html" class="py-2">Services</a>
-        <a href="testimonials.html" class="py-2">Testimonials</a>
-        <!--a href="blog/index.html" class="py-2">Blog</!--a>-->
-        <a href="blog/index.html" class="text-accent font-semibold">Blog</a>
-        <a href="about.html" class="py-2">About</a>
-        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer"
-           class="py-2 bg-[#25D366] text-white rounded text-center">WhatsApp</a>
-        <a id="admin-link-mobile" href="admin/index.html" class="py-2 bg-accent text-white rounded text-center hidden">Admin</a>
-      </div>
     </div>
   </header>
 
+  <!-- PAGE CONTENT -->
+  <main class="container">
     <article>
-      <p style="font-size:12px;color:#64748b;margin-bottom:8px">Published: <time datetime="2025-11-30">November 30, 2025</time></p>
-      <h1 style="font-size:28px;line-height:1.1;margin:0 0 12px">With AI reporting tools now embedded in platforms like Microsoft and Google Workspace, manual client reports are becoming a huge hidden cost.</h1>
+      <p class="text-sm text-gray-500 mb-3">Published: <time datetime="2025-11-30">November 30, 2025</time></p>
 
-      <p style="font-size:18px;color:#334155">Many teams still spend hours pulling data, formatting summaries, and preparing weekly updates — and that’s where critical insights often get missed.</p>
+      <h1 class="text-3xl font-bold leading-tight mb-4">
+        With AI reporting tools now embedded in platforms like Microsoft and Google Workspace, manual client reports are becoming a huge hidden cost.
+      </h1>
 
-      <h2 style="margin-top:18px">What I built</h2>
-      <ul>
-        <li>• Fetches client data automatically</li>
-        <li>• Summarizes the insights with AI</li>
-        <li>• Flags potential churn risks</li>
-        <li>• Emails a clean PDF report to clients</li>
-        <li>• Runs entirely on n8n + AI</li>
+      <p class="text-lg text-gray-700 mb-4">
+        Many teams still spend hours pulling data, formatting summaries, and preparing weekly updates — and that’s where critical insights often get missed.
+      </p>
+
+      <h2 class="text-xl font-semibold mt-6 mb-2">What I built</h2>
+      <ul class="list-disc ml-6 text-gray-700">
+        <li>Fetches client data automatically</li>
+        <li>Summarizes the insights with AI</li>
+        <li>Flags potential churn risks</li>
+        <li>Emails a clean PDF report to clients</li>
+        <li>Runs entirely on n8n + AI</li>
       </ul>
 
-      <h3 style="margin-top:12px">Impact</h3>
-      <p>Over 6 hours saved each week while getting clearer visibility into client health.</p>
+      <h3 class="text-lg font-semibold mt-6 mb-2">Impact</h3>
+      <p class="text-gray-700">Over 6 hours saved each week while getting clearer visibility into client health.</p>
 
-      <p>As AI-powered reporting becomes the norm across major productivity tools, staying manual puts teams at a disadvantage.</p>
+      <p class="text-gray-700 mt-4">
+        As AI-powered reporting becomes the norm across major productivity tools, staying manual puts teams at a disadvantage.
+      </p>
 
-      <hr style="margin:24px 0" />
+      <hr class="my-6" />
 
-      <p style="font-weight:600">Which report in your workflow consumes the most hours every week?</p>
+      <p class="font-semibold">Which report in your workflow consumes the most hours every week?</p>
 
-      <p style="margin-top:28px;color:#475569">Tags: <span style="color:#0A1B2A;font-weight:600">#AI</span> <span style="color:#0A1B2A;font-weight:600">#Automation</span> <span style="color:#0A1B2A;font-weight:600">#n8n</span> <span style="color:#0A1B2A;font-weight:600">#ClientReporting</span> <span style="color:#0A1B2A;font-weight:600">#WorkflowAutomation</span></p>
-
-      <p style="margin-top:32px"><a href="/blog/posts/index.html">← Back to blog</a></p>
+      <p class="mt-8">
+        <a href="/blog/index.html">← Back to blog</a>
+      </p>
     </article>
 
-    <footer style="margin-top:48px;color:#64748b;font-size:13px">
-      © 2025 RM Connect 
+    <footer class="mt-12 text-gray-500 text-sm">
+      © 2025 RM Connect
     </footer>
-  </div>
+  </main>
+
 </body>
 </html>
