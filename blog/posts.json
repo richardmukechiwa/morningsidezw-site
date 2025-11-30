@@ -1,10 +1,10 @@
 [
   {
-    "title": "How I automated weekly finance reporting",
-    "slug": "/blog/posts/2025-03-01-automated-weekly-report.html",
-    "date": "2025-03-01",
-    "description": "Step-by-step on automating weekly reporting with lightweight tools.",
-    "tags": ["reporting","finance","automation"]
+    "slug": "ai-reporting-workflow",
+    "title": "With AI reporting tools manual client reports are a hidden cost",
+    "description": "How I automated client reporting with n8n + AI — saves 6+ hours/week, flags churn risks, and emails PDF reports.",
+    "date": "2025-11-30",
+    "url": "/posts/ai-reporting-workflow/",
+    "image": "/assets/og-default.jpg"
   }
-  /* add more objects here */
 ]

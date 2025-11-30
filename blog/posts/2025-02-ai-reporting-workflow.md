@@ -1,6 +1,6 @@
 With AI reporting tools now embedded in platforms like Microsoft and Google Workspace, manual client reports are becoming a huge hidden cost.
 
-Many teams still spend hours pulling data, formatting summaries, and preparing weekly updates — and that’s where critical insights often get missed.
+Many teams still spend hours pulling data, formatting summaries, and preparing weekly updates  and that’s where critical insights often get missed.
 
 I built a workflow that:
 • Fetches client data automatically
