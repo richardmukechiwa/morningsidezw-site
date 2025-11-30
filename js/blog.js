@@ -3,7 +3,7 @@
   const container = document.getElementById('posts-list');
   if (!container) return;
   try {
-    const res = await fetch('/blog/posts/posts.json', {cache: 'no-cache'});
+    const res = await fetch('/posts/posts.json', {cache: 'no-cache'});
     if (!res.ok) {
       container.innerHTML = '<p class="text-sm text-gray-500">No posts found.</p>';
       return;
