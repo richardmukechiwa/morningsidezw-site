@@ -9,7 +9,7 @@
   <!--link rel="stylesheet" href="../output.css" />-->
 
   <!-- IMPORTANT: Tailwind CDN (this was missing) -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!--script src="https://cdn.tailwindcss.com"></!--script>-->
 
   <!-- Custom styles (overrides after Tailwind) -->
   <!--link rel="stylesheet" href="output.css">
@@ -17,6 +17,17 @@
 
   
   <link rel="stylesheet" href="../styles/tailwind.min.css">
+
+  
+  <style>
+    :root {
+      --brand-navy:#0A1B2A;
+      --brand-accent:#FF6A00;
+    }
+    body { margin:0; font-family:Inter, ui-sans-serif, system-ui; }
+    .text-accent { color: var(--brand-accent); }
+    .bg-accent { background-color: var(--brand-accent); }
+  </style>
 
 
   <!-- Decap CMS JS with defer to prevent appendChild null errors -->
