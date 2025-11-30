@@ -103,7 +103,7 @@
   <script>
     async function loadPosts() {
       try {
-        const res = await fetch('/posts/index.json');
+        const res = await fetch('/posts/posts.json');
         if (!res.ok) throw new Error('Posts file missing: ' + res.status);
 
         const posts = await res.json();
