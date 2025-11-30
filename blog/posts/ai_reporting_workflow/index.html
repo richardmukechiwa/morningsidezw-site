@@ -26,10 +26,11 @@
 
 <body class="bg-gray-50 text-gray-900">
 
- <header class="bg-white shadow">
+ <!-- Header -->
+  <header class="bg-white shadow">
     <div class="max-w-full mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="/index.html" class="flex items-center gap-3" aria-label="Home">
-        <svg width="40" height="40" viewBox="0 0 64 64" role="img">
+      <a href="index.html" class="flex items-center gap-3" aria-label="Home">
+        <svg width="40" height="40" viewBox="0 0 64 64" role="img" aria-hidden="true">
           <rect width="64" height="64" rx="12" fill="#0A1B2A"/>
           <text x="50%" y="54%" text-anchor="middle" fill="#FF6A00"
             font-family="Inter, sans-serif" font-size="24" font-weight="700">RM</text>
@@ -37,54 +38,36 @@
       </a>
 
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
-        <a href="index.html" class="hover:text-gray-900">Home</a>
+        <!--a href="index.html" class="hover:text-gray-900">Home</!--a>-->
+        <a href="index.html" class="text-accent font-semibold">Home</a>
         <a href="services.html" class="hover:text-gray-900">Services</a>
         <a href="testimonials.html" class="hover:text-gray-900">Testimonials</a>
-        <a href="blog/index.html" class="text-accent font-semibold">Blog</a>
+        <a href="blog/index.html" class="py-2">Blog</a>
         <a href="about.html" class="hover:text-gray-900">About</a>
-
-        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services"
-            rel="noopener noreferrer"
-           target="_blank"
-           class="ml-4 inline-flex items-center px-3 py-2 bg-[#25D366] text-white rounded-md hover:opacity-95">
-           WhatsApp
-        </a>
-
-        <a id="admin-link"
-           href="admin/index.html"
-           class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">
-           Admin
-        </a>
+        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer"
+           class="ml-4 inline-flex items-center px-3 py-2 bg-[#25D366] text-white rounded-md hover:opacity-95">WhatsApp</a>
+        <a id="admin-link" href="admin/index.html" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
       </nav>
 
-      <button class="md:hidden" type="button" aria-label="Open menu"
-              onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path d="M4 6h16M4 12h16M4 18h16"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <button class="md:hidden" aria-label="Open menu" type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </button>
     </div>
 
-    <!-- MOBILE MENU -->
+    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
       <div class="px-6 py-4 flex flex-col gap-3">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="testimonials.html">Testimonials</a>
-        <a href="blog/index.html" class="text-accent font-semibold">Blog</a>
-        <a href="about.html">About</a>
-
-        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services"
-           class="py-2 bg-[#25D366] text-white rounded text-center">
-           WhatsApp
-        </a>
-
-        <a id="admin-link-mobile"
-           href="admin/index.html"
-           class="py-2 bg-accent text-white rounded text-center hidden">
-           Admin
-        </a>
+        <!--a href="index.html" class="py-2">Home</!--a>-->
+        <a href="index.html" class="text-accent font-semibold">Home</a>
+        <a href="services.html" class="py-2">Services</a>
+        <a href="testimonials.html" class="py-2">Testimonials</a>
+        <a href="blog/index.html" class="py-2">Blog</a>
+        <a href="about.html" class="py-2">About</a>
+        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer"
+           class="py-2 bg-[#25D366] text-white rounded text-center">WhatsApp</a>
+        <a id="admin-link-mobile" href="admin/index.html" class="py-2 bg-accent text-white rounded text-center hidden">Admin</a>
       </div>
     </div>
   </header>
