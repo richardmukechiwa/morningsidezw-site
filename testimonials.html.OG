@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Testimonials — MorningsideZW</title>
+  <meta name="description" content="Read testimonials from clients of MorningsideZW — automation, integrations, and workflow design services." />
+  <link rel="canonical" href="https://morningsidezw.com/testimonials.html" />
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Testimonials — MorningsideZW" />
+  <meta property="og:description" content="See what clients say about MorningsideZW's automation and workflow services." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://morningsidezw.com/testimonials.html" />
+  <meta property="og:site_name" content="MorningsideZW" />
+  <meta property="og:image" content="https://morningsidezw.com/public/og-default.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Testimonials — MorningsideZW" />
+  <meta name="twitter:description" content="See what clients say about Morningsidezw’s automation services." />
+  <meta name="twitter:image" content="https://morningsidezw.com/public/og-default.png" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "MorningsideZW",
+    "url": "https://morningsidezw.com",
+    "logo": "https://morningsidezw.com/public/og-default.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "hello@morningsidezw.com",
+      "contactType": "customer support"
+    }
+  }
+  </script>
+
+  <!-- Tailwind (local compiled) -->
+  <link rel="stylesheet" href="./styles/tailwind.min.css">
+
+  <!-- Brand variables -->
+  <style>
+    :root {
+      --brand-navy: #0A1B2A;
+      --brand-accent: #FF6A00;
+    }
+    .text-accent { color: var(--brand-accent); }
+    .bg-accent { background-color: var(--brand-accent); }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+
+<!-- HEADER -->
+  <header class="bg-white shadow">
+    <div class="max-w-full mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3" aria-label="Home">
+        <svg width="40" height="40" viewBox="0 0 64 64" role="img" aria-hidden="true">
+          <rect width="64" height="64" rx="12" fill="#0A1B2A"/>
+          <text x="50%" y="54%" text-anchor="middle" fill="#FF6A00"
+            font-family="Inter, sans-serif" font-size="24" font-weight="700">RM</text>
+        </svg>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
+        <!--a href="index.html" class="hover:text-gray-900">Home</!--a>-->
+        <a href="index.html" class="hover:text-gray-900">Home</a>
+        <a href="services.html" class="hover:text-gray-900">Services</a>
+        <!--a href="testimonials.html" class="hover:text-gray-900">Testimonials</!--a>-->
+        <a href="testimonials.html" class="text-accent font-semibold">Testimonials</a>
+        <a href="blog/index.html" class="py-2">Blog</a>
+        <a href="about.html" class="hover:text-gray-900">About</a>
+        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer"
+           class="ml-4 inline-flex items-center px-3 py-2 bg-[#25D366] text-white rounded-md hover:opacity-95">WhatsApp</a>
+        <a id="admin-link" href="admin/index.html" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
+      </nav>
+
+      <button class="md:hidden" aria-label="Open menu" type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+      <div class="px-6 py-4 flex flex-col gap-3">
+        <!--a href="index.html" class="py-2">Home</!--a>-->
+        <a href="index.html" class="hover:text-gray-900">Home</a>
+        <a href="services.html" class="py-2">Services</a>
+        <!--a href="testimonials.html" class="py-2">Testimonials</!--a>-->
+        <a href="testimonials.html" class="text-accent font-semibold">Testimonials</a>
+        <a href="blog/index.html" class="py-2">Blog</a>
+        <a href="about.html" class="py-2">About</a>
+        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer"
+           class="py-2 bg-[#25D366] text-white rounded text-center">WhatsApp</a>
+        <a id="admin-link-mobile" href="admin/index.html" class="py-2 bg-accent text-white rounded text-center hidden">Admin</a>
+      </div>
+    </div>
+  </header>
+
+<!-- MAIN CONTENT -->
+<main class="max-w-full mx-auto px-6 py-12">
+  <h1 class="text-3xl font-bold mb-6">What clients say</h1>
+
+  <div id="testimonials-grid"
+       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+       aria-live="polite">
+  </div>
+
+  <div class="mt-10 text-center">
+    <a href="submit-testimonial.html"
+       class="px-6 py-3 bg-accent text-white rounded-md font-medium">
+      Submit a Testimonial
+    </a>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-white border-t mt-16">
+  <div class="max-w-full mx-auto px-6 py-6 text-sm text-gray-600 flex justify-between">
+    <p>© 2025 RM Connect</p>
+  </div>
+</footer>
+
+<!-- TESTIMONIAL LOADER -->
+<script>
+(async function(){
+  try {
+    const res = await fetch('./public/testimonials.json');  // FIXED PATH
+    const list = await res.json();
+    const container = document.getElementById('testimonials-grid');
+
+    list.forEach(item => {
+      const parsed = typeof item === 'string' ? JSON.parse(item) : item;
+
+      const card = document.createElement('div');
+      card.className = 'bg-white p-5 rounded-xl shadow';
+
+      card.innerHTML = `
+        <p class="italic mb-3 text-gray-700">"${parsed.message}"</p>
+        <h4 class="font-semibold">— ${parsed.name}</h4>
+        <div class="text-sm text-gray-500">${parsed.company || ''}</div>
+      `;
+
+      container.appendChild(card);
+    });
+
+  } catch (err) {
+    console.error('Failed to load testimonials.', err);
+  }
+})();
+</script>
+
+<!-- Admin link logic -->
+<script>
+  function showAdminIfNeeded() {
+    const params = new URLSearchParams(window.location.search);
+    const isAdmin = params.get("admin") === "1";
+
+    const adminLink = document.getElementById("admin-link");
+    const adminLinkMobile = document.getElementById("admin-link-mobile");
+
+    if (adminLink) adminLink.classList.toggle("hidden", !isAdmin);
+    if (adminLinkMobile) adminLinkMobile.classList.toggle("hidden", !isAdmin);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", showAdminIfNeeded);
+  } else {
+    showAdminIfNeeded();
+  }
+</script>
+
+</body>
+</html>
