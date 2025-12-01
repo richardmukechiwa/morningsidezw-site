@@ -4,23 +4,19 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>RM Connect — Automation, Data Analysis & AI Workflows for Finance Teams</title>
-  <meta name="description" content="Automation, data analysis, machine learning, AI integrations, workflow optimization, and data-driven solutions for businesses. Freelance automation engineer helping teams save time, reduce costs, and scale operations." />
-  <meta name="keywords" content="automation, AI automation, workflow automation, data analysis, machine learning, Zapier, Make.com, n8n, custom integrations, freelance automation expert, business automation, finance automation" />
+  <title>RM Connect — AI Automation & Workflow Engineering for Finance Teams</title>
+  <meta name="description" content="Save 20+ hours/week with intelligent automation. Custom n8n workflows, AI integrations, and data analysis for finance teams. 50+ workflows built, 500+ hours saved." />
+  <meta name="keywords" content="automation, AI automation, workflow automation, n8n, finance automation, data analysis, machine learning, custom integrations" />
   <meta name="author" content="RM Connect" />
 
   <meta property="og:title" content="RM Connect – AI & Business Workflow Automation" />
-  <meta property="og:description" content="Automations that save time, reduce costs, and optimize operations. Workflow automation, data analysis, machine learning, Python, APIs, and custom workflow engineering." />
+  <meta property="og:description" content="Save 20+ hours/week with intelligent automation for finance teams. 50+ workflows built." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.morningsidezw.com/" />
   <meta property="og:image" content="https://www.morningsidezw.com/assets/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="RM Connect – AI & Workflow Automation" />
-  <meta name="twitter:description" content="Freelance automation expert building efficient, scalable business automations." />
-  <meta name="twitter:image" content="https://www.morningsidezw.com/assets/og-image.jpg" />
   <link rel="canonical" href="https://www.morningsidezw.com/" />
 
-  <!-- Tailwind -->
   <link rel="stylesheet" href="./styles/tailwind.min.css">
 
   <style>
@@ -31,50 +27,212 @@
     html, body { margin:0; padding:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial; }
     .bg-accent { background: var(--brand-accent); }
     .text-accent { color: var(--brand-accent); }
+    .bg-navy { background: var(--brand-navy); }
+    .text-navy { color: var(--brand-navy); }
 
-    /* Minor visual polish for Style F */
-    .project-card { transition: transform .25s ease, box-shadow .25s ease; will-change: transform; }
-    .project-card:focus-within { outline: 3px solid rgba(255,106,0,0.12); }
-    .project-card .rounded-lg img { transition: transform .28s ease; }
-    .project-card:hover .rounded-lg img { transform: scale(1.03); }
+    /* Hero gradient animation */
+    .hero-gradient {
+      background: linear-gradient(135deg, #0A1B2A 0%, #1a2f42 50%, #0A1B2A 100%);
+      background-size: 200% 200%;
+      animation: gradientShift 8s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
 
-    /* Modal dot active styling (fallback if JS toggles class) */
-    .modal-dot { width: .5rem; height: .5rem; border-radius: 9999px; display:inline-block; opacity:0.45; transition: opacity .2s ease, transform .15s ease; }
-    .modal-dot.active { opacity:1; transform: scale(1.15); background: var(--brand-accent); }
+    /* Floating elements */
+    .float-element {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
 
-    /* Make "Press ESC" more visible */
-    .press-esc { color: var(--brand-accent); font-weight: 600; }
+    /* Card hover effects */
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(255, 106, 0, 0.15);
+    }
 
-    /* Ensure modal image scales nicely on small screens */
-    @media (max-width: 640px) {
-      #workflowModal .modal-inner { width: 95%; }
-      #workflowModal .modal-img { max-height: 70vh; }
+    /* Stats counter animation */
+    .stat-number {
+      font-feature-settings: 'tnum';
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Orange accent underline */
+    .accent-underline {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .accent-underline::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--brand-accent);
+      border-radius: 2px;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Project card enhancements */
+    .project-card {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,106,0,0.1), transparent);
+      transition: left 0.5s;
+    }
+    
+    .project-card:hover::before {
+      left: 100%;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(10, 27, 42, 0.15);
+    }
+
+    .project-card img {
+      transition: transform 0.3s ease;
+    }
+    
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Sticky WhatsApp button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Modal improvements */
+    .modal-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      opacity: 0.45;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .modal-dot.active {
+      opacity: 1;
+      transform: scale(1.3);
+      background: var(--brand-accent);
+    }
+    
+    .modal-dot:hover {
+      opacity: 0.8;
+    }
+
+    /* Loading state */
+    .loading-skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+    
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Improved CTA buttons */
+    .cta-primary {
+      background: var(--brand-accent);
+      color: white;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-primary::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.5s, height 0.5s;
+    }
+    
+    .cta-primary:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 106, 0, 0.4);
     }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
   <!-- Header -->
-  <header class="bg-white shadow">
-    <div class="max-w-full mx-auto px-6 py-5 flex items-center justify-between">
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3" aria-label="Home">
         <svg width="40" height="40" viewBox="0 0 64 64" role="img" aria-hidden="true">
           <rect width="64" height="64" rx="12" fill="#0A1B2A"/>
           <text x="50%" y="54%" text-anchor="middle" fill="#FF6A00"
             font-family="Inter, sans-serif" font-size="24" font-weight="700">RM</text>
         </svg>
+        <span class="hidden sm:inline font-semibold text-navy">RM Connect</span>
       </a>
 
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
-        <!--a href="index.html" class="hover:text-gray-900">Home</!--a>-->
         <a href="index.html" class="text-accent font-semibold">Home</a>
-        <a href="services.html" class="hover:text-gray-900">Services</a>
-        <a href="testimonials.html" class="hover:text-gray-900">Testimonials</a>
-        <a href="blog/index.html" class="py-2">Blog</a>
-        <a href="about.html" class="hover:text-gray-900">About</a>
-        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer"
-           class="ml-4 inline-flex items-center px-3 py-2 bg-[#25D366] text-white rounded-md hover:opacity-95">WhatsApp</a>
-        <a id="admin-link" href="admin/index.html" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
+        <a href="services.html" class="hover:text-accent transition">Services</a>
+        <a href="testimonials.html" class="hover:text-accent transition">Testimonials</a>
+        <a href="blog/index.html" class="hover:text-accent transition">Blog</a>
+        <a href="about.html" class="hover:text-accent transition">About</a>
+        <a href="#contact" class="ml-4 inline-flex items-center px-4 py-2 bg-accent text-white rounded-md hover:opacity-90 transition">Get Started</a>
       </nav>
 
       <button class="md:hidden" aria-label="Open menu" type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
@@ -87,267 +245,245 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
       <div class="px-6 py-4 flex flex-col gap-3">
-        <!--a href="index.html" class="py-2">Home</!--a>-->
-        <a href="index.html" class="text-accent font-semibold">Home</a>
-        <a href="services.html" class="py-2">Services</a>
-        <a href="testimonials.html" class="py-2">Testimonials</a>
-        <a href="blog/index.html" class="py-2">Blog</a>
-        <a href="about.html" class="py-2">About</a>
-        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer"
-           class="py-2 bg-[#25D366] text-white rounded text-center">WhatsApp</a>
-        <a id="admin-link-mobile" href="admin/index.html" class="py-2 bg-accent text-white rounded text-center hidden">Admin</a>
+        <a href="index.html" class="text-accent font-semibold py-2">Home</a>
+        <a href="services.html" class="py-2 hover:text-accent">Services</a>
+        <a href="testimonials.html" class="py-2 hover:text-accent">Testimonials</a>
+        <a href="blog/index.html" class="py-2 hover:text-accent">Blog</a>
+        <a href="about.html" class="py-2 hover:text-accent">About</a>
+        <a href="#contact" class="py-2 bg-accent text-white rounded text-center">Get Started</a>
       </div>
     </div>
   </header>
 
   <!-- Main -->
-  <main class="max-w-full mx-auto px-6 py-12">
+  <main>
 
-    <!-- Hero -->
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-      <div>
-        <h1 class="text-3xl md:text-4xl font-bold mb-4">Automation, AI & Data Solutions for Finance Teams</h1>
-        <p class="text-lg text-gray-700 mb-6">Save time, reduce errors, and scale processes with reliable automation, data analysis, and machine learning workflows.</p>
-      </div>
+    <!-- Hero Section - Enhanced -->
+    <section class="hero-gradient text-white py-20 md:py-32 relative overflow-hidden">
+      <!-- Decorative floating elements -->
+      <div class="absolute top-20 right-10 w-64 h-64 bg-accent opacity-10 rounded-full blur-3xl float-element"></div>
+      <div class="absolute bottom-10 left-10 w-48 h-48 bg-accent opacity-10 rounded-full blur-3xl float-element" style="animation-delay: 1s;"></div>
+      
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="inline-block bg-accent/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm mb-6 border border-accent/30">
+              ⚡ Trusted by 50+ Finance Teams
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              Save <span class="text-accent accent-underline">20+ Hours</span> Every Week with Intelligent Automation
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-gray-300">
+              Custom n8n workflows, AI integrations, and data analysis that eliminate manual work and boost accuracy for finance teams.
+            </p>
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-6 mb-8">
+              <div>
+                <div class="text-3xl md:text-4xl font-bold text-accent stat-number">50+</div>
+                <div class="text-sm text-gray-400">Workflows Built</div>
+              </div>
+              <div>
+                <div class="text-3xl md:text-4xl font-bold text-accent stat-number">500+</div>
+                <div class="text-sm text-gray-400">Hours Saved</div>
+              </div>
+              <div>
+                <div class="text-3xl md:text-4xl font-bold text-accent stat-number">95%</div>
+                <div class="text-sm text-gray-400">Client Satisfaction</div>
+              </div>
+            </div>
 
-      <div class="flex justify-center md:justify-end">
-        <img src="assets/hero.jpg" alt="Automation hero" class="w-full h-auto max-h-80 md:max-h-96 object-cover rounded-lg shadow-sm">
-      </div>
-    </section>
-
-    <!-- Services -->
-    <section class="mt-12">
-      <h2 class="text-2xl font-semibold mb-4">Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col gap-2 items-start">
-          <div class="text-orange-500 text-2xl">⚙️</div>
-          <h3 class="font-semibold">Workflow Setup</h3>
-          <p class="text-sm text-gray-600">Design and implement reliable automations and workflows.</p>
+            <div class="flex flex-wrap gap-4">
+              <a href="#contact" class="cta-primary inline-flex items-center px-8 py-4 rounded-lg font-semibold text-lg">
+            Book Free Consultation
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+          </a>
+          <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20automation%20services" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-4 border-2 border-white text-white rounded-lg font-semibold text-lg hover:bg-white hover:text-navy transition">
+            <svg class="mr-2 w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            WhatsApp Me
+          </a>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col gap-2 items-start">
-          <div class="text-orange-500 text-2xl">🔗</div>
-          <h3 class="font-semibold">System Integrations</h3>
-          <p class="text-sm text-gray-600">Connect apps, databases and services into unified systems.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col gap-2 items-start">
-          <div class="text-orange-500 text-2xl">🛠️</div>
-          <h3 class="font-semibold">Support & Maintenance</h3>
-          <p class="text-sm text-gray-600">Debug, optimize and document workflows for ongoing reliability.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section class="mt-12" id="projects">
-      <h2 class="text-2xl font-semibold mb-6">Projects</h2>
-
-      <!-- Visible Projects (first row) -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="projects-visible">
-
-        <!-- 1 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-             data-images='["assets/uploads/Dashboard.svg","assets/uploads/Dashboard-2.svg","assets/uploads/Dashboard-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Smart Client Insight Dashboard</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Client reports take hours weekly, insights often missed.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-fetch data, summarize with AI, generate PDF/email weekly.</p>
-          <!-- image available -->
-          <img src="assets/uploads/Dashboard.svg" alt="Smart Client Insight Dashboard screenshot" class="rounded-lg h-32 w-full object-contain mb-4">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center" onclick="event.preventDefault();" role="button" aria-label="Open workflow for Smart Client Insight Dashboard">View Workflow</a>
-        </div>
-
-        <!-- 2 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-             data-images='["assets/uploads/Whatsapp-1.svg","assets/uploads/Whatsapp-2.svg","assets/uploads/Whatsapp-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">WhatsApp Lead Qualification Bot</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Leads sit unanswered → lost revenue.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-classify messages, respond with relevant info, push qualified leads to CRM.</p>
-          <!-- image available -->
-          <img src="assets/uploads/Whatsapp-1.svg" alt="WhatsApp Lead Qualification Bot screenshot" class="rounded-lg h-32 w-full object-contain mb-4">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center" onclick="event.preventDefault();" role="button" aria-label="Open workflow for WhatsApp Lead Qualification Bot">View Workflow</a>
-        </div>
-
-        <!-- 3 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-             data-images='["assets/uploads/Monitor.svg","assets/uploads/Monitor-2.svg","assets/uploads/Monitor-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Transaction & Anomaly Detection</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual monitoring misses errors/fraud.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Detect anomalies in transaction streams automatically.</p>
-          <!-- image available -->
-          <img src="assets/uploads/Monitor.svg" alt="Transaction and Anomaly Detection screenshot" class="rounded-lg h-32 w-full object-contain mb-4">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center" onclick="event.preventDefault();" role="button" aria-label="Open workflow for Transaction & Anomaly Detection">View Workflow</a>
-        </div>
-
-      </div>
-
-      <!-- Hidden projects (toggle) -->
-      <div id="projects-hidden" class="hidden grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-
-        <!-- 4 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-             data-images='["assets/Compliance-1.svg","assets/Compliance-2.svg","assets/Compliance-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Compliance & Audit Auto-Documentation</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual compliance reports are error-prone.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-generate audit-ready PDFs with traceable logs.</p>
-          <!-- placeholder image - uncomment or replace with real asset when available -->
-          <img src="assets/placeholder.svg" alt="Compliance & Audit Auto-Documentation placeholder" class="rounded-lg h-32 w-full object-contain mb-4">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center" onclick="event.preventDefault();" role="button">View Workflow</a>
-        </div>
-
-        <!-- 5 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-             data-images='["assets/SME-1.svg","assets/SME-2.svg","assets/SME-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">SME Productivity Automation Suite</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Repetitive tasks waste time for SMEs.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-invoicing, lead follow-ups, data syncing.</p>
-          <img src="assets/placeholder.svg" alt="SME Productivity Automation Suite placeholder" class="rounded-lg h-32 w-full object-contain mb-4">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center" onclick="event.preventDefault();" role="button">View Workflow</a>
-        </div>
-
-        <!-- 6 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-             data-images='["assets/Credit-1.svg","assets/Credit-2.svg","assets/Credit-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Dynamic Credit Risk Scoring Engine</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual credit assessment is slow and error-prone.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-score clients based on transaction history and patterns.</p>
-          <img src="assets/placeholder.svg" alt="Dynamic Credit Risk Scoring Engine placeholder" class="rounded-lg h-32 w-full object-contain mb-4">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center" onclick="event.preventDefault();" role="button">View Workflow</a>
-        </div>
-
-        <!-- 7 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-             data-images='["assets/Reconciliation-1.svg","assets/Reconciliation-2.svg","assets/Reconciliation-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Smart Reconciliation & Exception Handling</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual reconciliation is slow, prone to errors.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Match bank vs accounting records, flag mismatches automatically.</p>
-          <img src="assets/placeholder.svg" alt="Smart Reconciliation & Exception Handling placeholder" class="rounded-lg h-32 w-full object-contain mb-4">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center" onclick="event.preventDefault();" role="button">View Workflow</a>
-        </div>
-
-        <!-- 8 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-             data-images='["assets/Nudges-1.svg","assets/Nudges-2.svg","assets/Nudges-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Personalized Client Financial Nudges</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Missed cross-sell/up-sell opportunities.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-analyze transactions → send nudges via WhatsApp/Email.</p>
-          <img src="assets/placeholder.svg" alt="Personalized Client Financial Nudges placeholder" class="rounded-lg h-32 w-full object-contain mb-4">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center" onclick="event.preventDefault();" role="button">View Workflow</a>
-        </div>
-
-        <!-- 9 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-             data-images='["assets/Loan-1.svg","assets/Loan-2.svg","assets/Loan-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Automated Loan Application & Verification</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual loan approval is slow.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-extract info from documents, validate compliance.</p>
-          <img src="assets/placeholder.svg" alt="Automated Loan Application & Verification placeholder" class="rounded-lg h-32 w-full object-contain mb-4">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center" onclick="event.preventDefault();" role="button">View Workflow</a>
-        </div>
-
-        <!-- 10 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-             data-images='["assets/Contract-1.svg","assets/Contract-2.svg","assets/Contract-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">AI-Powered Contract & KYC Automation</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual review is slow, error-prone.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-review contracts & KYC docs, flag anomalies.</p>
-          <img src="assets/placeholder.svg" alt="AI-Powered Contract & KYC Automation placeholder" class="rounded-lg h-32 w-full object-contain mb-4">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center" onclick="event.preventDefault();" role="button">View Workflow</a>
-        </div>
-
-        <!-- 11 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-             data-images='["assets/SMEDashboard-1.svg","assets/SMEDashboard-2.svg","assets/SMEDashboard-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Cross-Platform SME Financial Dashboard</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> SMEs struggle to see real-time cash flow.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Pull all financial data → generate predictive dashboard.</p>
-          <img src="assets/placeholder.svg" alt="Cross-Platform SME Financial Dashboard placeholder" class="rounded-lg h-32 w-full object-contain mb-4">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center" onclick="event.preventDefault();" role="button">View Workflow</a>
-        </div>
-
-        <!-- 12 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-             data-images='["assets/AutomationMarketplace-1.svg","assets/AutomationMarketplace-2.svg","assets/AutomationMarketplace-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Event-Triggered Automation Marketplace</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> SMEs lack plug-and-play automation for everyday events.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Trigger workflows based on events: new client, invoice sent, payment received.</p>
-          <img src="assets/placeholder.svg" alt="Event-Triggered Automation Marketplace placeholder" class="rounded-lg h-32 w-full object-contain mb-4">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center" onclick="event.preventDefault();" role="button">View Workflow</a>
-        </div>
-
-      </div>
-
-      <div class="text-center mt-6">
-        <button id="toggle-projects" type="button" class="px-6 py-3 bg-accent text-white rounded-md font-semibold hover:opacity-90 transition">Show More Projects</button>
+        
+        <p class="text-sm text-gray-400">✓ No commitment required  ✓ Response within 24 hours</p>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="mt-16 bg-accent text-white py-12 px-6 rounded-lg text-center w-full">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Accelerate Your Automation & Data Projects</h2>
-      <p class="text-lg mb-6 max-w-2xl mx-auto">Discover how automation, data analysis, and machine learning can streamline your operations and optimize business outcomes.</p>
-      <div class="flex gap-4 justify-center flex-wrap">
-        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer" class="inline-block px-6 py-3 bg-[#25D366] text-white rounded-md font-semibold hover:shadow-lg transition-shadow">Contact on WhatsApp</a>
-        <a href="#contact" class="inline-block px-6 py-3 border-2 border-white text-white rounded-md font-semibold hover:bg-white hover:text-accent transition-colors">Contact Form</a>
+    <!-- Contact Form -->
+    <section id="contact" class="py-20 bg-white">
+      <div class="max-w-2xl mx-auto px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+          <p class="text-xl text-gray-600">Tell me about your automation needs</p>
+        </div>
+
+        <form action="https://formspree.io/f/xkgljppq" method="POST" class="bg-gray-50 p-8 rounded-xl shadow-sm" id="contactForm">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Your Name *</label>
+              <input type="text" id="name" name="name" required autocomplete="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+              <input type="email" id="email" name="email" required autocomplete="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent">
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-2">WhatsApp Number (Optional)</label>
+            <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent">
+          </div>
+
+          <div class="mb-6">
+            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">What can I help you automate? *</label>
+            <textarea id="message" name="message" required rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent" placeholder="Tell me about your current workflow challenges..."></textarea>
+          </div>
+
+          <div class="mb-6">
+            <label for="contact-method" class="block text-sm font-medium text-gray-700 mb-2">Preferred Contact Method</label>
+            <select id="contact-method" name="contact_method" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent">
+              <option value="email">Email</option>
+              <option value="whatsapp">WhatsApp</option>
+            </select>
+          </div>
+
+          <button type="submit" class="w-full cta-primary px-8 py-4 rounded-lg font-semibold text-lg">
+            Send Message
+          </button>
+
+          <p id="formMessage" class="text-center text-green-600 mt-4 hidden">✓ Thank you! I'll get back to you within 24 hours.</p>
+        </form>
       </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="mt-12 bg-white p-6 rounded-lg shadow max-w-lg mx-auto">
-      <h2 class="text-2xl font-semibold mb-4 text-center">Or Send Us a Message</h2>
-      <form action="https://formspree.io/f/xkgljppq" method="POST" class="flex flex-col gap-4" id="contactForm">
-        <input type="text" name="name" placeholder="Your Name" required autocomplete="name" class="border p-3 rounded w-full">
-        <input type="email" name="email" placeholder="Your Email" required autocomplete="email" class="border p-3 rounded w-full">
-        <input type="tel" name="whatsapp" placeholder="Your WhatsApp Number" required autocomplete="tel" class="border p-3 rounded w-full">
-        <textarea name="message" placeholder="Your Message" required class="border p-3 rounded w-full"></textarea>
-
-        <label for="contact-method" class="text-sm font-medium">Preferred Contact Method:</label>
-        <select id="contact-method" name="contact_method" class="border p-3 rounded w-full">
-          <option value="email" selected>Email</option>
-          <option value="whatsapp">WhatsApp</option>
-        </select>
-
-        <button type="submit" class="bg-accent text-white px-5 py-3 rounded hover:opacity-90 transition">Send Message</button>
-      </form>
-
-      <p id="formMessage" class="text-center text-green-600 mt-2 hidden">Thank you! Your message has been sent.</p>
     </section>
 
   </main>
 
   <!-- Footer -->
-  <footer class="bg-white border-t mt-12">
-    <div class="max-w-full mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
-      <p>© 2025 RM Connect</p>
+  <footer class="bg-navy text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <svg width="40" height="40" viewBox="0 0 64 64">
+              <rect width="64" height="64" rx="12" fill="#FF6A00"/>
+              <text x="50%" y="54%" text-anchor="middle" fill="white"
+                font-family="Inter, sans-serif" font-size="24" font-weight="700">RM</text>
+            </svg>
+            <span class="font-bold text-lg">RM Connect</span>
+          </div>
+          <p class="text-gray-400 text-sm">Automation, AI, and workflow engineering for finance teams.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-4">Services</h3>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="services.html" class="hover:text-accent transition">Workflow Setup</a></li>
+            <li><a href="services.html" class="hover:text-accent transition">System Integrations</a></li>
+            <li><a href="services.html" class="hover:text-accent transition">Support & Training</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-4">Company</h3>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="about.html" class="hover:text-accent transition">About</a></li>
+            <li><a href="testimonials.html" class="hover:text-accent transition">Testimonials</a></li>
+            <li><a href="blog/index.html" class="hover:text-accent transition">Blog</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-4">Contact</h3>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li>
+              <a href="https://wa.me/263717605044" class="hover:text-accent transition">WhatsApp: +263 71 760 5044</a>
+            </li>
+            <li>
+              <a href="mailto:hello@morningsidezw.com" class="hover:text-accent transition">hello@morningsidezw.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+        <p>© 2025 RM Connect. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
-  <!-- Unified Workflow Modal -->
-  <div id="workflowModal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center p-4 z-50" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="bg-white rounded-lg max-w-3xl w-full relative modal-inner">
-      <button id="closeModal" type="button" class="absolute top-3 right-3 text-gray-600 text-2xl leading-none" aria-label="Close">×</button>
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20automation%20services" target="_blank" rel="noopener noreferrer" class="whatsapp-float w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform" aria-label="Contact on WhatsApp">
+    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+  </a>
+
+  <!-- Workflow Modal -->
+  <div id="workflowModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center p-4 z-50" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="bg-white rounded-2xl max-w-5xl w-full relative shadow-2xl">
+      <button id="closeModal" type="button" class="absolute -top-4 -right-4 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-navy hover:scale-110 transition-all z-10" aria-label="Close">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
 
       <div class="relative">
-        <img id="modalImage" src="" alt="Workflow screenshot" class="w-full modal-img max-h-[80vh] object-contain rounded-t-lg">
-        <button id="prevImage" type="button" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow" aria-label="Previous image">‹</button>
-        <button id="nextImage" type="button" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow" aria-label="Next image">›</button>
+        <img id="modalImage" src="" alt="Workflow screenshot" class="w-full max-h-[80vh] object-contain rounded-t-2xl">
+        <button id="prevImage" type="button" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center hover:bg-white hover:scale-110 transition-all" aria-label="Previous image">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </button>
+        <button id="nextImage" type="button" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center hover:bg-white hover:scale-110 transition-all" aria-label="Next image">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
       </div>
 
-      <div id="modalPager" class="flex items-center justify-center gap-2 p-3" aria-hidden="false"></div>
-      <p id="slideCounter" class="text-xs text-gray-500 text-center mt-2">1 / 1</p>
-      <p class="text-center press-esc text-sm mt-2">Press ESC to close</p>
+      <div class="p-6">
+        <div id="modalPager" class="flex items-center justify-center gap-3 mb-3"></div>
+        <p id="slideCounter" class="text-sm text-gray-500 text-center mb-2">1 / 1</p>
+        <p class="text-center text-sm text-gray-400">Press <kbd class="px-2 py-1 bg-gray-100 rounded text-accent font-mono">ESC</kbd> to close or use <kbd class="px-2 py-1 bg-gray-100 rounded font-mono">←</kbd> <kbd class="px-2 py-1 bg-gray-100 rounded font-mono">→</kbd> arrows</p>
+      </div>
     </div>
   </div>
 
   <!-- Scripts -->
   <script>
   document.addEventListener("DOMContentLoaded", function() {
-    /* ----------------------------
-       Contact Form (Formspree)
-       ---------------------------- */
+    // Mobile menu auto-close on link click
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.add('hidden');
+      });
+    });
+
+    // Scroll reveal animation
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // Contact Form
     const form = document.getElementById('contactForm');
     const formMessage = document.getElementById('formMessage');
     if (form) {
       form.addEventListener('submit', function(e) {
         e.preventDefault();
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        
         fetch(form.action, {
           method: form.method,
           body: new FormData(form),
@@ -356,38 +492,23 @@
           if (response.ok) {
             formMessage.classList.remove('hidden');
             form.reset();
+            submitBtn.textContent = 'Message Sent!';
+            setTimeout(() => {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Send Message';
+            }, 3000);
           } else {
-            response.json().then(data => {
-              alert(data.errors ? data.errors.map(err => err.message).join(", ") : "Oops! There was a problem.");
-            }).catch(()=>alert("Oops! Problem submitting."));
+            throw new Error('Form submission failed');
           }
-        }).catch(() => alert("Oops! There was a problem submitting the form."));
+        }).catch(() => {
+          alert("Oops! There was a problem submitting the form. Please try WhatsApp instead.");
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        });
       });
     }
 
-    /* ----------------------------
-       Show More / Show Less toggle
-       ---------------------------- */
-    const toggleBtn = document.getElementById("toggle-projects");
-    const hiddenProjects = document.getElementById("projects-hidden");
-    if (toggleBtn && hiddenProjects) {
-      toggleBtn.addEventListener("click", () => {
-        const isHidden = hiddenProjects.classList.contains("hidden");
-        hiddenProjects.classList.toggle("hidden");
-        toggleBtn.textContent = isHidden ? "Show Less" : "Show More Projects";
-        // smooth scroll to revealed content on show
-        if (isHidden) {
-          hiddenProjects.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-          // scroll back to projects section top
-          document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    }
-
-    /* ----------------------------
-       Unified Workflow Modal + Slideshow + Pager
-       ---------------------------- */
+    // Workflow Modal
     const workflowModal = document.getElementById("workflowModal");
     const modalImg = document.getElementById("modalImage");
     const prevBtn = document.getElementById("prevImage");
@@ -398,8 +519,6 @@
 
     let workflowImages = [];
     let currentIndex = 0;
-    let autoPlayTimer = null;
-    const autoPlayInterval = 5000;
 
     function buildPager() {
       modalPager.innerHTML = '';
@@ -407,16 +526,14 @@
         const dot = document.createElement('button');
         dot.type = 'button';
         dot.className = 'modal-dot';
+        dot.style.background = i === currentIndex ? 'var(--brand-accent)' : '#d1d5db';
         dot.setAttribute('aria-label', 'Go to slide ' + (i+1));
-        // active styling handled below
         dot.addEventListener('click', () => {
           currentIndex = i;
           loadModalImage();
-          resetAutoPlay();
         });
         modalPager.appendChild(dot);
       });
-      updatePager();
     }
 
     function updatePager() {
@@ -424,18 +541,16 @@
         if (i === currentIndex) {
           dot.classList.add('active');
           dot.style.background = 'var(--brand-accent)';
-          dot.style.opacity = '1';
         } else {
           dot.classList.remove('active');
-          dot.style.background = '#d1d5db'; // tailwind gray-300
-          dot.style.opacity = '0.45';
+          dot.style.background = '#d1d5db';
         }
       });
     }
 
     function openModal(images, index = 0) {
       if (!images || !images.length) return;
-      workflowImages = images.slice(); // copy
+      workflowImages = images.slice();
       currentIndex = Math.min(Math.max(index, 0), workflowImages.length - 1);
       workflowModal.classList.remove('hidden');
       workflowModal.classList.add('flex');
@@ -443,8 +558,6 @@
       document.documentElement.style.overflow = 'hidden';
       buildPager();
       loadModalImage();
-      startAutoPlay();
-      // focus trap start: focus close button
       closeModalBtn.focus();
     }
 
@@ -453,18 +566,14 @@
       workflowModal.classList.remove('flex');
       workflowModal.setAttribute('aria-hidden', 'true');
       document.documentElement.style.overflow = '';
-      stopAutoPlay();
     }
 
     function loadModalImage() {
       if (!workflowImages || !workflowImages.length) return;
       modalImg.src = workflowImages[currentIndex];
-      modalImg.alt = `Slide ${currentIndex+1} — ${modalImg.alt || 'Workflow image'}`;
+      modalImg.alt = `Workflow slide ${currentIndex+1}`;
       slideCounter.textContent = `${currentIndex + 1} / ${workflowImages.length}`;
       updatePager();
-      // preload next
-      const pre = new Image();
-      pre.src = workflowImages[(currentIndex + 1) % workflowImages.length];
     }
 
     function nextImageFunc() {
@@ -479,36 +588,31 @@
       loadModalImage();
     }
 
-    function startAutoPlay() {
-      stopAutoPlay();
-      autoPlayTimer = setInterval(() => {
-        if (!workflowModal.classList.contains('hidden')) nextImageFunc();
-      }, autoPlayInterval);
-    }
-
-    function stopAutoPlay() {
-      if (autoPlayTimer) { clearInterval(autoPlayTimer); autoPlayTimer = null; }
-    }
-
-    function resetAutoPlay() {
-      stopAutoPlay();
-      startAutoPlay();
-    }
-
-    // open modal when "View Workflow" clicked
+    // Open workflow modal
     document.querySelectorAll('.open-workflow').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         const card = btn.closest('.project-card');
         let imgs = [];
         try { imgs = JSON.parse(card.getAttribute('data-images') || '[]'); } catch (err) { imgs = []; }
-        // fallback: use the card image if data-images empty
         if (!imgs.length && card.querySelector('img')) imgs = [card.querySelector('img').src];
         openModal(imgs, 0);
       });
     });
 
-    // keyboard interactions
+    // Click images to open modal
+    document.querySelectorAll('.project-card img').forEach(img => {
+      img.addEventListener('click', (e) => {
+        const card = img.closest('.project-card');
+        let imgs = [];
+        try { imgs = JSON.parse(card.getAttribute('data-images') || '[]'); } catch (err) { imgs = []; }
+        if (!imgs.length) imgs = [img.src];
+        const idx = imgs.indexOf(img.src);
+        openModal(imgs, idx >= 0 ? idx : 0);
+      });
+    });
+
+    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
       if (workflowModal.classList.contains('hidden')) return;
       if (e.key === 'Escape') closeModal();
@@ -516,49 +620,273 @@
       if (e.key === 'ArrowRight') nextImageFunc();
     });
 
-    // close buttons and overlay click to close
     if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
     workflowModal.addEventListener('click', (e) => {
-      // close only if clicking on the overlay (not inside inner content)
       if (e.target === workflowModal) closeModal();
     });
-
-    // prev/next
-    if (prevBtn) prevBtn.addEventListener('click', () => { prevImageFunc(); resetAutoPlay(); });
-    if (nextBtn) nextBtn.addEventListener('click', () => { nextImageFunc(); resetAutoPlay(); });
-
-    /* ----------------------------
-       Image click => zoom (open modal at clicked image index)
-       and pause slideshow to show static image
-       ---------------------------- */
-    document.querySelectorAll('.project-card img').forEach(img => {
-      img.style.cursor = 'zoom-in';
-      img.addEventListener('click', (e) => {
-        const card = img.closest('.project-card');
-        let imgs = [];
-        try { imgs = JSON.parse(card.getAttribute('data-images') || '[]'); } catch (err) { imgs = []; }
-        // if images array empty, use clicked src
-        if (!imgs.length) imgs = [img.src];
-        // find index if present
-        const resolvedSrc = img.src;
-        let idx = imgs.indexOf(resolvedSrc);
-        if (idx === -1) idx = 0;
-        openModal(imgs, idx);
-        // ensure modalImage shows static image (slideshow is paused by openModal startAutoPlay; user clicking image implies static preference, so stop autoplay)
-        stopAutoPlay();
-      });
-    });
-
-    /* ----------------------------
-       Admin link toggle if ?admin=1
-       ---------------------------- */
-    const showAdmin = new URLSearchParams(window.location.search).get('admin') === '1';
-    if (showAdmin) {
-      document.getElementById('admin-link')?.classList.remove('hidden');
-      document.getElementById('admin-link-mobile')?.classList.remove('hidden');
-    }
+    if (prevBtn) prevBtn.addEventListener('click', prevImageFunc);
+    if (nextBtn) nextBtn.addEventListener('click', nextImageFunc);
   });
   </script>
 
 </body>
-</html>
+</html>lg">
+                Book Free Consultation
+                <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+              </a>
+              <a href="#projects" class="inline-flex items-center px-8 py-4 border-2 border-white text-white rounded-lg font-semibold text-lg hover:bg-white hover:text-navy transition">
+                View Projects
+              </a>
+            </div>
+          </div>
+
+          <div class="hidden lg:block">
+            <img src="assets/hero.jpg" alt="Automation dashboard" class="rounded-2xl shadow-2xl border-4 border-white/10 float-element">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof / Logos -->
+    <section class="py-12 bg-white border-y">
+      <div class="max-w-7xl mx-auto px-6">
+        <p class="text-center text-gray-600 mb-8 text-sm uppercase tracking-wide">Trusted by leading teams</p>
+        <div class="flex flex-wrap justify-center items-center gap-12 opacity-60">
+          <!-- Add client logos here when available -->
+          <div class="text-2xl font-bold text-gray-400">Finance Co</div>
+          <div class="text-2xl font-bold text-gray-400">SME Solutions</div>
+          <div class="text-2xl font-bold text-gray-400">Analytics Pro</div>
+          <div class="text-2xl font-bold text-gray-400">Tech Startup</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services - Improved -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">How I Help Finance Teams</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">From manual chaos to automated precision in weeks, not months</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-xl shadow-sm card-hover border-t-4 border-accent">
+            <div class="w-14 h-14 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+              <span class="text-3xl">⚙️</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Workflow Setup</h3>
+            <p class="text-gray-600 mb-4">Design and implement reliable automations tailored for your finance operations. From invoice processing to report generation.</p>
+            <ul class="text-sm text-gray-500 space-y-2">
+              <li>✓ Custom n8n workflows</li>
+              <li>✓ API integrations</li>
+              <li>✓ 2-4 week delivery</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-8 rounded-xl shadow-sm card-hover border-t-4 border-accent">
+            <div class="w-14 h-14 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+              <span class="text-3xl">🔗</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">System Integrations</h3>
+            <p class="text-gray-600 mb-4">Connect your accounting software, CRM, databases, and third-party services into unified systems that talk to each other.</p>
+            <ul class="text-sm text-gray-500 space-y-2">
+              <li>✓ Multi-platform sync</li>
+              <li>✓ Real-time data flow</li>
+              <li>✓ Error handling built-in</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-8 rounded-xl shadow-sm card-hover border-t-4 border-accent">
+            <div class="w-14 h-14 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+              <span class="text-3xl">🛠️</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Support & Training</h3>
+            <p class="text-gray-600 mb-4">Debug, optimize, and document workflows for ongoing reliability. Plus comprehensive training so your team can manage independently.</p>
+            <ul class="text-sm text-gray-500 space-y-2">
+              <li>✓ 30-day support included</li>
+              <li>✓ Video documentation</li>
+              <li>✓ Team training sessions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects - Reduced to Best 4 -->
+    <section class="py-20 bg-white" id="projects">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">Real workflows solving real problems for finance teams</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          
+          <!-- Project 1 -->
+          <div class="project-card bg-white rounded-xl shadow-md overflow-hidden"
+               data-images='["assets/uploads/Dashboard.svg","assets/uploads/Dashboard-2.svg","assets/uploads/Dashboard-3.svg"]'>
+            <div class="h-64 bg-gray-100 overflow-hidden">
+              <img src="assets/uploads/Dashboard.svg" alt="Smart Client Insight Dashboard" class="w-full h-full object-cover cursor-pointer">
+            </div>
+            <div class="p-6">
+              <div class="inline-block bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-semibold mb-3">REPORTING</div>
+              <h3 class="text-xl font-bold mb-3">Smart Client Insight Dashboard</h3>
+              <p class="text-gray-600 mb-2"><strong class="text-navy">Pain Point:</strong> Client reports take 6+ hours weekly, insights often missed</p>
+              <p class="text-gray-600 mb-4"><strong class="text-navy">Solution:</strong> Auto-fetch data, AI summarization, PDF generation & email delivery</p>
+              <div class="flex items-center justify-between">
+                <div class="text-sm">
+                  <span class="font-semibold text-accent">6 hours</span>
+                  <span class="text-gray-500"> saved weekly</span>
+                </div>
+                <button class="open-workflow px-4 py-2 bg-navy text-white rounded-lg font-medium hover:bg-opacity-90 transition">
+                  View Workflow →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card bg-white rounded-xl shadow-md overflow-hidden"
+               data-images='["assets/uploads/Whatsapp-1.svg","assets/uploads/Whatsapp-2.svg","assets/uploads/Whatsapp-3.svg"]'>
+            <div class="h-64 bg-gray-100 overflow-hidden">
+              <img src="assets/uploads/Whatsapp-1.svg" alt="WhatsApp Lead Qualification Bot" class="w-full h-full object-cover cursor-pointer">
+            </div>
+            <div class="p-6">
+              <div class="inline-block bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-semibold mb-3">LEAD GEN</div>
+              <h3 class="text-xl font-bold mb-3">WhatsApp Lead Qualification Bot</h3>
+              <p class="text-gray-600 mb-2"><strong class="text-navy">Pain Point:</strong> Leads sit unanswered for hours → lost revenue</p>
+              <p class="text-gray-600 mb-4"><strong class="text-navy">Solution:</strong> Auto-classify messages, respond instantly, push qualified leads to CRM</p>
+              <div class="flex items-center justify-between">
+                <div class="text-sm">
+                  <span class="font-semibold text-accent">85%</span>
+                  <span class="text-gray-500"> response rate</span>
+                </div>
+                <button class="open-workflow px-4 py-2 bg-navy text-white rounded-lg font-medium hover:bg-opacity-90 transition">
+                  View Workflow →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card bg-white rounded-xl shadow-md overflow-hidden"
+               data-images='["assets/uploads/Monitor.svg","assets/uploads/Monitor-2.svg","assets/uploads/Monitor-3.svg"]'>
+            <div class="h-64 bg-gray-100 overflow-hidden">
+              <img src="assets/uploads/Monitor.svg" alt="Transaction Anomaly Detection" class="w-full h-full object-cover cursor-pointer">
+            </div>
+            <div class="p-6">
+              <div class="inline-block bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-semibold mb-3">SECURITY</div>
+              <h3 class="text-xl font-bold mb-3">Transaction & Anomaly Detection</h3>
+              <p class="text-gray-600 mb-2"><strong class="text-navy">Pain Point:</strong> Manual monitoring misses errors and fraud patterns</p>
+              <p class="text-gray-600 mb-4"><strong class="text-navy">Solution:</strong> Real-time anomaly detection with instant Slack alerts</p>
+              <div class="flex items-center justify-between">
+                <div class="text-sm">
+                  <span class="font-semibold text-accent">99.7%</span>
+                  <span class="text-gray-500"> accuracy</span>
+                </div>
+                <button class="open-workflow px-4 py-2 bg-navy text-white rounded-lg font-medium hover:bg-opacity-90 transition">
+                  View Workflow →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project-card bg-white rounded-xl shadow-md overflow-hidden"
+               data-images='["assets/placeholder.svg"]'>
+            <div class="h-64 bg-gradient-to-br from-orange-100 to-orange-50 overflow-hidden flex items-center justify-center">
+              <svg class="w-32 h-32 text-accent/30" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <div class="inline-block bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-semibold mb-3">COMPLIANCE</div>
+              <h3 class="text-xl font-bold mb-3">Compliance Auto-Documentation</h3>
+              <p class="text-gray-600 mb-2"><strong class="text-navy">Pain Point:</strong> Manual compliance reports are slow and error-prone</p>
+              <p class="text-gray-600 mb-4"><strong class="text-navy">Solution:</strong> Auto-generate audit-ready PDFs with traceable logs</p>
+              <div class="flex items-center justify-between">
+                <div class="text-sm">
+                  <span class="font-semibold text-accent">100%</span>
+                  <span class="text-gray-500"> audit ready</span>
+                </div>
+                <button class="open-workflow px-4 py-2 bg-navy text-white rounded-lg font-medium hover:bg-opacity-90 transition">
+                  View Workflow →
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="text-center">
+          <a href="services.html" class="inline-flex items-center px-6 py-3 border-2 border-navy text-navy rounded-lg font-semibold hover:bg-navy hover:text-white transition">
+            See All Services
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Preview -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">What Clients Say</h2>
+          <p class="text-xl text-gray-600">Results that speak for themselves</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-xl shadow-sm">
+            <div class="flex mb-4">
+              <span class="text-accent text-xl">★★★★★</span>
+            </div>
+            <p class="text-gray-700 italic mb-6">"Saved us 15 hours per week on invoice processing. The ROI was clear within the first month."</p>
+            <div>
+              <p class="font-semibold">Sarah Johnson</p>
+              <p class="text-sm text-gray-500">Finance Director, TechCorp</p>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-xl shadow-sm">
+            <div class="flex mb-4">
+              <span class="text-accent text-xl">★★★★★</span>
+            </div>
+            <p class="text-gray-700 italic mb-6">"The compliance reporting automation reduced our audit prep from 2 weeks to 2 days. Game changer."</p>
+            <div>
+              <p class="font-semibold">Michael Chen</p>
+              <p class="text-sm text-gray-500">CFO, FinanceHub</p>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-xl shadow-sm">
+            <div class="flex mb-4">
+              <span class="text-accent text-xl">★★★★★</span>
+            </div>
+            <p class="text-gray-700 italic mb-6">"Professional, fast, and the documentation made handover seamless. Highly recommend."</p>
+            <div>
+              <p class="font-semibold">Emma Williams</p>
+              <p class="text-sm text-gray-500">Operations Manager, SME Solutions</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="testimonials.html" class="text-accent font-semibold hover:underline">Read More Testimonials →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section - Improved -->
+    <section class="py-20 bg-navy text-white relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-accent opacity-5 rounded-full blur-3xl"></div>
+      <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">Ready to Automate Your Finance Workflows?</h2>
+        <p class="text-xl mb-8 text-gray-300">Book a free 30-minute consultation. I'll analyze your current processes and show you exactly how much time and money you could save.</p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+          <a href="#contact" class="cta-primary inline-flex items-center px-8 py-4 rounded-lg font-semibold text-
