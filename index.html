@@ -3,482 +3,322 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>RM Connect — Automation, Data Analysis & AI Workflows for Finance Teams</title>
-  <meta name="description" content="Automation, data analysis, machine learning, AI integrations, workflow optimization, and data-driven solutions for businesses. Freelance automation engineer helping teams save time, reduce costs, and scale operations." />
-  <meta name="keywords" content="automation, AI automation, workflow automation, data analysis, machine learning, Zapier, Make.com, n8n, custom integrations, freelance automation expert, business automation, finance automation" />
-  <meta name="author" content="RM Connect" />
-
-  <meta property="og:title" content="RM Connect – AI & Business Workflow Automation" />
-  <meta property="og:description" content="Automations that save time, reduce costs, and optimize operations. Workflow automation, data analysis, machine learning, Python, APIs, and custom workflow engineering." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.morningsidezw.com/" />
-  <meta property="og:image" content="https://www.morningsidezw.com/assets/og-image.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="RM Connect – AI & Workflow Automation" />
-  <meta name="twitter:description" content="Freelance automation expert building efficient, scalable business automations." />
-  <meta name="twitter:image" content="https://www.morningsidezw.com/assets/og-image.jpg" />
-  <link rel="canonical" href="https://www.morningsidezw.com/" />
-
-  <!-- Local Tailwind build -->
+  <title>RM Connect - KYC Automation for Zimbabwe Banks & MFIs</title>
+  <meta name="description" content="Cut KYC onboarding time by 85%. Built by a former Stanbic banker with 5+ years processing 800,000+ customer records. Automated compliance for Zimbabwe financial institutions." />
   <link rel="stylesheet" href="./styles/tailwind.min.css">
-
   <style>
     :root {
       --brand-navy: #0A1B2A;
       --brand-accent: #FF6A00;
     }
-    html, body { margin:0; padding:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial; }
+    body { font-family: Inter, system-ui, -apple-system, sans-serif; }
     .bg-accent { background: var(--brand-accent); }
     .text-accent { color: var(--brand-accent); }
-
-    /* Minor visual polish */
-    .project-card { transition: transform .25s ease, box-shadow .25s ease; will-change: transform; }
-    .project-card:focus-within { outline: 3px solid rgba(255,106,0,0.12); }
-    .project-card img { transition: transform .28s ease; }
-    .project-card:hover img { transform: scale(1.03); }
-
-    .modal-dot { width: .5rem; height: .5rem; border-radius: 9999px; display:inline-block; opacity:0.45; transition: opacity .2s ease, transform .15s ease; }
-    .modal-dot.active { opacity:1; transform: scale(1.15); background: var(--brand-accent); }
-
-    .press-esc { color: var(--brand-accent); font-weight: 600; }
-
-    @media (max-width: 640px) {
-      #workflowModal .modal-inner { width: 95%; }
-      #workflowModal .modal-img { max-height: 70vh; }
-    }
-
-    /* Small utility to improve focus outlines for keyboard users */
-    :focus { outline: 2px solid rgba(10,27,42,0.08); outline-offset: 2px; }
+    .stat-box { border-left: 4px solid var(--brand-accent); }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-gray-50">
 
   <!-- Header -->
-  <header class="bg-white shadow">
-    <div class="max-w-full mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3" aria-label="Home">
-        <svg width="40" height="40" viewBox="0 0 64 64" role="img" aria-hidden="true">
-          <rect width="64" height="64" rx="12" fill="#0A1B2A"/>
-          <text x="50%" y="54%" text-anchor="middle" fill="#FF6A00" font-family="Inter, sans-serif" font-size="24" font-weight="700">RM</text>
-        </svg>
-      </a>
-
-      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700" aria-label="Main navigation">
-        <a href="index.html" class="text-accent font-semibold">Home</a>
-        <a href="services.html" class="hover:text-gray-900">Services</a>
-        <a href="testimonials.html" class="hover:text-gray-900">Testimonials</a>
-        <a href="blog/index.html" class="py-2 hover:text-gray-900">Blog</a>
-        <a href="about.html" class="hover:text-gray-900">About</a>
-        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer" class="ml-4 inline-flex items-center px-3 py-2 bg-[#25D366] text-white rounded-md hover:opacity-95">WhatsApp</a>
-        <a id="admin-link" href="admin/index.html" class="ml-4 inline-flex items-center px-3 py-2 bg-accent text-white rounded-md hover:opacity-95 hidden">Admin</a>
-      </nav>
-
-      <button id="mobile-toggle" class="md:hidden" aria-label="Open menu" type="button">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-      <div class="px-6 py-4 flex flex-col gap-3">
-        <a href="index.html" class="text-accent font-semibold">Home</a>
-        <a href="services.html" class="py-2">Services</a>
-        <a href="testimonials.html" class="py-2">Testimonials</a>
-        <a href="blog/index.html" class="py-2">Blog</a>
-        <a href="about.html" class="py-2">About</a>
-        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer" class="py-2 bg-[#25D366] text-white rounded text-center">WhatsApp</a>
-        <a id="admin-link-mobile" href="admin/index.html" class="py-2 bg-accent text-white rounded text-center hidden">Admin</a>
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center text-orange-500 font-bold text-lg">RM</div>
+        <div>
+          <div class="font-bold text-gray-900">RM Connect</div>
+          <div class="text-xs text-gray-600">KYC Automation Specialist</div>
+        </div>
       </div>
+      <a href="#pilot" class="px-5 py-2 bg-accent text-white rounded-md font-semibold hover:opacity-90">Apply for Pilot</a>
     </div>
   </header>
 
-  <!-- Main -->
-  <main class="max-w-full mx-auto px-6 py-12">
-
-    <!-- Hero -->
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-      <div>
-        <h1 class="text-3xl md:text-4xl font-bold mb-4">Automation, AI & Data Solutions for Finance Teams</h1>
-        <p class="text-lg text-gray-700 mb-6">Save time, reduce errors, and scale processes with reliable automation, data analysis, and machine learning workflows.</p>
-        <!-- subtle social proof + primary CTA higher for conversions -->
-        <div class="flex items-center gap-4 mb-6 flex-wrap">
-        <div class="text-sm text-gray-600">✅ <strong>Helping teams reduce manual work through automation</strong></div>
-        <div class="text-sm text-gray-600">✅<strong>Building clean, reliable n8n workflows with clear documentation</strong></div>
-
-        </div>
-        <div class="flex gap-3">
-          <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-3 bg-[#25D366] text-white rounded-md font-semibold hover:shadow-lg">Contact on WhatsApp</a>
-          <a href="#contact" class="inline-flex items-center px-5 py-3 border-2 border-gray-200 rounded-md font-semibold hover:bg-gray-50">Contact form</a>
-        </div>
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-6 py-16">
+    <div class="text-center max-w-3xl mx-auto">
+      <div class="inline-block px-4 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-medium mb-4">
+        🏦 Built by a Former Stanbic Banker
       </div>
-
-      <div class="flex justify-center md:justify-end">
-        <img src="assets/hero.jpg" alt="Automation hero" class="w-full h-auto max-h-80 md:max-h-96 object-cover rounded-lg shadow-sm" loading="lazy">
-      </div>
-    </section>
-
-    <!-- Services -->
-    <section class="mt-12">
-      <h2 class="text-2xl font-semibold mb-4">Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col gap-2 items-start">
-          <div class="text-orange-500 text-2xl">⚙️</div>
-          <h3 class="font-semibold">Workflow Setup</h3>
-          <p class="text-sm text-gray-600">Design and implement reliable automations and workflows.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col gap-2 items-start">
-          <div class="text-orange-500 text-2xl">🔗</div>
-          <h3 class="font-semibold">System Integrations</h3>
-          <p class="text-sm text-gray-600">Connect apps, databases and services into unified systems.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col gap-2 items-start">
-          <div class="text-orange-500 text-2xl">🛠️</div>
-          <h3 class="font-semibold">Support & Maintenance</h3>
-          <p class="text-sm text-gray-600">Debug, optimize and document workflows for ongoing reliability.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section class="mt-12" id="projects">
-      <h2 class="text-2xl font-semibold mb-6">Projects</h2>
-
-      <!-- Visible Projects (first row) -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="projects-visible">
-
-        <!-- 1 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-             data-images='["assets/uploads/Dashboard.svg","assets/uploads/Dashboard-2.svg","assets/uploads/Dashboard-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Smart Client Insight Dashboard</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Client reports take hours weekly, insights often missed.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-fetch data, summarize with AI, generate PDF/email weekly.</p>
-          <!-- image available -->
-          <img src="assets/uploads/Dashboard.svg" alt="Smart Client Insight Dashboard screenshot" class="rounded-lg h-32 w-full object-contain mb-4" loading="lazy">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center" role="button" aria-label="Open workflow for Smart Client Insight Dashboard">View Workflow</a>
-        </div>
-
-        <!-- 2 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-             data-images='["assets/uploads/Whatsapp-1.svg","assets/uploads/Whatsapp-2.svg","assets/uploads/Whatsapp-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">WhatsApp Lead Qualification Bot</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Leads sit unanswered → lost revenue.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-classify messages, respond with relevant info, push qualified leads to CRM.</p>
-          <!-- image available -->
-          <img src="assets/uploads/Whatsapp-1.svg" alt="WhatsApp Lead Qualification Bot screenshot" class="rounded-lg h-32 w-full object-contain mb-4" loading="lazy">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center" role="button" aria-label="Open workflow for WhatsApp Lead Qualification Bot">View Workflow</a>
-        </div>
-
-        <!-- 3 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-             data-images='["assets/uploads/Monitor.svg","assets/uploads/Monitor-2.svg","assets/uploads/Monitor-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Transaction & Anomaly Detection</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual monitoring misses errors/fraud.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Detect anomalies in transaction streams automatically.</p>
-          <!-- image available -->
-          <img src="assets/uploads/Monitor.svg" alt="Transaction and Anomaly Detection screenshot" class="rounded-lg h-32 w-full object-contain mb-4" loading="lazy">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center" role="button" aria-label="Open workflow for Transaction & Anomaly Detection">View Workflow</a>
-        </div>
-
-      </div>
-
-      <!-- Hidden projects (toggle) -->
-      <div id="projects-hidden" class="hidden grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-
-        <!-- 4 -->
-        <div class="project-card bg-white p-6 rounded-lg shadow-sm flex flex-col hover:scale-105 hover:shadow-lg transition-transform duration-200"
-             data-images='["assets/Compliance-1.svg","assets/Compliance-2.svg","assets/Compliance-3.svg"]'>
-          <h3 class="font-semibold mb-2 text-brand-navy">Compliance & Audit Auto-Documentation</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Pain Point:</strong> Manual compliance reports are error-prone.</p>
-          <p class="text-sm text-gray-600 mb-4"><strong>Solution:</strong> Auto-generate audit-ready PDFs with traceable logs.</p>
-          <!-- placeholder image - uncomment or replace with real asset when available -->
-          <img src="assets/placeholder.svg" alt="Compliance & Audit Auto-Documentation placeholder" class="rounded-lg h-32 w-full object-contain mb-4" loading="lazy">
-          <a href="#" class="open-workflow mt-auto px-4 py-2 bg-accent text-white rounded-md text-sm font-semibold text-center" role="button">View Workflow</a>
-        </div>
-
-        <!-- ... remaining hidden project cards keep placeholders (unchanged content) -->
-        <!-- For brevity I preserved their original structure and placeholder images -->
-        <!-- 5 - 12 omitted in this snippet to keep file size manageable, include them in your working file as you had before -->
-      </div>
-
-      <div class="text-center mt-6">
-        <button id="toggle-projects" type="button" class="px-6 py-3 bg-accent text-white rounded-md font-semibold hover:opacity-90 transition">Show More Projects</button>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="mt-16 bg-accent text-white py-12 px-6 rounded-lg text-center w-full">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Accelerate Your Automation & Data Projects</h2>
-      <p class="text-lg mb-6 max-w-2xl mx-auto">Discover how automation, data analysis, and machine learning can streamline your operations and optimize business outcomes.</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        Stop Losing 30+ Hours Per Week on Manual KYC Checks
+      </h1>
+      <p class="text-xl text-gray-700 mb-4">
+        I help Zimbabwe banks & MFIs automate customer onboarding — cutting processing time from <strong>45 minutes to 5 minutes</strong> while preventing compliance fines.
+      </p>
+      <p class="text-lg text-gray-600 mb-8">
+        After processing 800,000+ KYC records at Stanbic, I know exactly what slows you down. Now I'm building the solution.
+      </p>
       <div class="flex gap-4 justify-center flex-wrap">
-        <a href="https://wa.me/263717605044?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer" class="inline-block px-6 py-3 bg-[#25D366] text-white rounded-md font-semibold hover:shadow-lg transition-shadow">Contact on WhatsApp</a>
-        <a href="#contact" class="inline-block px-6 py-3 border-2 border-white text-white rounded-md font-semibold hover:bg-white hover:text-accent transition-colors">Contact Form</a>
+        <a href="#pilot" class="px-6 py-3 bg-accent text-white rounded-md font-semibold hover:shadow-lg">Join Pilot Program</a>
+        <a href="#how-it-works" class="px-6 py-3 border-2 border-gray-300 rounded-md font-semibold hover:bg-gray-50">See How It Works</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Contact -->
-    <section id="contact" class="mt-12 bg-white p-6 rounded-lg shadow max-w-lg mx-auto">
-      <h2 class="text-2xl font-semibold mb-4 text-center">Or Send Us a Message</h2>
-      <form action="https://formspree.io/f/xkgljppq" method="POST" class="flex flex-col gap-4" id="contactForm">
-        <input type="text" name="name" placeholder="Your Name" required autocomplete="name" class="border p-3 rounded w-full">
-        <input type="email" name="email" placeholder="Your Email" required autocomplete="email" class="border p-3 rounded w-full">
-        <input type="tel" name="whatsapp" placeholder="Your WhatsApp Number" required autocomplete="tel" class="border p-3 rounded w-full">
-        <textarea name="message" placeholder="Your Message" required class="border p-3 rounded w-full"></textarea>
+  <!-- Trust Bar -->
+  <section class="bg-white py-8">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+        <div>
+          <div class="text-3xl font-bold text-accent">5+ Years</div>
+          <div class="text-gray-600">Banking Operations (Stanbic)</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-accent">800,000+</div>
+          <div class="text-gray-600">KYC Records Processed</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-accent">85%</div>
+          <div class="text-gray-600">Time Reduction Target</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <label for="contact-method" class="text-sm font-medium">Preferred Contact Method:</label>
-        <select id="contact-method" name="contact_method" class="border p-3 rounded w-full">
-          <option value="email" selected>Email</option>
-          <option value="whatsapp">WhatsApp</option>
-        </select>
+  <!-- The Problem -->
+  <section class="max-w-6xl mx-auto px-6 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">If You're a Bank or MFI in Zimbabwe, You Know These Pain Points:</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <div class="bg-white p-6 rounded-lg border-l-4 border-red-500">
+        <div class="text-2xl mb-2">⏱️</div>
+        <h3 class="font-bold mb-2">Manual KYC Takes 30-60 Minutes Per Customer</h3>
+        <p class="text-gray-600 text-sm">Staff manually check IDs, addresses, documents — bottleneck during surges</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg border-l-4 border-red-500">
+        <div class="text-2xl mb-2">📋</div>
+        <h3 class="font-bold mb-2">Missing Docs Discovered During Audits</h3>
+        <p class="text-gray-600 text-sm">Incomplete KYC found months later → RBZ fines → scramble to fix</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg border-l-4 border-red-500">
+        <div class="text-2xl mb-2">😓</div>
+        <h3 class="font-bold mb-2">Staff Overwhelmed, Errors Increase</h3>
+        <p class="text-gray-600 text-sm">Fatigue causes missed red flags, inconsistent checks, compliance gaps</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg border-l-4 border-red-500">
+        <div class="text-2xl mb-2">🚨</div>
+        <h3 class="font-bold mb-2">Fake IDs Slip Through Manual Checks</h3>
+        <p class="text-gray-600 text-sm">Photoshopped docs, expired addresses — hard to catch when checking 50/day</p>
+      </div>
+    </div>
+  </section>
 
-        <button type="submit" class="bg-accent text-white px-5 py-3 rounded hover:opacity-90 transition">Send Message</button>
+  <!-- Solution -->
+  <section id="how-it-works" class="bg-gradient-to-br from-orange-50 to-white py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">The KYC Auto-Approval System</h2>
+        <p class="text-lg text-gray-700">From document submission to approval decision in under 5 minutes</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+          <h3 class="font-bold text-lg mb-2">Customer Submits Documents</h3>
+          <p class="text-gray-600 text-sm">Secure online form accepts ID (front/back), proof of address, passport photo</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+          <h3 class="font-bold text-lg mb-2">AI Validates in Real-Time</h3>
+          <p class="text-gray-600 text-sm">Checks Zimbabwe ID format, expiry dates, address validity, photo quality, detects fake documents</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+          <h3 class="font-bold text-lg mb-2">Auto-Approve or Flag</h3>
+          <p class="text-gray-600 text-sm">80% auto-approved instantly. 20% flagged for human review. Zero errors reach approval.</p>
+        </div>
+      </div>
+
+      <div class="mt-12 bg-white p-8 rounded-lg shadow-sm max-w-2xl mx-auto">
+        <h3 class="font-bold text-xl mb-4">What Gets Checked Automatically:</h3>
+        <ul class="space-y-2 text-gray-700">
+          <li>✅ Zimbabwe National ID format (63-XXXXXXX-X-XX)</li>
+          <li>✅ Document expiry dates (must be valid 6+ months)</li>
+          <li>✅ Address completeness & Zimbabwe postal validation</li>
+          <li>✅ Photo quality (clarity, face visible, not stock image)</li>
+          <li>✅ Fake document detection (photoshopping, tampering)</li>
+          <li>✅ Duplicate customer check (prevent multiple accounts)</li>
+          <li>✅ Age verification (18+ requirement)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who It's For -->
+  <section class="max-w-6xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center mb-12">Built For Zimbabwe Financial Institutions</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+        <div class="text-3xl mb-3">🏦</div>
+        <h3 class="font-bold mb-2">Small & Medium Banks</h3>
+        <p class="text-sm text-gray-600">Same compliance pressure as big banks, smaller budgets</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+        <div class="text-3xl mb-3">💰</div>
+        <h3 class="font-bold mb-2">Microfinance Institutions</h3>
+        <p class="text-sm text-gray-600">Growing fast, need scalable onboarding</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+        <div class="text-3xl mb-3">📱</div>
+        <h3 class="font-bold mb-2">Mobile Money & Fintechs</h3>
+        <p class="text-sm text-gray-600">Digital-first, need automated compliance</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Me -->
+  <section class="bg-white py-16">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">Why Trust RM Connect?</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="stat-box pl-4">
+          <h3 class="font-bold text-lg mb-2">🏦 I've Lived Your Pain</h3>
+          <p class="text-gray-700">5+ years at Stanbic doing retail banking, loan processing, customer service, KYC compliance. I processed over 800,000 entries. I know exactly what slows you down.</p>
+        </div>
+        <div class="stat-box pl-4">
+          <h3 class="font-bold text-lg mb-2">🇿🇼 Built for Zimbabwe</h3>
+          <p class="text-gray-700">Not a generic global tool. Designed for Zimbabwe ID formats, RBZ requirements, local fraud patterns, mobile-first users.</p>
+        </div>
+        <div class="stat-box pl-4">
+          <h3 class="font-bold text-lg mb-2">🔧 Technical Expertise</h3>
+          <p class="text-gray-700">Data science, machine learning, Python, SQL, automation workflows. I build solutions that actually work, not just promises.</p>
+        </div>
+        <div class="stat-box pl-4">
+          <h3 class="font-bold text-lg mb-2">💡 You Keep Control</h3>
+          <p class="text-gray-700">Your data stays on your servers. You review flagged cases. AI assists, humans decide. No black box.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pilot Program -->
+  <section id="pilot" class="max-w-4xl mx-auto px-6 py-16">
+    <div class="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-10 rounded-2xl shadow-xl">
+      <div class="text-center mb-8">
+        <div class="inline-block px-4 py-1 bg-white text-orange-600 rounded-full text-sm font-bold mb-4">
+          LIMITED SPOTS - FIRST 3 CLIENTS ONLY
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Join the Pilot Program</h2>
+        <p class="text-lg opacity-90">Get priority access + special pricing for early adopters</p>
+      </div>
+
+      <div class="bg-white text-gray-900 p-8 rounded-xl mb-8">
+        <h3 class="text-2xl font-bold mb-4">What You Get:</h3>
+        <ul class="space-y-3 mb-6">
+          <li class="flex items-start gap-3">
+            <span class="text-orange-500 font-bold">✓</span>
+            <span><strong>Complete KYC Auto-Approval System</strong> — Document upload, AI validation, fraud detection, admin dashboard</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-orange-500 font-bold">✓</span>
+            <span><strong>Custom Setup for Your Bank/MFI</strong> — Tailored to your workflow, branded with your logo</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-orange-500 font-bold">✓</span>
+            <span><strong>Staff Training & Documentation</strong> — Your team knows exactly how to use it</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-orange-500 font-bold">✓</span>
+            <span><strong>60 Days Priority Support</strong> — I'm with you through implementation</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-orange-500 font-bold">✓</span>
+            <span><strong>Document Expiry Reminders</strong> — Automated follow-ups for renewals</span>
+          </li>
+        </ul>
+        
+        <div class="border-t pt-6">
+          <div class="flex items-baseline gap-2 mb-2">
+            <span class="text-gray-500 line-through">Regular Price: $5,000</span>
+          </div>
+          <div class="flex items-baseline gap-3">
+            <span class="text-4xl font-bold text-orange-600">$2,500</span>
+            <span class="text-gray-600">Pilot Program (50% Off)</span>
+          </div>
+          <p class="text-sm text-gray-600 mt-2">One-time setup fee. No monthly charges during pilot.</p>
+        </div>
+      </div>
+
+      <form class="space-y-4" action="https://formspree.io/f/xkgljppq" method="POST">
+        <input type="hidden" name="_subject" value="KYC Pilot Program Application">
+        <div class="grid md:grid-cols-2 gap-4">
+          <input type="text" name="name" placeholder="Your Name *" required class="p-3 rounded-md text-gray-900" />
+          <input type="text" name="position" placeholder="Your Position *" required class="p-3 rounded-md text-gray-900" />
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          <input type="text" name="organization" placeholder="Bank/MFI Name *" required class="p-3 rounded-md text-gray-900" />
+          <input type="email" name="email" placeholder="Work Email *" required class="p-3 rounded-md text-gray-900" />
+        </div>
+        <input type="tel" name="phone" placeholder="WhatsApp Number *" required class="p-3 rounded-md w-full text-gray-900" />
+        <textarea name="message" placeholder="Tell us about your KYC challenges (What's your biggest pain point? How many customers do you onboard monthly?)" rows="4" class="p-3 rounded-md w-full text-gray-900"></textarea>
+        <button type="submit" class="w-full bg-white text-orange-600 px-6 py-4 rounded-md font-bold text-lg hover:bg-gray-50 transition">
+          Apply for Pilot Program →
+        </button>
       </form>
 
-      <p id="formMessage" class="text-center text-green-600 mt-2 hidden" role="status" aria-live="polite">Thank you! Your message has been sent.</p>
-    </section>
+      <p class="text-center text-sm opacity-75 mt-4">No credit card required. I'll review your application and reach out within 24 hours.</p>
+    </div>
+  </section>
 
-  </main>
+  <!-- FAQ -->
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+    <div class="space-y-6">
+      <details class="bg-white p-6 rounded-lg shadow-sm">
+        <summary class="font-bold cursor-pointer">Is our customer data secure?</summary>
+        <p class="text-gray-700 mt-3">Yes. Your data never leaves your infrastructure. We can install the system on your servers, or use secure cloud storage with encryption. You maintain full control.</p>
+      </details>
+      <details class="bg-white p-6 rounded-lg shadow-sm">
+        <summary class="font-bold cursor-pointer">Do you need access to our core banking system?</summary>
+        <p class="text-gray-700 mt-3">No. The system works standalone during customer onboarding. Once approved, you manually add customers to your core system (or we can integrate via API if you prefer).</p>
+      </details>
+      <details class="bg-white p-6 rounded-lg shadow-sm">
+        <summary class="font-bold cursor-pointer">What if the AI makes a mistake?</summary>
+        <p class="text-gray-700 mt-3">The system flags uncertain cases for human review. Only high-confidence approvals are automated. Your compliance team has final say on every flagged application.</p>
+      </details>
+      <details class="bg-white p-6 rounded-lg shadow-sm">
+        <summary class="font-bold cursor-pointer">How long does implementation take?</summary>
+        <p class="text-gray-700 mt-3">2-3 weeks from kickoff to live. Week 1: Setup & customization. Week 2: Staff training & testing. Week 3: Go live with support.</p>
+      </details>
+      <details class="bg-white p-6 rounded-lg shadow-sm">
+        <summary class="font-bold cursor-pointer">What happens when documents expire?</summary>
+        <p class="text-gray-700 mt-3">The system tracks expiry dates and sends automated reminders 90, 60, and 30 days before documents expire. Customers can submit updates through the same portal.</p>
+      </details>
+      <details class="bg-white p-6 rounded-lg shadow-sm">
+        <summary class="font-bold cursor-pointer">Can it detect fake Zimbabwe IDs?</summary>
+        <p class="text-gray-700 mt-3">Yes. The AI checks for common forgery patterns: photoshopping, wrong ID format, inconsistent fonts, tampered photos. It flags suspicious documents for human verification.</p>
+      </details>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="bg-white border-t mt-12">
-    <div class="max-w-full mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
-      <p>© 2025 RM Connect</p>
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center font-bold">RM</div>
+            <span class="font-bold">RM Connect</span>
+          </div>
+          <p class="text-gray-400 text-sm">KYC Automation for Zimbabwe Financial Institutions</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-3">Contact</h4>
+          <p class="text-gray-400 text-sm mb-2">Email: mukechiwarichard@gmail.com</p>
+          <p class="text-gray-400 text-sm mb-2">WhatsApp: +263 774 237 897</p>
+          <p class="text-gray-400 text-sm">Harare, Zimbabwe</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-3">About</h4>
+          <p class="text-gray-400 text-sm">Built by Richard Mukechiwa, former Stanbic banking operations specialist with 5+ years processing KYC data.</p>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-6 text-center text-gray-400 text-sm">
+        <p>© 2025 RM Connect. Built in Zimbabwe, for Zimbabwe financial institutions.</p>
+      </div>
     </div>
   </footer>
-
-  <!-- Unified Workflow Modal -->
-  <div id="workflowModal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center p-4 z-50" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="bg-white rounded-lg max-w-3xl w-full relative modal-inner" role="document">
-      <button id="closeModal" type="button" class="absolute top-3 right-3 text-gray-600 text-2xl leading-none" aria-label="Close">×</button>
-
-      <div class="relative">
-        <img id="modalImage" src="" alt="Workflow screenshot" class="w-full modal-img max-h-[80vh] object-contain rounded-t-lg">
-        <button id="prevImage" type="button" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow" aria-label="Previous image">‹</button>
-        <button id="nextImage" type="button" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow" aria-label="Next image">›</button>
-      </div>
-
-      <div id="modalPager" class="flex items-center justify-center gap-2 p-3" aria-hidden="false"></div>
-      <p id="slideCounter" class="text-xs text-gray-500 text-center mt-2">1 / 1</p>
-      <p class="text-center press-esc text-sm mt-2">Press ESC to close</p>
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    // Mobile toggle + close on link click
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
-
-    /* ----------------------------
-       Contact Form (Formspree)
-       ---------------------------- */
-    const form = document.getElementById('contactForm');
-    const formMessage = document.getElementById('formMessage');
-    if (form) {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        fetch(form.action, {
-          method: form.method,
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        }).then(response => {
-          if (response.ok) {
-            formMessage.classList.remove('hidden');
-            form.reset();
-            formMessage.focus();
-          } else {
-            response.json().then(data => {
-              alert(data.errors ? data.errors.map(err => err.message).join(", ") : "Oops! There was a problem.");
-            }).catch(()=>alert("Oops! Problem submitting."));
-          }
-        }).catch(() => alert("Oops! There was a problem submitting the form."));
-      });
-    }
-
-    /* ----------------------------
-       Show More / Show Less toggle
-       ---------------------------- */
-    const toggleBtn = document.getElementById("toggle-projects");
-    const hiddenProjects = document.getElementById("projects-hidden");
-    if (toggleBtn && hiddenProjects) {
-      toggleBtn.addEventListener("click", () => {
-        const isHidden = hiddenProjects.classList.contains("hidden");
-        hiddenProjects.classList.toggle("hidden");
-        toggleBtn.textContent = isHidden ? "Show Less" : "Show More Projects";
-        if (isHidden) {
-          hiddenProjects.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-          document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    }
-
-    /* ----------------------------
-       Unified Workflow Modal + Slideshow + Pager
-       ---------------------------- */
-    const workflowModal = document.getElementById("workflowModal");
-    const modalImg = document.getElementById("modalImage");
-    const prevBtn = document.getElementById("prevImage");
-    const nextBtn = document.getElementById("nextImage");
-    const closeModalBtn = document.getElementById("closeModal");
-    const modalPager = document.getElementById("modalPager");
-    const slideCounter = document.getElementById("slideCounter");
-
-    let workflowImages = [];
-    let currentIndex = 0;
-    let autoPlayTimer = null;
-    const autoPlayInterval = 5000;
-
-    function buildPager() {
-      modalPager.innerHTML = '';
-      workflowImages.forEach((src, i) => {
-        const dot = document.createElement('button');
-        dot.type = 'button';
-        dot.className = 'modal-dot';
-        dot.setAttribute('aria-label', 'Go to slide ' + (i+1));
-        dot.addEventListener('click', () => {
-          currentIndex = i;
-          loadModalImage();
-          resetAutoPlay();
-        });
-        modalPager.appendChild(dot);
-      });
-      updatePager();
-    }
-
-    function updatePager() {
-      [...modalPager.children].forEach((dot, i) => {
-        if (i === currentIndex) {
-          dot.classList.add('active');
-          dot.style.background = 'var(--brand-accent)';
-          dot.style.opacity = '1';
-        } else {
-          dot.classList.remove('active');
-          dot.style.background = '#d1d5db';
-          dot.style.opacity = '0.45';
-        }
-      });
-    }
-
-    function openModal(images, index = 0) {
-      if (!images || !images.length) return;
-      workflowImages = images.slice();
-      currentIndex = Math.min(Math.max(index, 0), workflowImages.length - 1);
-      workflowModal.classList.remove('hidden');
-      workflowModal.classList.add('flex');
-      workflowModal.setAttribute('aria-hidden', 'false');
-      document.documentElement.style.overflow = 'hidden';
-      buildPager();
-      loadModalImage();
-      startAutoPlay();
-      closeModalBtn.focus();
-    }
-
-    function closeModal() {
-      workflowModal.classList.add('hidden');
-      workflowModal.classList.remove('flex');
-      workflowModal.setAttribute('aria-hidden', 'true');
-      document.documentElement.style.overflow = '';
-      stopAutoPlay();
-    }
-
-    function loadModalImage() {
-      if (!workflowImages || !workflowImages.length) return;
-      modalImg.src = workflowImages[currentIndex];
-      modalImg.alt = `Slide ${currentIndex+1} — Workflow image`;
-      slideCounter.textContent = `${currentIndex + 1} / ${workflowImages.length}`;
-      updatePager();
-      const pre = new Image();
-      pre.src = workflowImages[(currentIndex + 1) % workflowImages.length];
-    }
-
-    function nextImageFunc() {
-      if (!workflowImages.length) return;
-      currentIndex = (currentIndex + 1) % workflowImages.length;
-      loadModalImage();
-    }
-
-    function prevImageFunc() {
-      if (!workflowImages.length) return;
-      currentIndex = (currentIndex - 1 + workflowImages.length) % workflowImages.length;
-      loadModalImage();
-    }
-
-    function startAutoPlay() {
-      stopAutoPlay();
-      autoPlayTimer = setInterval(() => {
-        if (!workflowModal.classList.contains('hidden')) nextImageFunc();
-      }, autoPlayInterval);
-    }
-
-    function stopAutoPlay() {
-      if (autoPlayTimer) { clearInterval(autoPlayTimer); autoPlayTimer = null; }
-    }
-
-    function resetAutoPlay() {
-      stopAutoPlay();
-      startAutoPlay();
-    }
-
-    // open modal when "View Workflow" clicked
-    document.querySelectorAll('.open-workflow').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const card = btn.closest('.project-card');
-        let imgs = [];
-        try { imgs = JSON.parse(card.getAttribute('data-images') || '[]'); } catch (err) { imgs = []; }
-        if (!imgs.length && card.querySelector('img')) imgs = [card.querySelector('img').src];
-        openModal(imgs, 0);
-      });
-    });
-
-    // keyboard interactions
-    document.addEventListener('keydown', (e) => {
-      if (workflowModal.classList.contains('hidden')) return;
-      if (e.key === 'Escape') closeModal();
-      if (e.key === 'ArrowLeft') prevImageFunc();
-      if (e.key === 'ArrowRight') nextImageFunc();
-    });
-
-    // close buttons and overlay click to close
-    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-    workflowModal.addEventListener('click', (e) => {
-      if (e.target === workflowModal) closeModal();
-    });
-
-    // prev/next
-    if (prevBtn) prevBtn.addEventListener('click', () => { prevImageFunc(); resetAutoPlay(); });
-    if (nextBtn) nextBtn.addEventListener('click', () => { nextImageFunc(); resetAutoPlay(); });
-
-    /* Image click => zoom (open modal at clicked image index) */
-    document.querySelectorAll('.project-card img').forEach(img => {
-      img.style.cursor = 'zoom-in';
-      img.addEventListener('click', (e) => {
-        const card = img.closest('.project-card');
-        let imgs = [];
-        try { imgs = JSON.parse(card.getAttribute('data-images') || '[]'); } catch (err) { imgs = []; }
-        if (!imgs.length) imgs = [img.src];
-        const resolvedSrc = img.src;
-        let idx = imgs.indexOf(resolvedSrc);
-        if (idx === -1) idx = 0;
-        openModal(imgs, idx);
-        stopAutoPlay();
-      });
-    });
-
-    /* Admin link toggle if ?admin=1 */
-    const showAdmin = new URLSearchParams(window.location.search).get('admin') === '1';
-    if (showAdmin) {
-      document.getElementById('admin-link')?.classList.remove('hidden');
-      document.getElementById('admin-link-mobile')?.classList.remove('hidden');
-    }
-  });
-  </script>
 
 </body>
 </html>
