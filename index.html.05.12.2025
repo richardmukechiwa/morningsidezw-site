@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RM Connect - KYC Automation for Zimbabwe Banks &amp; MFIs</title>
+  <meta name="description" content="Cut KYC onboarding time by up to 85%. Built by a former banker with deep, hands-on KYC and compliance experience. Automating compliance for Zimbabwe financial institutions." />
+  <link rel="canonical" href="https://morningsidezw.com/" />
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="RM Connect - KYC Automation for Zimbabwe Banks &amp; MFIs" />
+  <meta property="og:description" content="Cut KYC onboarding time by up to 85%. Built by a former banker with deep, hands-on KYC and compliance experience." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://morningsidezw.com/" />
+  <meta property="og:image" content="https://your-domain.com/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="@yourhandle" />
+
+  <link rel="stylesheet" href="./styles/tailwind.min.css">
+  <style>
+    :root {
+      --brand-navy: #0A1B2A;
+      --brand-accent: #FF6A00;
+    }
+    body { font-family: Inter, system-ui, -apple-system, sans-serif; }
+
+    .bg-accent { background: var(--brand-accent); }
+    .text-accent { color: var(--brand-accent); }
+    .stat-box { border-left: 4px solid var(--brand-accent); }
+
+    /* simple sr-only helper */
+    .sr-only {
+      position: absolute !important;
+      height: 1px; width: 1px;
+      overflow: hidden;
+      clip: rect(1px, 1px, 1px, 1px);
+      white-space: nowrap;
+      clip-path: inset(50%);
+      border: 0; padding: 0; margin: -1px;
+    }
+
+    /* mobile persistent CTA */
+    @media (max-width: 640px) {
+      .mobile-cta {
+        position: fixed;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 60;
+        width: calc(100% - 48px);
+        max-width: 640px;
+      }
+    }
+
+    /* breathing space for content */
+    p, li, details, article, h3 {
+      margin-bottom: 1rem;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Service",
+    "name":"RM Connect - KYC Automation",
+    "description":"KYC automation and compliance solutions for Zimbabwe banks and MFIs built by an experienced banking operations specialist.",
+    "provider": {
+      "@type": "Person",
+      "name": "Richard Mukechiwa"
+    }
+  }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-50" role="banner">
+    <div class="max-w-full mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div>
+          <div class="font-bold text-gray-900">RM Connect</div>
+          <div class="text-xs text-gray-600">KYC Automation Specialist</div>
+        </div>
+      </div>
+      <a href="#pilot" class="px-5 py-2 bg-accent text-white rounded-md font-semibold hover:opacity-90" aria-label="Apply for pilot program">Apply for Pilot</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+  <!--section class="max-w-full mx-auto px-6 py-16" id="top">-->
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"></section>
+    <div class="text-center max-w-3xl mx-auto">
+      <div class="md:flex md:items-center md:space-x-12">
+    <div class="md:w-1/2">
+        <div class="mb-4">
+            
+            
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Stop losing time on manual KYC checks, instead automate reliably.</h1>
+            
+            <p class="text-xl text-gray-700 mb-4">
+                </p>
+        </div>
+    </div>
+
+    <div class="md:w-1/2">
+        <div class="flex justify-center md:justify-start">
+            <img 
+                src="assets/hero.jpg" 
+                alt="Automation hero" 
+                class="w-full h-auto max-h-80 md:max-h-96 object-cover rounded-lg shadow-xl" 
+                loading="lazy"
+            >
+        </div>
+        <div class="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-sm font-semibold rounded-full mb-4">
+                🏦 Built by a seasoned banker
+            </div>
+    </div>
+</div>
+      <p class="text-xl text-gray-700 mb-4">
+        I help Zimbabwe banks &amp; MFIs automate customer onboarding, cutting processing time dramatically while preventing compliance fines.
+      </p>
+      <p class="text-lg text-gray-600 mb-8">
+        After years inside in the banking industry reviewing high-volume KYC workflows, I built a solution focused on real-world failure modes and local compliance needs.
+      </p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="#pilot" class="px-6 py-3 bg-accent text-white rounded-md font-semibold hover:shadow-lg" aria-label="Join pilot program">Join Pilot Program</a>
+        <a href="#how-it-works" class="px-6 py-3 border-2 border-gray-300 rounded-md font-semibold hover:bg-gray-50" aria-label="See how it works">See How It Works</a>
+        <!-- Mobile persistent WhatsApp CTA -->
+  <div class="mobile-cta sm:block md:hidden lg:hidden">
+    <a href="https://wa.me/263774237897?text=Hie.%20I%20am%20interested%20in%20your%20services"
+      rel  = "noopener noreferrer" 
+      target="_blank"
+      class="block bg-accent text-white px-6 py-3 rounded-full text-center font-semibold shadow-lg" 
+      aria-label="Chat via WhatsApp">
+      Chat on WhatsApp — Limited Spots
+    </a>
+     </div>
+
+      </div>
+      
+    </div>
+    
+  </section>
+
+  <!-- Trust Bar -->
+  <section class="bg-white py-8" aria-label="Trust and experience">
+    <div class="max-w-full mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+        <div>
+          <div class="text-3xl font-bold text-accent">Experienced</div>
+          <div class="text-gray-600">Banking operations &amp; KYC expertise</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-accent">High-Volume</div>
+          <div class="text-gray-600">KYC processing experience in the banking industry</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-accent">85%</div>
+          <div class="text-gray-600">Time reduction target</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem -->
+  <section class="max-w-full mx-auto px-6 py-16" aria-labelledby="pain-heading">
+    <div class="text-center mb-12">
+      <h2 id="pain-heading" class="text-3xl font-bold text-gray-900 mb-4">If you're a Bank or MFI in Zimbabwe, you know these pain points</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <article class="bg-white p-6 rounded-lg border-l-4 border-red-500" aria-labelledby="pain1">
+        <div class="text-2xl mb-2" aria-hidden="true">⏱️</div>
+        <h3 id="pain1" class="font-bold mb-2">Manual KYC takes too long</h3>
+        <p class="text-gray-600 text-sm">Staff manually check IDs, addresses and documents that's a bottleneck during surges.</p>
+      </article>
+      <article class="bg-white p-6 rounded-lg border-l-4 border-red-500" aria-labelledby="pain2">
+        <div class="text-2xl mb-2" aria-hidden="true">📋</div>
+        <h3 id="pain2" class="font-bold mb-2">Missing documents discovered late</h3>
+        <p class="text-gray-600 text-sm">Incomplete KYC found months later → RBZ fines → scramble to fix.</p>
+      </article>
+      <article class="bg-white p-6 rounded-lg border-l-4 border-red-500" aria-labelledby="pain3">
+        <div class="text-2xl mb-2" aria-hidden="true">😓</div>
+        <h3 id="pain3" class="font-bold mb-2">Staff overwhelmed, errors rise</h3>
+        <p class="text-gray-600 text-sm">Fatigue leads to missed red flags and inconsistent checks.</p>
+      </article>
+      <article class="bg-white p-6 rounded-lg border-l-4 border-red-500" aria-labelledby="pain4">
+        <div class="text-2xl mb-2" aria-hidden="true">🚨</div>
+        <h3 id="pain4" class="font-bold mb-2">Fake IDs slip through</h3>
+        <p class="text-gray-600 text-sm">Photoshopped or tampered documents are hard to catch at scale.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Solution -->
+  <section id="how-it-works" class="bg-gradient-to-br from-orange-50 to-white py-16" aria-labelledby="solution-heading">
+    <div class="max-w-full mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 id="solution-heading" class="text-3xl font-bold text-gray-900 mb-4">The KYC Auto-Approval System</h2>
+        <p class="text-lg text-gray-700">From document submission to a decision-ready outcome in under five minutes.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8" role="list">
+        <div class="text-center" role="listitem">
+          <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+          <h3 class="font-bold text-lg mb-2">Customer submits documents</h3>
+          <p class="text-gray-600 text-sm">Secure form accepts ID (front/back), proof of address and passport photo.</p>
+        </div>
+        <div class="text-center" role="listitem">
+          <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+          <h3 class="font-bold text-lg mb-2">AI validates in real time</h3>
+          <p class="text-gray-600 text-sm">Checks ID format, expiry, address validity, photo quality and detects tampering.</p>
+        </div>
+        <div class="text-center" role="listitem">
+          <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+          <h3 class="font-bold text-lg mb-2">Auto-approve or flag</h3>
+          <p class="text-gray-600 text-sm">Most cases are auto-routed; uncertain cases are flagged for human review with full context.</p>
+        </div>
+      </div>
+
+      <div class="mt-12 bg-white p-8 rounded-lg shadow-sm max-w-2xl mx-auto" aria-labelledby="checks-heading">
+        <h3 id="checks-heading" class="font-bold text-xl mb-4">What gets checked automatically</h3>
+        <ul class="space-y-2 text-gray-700">
+          <li>✅ Zimbabwe National ID format (local validation)</li>
+          <li>✅ Document expiry windows</li>
+          <li>✅ Address completeness &amp; local postal cues</li>
+          <li>✅ Photo quality (clarity, face visible, not a stock image)</li>
+          <li>✅ Fake document detection (tampering, inconsistent fonts, edits)</li>
+          <li>✅ Duplicate customer detection</li>
+          <li>✅ Age verification (18+ where required)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who It's For -->
+  <section class="max-w-full mx-auto px-6 py-16" aria-labelledby="who-heading">
+    <h2 id="who-heading" class="text-3xl font-bold text-center mb-12">Built for Zimbabwe financial institutions</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+        <div class="text-3xl mb-3" aria-hidden="true">🏦</div>
+        <h3 class="font-bold mb-2">Small &amp; Medium Banks</h3>
+        <p class="text-sm text-gray-600">Same compliance pressure as big banks, smaller budgets and constrained teams.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+        <div class="text-3xl mb-3" aria-hidden="true">💰</div>
+        <h3 class="font-bold mb-2">Microfinance Institutions</h3>
+        <p class="text-sm text-gray-600">Growing fast and need scalable onboarding without adding headcount.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+        <div class="text-3xl mb-3" aria-hidden="true">📱</div>
+        <h3 class="font-bold mb-2">Mobile Money &amp; Fintechs</h3>
+        <p class="text-sm text-gray-600">Digital-first businesses that need compliance baked into the UX.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Me -->
+  <section class="bg-white py-16" aria-labelledby="why-heading">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 id="why-heading" class="text-3xl font-bold text-center mb-8">Why trust RM Connect?</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="stat-box pl-4">
+          <h3 class="font-bold text-lg mb-2">🏦 I've lived your pain</h3>
+          <p class="text-gray-700">Years spent in banking operations working directly on retail onboarding, KYC compliance and process remediation. I know the common failure modes and what teams need to operate efficiently.</p>
+        </div>
+        <div class="stat-box pl-4">
+          <h3 class="font-bold text-lg mb-2">🇿🇼 Built for Zimbabwe</h3>
+          <p class="text-gray-700">Designed around Zimbabwe ID formats, RBZ expectations and local fraud patterns — not a generic global tool.</p>
+        </div>
+        <div class="stat-box pl-4">
+          <h3 class="font-bold text-lg mb-2">🔧 Technical expertise</h3>
+          <p class="text-gray-700">Data science, machine learning, automation and engineering workflows — built to be maintainable and auditable.</p>
+        </div>
+        <div class="stat-box pl-4">
+          <h3 class="font-bold text-lg mb-2">💡 You keep control</h3>
+          <p class="text-gray-700">Deploy on your infrastructure or on encrypted cloud environments. Human review is preserved; AI assists, humans decide.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pilot Program -->
+  <section id="pilot" class="max-w-4xl mx-auto px-6 py-16" aria-labelledby="pilot-heading">
+    <div class="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-10 rounded-2xl shadow-xl">
+      <div class="text-center mb-8">
+        <div class="inline-block px-4 py-1 bg-white text-orange-600 rounded-full text-sm font-bold mb-4" aria-hidden="true">
+          LIMITED SPOTS - FIRST 3 CLIENTS ONLY
+        </div>
+        <h2 id="pilot-heading" class="text-3xl md:text-4xl font-bold mb-4">Join the Pilot Program</h2>
+        <p class="text-lg opacity-90">Get priority access and special pricing for early adopters.</p>
+      </div>
+
+      <div class="bg-white text-gray-900 p-8 rounded-xl mb-8">
+        <h3 class="text-2xl font-bold mb-4">What you get</h3>
+        <ul class="space-y-3 mb-6">
+          <li class="flex items-start gap-3">
+            <span class="text-orange-500 font-bold" aria-hidden="true">✓</span>
+            <span><strong>Complete KYC Auto-Approval System</strong> — document upload, AI validation, fraud detection and an admin dashboard</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-orange-500 font-bold" aria-hidden="true">✓</span>
+            <span><strong>Custom setup for your institution</strong> — tailored to your workflow and branded to your needs</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-orange-500 font-bold" aria-hidden="true">✓</span>
+            <span><strong>Staff training &amp; documentation</strong> — practical, role-based training for your teams</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-orange-500 font-bold" aria-hidden="true">✓</span>
+            <span><strong>60 days priority support</strong> — hands-on support during rollout</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-orange-500 font-bold" aria-hidden="true">✓</span>
+            <span><strong>Document expiry reminders</strong> — automated renewal prompts for customers</span>
+          </li>
+        </ul>
+
+        <div class="border-t pt-6">
+          <div class="flex items-baseline gap-2 mb-2">
+            <span class="text-gray-500 line-through">Regular Price: $5,000</span>
+          </div>
+          <div class="flex items-baseline gap-3">
+            <span class="text-4xl font-bold text-orange-600">$2,500</span>
+            <span class="text-gray-600">Pilot Program (50% Off)</span>
+          </div>
+          <p class="text-sm text-gray-600 mt-2">One-time setup fee. No monthly charges during pilot.</p>
+        </div>
+      </div>
+
+      <form class="space-y-4" action="https://formspree.io/f/xkgljppq" method="POST" aria-label="Pilot application form">
+        <input type="hidden" name="_subject" value="KYC Pilot Program Application">
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label for="name" class="sr-only">Your name</label>
+            <input id="name" type="text" name="name" placeholder="Your Name *" required autocomplete="name" class="p-3 rounded-md text-gray-900 w-full" />
+          </div>
+          <div>
+            <label for="position" class="sr-only">Your position</label>
+            <input id="position" type="text" name="position" placeholder="Your Position *" required autocomplete="organization-title" class="p-3 rounded-md text-gray-900 w-full" />
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label for="organization" class="sr-only">Bank or MFI name</label>
+            <input id="organization" type="text" name="organization" placeholder="Bank/MFI Name *" required autocomplete="organization" class="p-3 rounded-md text-gray-900 w-full" />
+          </div>
+          <div>
+            <label for="email" class="sr-only">Work email</label>
+            <input id="email" type="email" name="email" placeholder="Work Email *" required autocomplete="email" class="p-3 rounded-md text-gray-900 w-full" />
+          </div>
+        </div>
+        <div>
+          <label for="phone" class="sr-only">WhatsApp number</label>
+          <input id="phone" type="tel" name="phone" placeholder="WhatsApp Number *" required autocomplete="tel" class="p-3 rounded-md w-full text-gray-900" />
+        </div>
+        <div>
+          <label for="message" class="sr-only">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your KYC challenges (What's your biggest pain point? How many customers do you onboard monthly?)" rows="4" class="p-3 rounded-md w-full text-gray-900"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-white text-orange-600 px-6 py-4 rounded-md font-bold text-lg hover:bg-gray-50 transition" aria-label="Apply for pilot program">
+          Apply for Pilot Program →
+        </button>
+      </form>
+
+      <p class="text-center text-sm opacity-75 mt-4">No credit card required. I will review your application and reach out within 24 hours.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="max-w-4xl mx-auto px-6 py-16" aria-labelledby="faq-heading">
+    <h2 id="faq-heading" class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+    <div class="space-y-6">
+      <details class="bg-white p-6 rounded-lg shadow-sm">
+        <summary class="font-bold cursor-pointer">Is our customer data secure?</summary>
+        <p class="text-gray-700 mt-3">Yes. Your data can remain on your infrastructure. We can install the system on your servers or use encrypted cloud storage; you retain control and access rights.</p>
+      </details>
+      <details class="bg-white p-6 rounded-lg shadow-sm">
+        <summary class="font-bold cursor-pointer">Do you need access to our core banking system?</summary>
+        <p class="text-gray-700 mt-3">No. The system works standalone for onboarding. After approval, you manually add customers to your core system, or we can integrate via API on request.</p>
+      </details>
+      <details class="bg-white p-6 rounded-lg shadow-sm">
+        <summary class="font-bold cursor-pointer">What if the AI makes a mistake?</summary>
+        <p class="text-gray-700 mt-3">Uncertain cases are flagged for human review. Only high-confidence approvals are automated. Your compliance team retains final decision authority.</p>
+      </details>
+      <details class="bg-white p-6 rounded-lg shadow-sm">
+        <summary class="font-bold cursor-pointer">How long does implementation take?</summary>
+        <p class="text-gray-700 mt-3">Typical pilot implementation is 2–3 weeks: setup & customization, training & testing, and go-live with priority support.</p>
+      </details>
+      <details class="bg-white p-6 rounded-lg shadow-sm">
+        <summary class="font-bold cursor-pointer">What happens when documents expire?</summary>
+        <p class="text-gray-700 mt-3">The system tracks expiry dates and sends reminders 90, 60, and 30 days before expiry. Customers can upload updated documents through the same portal.</p>
+      </details>
+      <details class="bg-white p-6 rounded-lg shadow-sm">
+        <summary class="font-bold cursor-pointer">Can it detect fake Zimbabwe IDs?</summary>
+        <p class="text-gray-700 mt-3">Yes. The AI checks for forgery patterns (tampering, inconsistent fonts, edits). Suspicious documents are flagged for human verification with evidence and context.</p>
+      </details>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12" role="contentinfo">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center font-bold">RM</div>
+            <span class="font-bold">RM Connect</span>
+          </div>
+          <p class="text-gray-400 text-sm">KYC automation for Zimbabwe financial institutions</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-3">Contact</h4>
+          <p class="text-gray-400 text-sm mb-2">Email: <a class="text-gray-300 underline" href="mailto:mukechiwarichard@gmail.com">mukechiwarichard@gmail.com</a></p>
+          <p class="text-gray-400 text-sm mb-2">
+            WhatsApp: 
+            <!-- Mobile persistent WhatsApp CTA -->
+            <div class="mobile-cta sm:block md:hidden lg:hidden">
+            <a href="https://wa.me/263717605044?text=Hie.%20I%20am%20interested%20in%20your%20services"
+                rel  = "noopener noreferrer"
+                target="_blank"
+                class="block bg-accent text-white px-6 py-3 rounded-full text-center font-semibold shadow-lg" 
+                aria-label="Chat via WhatsApp">
+                Chat on WhatsApp — Limited Spots
+            </a>
+            </div>
+
+          </p>
+          <p class="text-gray-400 text-sm">Harare, Zimbabwe</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-3">About</h4>
+          <p class="text-gray-400 text-sm">Built by Richard Mukechiwa, a former Stanbic banking operations specialist with deep, hands-on KYC and compliance experience.</p>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-6 text-center text-gray-400 text-sm">
+        <p>© 2025 RM Connect. Built in Zimbabwe, for Zimbabwe financial institutions.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile persistent CTA -->
+  <div class="mobile-cta hidden sm:block md:hidden lg:hidden">
+    <a href="#pilot" class="block bg-accent text-white px-6 py-3 rounded-full text-center font-semibold shadow-lg" aria-label="Apply for pilot program now">Apply for Pilot — Limited Spots</a>
+  </div>
+
+</body>
+</html>
