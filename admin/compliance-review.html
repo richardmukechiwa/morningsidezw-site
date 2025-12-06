@@ -1,0 +1,497 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KYC Compliance Review Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f7fa;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: #2d3748;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #718096;
+      font-size: 14px;
+    }
+
+    .applications-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .application-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .card-header {
+      background: #FF6A00;
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .app-id {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .card-body {
+      padding: 25px;
+    }
+
+    .customer-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 25px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .info-label {
+      font-size: 12px;
+      color: #718096;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .info-value {
+      font-size: 14px;
+      color: #2d3748;
+      font-weight: 600;
+    }
+
+    .compliance-checks {
+      margin-bottom: 25px;
+    }
+
+    .checks-title {
+      font-weight: bold;
+      margin-bottom: 15px;
+      font-size: 16px;
+      color: #2d3748;
+    }
+
+    .check-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background: #f7fafc;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .check-name {
+      font-weight: 600;
+      color: #4a5568;
+    }
+
+    .check-status {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .status-badge {
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .status-pending {
+      background: #feebc8;
+      color: #c05621;
+    }
+
+    .status-passed {
+      background: #c6f6d5;
+      color: #22543d;
+    }
+
+    .status-failed {
+      background: #fed7d7;
+      color: #c53030;
+    }
+
+    .btn-check {
+      padding: 6px 12px;
+      background: #4299e1;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .btn-check:hover {
+      background: #3182ce;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .btn-primary {
+      padding: 12px 24px;
+      background: #48bb78;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .btn-primary:hover {
+      background: #38a169;
+    }
+
+    .btn-secondary {
+      padding: 12px 24px;
+      background: #f56565;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .btn-secondary:hover {
+      background: #e53e3e;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+    }
+
+    .modal-header {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #2d3748;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #4a5568;
+      font-size: 14px;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #e2e8f0;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .form-textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 25px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #718096;
+    }
+
+    .empty-icon {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Header -->
+    <header>
+      <h1>🔍 KYC Compliance Review Dashboard</h1>
+      <p class="subtitle">Manual compliance checks for applications pending review</p>
+    </header>
+
+    <!-- Applications List -->
+    <div class="applications-grid" id="applicationsContainer">
+      
+      <!-- Sample Application Card -->
+      <div class="application-card">
+        <div class="card-header">
+          <div class="app-id">APP-20241205-123</div>
+          <div style="font-size: 13px;">Submitted: 2 hours ago</div>
+        </div>
+
+        <div class="card-body">
+          
+          <!-- Customer Information -->
+          <div class="customer-info">
+            <div class="info-item">
+              <div class="info-label">Full Name</div>
+              <div class="info-value">John Tawanda Moyo</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">ID Number</div>
+              <div class="info-value">63-1234567-A-12</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Date of Birth</div>
+              <div class="info-value">15 May 1990</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Email</div>
+              <div class="info-value">john.moyo@example.com</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Phone</div>
+              <div class="info-value">+263 771 234 567</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Risk Score</div>
+              <div class="info-value" style="color: #48bb78;">85/100</div>
+            </div>
+          </div>
+
+          <!-- Compliance Checks -->
+          <div class="compliance-checks">
+            <div class="checks-title">Required Compliance Checks</div>
+
+            <div class="check-item">
+              <div>
+                <div class="check-name">FCB (Financial Crime Bureau)</div>
+                <div style="font-size: 12px; color: #718096; margin-top: 3px;">Manual check required</div>
+              </div>
+              <div class="check-status">
+                <span class="status-badge status-pending">PENDING</span>
+                <button class="btn-check" onclick="openCheckModal('FCB', 'APP-20241205-123')">Run Check</button>
+              </div>
+            </div>
+
+            <div class="check-item">
+              <div>
+                <div class="check-name">Credit Bureau Check</div>
+                <div style="font-size: 12px; color: #718096; margin-top: 3px;">Check borrowing history</div>
+              </div>
+              <div class="check-status">
+                <span class="status-badge status-pending">PENDING</span>
+                <button class="btn-check" onclick="openCheckModal('Credit Bureau', 'APP-20241205-123')">Run Check</button>
+              </div>
+            </div>
+
+            <div class="check-item">
+              <div>
+                <div class="check-name">PEP Screening</div>
+                <div style="font-size: 12px; color: #718096; margin-top: 3px;">Politically Exposed Person check</div>
+              </div>
+              <div class="check-status">
+                <span class="status-badge status-passed">PASSED</span>
+                <span style="font-size: 12px; color: #718096;">Automated</span>
+              </div>
+            </div>
+
+            <div class="check-item">
+              <div>
+                <div class="check-name">Sanctions List (OFAC/UN)</div>
+                <div style="font-size: 12px; color: #718096; margin-top: 3px;">International sanctions check</div>
+              </div>
+              <div class="check-status">
+                <span class="status-badge status-passed">PASSED</span>
+                <span style="font-size: 12px; color: #718096;">Automated</span>
+              </div>
+            </div>
+
+            <div class="check-item">
+              <div>
+                <div class="check-name">Adverse Media Check</div>
+                <div style="font-size: 12px; color: #718096; margin-top: 3px;">Search for negative news</div>
+              </div>
+              <div class="check-status">
+                <span class="status-badge status-pending">PENDING</span>
+                <button class="btn-check" onclick="openCheckModal('Adverse Media', 'APP-20241205-123')">Run Check</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons">
+            <button class="btn-secondary" onclick="rejectApplication('APP-20241205-123')">
+              ❌ Reject Application
+            </button>
+            <button class="btn-primary" onclick="approveApplication('APP-20241205-123')">
+              ✅ Approve Application
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Empty State (shows when no pending applications) -->
+      <!-- 
+      <div class="empty-state">
+        <div class="empty-icon">✅</div>
+        <p><strong>No applications pending compliance review</strong></p>
+        <p style="font-size: 13px; margin-top: 5px;">All applications have been processed</p>
+      </div>
+      -->
+
+    </div>
+
+  </div>
+
+  <!-- Check Modal -->
+  <div class="modal" id="checkModal">
+    <div class="modal-content">
+      <div class="modal-header" id="modalTitle">Run Compliance Check</div>
+      
+      <form id="checkForm">
+        <div class="form-group">
+          <label class="form-label">Check Type</label>
+          <input type="text" class="form-input" id="checkType" readonly>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Application ID</label>
+          <input type="text" class="form-input" id="appId" readonly>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Check Result</label>
+          <select class="form-select" id="checkResult" required>
+            <option value="">-- Select Result --</option>
+            <option value="PASSED">✅ PASSED - No issues found</option>
+            <option value="FAILED">❌ FAILED - Issues detected</option>
+            <option value="NEEDS_REVIEW">⚠️ NEEDS REVIEW - Manual verification needed</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Notes / Findings</label>
+          <textarea class="form-textarea" id="checkNotes" placeholder="Enter any relevant findings, reference numbers, or notes..."></textarea>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" onclick="closeCheckModal()">Cancel</button>
+          <button type="submit" class="btn-primary">Save Check Result</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Modal handling
+    function openCheckModal(checkType, appId) {
+      document.getElementById('checkModal').classList.add('active');
+      document.getElementById('modalTitle').textContent = `Run ${checkType} Check`;
+      document.getElementById('checkType').value = checkType;
+      document.getElementById('appId').value = appId;
+      document.getElementById('checkResult').value = '';
+      document.getElementById('checkNotes').value = '';
+    }
+
+    function closeCheckModal() {
+      document.getElementById('checkModal').classList.remove('active');
+    }
+
+    // Form submission
+    document.getElementById('checkForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const checkType = document.getElementById('checkType').value;
+      const appId = document.getElementById('appId').value;
+      const result = document.getElementById('checkResult').value;
+      const notes = document.getElementById('checkNotes').value;
+
+      // In production, save to Google Sheets
+      console.log('Saving check result:', { checkType, appId, result, notes });
+
+      alert(`${checkType} check recorded as ${result}`);
+      closeCheckModal();
+
+      // TODO: Update UI to reflect new status
+      // TODO: Send to Google Sheets or n8n webhook
+    });
+
+    // Approve application
+    function approveApplication(appId) {
+      if (confirm(`Are you sure you want to approve application ${appId}?`)) {
+        console.log('Approving application:', appId);
+        alert(`Application ${appId} approved.`)}};
