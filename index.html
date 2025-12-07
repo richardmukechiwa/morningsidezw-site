@@ -100,6 +100,18 @@
     width: calc(100% - 32px);
     max-width: 500px;
     }
+
+    /* On desktop, make it smaller and position in corner */
+  @media (min-width: 641px) {
+    .mobile-cta {
+      bottom: 24px;
+      left: auto;
+      right: 24px;
+      transform: none;
+      width: auto;
+      max-width: 250px;
+    }
+}
   
       /* Add MORE padding so footer is visible above button */
       body {
@@ -234,6 +246,53 @@
         grid-template-columns: 1fr !important;
       }
     }
+
+        /* Fix Apply for Pilot button - white background, orange text */
+    button[type="submit"],
+    button[aria-label*="Apply for pilot"] {
+      background-color: white !important;
+      color: #f97316 !important; /* Orange text */
+      border: none !important;
+    }
+
+    button[type="submit"]:hover,
+    button[aria-label*="Apply for pilot"]:hover {
+      background-color: #f9fafb !important; /* Slightly gray on hover */
+      color: #ea580c !important; /* Darker orange on hover */
+  }
+
+  /* Fix gradient backgrounds */
+    #pilot > div {
+      background: linear-gradient(135deg, #FF6A00 0%, #FF6A00 100%) !important;
+    }
+
+    #how-it-works {
+      background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%) !important;
+    }
+
+    /* Fix Footer backgrounds and colors */
+    footer {
+      background-color: #0A1B2A !important;
+      color: #ffffff !important;
+    }
+
+    footer .bg-orange-500 {
+      background-color: #0A1B2A !important;
+    }
+
+    footer .text-gray-400,
+    footer .text-gray-300 {
+      color: #FF6A00 !important;
+    }
+
+    footer .border-gray-800 {
+      border-color: #1f2937 !important;
+    }
+
+    footer h4 {
+      color: #ffffff !important;
+    }
+
     </style>
 
     <script type="application/ld+json">
