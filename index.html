@@ -18,282 +18,146 @@
   <link rel="stylesheet" href="./styles/tailwind.min.css">
   
   <style>
-    :root {
-      --brand-navy: #0A1B2A;
-      --brand-accent: #FF6A00;
-    }
-    
-    body { 
-      font-family: Inter, system-ui, -apple-system, sans-serif; 
-    }
-
-    .bg-accent { background: var(--brand-accent); }
-    .text-accent { color: var(--brand-accent); }
-    .stat-box { border-left: 4px solid var(--brand-accent); }
-
-    /* Simple sr-only helper */
-    .sr-only {
-      position: absolute !important;
-      height: 1px; 
-      width: 1px;
-      overflow: hidden;
-      clip: rect(1px, 1px, 1px, 1px);
-      white-space: nowrap;
-      clip-path: inset(50%);
-      border: 0; 
-      padding: 0; 
-      margin: -1px;
-    }
-
-    /* Breathing space for content */
-    p {
-      margin-bottom: 1rem;
-      line-height: 1.6;
-    }
-
-    li {
-      margin-bottom: 0.5rem;
-    }
-
-    details, article {
-      margin-bottom: 1rem;
-    }
-
-    h2 {
-      margin-bottom: 1.5rem;
-      line-height: 1.3;
-    }
-
-    h3 {
-      margin-bottom: 1rem;
-      line-height: 1.4;
-    }
-
-    section {
-      padding-top: 3rem;
-      padding-bottom: 3rem;
-    }
-
-    /* Better spacing between major sections */
-    section + section {
-      margin-top: 2rem;
-    }
-
-    /* More space around headings */
-    .text-3xl, .text-4xl, .text-5xl {
-      margin-bottom: 1.5rem;
-    }
-
-    /* Mobile persistent CTA */
-    .mobile-cta {
-      display: none;
-    }
-
-    @media (max-width: 640px) {
-  .mobile-cta {
-    display: block;
-    position: fixed;
-    bottom: 16px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 60;
-    width: calc(100% - 32px);
-    max-width: 500px;
-    }
-
-    /* On desktop, make it smaller and position in corner */
-  @media (min-width: 641px) {
-    .mobile-cta {
-      bottom: 24px;
-      left: auto;
-      right: 24px;
-      transform: none;
-      width: auto;
-      max-width: 250px;
-    }
-}
+  :root {
+    --brand-navy: #0A1B2A;
+    --brand-accent: #FF6A00;
+  }
   
-      /* Add MORE padding so footer is visible above button */
-      body {
-        padding-bottom: 100px; /* Changed from 80px to 100px */
-      }
-      
-      /* Also add padding to footer specifically */
-      footer {
-        padding-bottom: 120px !important; /* Extra space on mobile */
-      }
-    }
-      
-      /* Add padding to body so content doesn't hide behind CTA */
-      body {
-        padding-bottom: 80px;
-      }
-    
-
-    /* Smooth scrolling for anchor links */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Better focus states for accessibility */
-    a:focus-visible, 
-    button:focus-visible {
-      outline: 3px solid var(--brand-accent);
-      outline-offset: 2px;
-    }
-
-    /* Improve readability */
-    .text-gray-700, .text-gray-600 {
-      line-height: 1.7;
-    }
-
-    /* Transition utilities */
-    .transition-all {
-      transition: all 0.2s ease;
-    }
-
-    /* Fix gradient backgrounds - add at the bottom of your <style> section */
-    #pilot > div {
-      background: linear-gradient(135deg,  #FF6A00 0%, #FF6A00 100%) !important;
-    }
-
-    #how-it-works {
-      background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%) !important;
-    }
-
-    footer {
-      background-color: #0A1B2A !important;
-    }
-
-     Fix Footer backgrounds and colors 
-    footer {
-      background-color: #0A1B2A  !important;
-      color: #ffffff !important;
-    }
-
-    footer .bg-orange-500 {
-      background-color:  #0A1B2A !important;
-    }
-
-    footer .text-gray-400 {
-      color:  #FF6A00 !important;
-    }
-
-    footer .text-gray-300 {
-      color:  #FF6A00 !important;
-    }
-
-    footer .border-gray-800 {
-      border-color: #1f2937 !important;
-    }
-
-    footer h4 {
-      color: #ffffff !important;
-    }*/
-
-    /* Fix headshot images to maintain proper proportions */
-    img[alt*="Richard Mukechiwa"] {
-      object-fit: cover !important;
-      object-position: center !important;
-      aspect-ratio: 1 / 1 !important;
-    }
-
-    /* Ensure small hero badge image stays circular */
-    .w-16.h-16.rounded-full {
-      min-width: 4rem !important;
-      min-height: 4rem !important;
-      max-width: 4rem !important;
-      max-height: 4rem !important;
-    }
-
-    /* Ensure large "Why Trust" image stays square */
-    .w-48.h-48.rounded-2xl {
-      min-width: 12rem !important;
-      min-height: 12rem !important;
-      max-width: 12rem !important;
-      max-height: 12rem !important;
-    }
-
-      /* Fix stat-box layout - let text spread horizontally */
-    /* Style 2: TOP BORDER */
-    .stat-box-top {
-      border-top: 4px solid #FF6A00;
-      padding-top: 1rem;
-    }
-
-    .stat-box h3 {
-      margin-bottom: 0.5rem !important;
-      line-height: 1.4 !important;
-    }
-
-    .stat-box p {
-      margin-bottom: 0 !important;
-      line-height: 1.7 !important;
-      font-size: 0.95rem;
-    }
-
-    /* Force proper 2-column grid for stat boxes */
-    section[aria-labelledby="why-heading"] .md\:col-span-2 {
-      display: grid !important;
-      grid-template-columns: 1fr 1fr !important;
-      gap: 2rem !important;
-      align-items: start !important;
-    }
-
-    /* Mobile: single column */
-    @media (max-width: 767px) {
-      section[aria-labelledby="why-heading"] .md\:col-span-2 {
-        grid-template-columns: 1fr !important;
-      }
-    }
-
-        /* Fix Apply for Pilot button - white background, orange text */
-    button[type="submit"],
-    button[aria-label*="Apply for pilot"] {
-      background-color: white !important;
-      color: #f97316 !important; /* Orange text */
-      border: none !important;
-    }
-
-    button[type="submit"]:hover,
-    button[aria-label*="Apply for pilot"]:hover {
-      background-color: #f9fafb !important; /* Slightly gray on hover */
-      color: #ea580c !important; /* Darker orange on hover */
+  body { 
+    font-family: Inter, system-ui, -apple-system, sans-serif; 
   }
 
+  .bg-accent { background: var(--brand-accent); }
+  .text-accent { color: var(--brand-accent); }
+  .stat-box { border-left: 4px solid var(--brand-accent); }
+
+  .sr-only {
+    position: absolute !important;
+    height: 1px; 
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+    clip-path: inset(50%);
+    border: 0; 
+    padding: 0; 
+    margin: -1px;
+  }
+
+  p { margin-bottom: 1rem; line-height: 1.6; }
+  li { margin-bottom: 0.5rem; }
+  details, article { margin-bottom: 1rem; }
+  h2 { margin-bottom: 1.5rem; line-height: 1.3; }
+  h3 { margin-bottom: 1rem; line-height: 1.4; }
+  section { padding-top: 3rem; padding-bottom: 3rem; }
+  section + section { margin-top: 2rem; }
+  .text-3xl, .text-4xl, .text-5xl { margin-bottom: 1.5rem; }
+
+  /* Mobile WhatsApp CTA */
+  .mobile-cta { display: none; }
+
+  @media (max-width: 640px) {
+    .mobile-cta {
+      display: block;
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 60;
+      width: calc(100% - 32px);
+      max-width: 500px;
+    }
+    body { padding-bottom: 100px; }
+  }
+
+  html { scroll-behavior: smooth; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--brand-accent);
+    outline-offset: 2px;
+  }
+
+  .text-gray-700, .text-gray-600 { line-height: 1.7; }
+  .transition-all { transition: all 0.2s ease; }
+
   /* Fix gradient backgrounds */
-    #pilot > div {
-      background: linear-gradient(135deg, #FF6A00 0%, #FF6A00 100%) !important;
-    }
+  #pilot > div {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+  }
 
-    #how-it-works {
-      background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%) !important;
-    }
+  #how-it-works {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%) !important;
+  }
 
-    /* Fix Footer backgrounds and colors */
-    footer {
-      background-color: #0A1B2A !important;
-      color: #ffffff !important;
-    }
+  /* Footer styles */
+  footer {
+    background-color: #111827 !important;
+    color: #ffffff !important;
+  }
 
-    footer .bg-orange-500 {
-      background-color: #0A1B2A !important;
-    }
+  footer h4 { color: #ffffff !important; }
+  footer .text-gray-400 { color: #9ca3af !important; }
+  footer .text-gray-300 { color: #d1d5db !important; }
+  footer .border-gray-800 { border-color: #1f2937 !important; }
 
-    footer .text-gray-400,
-    footer .text-gray-300 {
-      color: #FF6A00 !important;
-    }
+  /* Headshot images */
+  img[alt*="Richard Mukechiwa"] {
+    object-fit: cover !important;
+    object-position: center !important;
+    aspect-ratio: 1 / 1 !important;
+  }
 
-    footer .border-gray-800 {
-      border-color: #1f2937 !important;
-    }
+  .w-16.h-16.rounded-full {
+    min-width: 4rem !important;
+    min-height: 4rem !important;
+    max-width: 4rem !important;
+    max-height: 4rem !important;
+  }
 
-    footer h4 {
-      color: #ffffff !important;
-    }
+  .w-48.h-48.rounded-2xl {
+    min-width: 12rem !important;
+    min-height: 12rem !important;
+    max-width: 12rem !important;
+    max-height: 12rem !important;
+  }
 
-    </style>
+  /* Stat boxes */
+  .stat-box h3 {
+    margin-bottom: 0.5rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .stat-box p {
+    margin-bottom: 0 !important;
+    line-height: 1.7 !important;
+    font-size: 0.95rem;
+  }
+
+  section[aria-labelledby="why-heading"] .md\:col-span-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem !important;
+    align-items: start !important;
+  }
+
+  @media (max-width: 767px) {
+    section[aria-labelledby="why-heading"] .md\:col-span-2 {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  /* Fix Apply button */
+  button[type="submit"] {
+    background-color: white !important;
+    color: #f97316 !important;
+    border: none !important;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #f9fafb !important;
+    color: #ea580c !important;
+  }
+</style>
 
     <script type="application/ld+json">
     {
@@ -358,19 +222,6 @@
           </div>
         </div>
 
-         <!-- Mobile persistent WhatsApp CTA (only on mobile) -->
-      <div class="mobile-cta">
-        <a
-          href="https://wa.me/263774237897?text=Hi,%20I'm%20interested%20in%20your%20KYC%20automation%20services" 
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block bg-accent text-white px-6 py-3 rounded-full text-center font-semibold shadow-lg hover:opacity-90 transition-all" 
-          aria-label="Chat via WhatsApp">
-          💬 Chat on WhatsApp
-        </a>
-      </div>
-
-        
         <!-- Right Column: Image -->
         <div class="order-1 md:order-2">
           <img 
@@ -659,32 +510,43 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-12" role="contentinfo">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid md:grid-cols-3 gap-8 mb-8">
-        <div>
-          <div class="flex items-center gap-2 mb-4">
-            <!--div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center font-bold">RM</!--div>-->
-            <span class="font-bold">RM Connect</span>
-          </div>
-          <p class="text-gray-400 text-sm">KYC automation for Zimbabwe financial institutions</p>
-          <div class="text-xs text-gray-600"
+<footer class="bg-gray-900 text-white py-12" role="contentinfo">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-8 mb-8">
+      <!-- Column 1: Brand -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center font-bold text-white">RM</div>
+          <span class="font-bold">RM Connect</span>
         </div>
-        <div>
-          <h4 class="font-bold mb-3">Contact</h4>
-          <p class="text-gray-400 text-sm mb-2">Email: <a class="text-gray-300 underline hover:text-white" href="mailto:mukechiwarichard@gmail.com">richard@morningsidezw.com</a></p>
-          <p class="text-gray-400 text-sm mb-2">WhatsApp: <a class="text-gray-300 underline hover:text-white" href="https://wa.me/263717605044" target="_blank" rel="noopener noreferrer">+263717605044</a></p>
-          <p class="text-gray-400 text-sm">Harare, Zimbabwe</p>
-        </div>
-        <!--div>
-          <h4 class="font-bold mb-3">About</h4>
-          <p class="text-gray-400 text-sm">Built by Richard Mukechiwa, a former Stanbic banking operations specialist with deep, hands-on KYC and compliance experience.</p>
-        </!--div>-->
+        <p class="text-gray-400 text-sm">KYC automation for Zimbabwe financial institutions</p>
       </div>
-      <div class="border-t border-gray-800 pt-6 text-center text-gray-400 text-sm">
-        <p>© 2025 RM Connect. Built in Zimbabwe, for Zimbabwe financial institutions.</p>
+      
+      <!-- Column 2: Contact -->
+      <div>
+        <h4 class="font-bold mb-3">Contact</h4>
+        <p class="text-gray-400 text-sm mb-2">
+          Email: <a class="text-gray-300 underline hover:text-white transition-colors" href="mailto:richard@morningsidezw.com">richard@morningsidezw.com</a>
+        </p>
+        <p class="text-gray-400 text-sm mb-2">
+          WhatsApp: <a class="text-gray-300 underline hover:text-white transition-colors" href="https://wa.me/263774237897" target="_blank" rel="noopener noreferrer">+263 774 237 897</a>
+        </p>
+        <p class="text-gray-400 text-sm">Harare, Zimbabwe</p>
+      </div>
+      
+      <!-- Column 3: About -->
+      <div>
+        <h4 class="font-bold mb-3">About</h4>
+        <p class="text-gray-400 text-sm">Built by Richard Mukechiwa, a former Stanbic banking operations specialist with deep KYC and compliance experience.</p>
       </div>
     </div>
+    
+    <div class="border-t border-gray-800 pt-6 text-center text-gray-400 text-sm">
+      <p>© 2025 RM Connect. Built in Zimbabwe, for Zimbabwe financial institutions.</p>
+    </div>
+  </div>
+</footer>
+
   </footer>
 
   <!-- Mobile persistent WhatsApp CTA (only on mobile) -->
@@ -701,3 +563,4 @@
 
 </body>
 </html>
+
