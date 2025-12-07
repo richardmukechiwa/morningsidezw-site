@@ -202,15 +202,11 @@
       max-height: 12rem !important;
     }
 
-    /* Fix stat-box height and layout */
+      /* Fix stat-box layout - let text spread horizontally */
     .stat-box {
       border-left: 4px solid var(--brand-accent);
       padding-left: 1rem;
-      min-height: 120px; /* Prevents them from being too short */
-      max-height: 180px; /* Prevents them from being too tall */
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+      display: block; /* Changed from flex */
     }
 
     .stat-box h3 {
@@ -220,15 +216,15 @@
 
     .stat-box p {
       margin-bottom: 0 !important;
-      line-height: 1.6 !important;
+      line-height: 1.7 !important;
       font-size: 0.95rem;
     }
 
-    /* Ensure grid works properly */
+    /* Force proper 2-column grid for stat boxes */
     section[aria-labelledby="why-heading"] .md\:col-span-2 {
       display: grid !important;
       grid-template-columns: 1fr 1fr !important;
-      gap: 1.5rem !important;
+      gap: 2rem !important;
       align-items: start !important;
     }
 
@@ -238,19 +234,19 @@
         grid-template-columns: 1fr !important;
       }
     }
-      </style>
+    </style>
 
-      <script type="application/ld+json">
-      {
-        "@context":"https://schema.org",
-        "@type":"Service",
-        "name":"RM Connect - KYC Automation",
-        "description":"KYC automation and compliance solutions for Zimbabwe banks and MFIs built by an experienced banking operations specialist.",
-        "provider": {
-          "@type": "Person",
-          "name": "Richard Mukechiwa"
-        }
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"Service",
+      "name":"RM Connect - KYC Automation",
+      "description":"KYC automation and compliance solutions for Zimbabwe banks and MFIs built by an experienced banking operations specialist.",
+      "provider": {
+        "@type": "Person",
+        "name": "Richard Mukechiwa"
       }
+    }
   </script>
 </head>
 <body class="bg-gray-50 text-gray-900">
