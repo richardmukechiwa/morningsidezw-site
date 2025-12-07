@@ -201,19 +201,56 @@
       max-width: 12rem !important;
       max-height: 12rem !important;
     }
-  </style>
 
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Service",
-    "name":"RM Connect - KYC Automation",
-    "description":"KYC automation and compliance solutions for Zimbabwe banks and MFIs built by an experienced banking operations specialist.",
-    "provider": {
-      "@type": "Person",
-      "name": "Richard Mukechiwa"
+    /* Fix stat-box height and layout */
+    .stat-box {
+      border-left: 4px solid var(--brand-accent);
+      padding-left: 1rem;
+      min-height: 120px; /* Prevents them from being too short */
+      max-height: 180px; /* Prevents them from being too tall */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
-  }
+
+    .stat-box h3 {
+      margin-bottom: 0.5rem !important;
+      line-height: 1.4 !important;
+    }
+
+    .stat-box p {
+      margin-bottom: 0 !important;
+      line-height: 1.6 !important;
+      font-size: 0.95rem;
+    }
+
+    /* Ensure grid works properly */
+    section[aria-labelledby="why-heading"] .md\:col-span-2 {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 1.5rem !important;
+      align-items: start !important;
+    }
+
+    /* Mobile: single column */
+    @media (max-width: 767px) {
+      section[aria-labelledby="why-heading"] .md\:col-span-2 {
+        grid-template-columns: 1fr !important;
+      }
+    }
+      </style>
+
+      <script type="application/ld+json">
+      {
+        "@context":"https://schema.org",
+        "@type":"Service",
+        "name":"RM Connect - KYC Automation",
+        "description":"KYC automation and compliance solutions for Zimbabwe banks and MFIs built by an experienced banking operations specialist.",
+        "provider": {
+          "@type": "Person",
+          "name": "Richard Mukechiwa"
+        }
+      }
   </script>
 </head>
 <body class="bg-gray-50 text-gray-900">
