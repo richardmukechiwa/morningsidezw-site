@@ -184,6 +184,28 @@
     .bg-white {
     background-color: #ffffff !important;
     }
+
+    /* FIX: Make the orange pilot box visible */
+    #pilot > div {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+    color: white !important;
+    }
+
+    /* Ensure all text in orange box is white */
+    #pilot > div > div:first-child {
+    color: white !important;
+    }
+
+    #pilot > div > div:first-child h2,
+    #pilot > div > div:first-child p {
+    color: white !important;
+    }
+
+    /* Make sure the badge is visible */
+    #pilot .inline-block.bg-white {
+    background-color: white !important;
+    color: #f97316 !important;
+    }
   </style>
 
   <script type="application/ld+json">
