@@ -207,6 +207,36 @@
         0 8px 24px rgba(0, 0, 0, 0.2); /* Outer shadow */
       background: white;
       }
+
+      /* Even spacing for Why Trust section */
+    section[aria-labelledby="why-heading"] .grid.md\:grid-cols-3 {
+      gap: 3rem !important; /* Space between headshot column and stat boxes column */
+    }
+
+    /* Even spacing between stat boxes (matches the gap above) */
+    section[aria-labelledby="why-heading"] .md\:col-span-2 {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 3rem !important; /* Matches the main grid gap */
+      align-items: start !important;
+    }
+
+    /* Space between individual stat boxes within same column */
+    section[aria-labelledby="why-heading"] .stat-box {
+      margin-bottom: 0 !important; /* Remove any extra margin */
+    }
+
+    /* Mobile: keep single column with consistent spacing */
+    @media (max-width: 767px) {
+      section[aria-labelledby="why-heading"] .grid.md\:grid-cols-3 {
+        gap: 2rem !important;
+      }
+      
+      section[aria-labelledby="why-heading"] .md\:col-span-2 {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+      }
+    }
 </style>
 
     <script type="application/ld+json">
