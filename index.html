@@ -178,6 +178,29 @@
     footer h4 {
       color: #ffffff !important;
     }
+
+    /* Fix headshot images to maintain proper proportions */
+    img[alt*="Richard Mukechiwa"] {
+      object-fit: cover !important;
+      object-position: center !important;
+      aspect-ratio: 1 / 1 !important;
+    }
+
+    /* Ensure small hero badge image stays circular */
+    .w-16.h-16.rounded-full {
+      min-width: 4rem !important;
+      min-height: 4rem !important;
+      max-width: 4rem !important;
+      max-height: 4rem !important;
+    }
+
+    /* Ensure large "Why Trust" image stays square */
+    .w-48.h-48.rounded-2xl {
+      min-width: 12rem !important;
+      min-height: 12rem !important;
+      max-width: 12rem !important;
+      max-height: 12rem !important;
+    }
   </style>
 
   <script type="application/ld+json">
