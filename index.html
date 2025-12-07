@@ -142,6 +142,48 @@
     .transition-all {
       transition: all 0.2s ease;
     }
+
+
+    /* FIX: Force backgrounds for Pilot and Footer sections */
+
+    /* Pilot section outer background */
+    #pilot {
+    background-color: #f9fafb !important;
+    }
+
+    /* Pilot orange box */
+    #pilot > div > div {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+    }
+
+    /* Pilot white content box inside */
+    #pilot .bg-white {
+    background-color: #ffffff !important;
+    }
+
+    /* How it works section background */
+    #how-it-works {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%) !important;
+    }
+
+    /* Footer background */
+    footer {
+    background-color: #111827 !important;
+    color: #ffffff !important;
+    }
+
+    footer .text-gray-400 {
+    color: #9ca3af !important;
+    }
+
+    footer .text-gray-300 {
+    color: #d1d5db !important;
+    }
+
+    /* Ensure all white sections have backgrounds */
+    .bg-white {
+    background-color: #ffffff !important;
+    }
   </style>
 
   <script type="application/ld+json">
