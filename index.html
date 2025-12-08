@@ -247,6 +247,25 @@
         gap: 2rem !important;
       }
     }
+
+    /* Hover effects for Trust Bar stats */
+    section[aria-label="Trust and experience"] .grid > div {
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    section[aria-label="Trust and experience"] .grid > div:hover {
+      background-color: #FFF7ED; /* Light orange background */
+      transform: translateY(-5px); /* Lift up */
+      box-shadow: 0 8px 20px rgba(255, 106, 0, 0.15); /* Orange-tinted shadow */
+    }
+
+    /* Make the accent text slightly darker on hover */
+    section[aria-label="Trust and experience"] .grid > div:hover .text-accent {
+      color: #EA580C; /* Darker orange */
+    }
 </style>
 
     <script type="application/ld+json">
