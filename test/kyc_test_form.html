@@ -123,8 +123,8 @@
 
 <script>
 
-  const WEBHOOK_URL = 'https://n8n.morningsidezw.com/webhook-test/onboard-agent-mvs/submit';
-    
+  const WEBHOOK_URL = 'https://kyc-proxy-worker.mukechiwarichard.workers.dev/';
+
   const fileInputs = [
     { input: 'idFront', upload: 'idFrontUpload', name: 'idFrontName' },
     { input: 'idBack', upload: 'idBackUpload', name: 'idBackName' },
@@ -175,7 +175,7 @@
       };
 
       // CORS-safe submission via proxy
-      const response = await fetch('https://n8n.morningsidezw.com/webhook-test/onboard-agent-mvs/submit', {
+      const response = await fetch('https://kyc-proxy-worker.mukechiwarichard.workers.dev/', {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
