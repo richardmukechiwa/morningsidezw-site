@@ -1,169 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agent Onboarding Test Form</title>
-<style>
-  body { font-family: Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-  .container { background: white; padding: 30px; border-radius: 12px; max-width: 500px; width: 100%; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-  h1 { margin-bottom: 10px; font-size: 24px; }
-  .form-group { margin-bottom: 15px; }
-  label { display: block; margin-bottom: 5px; font-weight: bold; }
-  input[type="text"], input[type="email"], input[type="tel"] { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; }
-  .file-upload { border: 2px dashed #ccc; padding: 15px; text-align: center; border-radius: 6px; cursor: pointer; }
-  .file-upload.has-file { border-color: #48bb78; background: #f0fff4; }
-  .file-upload input { display: none; }
-  .file-name { font-size: 12px; margin-top: 5px; display: block; }
-  .submit-btn { width: 100%; padding: 12px; background: #667eea; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
-  .loading, .result { display: none; margin-top: 20px; }
-  .spinner { border: 3px solid #f3f3f3; border-top: 3px solid #667eea; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: auto; }
-  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-</style>
+  <meta charset="UTF-8">
+  <title>Agent Onboarding</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    label { display: block; margin-top: 10px; }
+    input, button { margin-top: 5px; }
+    #result { margin-top: 20px; padding: 10px; border: 1px solid #ccc; }
+  </style>
 </head>
 <body>
-
-<div class="container">
-  <h1>Agent Onboarding Test Form</h1>
-
-  <div class="form-group">
-    <label for="webhookUrl">n8n Webhook URL *</label>
-    <input type="text" id="webhookUrl" value="https://n8n.morningsidezw.com/webhook-test/onboard-agent-mvs">
-  </div>
-
+  <h1>Agent Onboarding Form</h1>
   <form id="onboardingForm">
+    <label>Full Name: <input type="text" id="fullName" required></label>
+    <label>ID Number: <input type="text" id="idNumber" required></label>
+    <label>Email: <input type="email" id="email" required></label>
+    <label>Phone: <input type="text" id="phone" required></label>
+    <label>Address: <input type="text" id="address" required></label>
 
-    <div class="form-group">
-      <label for="fullName">Full Name *</label>
-      <input type="text" id="fullName" required>
-    </div>
+    <label>ID Front: <input type="file" id="idFront" accept="image/*" required></label>
+    <label>ID Back: <input type="file" id="idBack" accept="image/*" required></label>
+    <label>Proof of Address: <input type="file" id="proofAddress" accept="image/*" required></label>
 
-    <div class="form-group">
-      <label for="idNumber">Zimbabwe ID Number *</label>
-      <input type="text" id="idNumber" placeholder="63-1234567-A-12" required pattern="(63|08)-\d{7}-[A-Z]-\d{2}">
-    </div>
-
-    <div class="form-group">
-      <label for="email">Email *</label>
-      <input type="email" id="email" required>
-    </div>
-
-    <div class="form-group">
-      <label for="phone">Phone *</label>
-      <input type="tel" id="phone" required>
-    </div>
-
-    <h3>Upload Documents</h3>
-
-    <div class="form-group">
-      <label>ID Front *</label>
-      <div class="file-upload" id="idFrontUpload">
-        <input type="file" id="idFront" accept="image/*" required>
-        <span class="file-name" id="idFrontName"></span>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>ID Back *</label>
-      <div class="file-upload" id="idBackUpload">
-        <input type="file" id="idBack" accept="image/*" required>
-        <span class="file-name" id="idBackName"></span>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>Proof of Address *</label>
-      <div class="file-upload" id="proofAddressUpload">
-        <input type="file" id="proofAddress" accept="image/*,application/pdf" required>
-        <span class="file-name" id="proofAddressName"></span>
-      </div>
-    </div>
-
-    <button type="submit" class="submit-btn">Submit</button>
+    <button type="submit">Submit</button>
   </form>
 
-  <div class="loading" id="loading">
-    <div class="spinner"></div>
-    <p>Processing...</p>
+  <div id="result">
+    <h3 id="resultTitle"></h3>
+    <div id="resultDetails"></div>
   </div>
 
-  <div class="result" id="result">
-    <pre id="resultData"></pre>
-  </div>
-</div>
-
-<script>
-const fileInputs = [
-  { input: 'idFront', upload: 'idFrontUpload', name: 'idFrontName' },
-  { input: 'idBack', upload: 'idBackUpload', name: 'idBackName' },
-  { input: 'proofAddress', upload: 'proofAddressUpload', name: 'proofAddressName' }
-];
-
-fileInputs.forEach(({ input, upload, name }) => {
-  const inputEl = document.getElementById(input);
-  const uploadEl = document.getElementById(upload);
-  const nameEl = document.getElementById(name);
-
-  inputEl.addEventListener('change', e => {
-    if (e.target.files.length > 0) {
-      nameEl.textContent = `✓ ${e.target.files[0].name}`;
-      uploadEl.classList.add('has-file');
-    } else {
-      nameEl.textContent = '';
-      uploadEl.classList.remove('has-file');
+  <script>
+    async function fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result.split(',')[1]); // Base64 only
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+      });
     }
-  });
-});
 
-function fileToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result.split(',')[1]);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-}
+    document.getElementById('onboardingForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-document.getElementById('onboardingForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const webhookUrl = document.getElementById('webhookUrl').value.trim();
-  if (!webhookUrl) { alert('Enter webhook URL'); return; }
+      const webhookUrl = 'https://YOUR_N8N_DOMAIN/webhook/onboard-agent-mvs';
 
-  document.getElementById('loading').style.display = 'block';
-  document.getElementById('result').style.display = 'none';
+      // Convert files to base64
+      const files = {
+        id_front: await fileToBase64(document.getElementById('idFront').files[0]),
+        id_back: await fileToBase64(document.getElementById('idBack').files[0]),
+        proof_of_address: await fileToBase64(document.getElementById('proofAddress').files[0])
+      };
 
-  const customerData = {
-    name: document.getElementById('fullName').value,
-    idNumber: document.getElementById('idNumber').value,
-    email: document.getElementById('email').value,
-    phone: document.getElementById('phone').value
-  };
+      // Flatten agent data as required by workflow
+      const body = {
+        name: document.getElementById('fullName').value,
+        idNumber: document.getElementById('idNumber').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        address: document.getElementById('address').value,
+        binary: files
+      };
 
-  const files = {
-    id_front: await fileToBase64(document.getElementById('idFront').files[0]),
-    id_back: await fileToBase64(document.getElementById('idBack').files[0]),
-    proof_of_address: await fileToBase64(document.getElementById('proofAddress').files[0])
-  };
+      try {
+        const response = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
 
-  try {
-    const res = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ customerData, files })
+        const result = await response.json();
+        const titleDiv = document.getElementById('resultTitle');
+        const detailsDiv = document.getElementById('resultDetails');
+
+        if (result.success) {
+          if (result.processingStatus === 'APPROVED') {
+            titleDiv.textContent = '✅ Application Approved';
+          } else if (result.processingStatus === 'MANUAL_REVIEW') {
+            titleDiv.textContent = '⚠️ Application Requires Manual Review';
+          } else {
+            titleDiv.textContent = '❌ Application Status Unknown';
+          }
+
+          detailsDiv.innerHTML = `<p><strong>Notes:</strong> ${result.reviewNotes || 'None'}</p>`;
+        } else {
+          titleDiv.textContent = '❌ Submission Failed';
+          detailsDiv.innerHTML = `<p>${result.reason || result.error || 'Unknown error'}</p>`;
+        }
+      } catch (err) {
+        document.getElementById('resultTitle').textContent = '❌ Submission Error';
+        document.getElementById('resultDetails').textContent = err.message;
+      }
     });
-    const result = await res.json();
-
-    document.getElementById('loading').style.display = 'none';
-    const resultDiv = document.getElementById('result');
-    resultDiv.style.display = 'block';
-    document.getElementById('resultData').textContent = JSON.stringify(result, null, 2);
-  } catch (err) {
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('result').style.display = 'block';
-    document.getElementById('resultData').textContent = 'Error: ' + err.message;
-  }
-});
-</script>
-
+  </script>
 </body>
 </html>
