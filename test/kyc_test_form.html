@@ -5,109 +5,198 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KYC Form</title>
 <style>
-  body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; }
-  .container { max-width: 500px; margin: 50px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-  h2 { text-align: center; margin-bottom: 20px; }
-  label { display: block; margin: 10px 0 5px; font-weight: bold; }
-  input[type="text"], input[type="tel"], input[type="file"] { width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; }
-  button { width: 100%; padding: 10px; margin-top: 20px; border: none; background: #007bff; color: #fff; font-size: 16px; border-radius: 4px; cursor: pointer; }
-  button:hover { background: #0056b3; }
-  .loading { display: none; text-align: center; margin-top: 20px; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+  .container { background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); width: 100%; max-width: 500px; padding: 30px; }
+  h1 { font-size: 24px; margin-bottom: 8px; color: #2d3748; text-align: center; }
+  .subtitle { font-size: 14px; color: #718096; margin-bottom: 20px; text-align: center; }
+  .form-group { margin-bottom: 20px; width: 100%; }
+  label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; color: #2d3748; }
+  .required { color: #e53e3e; }
+  input[type="text"], input[type="tel"] { width: 100%; padding: 14px; border: 1.5px solid #cbd5e0; border-radius: 8px; font-size: 15px; }
+  input:focus { border-color: #667eea; outline: none; }
+  .file-upload { border: 2px dashed #cbd5e0; border-radius: 8px; padding: 18px; text-align: center; cursor: pointer; background: #f7fafc; transition: all 0.2s; }
+  .file-upload:hover { border-color: #667eea; background: #edf2f7; }
+  .file-upload.has-file { border-color: #48bb78; background: #f0fff4; }
+  .file-upload input { display: none; }
+  .file-upload-label { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 14px; }
+  .upload-icon { font-size: 28px; }
+  .file-name { font-size: 12px; color: #4a5568; margin-top: 4px; word-break: break-word; }
+  .submit-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .submit-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(102,126,234,0.3); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .loading { display: none; text-align: center; padding: 20px; }
   .loading.active { display: block; }
-  .result { display: none; margin-top: 20px; padding: 15px; border-radius: 4px; }
+  .spinner { border: 3px solid #f3f4f6; border-top: 3px solid #667eea; border-radius: 50%; width: 36px; height: 36px; animation: spin 1s linear infinite; margin: 0 auto 10px; }
+  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  .result { display: none; margin-top: 20px; padding: 18px; border-radius: 8px; font-size: 14px; }
   .result.active { display: block; }
-  .result.success { background: #d4edda; color: #155724; }
-  .result.error { background: #f8d7da; color: #721c24; }
-  pre { white-space: pre-wrap; word-wrap: break-word; }
+  .result.success { background: #f0fff4; border: 1.5px solid #48bb78; color: #2f855a; }
+  .result.error { background: #fff5f5; border: 1.5px solid #f56565; color: #c53030; }
+  .result-title { font-weight: 700; margin-bottom: 6px; }
+  .result-data { background: #f7fafc; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 12px; max-height: 250px; overflow-y: auto; word-wrap: break-word; }
+  @media (max-width: 480px) {
+    .container { padding: 20px; border-radius: 12px; }
+    input[type="text"], input[type="tel"], .submit-btn { font-size: 14px; padding: 12px; }
+    h1 { font-size: 20px; }
+  }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h2>KYC Form</h2>
+  <h1>🔐 KYC Form</h1>
+  <p class="subtitle">Submit your documents</p>
+
   <form id="kycForm">
-    <label for="fullName">Full Name</label>
-    <input type="text" id="fullName" required>
+    <div class="form-group">
+      <label for="fullName">Full Name <span class="required">*</span></label>
+      <input type="text" id="fullName" name="fullName" placeholder="John Doe" required>
+    </div>
 
-    <label for="idNumber">ID Number</label>
-    <input type="text" id="idNumber" required>
+    <div class="form-group">
+      <label for="idNumber">ID Number <span class="required">*</span></label>
+      <input type="text" id="idNumber" name="idNumber" placeholder="63-1234567-A-12" required>
+    </div>
 
-    <label for="phone">Phone Number</label>
-    <input type="tel" id="phone" required>
+    <div class="form-group">
+      <label for="phone">Phone Number <span class="required">*</span></label>
+      <input type="tel" id="phone" name="phone" placeholder="+263771234567" required>
+    </div>
 
-    <label for="address">Address</label>
-    <input type="text" id="address" required>
+    <div class="form-group">
+      <label for="address">Address <span class="required">*</span></label>
+      <input type="text" id="address" name="address" placeholder="123 Main Street, Harare" required>
+    </div>
 
-    <label for="idFront">ID Front</label>
-    <input type="file" id="idFront" accept="image/*" required>
+    <h3 style="margin:20px 0 12px; color:#2d3748;">Upload Documents</h3>
 
-    <label for="idBack">ID Back</label>
-    <input type="file" id="idBack" accept="image/*" required>
+    <div class="form-group">
+      <label>ID Front <span class="required">*</span></label>
+      <div class="file-upload" id="idFrontUpload">
+        <input type="file" id="idFront" accept="image/*" required>
+        <label for="idFront" class="file-upload-label">
+          <span class="upload-icon">📸</span>
+          <span>Upload ID Front</span>
+          <span class="file-name" id="idFrontName"></span>
+        </label>
+      </div>
+    </div>
 
-    <label for="proofAddress">Proof of Address</label>
-    <input type="file" id="proofAddress" accept="image/*" required>
+    <div class="form-group">
+      <label>ID Back <span class="required">*</span></label>
+      <div class="file-upload" id="idBackUpload">
+        <input type="file" id="idBack" accept="image/*" required>
+        <label for="idBack" class="file-upload-label">
+          <span class="upload-icon">📸</span>
+          <span>Upload ID Back</span>
+          <span class="file-name" id="idBackName"></span>
+        </label>
+      </div>
+    </div>
 
-    <button type="submit">Submit</button>
+    <div class="form-group">
+      <label>Proof of Address <span class="required">*</span></label>
+      <div class="file-upload" id="proofAddressUpload">
+        <input type="file" id="proofAddress" accept="image/*,application/pdf" required>
+        <label for="proofAddress" class="file-upload-label">
+          <span class="upload-icon">📄</span>
+          <span>Upload Proof of Address</span>
+          <span class="file-name" id="proofAddressName"></span>
+        </label>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit KYC</button>
   </form>
 
-  <div class="loading" id="loading">Submitting...</div>
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p>Processing your KYC application...</p>
+  </div>
 
   <div class="result" id="result">
-    <h3 id="resultTitle"></h3>
-    <pre id="resultData"></pre>
+    <div class="result-title" id="resultTitle"></div>
+    <div class="result-data" id="resultData"></div>
   </div>
 </div>
 
 <script>
-async function fileToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-  });
-}
+  // === Webhook URL ===
+  const webhookURL = 'YOUR_WEBHOOK_URL_HERE'; // Replace with your actual webhook
 
-document.getElementById('kycForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  document.getElementById('loading').classList.add('active');
+  const fileInputs = [
+    { input: 'idFront', upload: 'idFrontUpload', name: 'idFrontName' },
+    { input: 'idBack', upload: 'idBackUpload', name: 'idBackName' },
+    { input: 'proofAddress', upload: 'proofAddressUpload', name: 'proofAddressName' }
+  ];
 
-  const webhookURL = 'YOUR_WEBHOOK_URL_HERE'; // Replace with your webhook URL
-
-  const payload = {
-    full_name: document.getElementById('fullName').value,
-    id_number: document.getElementById('idNumber').value,
-    phone: document.getElementById('phone').value,
-    address: document.getElementById('address').value,
-    id_front: await fileToBase64(document.getElementById('idFront').files[0]),
-    id_back: await fileToBase64(document.getElementById('idBack').files[0]),
-    proof_of_address: await fileToBase64(document.getElementById('proofAddress').files[0])
-  };
-
-  try {
-    const response = await fetch(webhookURL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+  fileInputs.forEach(({ input, upload, name }) => {
+    const inputEl = document.getElementById(input);
+    const uploadEl = document.getElementById(upload);
+    const nameEl = document.getElementById(name);
+    inputEl.addEventListener('change', (e) => {
+      if(e.target.files.length > 0){
+        nameEl.textContent = `✓ ${e.target.files[0].name}`;
+        uploadEl.classList.add('has-file');
+      } else {
+        nameEl.textContent = '';
+        uploadEl.classList.remove('has-file');
+      }
     });
+  });
 
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    const result = await response.json();
-
-    const resultDiv = document.getElementById('result');
-    resultDiv.className = 'result active success';
-    document.getElementById('resultTitle').textContent = 'Submission Successful';
-    document.getElementById('resultData').textContent = JSON.stringify(result, null, 2);
-  } catch (err) {
-    const resultDiv = document.getElementById('result');
-    resultDiv.className = 'result active error';
-    document.getElementById('resultTitle').textContent = 'Submission Failed';
-    document.getElementById('resultData').textContent = err.message;
-  } finally {
-    document.getElementById('loading').classList.remove('active');
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
   }
-});
-</script>
 
+  document.getElementById('kycForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    document.getElementById('loading').classList.add('active');
+
+    const files = {
+      id_front: await fileToBase64(document.getElementById('idFront').files[0]),
+      id_back: await fileToBase64(document.getElementById('idBack').files[0]),
+      proof_of_address: await fileToBase64(document.getElementById('proofAddress').files[0]),
+      full_name: document.getElementById('fullName').value,
+      id_number: document.getElementById('idNumber').value,
+      phone: document.getElementById('phone').value,
+      address: document.getElementById('address').value
+    };
+
+    // Send data to the webhook
+    try {
+      const response = await fetch(webhookURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(files)
+      });
+
+      const resultDiv = document.getElementById('result');
+      document.getElementById('loading').classList.remove('active');
+
+      if(response.ok){
+        resultDiv.className = 'result active success';
+        document.getElementById('resultTitle').textContent = 'KYC Submitted Successfully';
+        document.getElementById('resultData').textContent = 'Thank you, your documents have been sent.';
+      } else {
+        resultDiv.className = 'result active error';
+        document.getElementById('resultTitle').textContent = 'Submission Failed';
+        document.getElementById('resultData').textContent = 'There was an error sending your KYC.';
+      }
+    } catch (err) {
+      const resultDiv = document.getElementById('result');
+      document.getElementById('loading').classList.remove('active');
+      resultDiv.className = 'result active error';
+      document.getElementById('resultTitle').textContent = 'Submission Error';
+      document.getElementById('resultData').textContent = err.message;
+    }
+  });
+</script>
 </body>
 </html>
