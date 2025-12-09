@@ -13,7 +13,7 @@
   .form-group { margin-bottom: 20px; width: 100%; }
   label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; color: #2d3748; }
   .required { color: #e53e3e; }
-  input[type="text"], input[type="tel"] { width: 100%; padding: 14px; border: 1.5px solid #cbd5e0; border-radius: 8px; font-size: 15px; }
+  input[type="text"], input[type="tel"], input[type="url"] { width: 100%; padding: 14px; border: 1.5px solid #cbd5e0; border-radius: 8px; font-size: 15px; }
   input:focus { border-color: #667eea; outline: none; }
   .file-upload { border: 2px dashed #cbd5e0; border-radius: 8px; padding: 18px; text-align: center; cursor: pointer; background: #f7fafc; transition: all 0.2s; }
   .file-upload:hover { border-color: #667eea; background: #edf2f7; }
@@ -37,7 +37,7 @@
   .result-data { background: #f7fafc; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 12px; max-height: 250px; overflow-y: auto; word-wrap: break-word; }
   @media (max-width: 480px) {
     .container { padding: 20px; border-radius: 12px; }
-    input[type="text"], input[type="tel"], .submit-btn { font-size: 14px; padding: 12px; }
+    input[type="text"], input[type="tel"], input[type="url"], .submit-btn { font-size: 14px; padding: 12px; }
     h1 { font-size: 20px; }
   }
 </style>
@@ -51,22 +51,27 @@
   <form id="kycForm">
     <div class="form-group">
       <label for="fullName">Full Name <span class="required">*</span></label>
-      <input type="text" id="fullName" name="fullName" placeholder="John Doe" required>
+      <input type="text" id="fullName" name="fullName" placeholder="John Doe" autocomplete="name" required>
     </div>
 
     <div class="form-group">
       <label for="idNumber">ID Number <span class="required">*</span></label>
-      <input type="text" id="idNumber" name="idNumber" placeholder="63-1234567-A-12" required>
+      <input type="text" id="idNumber" name="idNumber" placeholder="63-1234567-A-12" autocomplete="off" required>
     </div>
 
     <div class="form-group">
       <label for="phone">Phone Number <span class="required">*</span></label>
-      <input type="tel" id="phone" name="phone" placeholder="+263771234567" required>
+      <input type="tel" id="phone" name="phone" placeholder="+263771234567" autocomplete="tel" required>
     </div>
 
     <div class="form-group">
       <label for="address">Address <span class="required">*</span></label>
-      <input type="text" id="address" name="address" placeholder="123 Main Street, Harare" required>
+      <input type="text" id="address" name="address" placeholder="123 Main Street, Harare" autocomplete="street-address" required>
+    </div>
+
+    <div class="form-group">
+      <label for="webhookUrl">Webhook URL <span class="required">*</span></label>
+      <input type="url" id="webhookUrl" name="webhookUrl" placeholder="https://your-webhook-url.com" autocomplete="off" required>
     </div>
 
     <h3 style="margin:20px 0 12px; color:#2d3748;">Upload Documents</h3>
@@ -122,9 +127,6 @@
 </div>
 
 <script>
-  // === Webhook URL ===
-  const webhookURL = 'https://n8n.morningsidezw.com/webhook-test/onboard-agent-mvs'; // Replace with your actual webhook
-
   const fileInputs = [
     { input: 'idFront', upload: 'idFrontUpload', name: 'idFrontName' },
     { input: 'idBack', upload: 'idBackUpload', name: 'idBackName' },
@@ -155,6 +157,19 @@
     });
   }
 
+  async function submitToWebhook(data, url) {
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      return response.json();
+    } catch (err) {
+      return { error: err.message };
+    }
+  }
+
   document.getElementById('kycForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     document.getElementById('loading').classList.add('active');
@@ -162,40 +177,25 @@
     const files = {
       id_front: await fileToBase64(document.getElementById('idFront').files[0]),
       id_back: await fileToBase64(document.getElementById('idBack').files[0]),
-      proof_of_address: await fileToBase64(document.getElementById('proofAddress').files[0]),
+      proof_of_address: await fileToBase64(document.getElementById('proofAddress').files[0])
+    };
+    const webhook = document.getElementById('webhookUrl').value;
+
+    const payload = { 
       full_name: document.getElementById('fullName').value,
       id_number: document.getElementById('idNumber').value,
-      phone: document.getElementById('phone').value,
-      address: document.getElementById('address').value
+      phone_number: document.getElementById('phone').value,
+      address: document.getElementById('address').value,
+      files
     };
 
-    // Send data to the webhook
-    try {
-      const response = await fetch(webhookURL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(files)
-      });
+    const result = await submitToWebhook(payload, webhook);
 
-      const resultDiv = document.getElementById('result');
-      document.getElementById('loading').classList.remove('active');
-
-      if(response.ok){
-        resultDiv.className = 'result active success';
-        document.getElementById('resultTitle').textContent = 'KYC Submitted Successfully';
-        document.getElementById('resultData').textContent = 'Thank you, your documents have been sent.';
-      } else {
-        resultDiv.className = 'result active error';
-        document.getElementById('resultTitle').textContent = 'Submission Failed';
-        document.getElementById('resultData').textContent = 'There was an error sending your KYC.';
-      }
-    } catch (err) {
-      const resultDiv = document.getElementById('result');
-      document.getElementById('loading').classList.remove('active');
-      resultDiv.className = 'result active error';
-      document.getElementById('resultTitle').textContent = 'Submission Error';
-      document.getElementById('resultData').textContent = err.message;
-    }
+    document.getElementById('loading').classList.remove('active');
+    const resultDiv = document.getElementById('result');
+    resultDiv.className = result.error ? 'result active error' : 'result active success';
+    document.getElementById('resultTitle').textContent = result.error ? 'Submission Failed' : 'Submission Successful';
+    document.getElementById('resultData').textContent = JSON.stringify(result, null, 2);
   });
 </script>
 </body>
