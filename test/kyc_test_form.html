@@ -13,7 +13,7 @@
   .form-group { margin-bottom: 20px; width: 100%; }
   label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; color: #2d3748; }
   .required { color: #e53e3e; }
-  input[type="text"], input[type="tel"], input[type="url"] { width: 100%; padding: 14px; border: 1.5px solid #cbd5e0; border-radius: 8px; font-size: 15px; }
+  input[type="text"], input[type="tel"] { width: 100%; padding: 14px; border: 1.5px solid #cbd5e0; border-radius: 8px; font-size: 15px; }
   input:focus { border-color: #667eea; outline: none; }
   .file-upload { border: 2px dashed #cbd5e0; border-radius: 8px; padding: 18px; text-align: center; cursor: pointer; background: #f7fafc; transition: all 0.2s; }
   .file-upload:hover { border-color: #667eea; background: #edf2f7; }
@@ -37,7 +37,7 @@
   .result-data { background: #f7fafc; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 12px; max-height: 250px; overflow-y: auto; word-wrap: break-word; }
   @media (max-width: 480px) {
     .container { padding: 20px; border-radius: 12px; }
-    input[type="text"], input[type="tel"], input[type="url"], .submit-btn { font-size: 14px; padding: 12px; }
+    input[type="text"], input[type="tel"], .submit-btn { font-size: 14px; padding: 12px; }
     h1 { font-size: 20px; }
   }
 </style>
@@ -51,33 +51,28 @@
   <form id="kycForm">
     <div class="form-group">
       <label for="fullName">Full Name <span class="required">*</span></label>
-      <input type="text" id="fullName" name="fullName" placeholder="John Doe" autocomplete="name" required>
+      <input type="text" id="fullName" name="fullName" placeholder="John Doe" required autocomplete="name">
     </div>
 
     <div class="form-group">
       <label for="idNumber">ID Number <span class="required">*</span></label>
-      <input type="text" id="idNumber" name="idNumber" placeholder="63-1234567-A-12" autocomplete="off" required>
+      <input type="text" id="idNumber" name="idNumber" placeholder="63-1234567-A-12" required autocomplete="off">
     </div>
 
     <div class="form-group">
       <label for="phone">Phone Number <span class="required">*</span></label>
-      <input type="tel" id="phone" name="phone" placeholder="+263771234567" autocomplete="tel" required>
+      <input type="tel" id="phone" name="phone" placeholder="+263771234567" required autocomplete="tel">
     </div>
 
     <div class="form-group">
       <label for="address">Address <span class="required">*</span></label>
-      <input type="text" id="address" name="address" placeholder="123 Main Street, Harare" autocomplete="street-address" required>
-    </div>
-
-    <div class="form-group">
-      <label for="webhookUrl">Webhook URL <span class="required">*</span></label>
-      <input type="url" id="webhookUrl" name="webhookUrl" placeholder="https://your-webhook-url.com" autocomplete="off" required>
+      <input type="text" id="address" name="address" placeholder="123 Main Street, Harare" required autocomplete="street-address">
     </div>
 
     <h3 style="margin:20px 0 12px; color:#2d3748;">Upload Documents</h3>
 
     <div class="form-group">
-      <label>ID Front <span class="required">*</span></label>
+      <label for="idFront">ID Front <span class="required">*</span></label>
       <div class="file-upload" id="idFrontUpload">
         <input type="file" id="idFront" accept="image/*" required>
         <label for="idFront" class="file-upload-label">
@@ -89,7 +84,7 @@
     </div>
 
     <div class="form-group">
-      <label>ID Back <span class="required">*</span></label>
+      <label for="idBack">ID Back <span class="required">*</span></label>
       <div class="file-upload" id="idBackUpload">
         <input type="file" id="idBack" accept="image/*" required>
         <label for="idBack" class="file-upload-label">
@@ -101,7 +96,7 @@
     </div>
 
     <div class="form-group">
-      <label>Proof of Address <span class="required">*</span></label>
+      <label for="proofAddress">Proof of Address <span class="required">*</span></label>
       <div class="file-upload" id="proofAddressUpload">
         <input type="file" id="proofAddress" accept="image/*,application/pdf" required>
         <label for="proofAddress" class="file-upload-label">
@@ -157,45 +152,54 @@
     });
   }
 
-  async function submitToWebhook(data, url) {
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      return response.json();
-    } catch (err) {
-      return { error: err.message };
-    }
-  }
-
   document.getElementById('kycForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     document.getElementById('loading').classList.add('active');
 
-    const files = {
-      id_front: await fileToBase64(document.getElementById('idFront').files[0]),
-      id_back: await fileToBase64(document.getElementById('idBack').files[0]),
-      proof_of_address: await fileToBase64(document.getElementById('proofAddress').files[0])
-    };
-    const webhook = document.getElementById('webhookUrl').value;
+    try {
+      const files = {
+        id_front: await fileToBase64(document.getElementById('idFront').files[0]),
+        id_back: await fileToBase64(document.getElementById('idBack').files[0]),
+        proof_of_address: await fileToBase64(document.getElementById('proofAddress').files[0])
+      };
 
-    const payload = { 
-      full_name: document.getElementById('fullName').value,
-      id_number: document.getElementById('idNumber').value,
-      phone_number: document.getElementById('phone').value,
-      address: document.getElementById('address').value,
-      files
-    };
+      const payload = {
+        full_name: document.getElementById('fullName').value,
+        id_number: document.getElementById('idNumber').value,
+        phone: document.getElementById('phone').value,
+        address: document.getElementById('address').value,
+        documents: files
+      };
 
-    const result = await submitToWebhook(payload, webhook);
+      // CORS-safe submission via proxy
+      const response = await fetch('https://n8n.morningsidezw.com/webhook-test/onboard-agent-mvs/submit', {
+        method: 'POST',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
 
-    document.getElementById('loading').classList.remove('active');
-    const resultDiv = document.getElementById('result');
-    resultDiv.className = result.error ? 'result active error' : 'result active success';
-    document.getElementById('resultTitle').textContent = result.error ? 'Submission Failed' : 'Submission Successful';
-    document.getElementById('resultData').textContent = JSON.stringify(result, null, 2);
+      const resultDiv = document.getElementById('result');
+      document.getElementById('loading').classList.remove('active');
+
+      if(response.ok){
+        const data = await response.json();
+        resultDiv.className = 'result active success';
+        document.getElementById('resultTitle').textContent = 'KYC Submitted Successfully';
+        document.getElementById('resultData').textContent = JSON.stringify(data, null, 2);
+      } else {
+        resultDiv.className = 'result active error';
+        document.getElementById('resultTitle').textContent = 'Submission Failed';
+        document.getElementById('resultData').textContent = `Status: ${response.status} ${response.statusText}`;
+      }
+
+    } catch (error) {
+      document.getElementById('loading').classList.remove('active');
+      const resultDiv = document.getElementById('result');
+      resultDiv.className = 'result active error';
+      document.getElementById('resultTitle').textContent = 'Error';
+      document.getElementById('resultData').textContent = error;
+    }
   });
 </script>
 </body>
