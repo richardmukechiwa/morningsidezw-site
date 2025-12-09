@@ -1,569 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KYC Auto-Approval Test Form</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .container {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      max-width: 600px;
-      width: 100%;
-      padding: 40px;
-    }
-
-    h1 {
-      color: #2d3748;
-      margin-bottom: 10px;
-      font-size: 28px;
-    }
-
-    .subtitle {
-      color: #718096;
-      margin-bottom: 30px;
-      font-size: 14px;
-    }
-
-    .alert {
-      background: #fef3c7;
-      border-left: 4px solid #f59e0b;
-      padding: 15px;
-      margin-bottom: 25px;
-      border-radius: 4px;
-      font-size: 14px;
-    }
-
-    .alert strong {
-      color: #92400e;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      color: #2d3748;
-      font-weight: 600;
-      font-size: 14px;
-    }
-
-    .required {
-      color: #e53e3e;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"] {
-      width: 100%;
-      padding: 12px;
-      border: 2px solid #e2e8f0;
-      border-radius: 8px;
-      font-size: 15px;
-      transition: border-color 0.2s;
-    }
-
-    input:focus {
-      outline: none;
-      border-color: #667eea;
-    }
-
-    .file-upload {
-      border: 2px dashed #cbd5e0;
-      border-radius: 8px;
-      padding: 20px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s;
-      background: #f7fafc;
-    }
-
-    .file-upload:hover {
-      border-color: #667eea;
-      background: #edf2f7;
-    }
-
-    .file-upload.has-file {
-      border-color: #48bb78;
-      background: #f0fff4;
-    }
-
-    .file-upload input {
-      display: none;
-    }
-
-    .file-upload-label {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .upload-icon {
-      font-size: 32px;
-    }
-
-    .file-name {
-      font-size: 13px;
-      color: #4a5568;
-      margin-top: 5px;
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 15px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .submit-btn:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-    }
-
-    .submit-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .loading {
-      display: none;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .loading.active {
-      display: block;
-    }
-
-    .spinner {
-      border: 3px solid #f3f4f6;
-      border-top: 3px solid #667eea;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 15px;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .result {
-      display: none;
-      margin-top: 25px;
-      padding: 20px;
-      border-radius: 8px;
-      animation: slideIn 0.3s ease;
-    }
-
-    .result.active {
-      display: block;
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .result.success {
-      background: #f0fff4;
-      border: 2px solid #48bb78;
-    }
-
-    .result.warning {
-      background: #fffaf0;
-      border: 2px solid #ed8936;
-    }
-
-    .result.error {
-      background: #fff5f5;
-      border: 2px solid #f56565;
-    }
-
-    .result-title {
-      font-weight: bold;
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .result-details {
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .result-data {
-      background: white;
-      padding: 15px;
-      border-radius: 6px;
-      margin-top: 15px;
-      font-family: 'Courier New', monospace;
-      font-size: 12px;
-      max-height: 300px;
-      overflow-y: auto;
-    }
-
-    .webhook-config {
-      background: #edf2f7;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 25px;
-    }
-
-    .webhook-config label {
-      margin-bottom: 5px;
-    }
-
-    .webhook-config input {
-      font-family: 'Courier New', monospace;
-      font-size: 13px;
-    }
-
-    @media (max-width: 640px) {
-      .container {
-        padding: 25px;
-      }
-
-      h1 {
-        font-size: 24px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Onboarding Test Form</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .container { background: white; padding: 30px; border-radius: 12px; max-width: 500px; width: 100%; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+  h1 { margin-bottom: 10px; font-size: 24px; }
+  .form-group { margin-bottom: 15px; }
+  label { display: block; margin-bottom: 5px; font-weight: bold; }
+  input[type="text"], input[type="email"], input[type="tel"] { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; }
+  .file-upload { border: 2px dashed #ccc; padding: 15px; text-align: center; border-radius: 6px; cursor: pointer; }
+  .file-upload.has-file { border-color: #48bb78; background: #f0fff4; }
+  .file-upload input { display: none; }
+  .file-name { font-size: 12px; margin-top: 5px; display: block; }
+  .submit-btn { width: 100%; padding: 12px; background: #667eea; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
+  .loading, .result { display: none; margin-top: 20px; }
+  .spinner { border: 3px solid #f3f3f3; border-top: 3px solid #667eea; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: auto; }
+  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+</style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>🔐 KYC Auto-Approval Test Form</h1>
-    <p class="subtitle">Test your n8n workflow with sample customer data</p>
+<div class="container">
+  <h1>Agent Onboarding Test Form</h1>
 
-    <div class="alert">
-      <strong>⚠️ Testing Mode:</strong> This form sends data to your n8n webhook. Make sure your workflow is activated and the webhook URL is correct below.
-    </div>
-
-    <!-- Webhook Configuration -->
-    <div class="webhook-config">
-      <div class="form-group">
-        <label for="webhookUrl">n8n Webhook URL <span class="required">*</span></label>
-        <input 
-          type="text" 
-          id="webhookUrl" 
-          placeholder="https://n8n.morningsidezw.com/webhook-test/onboard-agent-mvs"
-          value="https://n8n.morningsidezw.com/webhook-test/onboard-agent-mvs"
-        >
-      </div>
-    </div>
-
-    <!-- Customer Data Form -->
-    <form id="kycForm">
-      
-      <h3 style="margin-bottom: 20px; color: #2d3748;">Customer Information</h3>
-
-      <div class="form-group">
-        <label for="fullName">Full Name <span class="required">*</span></label>
-        <input type="text" id="fullName" name="fullName" placeholder="John Doe" required>
-      </div>
-
-      <div class="form-group">
-        <label for="idNumber">Zimbabwe ID Number <span class="required">*</span></label>
-        <input type="text" id="idNumber" name="idNumber" placeholder="63-1234567-A-12" required pattern="(63|08)-\d{7}-[A-Z]-\d{2}">
-        <small style="color: #718096; font-size: 12px;">Format: 63-XXXXXX-X-XX or 08-XXXXXX-X-XX</small>
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email Address <span class="required">*</span></label>
-        <input type="email" id="email" name="email" placeholder="john@example.com" required>
-      </div>
-
-      <div class="form-group">
-        <label for="phone">Phone Number <span class="required">*</span></label>
-        <input type="tel" id="phone" name="phone" placeholder="+263771234567" required>
-      </div>
-
-      <div class="form-group">
-        <label for="address">Physical Address <span class="required">*</span></label>
-        <input type="text" id="address" name="address" placeholder="123 Main Street, Harare" required>
-      </div>
-
-      <h3 style="margin: 30px 0 20px; color: #2d3748;">Upload Documents</h3>
-
-      <div class="form-group">
-        <label>ID Front <span class="required">*</span></label>
-        <div class="file-upload" id="idFrontUpload">
-          <input type="file" id="idFront" accept="image/*" required>
-          <label for="idFront" class="file-upload-label">
-            <span class="upload-icon">📸</span>
-            <span>Click to upload Zimbabwe ID (front)</span>
-            <span class="file-name" id="idFrontName"></span>
-          </label>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>ID Back <span class="required">*</span></label>
-        <div class="file-upload" id="idBackUpload">
-          <input type="file" id="idBack" accept="image/*" required>
-          <label for="idBack" class="file-upload-label">
-            <span class="upload-icon">📸</span>
-            <span>Click to upload Zimbabwe ID (back)</span>
-            <span class="file-name" id="idBackName"></span>
-          </label>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Proof of Address <span class="required">*</span></label>
-        <div class="file-upload" id="proofAddressUpload">
-          <input type="file" id="proofAddress" accept="image/*,application/pdf" required>
-          <label for="proofAddress" class="file-upload-label">
-            <span class="upload-icon">📄</span>
-            <span>Click to upload utility bill or bank statement</span>
-            <span class="file-name" id="proofAddressName"></span>
-          </label>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Passport Photo <span class="required">*</span></label>
-        <div class="file-upload" id="photoUpload">
-          <input type="file" id="photo" accept="image/*" required>
-          <label for="photo" class="file-upload-label">
-            <span class="upload-icon">🤳</span>
-            <span>Click to upload passport photo</span>
-            <span class="file-name" id="photoName"></span>
-          </label>
-        </div>
-      </div>
-
-      <!-- Add after Proof of Address section -->
-    <div class="form-group">
-      <label>Proof of Income <span class="required">*</span></label>
-      <div class="file-upload" id="proofIncomeUpload">
-        <input type="file" id="proofIncome" accept="image/*,application/pdf" required>
-        <label for="proofIncome" class="file-upload-label">
-        <span class="upload-icon">💰</span>
-        <span>Click to upload payslip or bank statement</span>
-        <span class="file-name" id="proofIncomeName"></span>
-        </label>
-      </div>
-    </div>
-
-      <button type="submit" class="submit-btn" id="submitBtn">
-        Submit KYC Application
-      </button>
-
-    </form>
-
-    <!-- Loading Indicator -->
-    <div class="loading" id="loading">
-      <div class="spinner"></div>
-      <p style="color: #4a5568;">Processing your KYC application...</p>
-      <p style="color: #718096; font-size: 13px; margin-top: 5px;">This may take 30-60 seconds</p>
-    </div>
-
-    <!-- Result Display -->
-    <div class="result" id="result">
-      <div class="result-title" id="resultTitle"></div>
-      <div class="result-details" id="resultDetails"></div>
-      <div class="result-data" id="resultData"></div>
-    </div>
-
+  <div class="form-group">
+    <label for="webhookUrl">n8n Webhook URL *</label>
+    <input type="text" id="webhookUrl" value="https://n8n.morningsidezw.com/webhook-test/onboard-agent-mvs">
   </div>
 
-  <script>
-    // File upload handlers
-    const fileInputs = [
-      { input: 'idFront', upload: 'idFrontUpload', name: 'idFrontName' },
-      { input: 'idBack', upload: 'idBackUpload', name: 'idBackName' },
-      { input: 'proofAddress', upload: 'proofAddressUpload', name: 'proofAddressName' },
-      { input: 'photo', upload: 'photoUpload', name: 'photoName' },
-      { input: 'proofIncome', upload: 'proofIncomeUpload', name: 'proofIncomeName' }
-    ];
+  <form id="onboardingForm">
 
-    fileInputs.forEach(({ input, upload, name }) => {
-      const inputEl = document.getElementById(input);
-      const uploadEl = document.getElementById(upload);
-      const nameEl = document.getElementById(name);
+    <div class="form-group">
+      <label for="fullName">Full Name *</label>
+      <input type="text" id="fullName" required>
+    </div>
 
-      inputEl.addEventListener('change', (e) => {
-        if (e.target.files.length > 0) {
-          const fileName = e.target.files[0].name;
-          nameEl.textContent = `✓ ${fileName}`;
-          uploadEl.classList.add('has-file');
-        } else {
-          nameEl.textContent = '';
-          uploadEl.classList.remove('has-file');
-        }
-      });
-    });
+    <div class="form-group">
+      <label for="idNumber">Zimbabwe ID Number *</label>
+      <input type="text" id="idNumber" placeholder="63-1234567-A-12" required pattern="(63|08)-\d{7}-[A-Z]-\d{2}">
+    </div>
 
-    // Convert file to base64
-    function fileToBase64(file) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result.split(',')[1]);
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
-      });
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input type="email" id="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone *</label>
+      <input type="tel" id="phone" required>
+    </div>
+
+    <h3>Upload Documents</h3>
+
+    <div class="form-group">
+      <label>ID Front *</label>
+      <div class="file-upload" id="idFrontUpload">
+        <input type="file" id="idFront" accept="image/*" required>
+        <span class="file-name" id="idFrontName"></span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>ID Back *</label>
+      <div class="file-upload" id="idBackUpload">
+        <input type="file" id="idBack" accept="image/*" required>
+        <span class="file-name" id="idBackName"></span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Proof of Address *</label>
+      <div class="file-upload" id="proofAddressUpload">
+        <input type="file" id="proofAddress" accept="image/*,application/pdf" required>
+        <span class="file-name" id="proofAddressName"></span>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit</button>
+  </form>
+
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p>Processing...</p>
+  </div>
+
+  <div class="result" id="result">
+    <pre id="resultData"></pre>
+  </div>
+</div>
+
+<script>
+const fileInputs = [
+  { input: 'idFront', upload: 'idFrontUpload', name: 'idFrontName' },
+  { input: 'idBack', upload: 'idBackUpload', name: 'idBackName' },
+  { input: 'proofAddress', upload: 'proofAddressUpload', name: 'proofAddressName' }
+];
+
+fileInputs.forEach(({ input, upload, name }) => {
+  const inputEl = document.getElementById(input);
+  const uploadEl = document.getElementById(upload);
+  const nameEl = document.getElementById(name);
+
+  inputEl.addEventListener('change', e => {
+    if (e.target.files.length > 0) {
+      nameEl.textContent = `✓ ${e.target.files[0].name}`;
+      uploadEl.classList.add('has-file');
+    } else {
+      nameEl.textContent = '';
+      uploadEl.classList.remove('has-file');
     }
+  });
+});
 
-    // Form submission
-    document.getElementById('kycForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
 
-      const webhookUrl = document.getElementById('webhookUrl').value.trim();
-      if (!webhookUrl) {
-        alert('Please enter your n8n webhook URL');
-        return;
-      }
+document.getElementById('onboardingForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const webhookUrl = document.getElementById('webhookUrl').value.trim();
+  if (!webhookUrl) { alert('Enter webhook URL'); return; }
 
-      // Show loading
-      document.getElementById('submitBtn').disabled = true;
-      document.getElementById('loading').classList.add('active');
-      document.getElementById('result').classList.remove('active');
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('result').style.display = 'none';
 
-      try {
-        // Get form data
-        const customerData = {
-          name: document.getElementById('fullName').value,
-          idNumber: document.getElementById('idNumber').value,
-          email: document.getElementById('email').value,
-          phone: document.getElementById('phone').value,
-          address: document.getElementById('address').value
-        };
+  const customerData = {
+    name: document.getElementById('fullName').value,
+    idNumber: document.getElementById('idNumber').value,
+    email: document.getElementById('email').value,
+    phone: document.getElementById('phone').value
+  };
 
-        // Convert files to base64
-        const files = {
-          idFront: await fileToBase64(document.getElementById('idFront').files[0]),
-          idBack: await fileToBase64(document.getElementById('idBack').files[0]),
-          proofOfAddress: await fileToBase64(document.getElementById('proofAddress').files[0]),
-          photo: await fileToBase64(document.getElementById('photo').files[0]),
-          proofOfIncome: await fileToBase64(document.getElementById('proofIncome').files[0])
-        };
+  const files = {
+    id_front: await fileToBase64(document.getElementById('idFront').files[0]),
+    id_back: await fileToBase64(document.getElementById('idBack').files[0]),
+    proof_of_address: await fileToBase64(document.getElementById('proofAddress').files[0])
+  };
 
-        // Send to webhook
-        const response = await fetch(webhookUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            customerData: customerData,
-            files: files
-          })
-        });
-
-        const result = await response.json();
-
-        // Hide loading
-        document.getElementById('loading').classList.remove('active');
-        document.getElementById('submitBtn').disabled = false;
-
-        // Show result
-        const resultDiv = document.getElementById('result');
-        const titleDiv = document.getElementById('resultTitle');
-        const detailsDiv = document.getElementById('resultDetails');
-        const dataDiv = document.getElementById('resultData');
-
-        resultDiv.classList.add('active');
-
-        if (result.success) {
-          if (result.finalStatus === 'ACCEPT') {
-            resultDiv.className = 'result active success';
-            titleDiv.textContent = '✅ Application Approved';
-            detailsDiv.innerHTML = `
-              <p><strong>Application ID:</strong> ${result.applicationId}</p>
-              <p><strong>Status:</strong> ${result.finalStatus}</p>
-              <p><strong>Risk Score:</strong> ${result.riskScore}/100</p>
-              <p><strong>Fraud Score:</strong> ${result.fraudScore}/100</p>
-              <p style="margin-top: 10px;">${result.message}</p>
-            `;
-          } else if (result.finalStatus === 'MANUAL_REVIEW') {
-            resultDiv.className = 'result active warning';
-            titleDiv.textContent = '⚠️ Manual Review Required';
-            detailsDiv.innerHTML = `
-              <p><strong>Application ID:</strong> ${result.applicationId}</p>
-              <p><strong>Status:</strong> ${result.finalStatus}</p>
-              <p><strong>Risk Score:</strong> ${result.riskScore}/100</p>
-              <p><strong>Fraud Score:</strong> ${result.fraudScore}/100</p>
-              <p style="margin-top: 10px;">${result.message}</p>
-              ${result.validationErrors.length > 0 ? `<p style="margin-top: 10px;"><strong>Issues:</strong> ${result.validationErrors.join(', ')}</p>` : ''}
-            `;
-          } else {
-            resultDiv.className = 'result active error';
-            titleDiv.textContent = '❌ Application Rejected';
-            detailsDiv.innerHTML = `
-              <p><strong>Application ID:</strong> ${result.applicationId}</p>
-              <p><strong>Status:</strong> ${result.finalStatus}</p>
-              <p style="margin-top: 10px;">${result.message}</p>
-              ${result.validationErrors.length > 0 ? `<p style="margin-top: 10px;"><strong>Errors:</strong> ${result.validationErrors.join(', ')}</p>` : ''}
-            `;
-          }
-
-          dataDiv.textContent = JSON.stringify(result, null, 2);
-        } else {
-          resultDiv.className = 'result active error';
-          titleDiv.textContent = '❌ Submission Failed';
-          detailsDiv.innerHTML = `<p>There was an error processing your application. Please check your n8n workflow logs.</p>`;
-          dataDiv.textContent = JSON.stringify(result, null, 2);
-        }
-
-      } catch (error) {
-        console.error('Error:', error);
-
-        document.getElementById('loading').classList.remove('active');
-        document.getElementById('submitBtn').disabled = false;
-
-        const resultDiv = document.getElementById('result');
-        resultDiv.className = 'result active error';
-        resultDiv.classList.add('active');
-        
-        document.getElementById('resultTitle').textContent = '❌ Connection Error';
-        document.getElementById('resultDetails').innerHTML = `
-          <p>Failed to connect to webhook. Please check:</p>
-          <ul style="margin-left: 20px; margin-top: 10px;">
-            <li>Webhook URL is correct</li>
-            <li>n8n workflow is activated</li>
-            <li>n8n instance is running</li>
-            <li>No CORS issues (if testing locally)</li>
-          </ul>
-        `;
-        document.getElementById('resultData').textContent = error.message;
-      }
+  try {
+    const res = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ customerData, files })
     });
-  </script>
+    const result = await res.json();
+
+    document.getElementById('loading').style.display = 'none';
+    const resultDiv = document.getElementById('result');
+    resultDiv.style.display = 'block';
+    document.getElementById('resultData').textContent = JSON.stringify(result, null, 2);
+  } catch (err) {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('result').style.display = 'block';
+    document.getElementById('resultData').textContent = 'Error: ' + err.message;
+  }
+});
+</script>
 
 </body>
 </html>
