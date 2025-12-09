@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KYC Form</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; }
+  .container { max-width: 500px; margin: 50px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  h2 { text-align: center; margin-bottom: 20px; }
+  label { display: block; margin: 10px 0 5px; font-weight: bold; }
+  input[type="text"], input[type="tel"], input[type="file"] { width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; }
+  button { width: 100%; padding: 10px; margin-top: 20px; border: none; background: #007bff; color: #fff; font-size: 16px; border-radius: 4px; cursor: pointer; }
+  button:hover { background: #0056b3; }
+  .loading { display: none; text-align: center; margin-top: 20px; }
+  .loading.active { display: block; }
+  .result { display: none; margin-top: 20px; padding: 15px; border-radius: 4px; }
+  .result.active { display: block; }
+  .result.success { background: #d4edda; color: #155724; }
+  .result.error { background: #f8d7da; color: #721c24; }
+  pre { white-space: pre-wrap; word-wrap: break-word; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>KYC Form</h2>
+  <form id="kycForm">
+    <label for="fullName">Full Name</label>
+    <input type="text" id="fullName" required>
+
+    <label for="idNumber">ID Number</label>
+    <input type="text" id="idNumber" required>
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" required>
+
+    <label for="address">Address</label>
+    <input type="text" id="address" required>
+
+    <label for="idFront">ID Front</label>
+    <input type="file" id="idFront" accept="image/*" required>
+
+    <label for="idBack">ID Back</label>
+    <input type="file" id="idBack" accept="image/*" required>
+
+    <label for="proofAddress">Proof of Address</label>
+    <input type="file" id="proofAddress" accept="image/*" required>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="loading" id="loading">Submitting...</div>
+
+  <div class="result" id="result">
+    <h3 id="resultTitle"></h3>
+    <pre id="resultData"></pre>
+  </div>
+</div>
+
+<script>
+async function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+}
+
+document.getElementById('kycForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  document.getElementById('loading').classList.add('active');
+
+  const webhookURL = 'YOUR_WEBHOOK_URL_HERE'; // Replace with your webhook URL
+
+  const payload = {
+    full_name: document.getElementById('fullName').value,
+    id_number: document.getElementById('idNumber').value,
+    phone: document.getElementById('phone').value,
+    address: document.getElementById('address').value,
+    id_front: await fileToBase64(document.getElementById('idFront').files[0]),
+    id_back: await fileToBase64(document.getElementById('idBack').files[0]),
+    proof_of_address: await fileToBase64(document.getElementById('proofAddress').files[0])
+  };
+
+  try {
+    const response = await fetch(webhookURL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    const result = await response.json();
+
+    const resultDiv = document.getElementById('result');
+    resultDiv.className = 'result active success';
+    document.getElementById('resultTitle').textContent = 'Submission Successful';
+    document.getElementById('resultData').textContent = JSON.stringify(result, null, 2);
+  } catch (err) {
+    const resultDiv = document.getElementById('result');
+    resultDiv.className = 'result active error';
+    document.getElementById('resultTitle').textContent = 'Submission Failed';
+    document.getElementById('resultData').textContent = err.message;
+  } finally {
+    document.getElementById('loading').classList.remove('active');
+  }
+});
+</script>
+
+</body>
+</html>
