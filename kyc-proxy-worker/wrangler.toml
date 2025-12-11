@@ -1,0 +1,12 @@
+name = "kyc-proxy-worker"
+main = "src/index.js"
+compatibility_date = "2024-12-11"
+
+# Add your custom domain route
+routes = [
+  { pattern = "api.morningsidezw.com/*", custom_domain = true }
+]
+
+# Or use this if you prefer zone-based routing:
+# [env.production]
+# route = "api.morningsidezw.com/*"
