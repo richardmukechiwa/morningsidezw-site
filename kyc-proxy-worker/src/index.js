@@ -57,7 +57,7 @@ export default {
 
       // Forward to n8n webhook
       const forwarded = await fetch(
-        "https://n8n.morningsidezw.com/webhook-test/onboard-agent-mvs/submit",
+        "https://n8n.morningsidezw.com/webhook-test/onboard-agent-mvs",
         {
           method: "POST",
           headers: {
