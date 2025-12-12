@@ -37,7 +37,7 @@ export default {
 
       // Forward to n8n webhook
       const forwarded = await fetch(
-        "https://n8n.morningsidezw.com/webhook-test/onboard-agent-mvs", // use production webhook
+        "https://n8n.morningsidezw.com/webhook/onboard-agent-mvs", // use production webhook
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
