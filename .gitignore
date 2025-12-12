@@ -208,3 +208,4 @@ __marimo__/
 *.exe
 *.zip
 backup-repo.git/
+*wrangler
