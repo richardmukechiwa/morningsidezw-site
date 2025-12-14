@@ -48,7 +48,7 @@ export default {
       // Forward JSON payload to n8n
       const requestBody = await request.json();
       const forwarded = await fetch(
-        "https://n8n.morningsidezw.com/webhook-test/onboard-agent-mvs",
+        "https://n8n.morningsidezw.com/webhook/onboard-agent-mvs",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
