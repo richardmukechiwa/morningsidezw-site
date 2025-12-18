@@ -22,7 +22,7 @@ Write-Host "Sending request..." -ForegroundColor Yellow
 
 try {
     $response = Invoke-RestMethod `
-        -Uri "https://api.morningsidezw.com/webhook/submit" `
+        -Uri "https://api.morningsidezw.com/webhook-test/submit" `
         -Method Post `
         -Body $body `
         -ContentType "application/json"
