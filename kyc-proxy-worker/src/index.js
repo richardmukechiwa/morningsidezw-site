@@ -1,36 +1,53 @@
 export default {
-  async fetch(request, env, ctx) {
-    const allowedOrigins = [
+  async fetch(request) {
+    const url = new URL(request.url);
+
+    const allowedOrigins = new Set([
       "https://www.morningsidezw.com",
-      "https://morningsidezw.com"
-    ];
+      "https://morningsidezw.com",
+      "https://dash.cloudflare.com",
+      "http://localhost:3000",
+      "http://localhost:5173",
+      "http://127.0.0.1:5500",
+      "https://api.morningsidezw.com"
+    ]);
 
-    const origin = request.headers.get("Origin") || "";
+    const origin = request.headers.get("Origin");
 
-    const isAllowedOrigin = allowedOrigins.includes(origin);
+    const isPreflight = request.method === "OPTIONS";
+    const isDirectNavigation = origin === null;
+    const isAllowedOrigin = origin && allowedOrigins.has(origin);
+
+    // Decide allowed origin header
+    const allowOriginHeader =
+      isAllowedOrigin
+        ? origin
+        : isDirectNavigation
+          ? "https://www.morningsidezw.com"
+          : "";
 
     const corsHeaders = {
-      "Access-Control-Allow-Origin": isAllowedOrigin ? origin : "https://www.morningsidezw.com",
+      "Access-Control-Allow-Origin": allowOriginHeader,
       "Access-Control-Allow-Methods": "POST, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type, Authorization",
       "Access-Control-Max-Age": "86400",
       "Vary": "Origin"
     };
 
-    // -----------------------------
-    // Always handle OPTIONS first
-    // -----------------------------
-    if (request.method === "OPTIONS") {
+    // --------------------------------
+    // OPTIONS preflight
+    // --------------------------------
+    if (isPreflight) {
       return new Response(null, {
         status: 204,
         headers: corsHeaders
       });
     }
 
-    // -----------------------------
-    // Enforce origin AFTER preflight
-    // -----------------------------
-    if (!isAllowedOrigin) {
+    // --------------------------------
+    // Origin enforcement
+    // --------------------------------
+    if (!isAllowedOrigin && !isDirectNavigation) {
       return new Response(
         JSON.stringify({
           error: "Forbidden origin",
@@ -46,11 +63,9 @@ export default {
       );
     }
 
-    const url = new URL(request.url);
-
-    // -----------------------------
+    // --------------------------------
     // Route guard
-    // -----------------------------
+    // --------------------------------
     if (url.pathname !== "/submit") {
       return new Response(
         JSON.stringify({
@@ -80,14 +95,14 @@ export default {
       );
     }
 
-    // -----------------------------
-    // Proxy request to n8n
-    // -----------------------------
+    // --------------------------------
+    // Proxy to n8n
+    // --------------------------------
     try {
       const payload = await request.json();
 
       const n8nResponse = await fetch(
-        "https://n8n.morningsidezw.com/webhook/onboard-agent-optimized",
+        "https://n8n.morningsidezw.com/webhook-test/onboard-agent-optimized",
         {
           method: "POST",
           headers: {
@@ -97,9 +112,9 @@ export default {
         }
       );
 
-      const responseText = await n8nResponse.text();
+      const body = await n8nResponse.text();
 
-      return new Response(responseText, {
+      return new Response(body, {
         status: n8nResponse.status,
         headers: {
           ...corsHeaders,
