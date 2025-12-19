@@ -102,7 +102,7 @@ export default {
       const payload = await request.json();
 
       const n8nResponse = await fetch(
-        "https://n8n.morningsidezw.com/webhook-test/onboard-agent-optimized",
+        "https://n8n.morningsidezw.com/webhook-test/submit",
         {
           method: "POST",
           headers: {
