@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Onboarding - KYC Verification</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #0f172a; 
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  width: 100%;
+  max-width: 520px;
+  padding: 30px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+h1 { text-align: center; margin-bottom: 6px; color: #333; }
+.subtitle { text-align: center; color: #666; margin-bottom: 20px; font-size: 14px; }
+fieldset { border: none; margin-bottom: 24px; padding: 0; }
+legend { font-size: 18px; font-weight: 700; color: #333; margin-bottom: 12px; border-bottom: 1px solid #eee; width: 100%; padding-bottom: 5px; }
+.form-group { margin-bottom: 18px; }
+label { display: block; font-weight: 600; margin-bottom: 6px; color: #444; font-size: 14px; }
+input[type="text"], input[type="tel"], input[type="email"] {
+  width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e0; font-size: 14px;
+}
+input:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+.file-box {
+  display: block; /* Allows label to act as the clickable box */
+  border: 2px dashed #cbd5e0; border-radius: 8px; padding: 16px; text-align: center; cursor: pointer; transition: all 0.3s; background: #f9fafb;
+}
+.file-box.has-file { border-color: #48bb78; background: #f0fff4; border-style: solid; }
+.file-box input { display: none; }
+.file-name { font-size: 12px; margin-top: 6px; color: #2f855a; font-weight: 600; }
+button {
+  width: 100%; padding: 14px; border-radius: 8px; border: none; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: #fff; font-weight: 600; cursor: pointer; font-size: 14px;
+}
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+.modal { display: none; position: fixed; z-index: 1000; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); align-items: center; justify-content: center; }
+.modal-content { background: #fff; padding: 25px; border-radius: 12px; width: 90%; max-width: 450px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🔐 Agent Onboarding</h1>
+  <p class="subtitle">Complete your secure KYC verification</p>
+
+  <form id="onboardingForm" autocomplete="on">
+    <fieldset>
+      <legend>Personal Information</legend>
+      <div class="form-group">
+        <label for="full_name">Full Name</label>
+        <input id="full_name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="form-group">
+        <label for="id_number">ID Number</label>
+        <input id="id_number" name="id_number" type="text" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input id="phone" name="tel" type="tel" autocomplete="tel" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input id="address" name="address" type="text" autocomplete="street-address" required>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Required Documents</legend>
+      <div class="form-group">
+        <label>ID Front (Government-issued)</label>
+        <label class="file-box" for="id_front">
+          <input type="file" id="id_front" accept=".jpg,.jpeg,.png,.pdf" required>
+          <span>📄 Click to Upload ID Front</span><div class="file-name"></div>
+        </label>
+      </div>
+      <div class="form-group">
+        <label>ID Back</label>
+        <label class="file-box" for="id_back">
+          <input type="file" id="id_back" accept=".jpg,.jpeg,.png,.pdf" required>
+          <span>📄 Click to Upload ID Back</span><div class="file-name"></div>
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Proof of Address</label>
+        <label class="file-box" for="proof_of_address">
+          <input type="file" id="proof_of_address" accept=".jpg,.jpeg,.png,.pdf" required>
+          <span>📄 Click to Upload Proof</span><div class="file-name"></div>
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Selfie Verification</label>
+        <label class="file-box" for="passport_photo">
+          <input type="file" id="passport_photo" accept=".jpg,.jpeg,.png" required>
+          <span>📷 Click to Take/Upload Selfie</span><div class="file-name"></div>
+        </label>
+      </div>
+    </fieldset>
+
+    <div style="margin-bottom: 20px; font-size: 13px; display: flex; align-items: flex-start; cursor: pointer;">
+      <input type="checkbox" id="data_consent" style="margin-right: 10px; margin-top: 3px;" required>
+      <span>I agree to the <a href="#" id="viewTerms" style="color:#2563eb; font-weight:600; text-decoration:none;">Terms and Conditions</a>.</span>
+    </div>
+
+    <button type="submit" id="submitBtn">Submit Securely</button>
+    <div id="overallStatus" style="margin-top: 15px; text-align: center; font-weight: bold; font-size: 14px;"></div>
+  </form>
+</div>
+
+<div id="termsModal" class="modal">
+  <div class="modal-content">
+    <h3 style="margin-bottom: 10px;">Terms & Conditions</h3>
+    <p style="font-size: 14px; color: #555; line-height: 1.5;">We process your data securely for KYC compliance purposes only.</p>
+    <button type="button" style="margin-top: 20px;" onclick="document.getElementById('termsModal').style.display='none'">Accept & Close</button>
+  </div>
+</div>
+
+<script>
+const WEBHOOK_URL = 'https://api.morningsidezw.com/submit';
+const HOME_PAGE = 'https://morningsidezw.com'; 
+
+document.getElementById('viewTerms').onclick = (e) => {
+    e.preventDefault();
+    document.getElementById('termsModal').style.display = 'flex';
+};
+
+async function shrinkImage(file) {
+    if (file.type === "application/pdf") return file;
+    return new Promise(res => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (e) => {
+            const img = new Image();
+            img.src = e.target.result;
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                const MAX_RES = 1200;
+                let w = img.width, h = img.height;
+                if (w > MAX_RES) { h *= MAX_RES/w; w = MAX_RES; }
+                canvas.width = w; canvas.height = h;
+                canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+                canvas.toBlob(blob => res(new File([blob], file.name, {type:'image/jpeg'})), 'image/jpeg', 0.75);
+            };
+        };
+    });
+}
+
+document.querySelectorAll('input[type="file"]').forEach(input => {
+    input.addEventListener('change', async (e) => {
+        const box = input.parentElement;
+        const nameEl = box.querySelector('.file-name');
+        if (e.target.files.length) {
+            nameEl.textContent = "Processing...";
+            const compressed = await shrinkImage(e.target.files[0]);
+            input.compressedFile = compressed;
+            box.classList.add('has-file');
+            nameEl.textContent = "✓ " + compressed.name;
+        }
+    });
+});
+
+const toB64 = (f) => new Promise(r => {
+    const rd = new FileReader();
+    rd.onload = () => r(rd.result.split(',')[1]);
+    rd.readAsDataURL(f);
+});
+
+document.getElementById('onboardingForm').onsubmit = async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const status = document.getElementById('overallStatus');
+    btn.disabled = true;
+    status.textContent = "🚀 Submitting...";
+
+    try {
+        const f1 = document.getElementById('id_front').compressedFile;
+        const f2 = document.getElementById('id_back').compressedFile;
+        const f3 = document.getElementById('proof_of_address').compressedFile;
+        const f4 = document.getElementById('passport_photo').compressedFile;
+
+        const payload = {
+            full_name: document.getElementById('full_name').value,
+            email: document.getElementById('email').value,
+            id_number: document.getElementById('id_number').value,
+            phone: document.getElementById('phone').value,
+            address: document.getElementById('address').value,
+            data_consent: true,
+            files: {
+                id_front: { data: await toB64(f1), filename: f1.name, mimeType: f1.type },
+                id_back: { data: await toB64(f2), filename: f2.name, mimeType: f2.type },
+                proof_of_address: { data: await toB64(f3), filename: f3.name, mimeType: f3.type },
+                passport_photo: { data: await toB64(f4), filename: f4.name, mimeType: f4.type }
+            }
+        };
+
+        const res = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+            status.style.color = "#059669";
+            status.textContent = "✅ Success! Redirecting to home...";
+            setTimeout(() => { window.location.href = HOME_PAGE; }, 3000);
+        } else { throw new Error("Submission failed"); }
+    } catch (err) {
+        status.style.color = "#dc2626";
+        status.textContent = "❌ Error: " + err.message;
+        btn.disabled = false;
+    }
+};
+</script>
+</body>
+</html>
