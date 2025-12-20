@@ -67,14 +67,29 @@ button.secondary { background: #edf2f7; color: #333; margin-top: 8px; }
   <h1>🔐 Agent Onboarding</h1>
   <p class="subtitle">Complete KYC verification to get started</p>
 
-  <form id="onboardingForm">
+  <form id="onboardingForm" autocomplete="on">
     <fieldset>
       <legend>Personal Information</legend>
-      <div class="form-group"><label>Full Name</label><input id="full_name" type="text" required></div>
-      <div class="form-group"><label>Email Address</label><input id="email" type="email" required></div>
-      <div class="form-group"><label>ID Number</label><input id="id_number" type="text" required></div>
-      <div class="form-group"><label>Phone</label><input id="phone" type="tel" required></div>
-      <div class="form-group"><label>Address</label><input id="address" type="text" required></div>
+      <div class="form-group">
+        <label for="full_name">Full Name</label>
+        <input id="full_name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="form-group">
+        <label for="id_number">ID Number</label>
+        <input id="id_number" name="id_number" type="text" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input id="phone" name="tel" type="tel" autocomplete="tel" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input id="address" name="address" type="text" autocomplete="street-address" required>
+      </div>
     </fieldset>
 
     <fieldset>
@@ -151,12 +166,10 @@ const HOME_PAGE = 'https://morningsidezw.com';
 let passportPhotoFile = null;
 let stream = null;
 
-// Modal Logic
 const modal = document.getElementById("termsModal");
 document.getElementById("viewTerms").onclick = (e) => { e.preventDefault(); modal.style.display = "block"; };
 document.getElementById("closeTerms").onclick = () => { modal.style.display = "none"; };
 
-// UPGRADED COMPRESSION (1000px @ 0.5 quality for speed)
 async function shrinkImage(file) {
     if (file.type === "application/pdf") return file;
     return new Promise((resolve) => {
@@ -227,7 +240,6 @@ document.getElementById('capturePhoto').onclick = () => {
     }, 'image/jpeg', 0.5);
 };
 
-// UPGRADED SUBMISSION (FormData / Binary)
 document.getElementById('onboardingForm').onsubmit = async (e) => {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
@@ -236,7 +248,7 @@ document.getElementById('onboardingForm').onsubmit = async (e) => {
 
     if(!passportPhotoFile) { alert('Selfie required'); return; }
     btn.disabled = true;
-    status.textContent = 'Uploading high-speed binary data...';
+    status.textContent = 'Uploading securely...';
     document.getElementById('progressBar').style.display = 'block';
     fill.style.width = '20%';
 
@@ -249,7 +261,6 @@ document.getElementById('onboardingForm').onsubmit = async (e) => {
         formData.append('address', document.getElementById('address').value);
         formData.append('data_consent', 'true');
 
-        // Append files directly as Binary Blobs
         formData.append('id_front', document.getElementById('id_front').compressedFile);
         formData.append('id_back', document.getElementById('id_back').compressedFile);
         formData.append('proof_of_address', document.getElementById('proof_of_address').compressedFile);
@@ -259,7 +270,7 @@ document.getElementById('onboardingForm').onsubmit = async (e) => {
 
         const res = await fetch(WEBHOOK_URL, {
             method: 'POST',
-            body: formData // No manual headers needed for FormData
+            body: formData
         });
 
         if(!res.ok) throw new Error('Upload failed');
