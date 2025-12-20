@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Onboarding - KYC Verification</title>
+<style>
+/* 1. UPGRADED BACKGROUND COLOR */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #0f172a; 
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  width: 100%;
+  max-width: 520px;
+  padding: 30px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+h1 { text-align: center; margin-bottom: 6px; color: #333; }
+.subtitle { text-align: center; color: #666; margin-bottom: 20px; font-size: 14px; }
+fieldset { border: none; margin-bottom: 24px; padding: 0; }
+legend { font-size: 18px; font-weight: 700; color: #333; margin-bottom: 12px; border-bottom: 1px solid #eee; width: 100%; padding-bottom: 5px; }
+.form-group { margin-bottom: 18px; }
+label { display: block; font-weight: 600; margin-bottom: 6px; color: #444; font-size: 14px; }
+
+input[type="text"], input[type="tel"], input[type="email"] {
+  width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e0; font-size: 14px;
+}
+
+.file-box {
+  border: 2px dashed #cbd5e0; border-radius: 8px; padding: 16px; text-align: center; cursor: pointer; transition: all 0.3s; background: #f9fafb;
+}
+.file-box:hover { border-color: #667eea; }
+.file-box.has-file { border-color: #48bb78; background: #f0fff4; border-style: solid; }
+.file-box input { display: none; }
+.file-name { font-size: 12px; margin-top: 6px; color: #2f855a; font-weight: 600; }
+
+.camera-preview { width: 100%; max-width: 320px; border: 2px solid #cbd5e0; border-radius: 8px; margin: 10px auto; display: block; }
+#video { display: block; }
+#canvas { display: none; }
+#photoPreview img { max-width: 320px; border-radius: 8px; border: 2px solid #48bb78; display: block; margin: 0 auto; }
+
+button {
+  width: 100%; padding: 14px; border-radius: 8px; border: none; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: #fff; font-weight: 600; cursor: pointer; font-size: 14px;
+}
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+button.secondary { background: #edf2f7; color: #333; margin-top: 8px; }
+
+.progress-bar { width: 100%; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden; margin-top: 10px; }
+.progress-fill { height: 100%; background: #48bb78; transition: width 0.3s; width: 0%; }
+#overallStatus { margin-top: 20px; font-weight: 600; text-align: center; padding: 12px; border-radius: 8px; font-size: 14px; }
+
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); }
+.modal-content { background: #fff; margin: 10% auto; padding: 25px; border-radius: 12px; width: 90%; max-width: 450px; }
+.modal-body { font-size: 14px; color: #555; line-height: 1.6; max-height: 250px; overflow-y: auto; margin: 15px 0; }
+.close-modal { background: #1e293b; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; float: right; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🔐 Agent Onboarding</h1>
+  <p class="subtitle">Complete KYC verification to get started</p>
+
+  <form id="onboardingForm">
+    <fieldset>
+      <legend>Personal Information</legend>
+      <div class="form-group"><label>Full Name</label><input id="full_name" type="text" required></div>
+      <div class="form-group"><label>Email Address</label><input id="email" type="email" required></div>
+      <div class="form-group"><label>ID Number</label><input id="id_number" type="text" required></div>
+      <div class="form-group"><label>Phone</label><input id="phone" type="tel" required></div>
+      <div class="form-group"><label>Address</label><input id="address" type="text" required></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Required Documents</legend>
+      <div class="form-group">
+        <label>ID Front</label>
+        <div class="file-box">
+          <input type="file" id="id_front" accept=".jpg,.jpeg,.png,.pdf" capture="environment" required>
+          <span>📄 Take Photo or Upload Front</span><div class="file-name"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>ID Back</label>
+        <div class="file-box">
+          <input type="file" id="id_back" accept=".jpg,.jpeg,.png,.pdf" capture="environment" required>
+          <span>📄 Take Photo or Upload Back</span><div class="file-name"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Proof of Address</label>
+        <div class="file-box">
+          <input type="file" id="proof_of_address" accept=".jpg,.jpeg,.png,.pdf" capture="environment" required>
+          <span>📄 Take Photo or Upload Proof</span><div class="file-name"></div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Legal Consent</legend>
+      <div class="form-group">
+        <label style="display: flex; align-items: flex-start; cursor: pointer;">
+          <input type="checkbox" id="data_consent" style="margin-top: 4px; margin-right: 10px;" required>
+          <span style="font-weight: normal; font-size: 13px;">
+            I agree to the <a href="#" id="viewTerms" style="color: #667eea; font-weight: 600;">Terms and Conditions</a>.
+          </span>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Identity Verification</legend>
+      <button type="button" class="secondary" id="openCamera">📷 Live Selfie Camera</button>
+      <div id="cameraContainer" style="display:none; margin-top:10px;">
+        <video id="video" class="camera-preview" autoplay playsinline></video>
+        <canvas id="canvas" class="camera-preview"></canvas>
+        <button type="button" id="capturePhoto">Capture Selfie</button>
+        <button type="button" class="secondary" id="retakePhoto" style="display:none;">Retake</button>
+      </div>
+      <div style="text-align:center; margin:15px 0; color:#999; font-weight:600; font-size:12px;">OR</div>
+      <div class="file-box">
+        <input type="file" id="passport_photo" accept=".jpg,.jpeg,.png">
+        <span>🖼️ Upload Gallery Photo</span><div class="file-name"></div>
+      </div>
+      <div id="photoPreview"></div>
+    </fieldset>
+
+    <button type="submit" id="submitBtn">Submit Securely</button>
+    <div class="progress-bar" id="progressBar" style="display:none;"><div class="progress-fill" id="progressFill"></div></div>
+    <div id="overallStatus"></div>
+  </form>
+</div>
+
+<div id="termsModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">Terms & Conditions</div>
+    <div class="modal-body"><p>We process your data securely for KYC compliance purposes only.</p></div>
+    <button type="button" class="close-modal" id="closeTerms">Accept</button>
+  </div>
+</div>
+
+<script>
+const WEBHOOK_URL = 'https://api.morningsidezw.com/submit';
+let passportPhotoFile = null;
+let stream = null;
+
+// Modal Logic
+const modal = document.getElementById("termsModal");
+document.getElementById("viewTerms").onclick = (e) => { e.preventDefault(); modal.style.display = "block"; };
+document.getElementById("closeTerms").onclick = () => { modal.style.display = "none"; };
+
+// Compression Engine
+async function shrinkImage(file) {
+    if (file.type === "application/pdf") return file;
+    return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (e) => {
+            const img = new Image();
+            img.src = e.target.result;
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                let width = img.width; let height = img.height;
+                if (width > 1200) { height *= 1200 / width; width = 1200; }
+                canvas.width = width; canvas.height = height;
+                canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+                canvas.toBlob((blob) => resolve(new File([blob], file.name, { type: 'image/jpeg' })), 'image/jpeg', 0.7);
+            };
+        };
+    });
+}
+
+// 3. PC LOADING FIX: Safe File Box Clicks
+document.querySelectorAll('.file-box').forEach(box => {
+    const input = box.querySelector('input');
+    const nameEl = box.querySelector('.file-name');
+
+    box.addEventListener('click', (e) => {
+        if (e.target !== input) input.click();
+    });
+
+    input.addEventListener('change', async (e) => {
+        if (e.target.files.length) {
+            nameEl.textContent = 'Processing...';
+            const compressed = await shrinkImage(e.target.files[0]);
+            input.compressedFile = compressed;
+            box.classList.add('has-file');
+            nameEl.textContent = '✓ ' + compressed.name;
+            if(input.id === 'passport_photo') { 
+                passportPhotoFile = compressed;
+                renderPreview(compressed);
+            }
+        }
+    });
+});
+
+function renderPreview(file) {
+    const img = document.createElement('img');
+    img.src = URL.createObjectURL(file);
+    const preview = document.getElementById('photoPreview');
+    preview.innerHTML = ''; preview.appendChild(img);
+}
+
+// Live Camera
+document.getElementById('openCamera').onclick = async () => {
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } });
+        document.getElementById('video').srcObject = stream;
+        document.getElementById('cameraContainer').style.display = 'block';
+        document.getElementById('openCamera').style.display = 'none';
+    } catch (err) { alert('Camera denied'); }
+};
+
+document.getElementById('capturePhoto').onclick = () => {
+    const v = document.getElementById('video');
+    const c = document.getElementById('canvas');
+    c.width = v.videoWidth; c.height = v.videoHeight;
+    c.getContext('2d').drawImage(v, 0, 0);
+    c.toBlob(async (blob) => {
+        passportPhotoFile = await shrinkImage(new File([blob], 'selfie.jpg', {type:'image/jpeg'}));
+        renderPreview(passportPhotoFile);
+        v.style.display = 'none'; c.style.display = 'block';
+        document.getElementById('capturePhoto').style.display = 'none';
+        document.getElementById('retakePhoto').style.display = 'inline-block';
+        if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
+    }, 'image/jpeg', 0.8);
+};
+
+document.getElementById('retakePhoto').onclick = () => {
+    document.getElementById('video').style.display = 'block';
+    document.getElementById('canvas').style.display = 'none';
+    document.getElementById('capturePhoto').style.display = 'inline-block';
+    document.getElementById('retakePhoto').style.display = 'none';
+    document.getElementById('openCamera').click();
+};
+
+function toB64(file) {
+    return new Promise((res) => {
+        const rd = new FileReader();
+        rd.onload = () => res(rd.result.split(',')[1]);
+        rd.readAsDataURL(file);
+    });
+}
+
+// Submission Logic (Exact structure preserved)
+document.getElementById('onboardingForm').onsubmit = async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const status = document.getElementById('overallStatus');
+    const fill = document.getElementById('progressFill');
+
+    if(!passportPhotoFile) { alert('Photo required'); return; }
+    btn.disabled = true;
+    status.style.display = 'block'; status.textContent = 'Preparing files...';
+    document.getElementById('progressBar').style.display = 'block';
+    fill.style.width = '30%';
+
+    try {
+        const f1 = document.getElementById('id_front').compressedFile;
+        const f2 = document.getElementById('id_back').compressedFile;
+        const f3 = document.getElementById('proof_of_address').compressedFile;
+
+        const [b1, b2, b3, b4] = await Promise.all([
+            toB64(f1), toB64(f2), toB64(f3), toB64(passportPhotoFile)
+        ]);
+
+        fill.style.width = '70%';
+        status.textContent = 'Sending...';
+
+        const payload = {
+            full_name: document.getElementById('full_name').value,
+            email: document.getElementById('email').value,
+            id_number: document.getElementById('id_number').value,
+            phone: document.getElementById('phone').value,
+            address: document.getElementById('address').value,
+            data_consent: true,
+            files: {
+                id_front: { data: b1, filename: f1.name, mimeType: f1.type },
+                id_back: { data: b2, filename: f2.name, mimeType: f2.type },
+                proof_of_address: { data: b3, filename: f3.name, mimeType: f3.type },
+                passport_photo: { data: b4, filename: passportPhotoFile.name, mimeType: passportPhotoFile.type }
+            }
+        };
+
+        const res = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        if(!res.ok) throw new Error('Upload failed');
+        fill.style.width = '100%';
+        status.textContent = '✅ Success! Application Sent.';
+        status.style.background = '#d4edda'; status.style.color = '#2f855a';
+    } catch (err) {
+        status.textContent = '❌ Error: ' + err.message;
+        status.style.background = '#f8d7da'; status.style.color = '#721c24';
+        btn.disabled = false;
+    }
+};
+</script>
+</body>
+</html>
