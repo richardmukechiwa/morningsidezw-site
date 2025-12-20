@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agent Onboarding - KYC Verification</title>
-
+<title>Agent Onboarding</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: -apple-system, sans-serif;
+  background: #0f172a;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -18,349 +18,169 @@ body {
 }
 .container {
   background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  border-radius: 12px;
   width: 100%;
-  max-width: 520px;
+  max-width: 650px; /* Wider for PC comfort */
   padding: 30px;
-  max-height: 90vh;
-  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
-h1 { text-align: center; margin-bottom: 6px; color: #333; }
-.subtitle { text-align: center; color: #666; margin-bottom: 20px; font-size: 14px; }
-fieldset { border: none; margin-bottom: 24px; padding: 0; }
-legend { font-size: 18px; font-weight: 700; color: #333; margin-bottom: 12px; }
-.form-group { margin-bottom: 18px; }
-label { display: block; font-weight: 600; margin-bottom: 6px; color: #444; font-size: 14px; }
-input[type="text"], input[type="tel"], input[type="email"] {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #cbd5e0;
-  font-size: 14px;
-  transition: border-color 0.3s;
-}
-input[type="text"]:focus, input[type="tel"]:focus, input[type="email"]:focus {
-  outline: none;
-  border-color: #667eea;
+h1 { color: #1e293b; text-align: center; margin-bottom: 20px; }
+fieldset { border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+legend { padding: 0 10px; font-weight: bold; color: #64748b; }
+.form-group { margin-bottom: 15px; }
+label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 14px; }
+input[type="text"], input[type="email"], input[type="tel"] {
+  width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 6px;
 }
 .file-box {
-  border: 2px dashed #cbd5e0;
-  border-radius: 8px;
-  padding: 16px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s;
-  background: #f9fafb;
-  position: relative;
+  border: 2px dashed #cbd5e0; padding: 20px; text-align: center; border-radius: 8px;
+  cursor: pointer; background: #f8fafc; transition: 0.3s;
 }
-.file-box:hover { border-color: #667eea; background: #f3f4f6; }
-.file-box.has-file { border-color: #48bb78; background: #f0fff4; border-style: solid; }
-.file-box input { 
-  position: absolute;
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-}
-.file-name { font-size: 12px; margin-top: 6px; color: #2f855a; font-weight: 600; }
+.file-box:hover { border-color: #3b82f6; background: #eff6ff; }
+.file-box input { display: none; }
+.file-name { color: #059669; font-size: 12px; margin-top: 8px; font-weight: bold; }
+#photoPreview img { width: 100%; max-width: 300px; border-radius: 8px; margin: 10px auto; display: block; }
 button {
-  width: 100%;
-  padding: 14px;
-  border-radius: 8px;
-  border: none;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 14px;
-  transition: transform 0.2s, opacity 0.3s;
+  width: 100%; padding: 15px; background: #2563eb; color: #fff; border: none;
+  border-radius: 8px; font-weight: bold; cursor: pointer;
 }
-button:hover { transform: translateY(-1px); opacity: 0.95; }
-button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-#overallStatus {
-  margin-top: 20px;
-  font-weight: 600;
-  text-align: center;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 14px;
-  display: none;
-}
-.progress-bar {
-  width: 100%;
-  height: 4px;
-  background: #e2e8f0;
-  border-radius: 2px;
-  overflow: hidden;
-  margin-top: 8px;
-  display: none;
-}
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  transition: width 0.3s;
-  width: 0%;
-}
-.consent-box {
-  background: #f8f9fa;
-  border: 1px solid #cbd5e0;
-  border-radius: 8px;
-  padding: 16px;
-}
-.consent-label {
-  display: flex;
-  align-items: flex-start;
-  cursor: pointer;
-  font-size: 13px;
-  line-height: 1.6;
-}
-.consent-label input[type="checkbox"] {
-  margin-top: 4px;
-  margin-right: 12px;
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-.consent-text { color: #444; }
-.consent-text ul { margin: 10px 0 0 20px; padding: 0; }
-.consent-text li { margin: 6px 0; color: #666; }
+button:disabled { background: #94a3b8; }
+/* Modal */
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 100; }
+.modal-content { background: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 400px; }
 </style>
 </head>
-
 <body>
+
 <div class="container">
-<h1>🔐 Agent Onboarding</h1>
-<p class="subtitle">Complete KYC verification to get started</p>
+  <h1>🔐 KYC Onboarding</h1>
+  <form id="onboardingForm">
+    <fieldset>
+      <legend>Personal Details</legend>
+      <div class="form-group"><label>Full Name</label><input id="full_name" type="text" required></div>
+      <div class="form-group"><label>Email</label><input id="email" type="email" required></div>
+      <div class="form-group"><label>ID Number</label><input id="id_number" type="text" required></div>
+    </fieldset>
 
-<form id="onboardingForm">
-  <fieldset>
-    <legend>Personal Information</legend>
-    <div class="form-group">
-      <label for="full_name">Full Name</label>
-      <input id="full_name" type="text" name="full_name" autocomplete="name" required>
-    </div>
-    <div class="form-group">
-      <label for="email">Email Address</label>
-      <input id="email" type="email" name="email" autocomplete="email" required>
-    </div>
-    <div class="form-group">
-      <label for="id_number">ID Number</label>
-      <input id="id_number" type="text" name="id_number" autocomplete="off" required>
-    </div>
-    <div class="form-group">
-      <label for="phone">Phone</label>
-      <input id="phone" type="tel" name="phone" autocomplete="tel" required>
-    </div>
-    <div class="form-group">
-      <label for="address">Address</label>
-      <input id="address" type="text" name="address" autocomplete="street-address" required>
-    </div>
-  </fieldset>
-
-  <fieldset>
-    <legend>Required Documents</legend>
-    <div class="form-group">
-      <label for="id_front">ID Front (Government-issued)</label>
-      <div class="file-box" id="idFrontBox">
-        <input type="file" id="id_front" accept="image/*,.pdf" autocomplete="off" required>
-        <span>📄 Click to Upload ID Front</span>
-        <div class="file-name" id="idFrontName"></div>
+    <fieldset>
+      <legend>Documents</legend>
+      <div class="form-group">
+        <label>Identity Document (Front)</label>
+        <div class="file-box" onclick="document.getElementById('id_front').click()">
+          <input type="file" id="id_front" accept="image/*,.pdf" required>
+          <span>Click to Upload or Take Photo</span>
+          <div class="file-name" id="name_id_front"></div>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="id_back">ID Back</label>
-      <div class="file-box" id="idBackBox">
-        <input type="file" id="id_back" accept="image/*,.pdf" autocomplete="off" required>
-        <span>📄 Click to Upload ID Back</span>
-        <div class="file-name" id="idBackName"></div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="proof_of_address">Proof of Address</label>
-      <div class="file-box" id="poaBox">
-        <input type="file" id="proof_of_address" accept="image/*,.pdf" autocomplete="off" required>
-        <span>📄 Click to Upload Proof of Address</span>
-        <div class="file-name" id="poaName"></div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="passport_photo">Passport Photo (Selfie)</label>
-      <div class="file-box" id="passportBox">
-        <input type="file" id="passport_photo" accept="image/*" autocomplete="off" required>
-        <span>📷 Click to Upload Photo</span>
-        <div class="file-name" id="passportName"></div>
-      </div>
-    </div>
-  </fieldset>
+      </fieldset>
 
-  <fieldset>
-    <legend>Data Protection & Consent</legend>
-    <div class="consent-box">
-      <label class="consent-label">
-        <input type="checkbox" id="data_consent" required>
-        <span class="consent-text">
-          I consent to the collection, processing, and storage of my personal data for KYC verification purposes.
-          <ul>
-            <li>Data will be securely stored and encrypted</li>
-            <li>Documents analyzed using AI verification</li>
-            <li>I can request data deletion at any time</li>
-          </ul>
-        </span>
-      </label>
+    <fieldset>
+      <legend>Selfie Verification</legend>
+      <div class="file-box" onclick="document.getElementById('passport_photo').click()">
+        <input type="file" id="passport_photo" accept="image/*" required>
+        <span>Click to Upload Selfie</span>
+        <div class="file-name" id="name_passport"></div>
+      </div>
+      <div id="photoPreview"></div>
+    </fieldset>
+
+    <div style="margin-bottom: 20px; font-size: 13px;">
+      <input type="checkbox" id="consent" required> I agree to the Terms & Conditions.
     </div>
-  </fieldset>
 
-  <button type="submit" id="submitBtn">Submit Application</button>
-
-  <div class="progress-bar" id="progressBar">
-    <div class="progress-fill" id="progressFill"></div>
-  </div>
-  <div id="overallStatus"></div>
-</form>
+    <button type="submit" id="submitBtn">Submit Application</button>
+    <div id="status" style="margin-top: 15px; text-align: center; font-weight: bold;"></div>
+  </form>
 </div>
 
 <script>
-// ⚠️ UPDATE THIS WITH YOUR ACTUAL WEBHOOK URL
 const WEBHOOK_URL = 'https://api.morningsidezw.com/submit';
 
-const fileBoxes = [
-  ['id_front', 'idFrontBox', 'idFrontName'],
-  ['id_back', 'idBackBox', 'idBackName'],
-  ['proof_of_address', 'poaBox', 'poaName'],
-  ['passport_photo', 'passportBox', 'passportName']
-];
+// Handle File selection & Compression
+async function processFile(input, nameId, isPreview = false) {
+    const file = input.files[0];
+    if (!file) return;
 
-fileBoxes.forEach(([inputId, boxId, nameId]) => {
-  const input = document.getElementById(inputId);
-  const box = document.getElementById(boxId);
-  const nameEl = document.getElementById(nameId);
-  
-  if (!input || !box) return;
-  
-  input.addEventListener('change', (e) => {
-    if (e.target.files.length) {
-      box.classList.add('has-file');
-      const file = e.target.files[0];
-      const sizeMB = (file.size / 1024 / 1024).toFixed(1);
-      nameEl.textContent = `✓ ${file.name} (${sizeMB}MB)`;
-    }
-  });
-});
+    document.getElementById(nameId).textContent = "Processing...";
 
-function updateProgress(percent) {
-  const progressBar = document.getElementById('progressBar');
-  const progressFill = document.getElementById('progressFill');
-  progressBar.style.display = 'block';
-  progressFill.style.width = percent + '%';
-}
-
-function updateStatus(message, type = 'info') {
-  const statusDiv = document.getElementById('overallStatus');
-  statusDiv.style.display = 'block';
-  statusDiv.textContent = message;
-  
-  const colors = {
-    info: { bg: '#fff3cd', color: '#856404' },
-    success: { bg: '#d4edda', color: '#2f855a' },
-    error: { bg: '#f8d7da', color: '#721c24' }
-  };
-  
-  statusDiv.style.background = colors[type].bg;
-  statusDiv.style.color = colors[type].color;
-}
-
-document.getElementById('onboardingForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-  const submitBtn = document.getElementById('submitBtn');
-  submitBtn.disabled = true;
-
-  try {
-    const consentCheckbox = document.getElementById('data_consent');
-    if (!consentCheckbox.checked) {
-      alert('Please accept the data protection consent');
-      submitBtn.disabled = false;
-      return;
-    }
-
-    updateStatus('Submitting application...');
-    updateProgress(30);
-
-    const formData = new FormData(e.target);
-    
-    // Check if files are selected
-    const idFrontFile = document.getElementById('id_front').files[0];
-    const idBackFile = document.getElementById('id_back').files[0];
-    const poaFile = document.getElementById('proof_of_address').files[0];
-    const passportFile = document.getElementById('passport_photo').files[0];
-
-    if (!idFrontFile || !idBackFile || !poaFile || !passportFile) {
-      alert('Please upload all required documents');
-      submitBtn.disabled = false;
-      return;
-    }
-
-    // Generate fake file IDs for testing
-    const timestamp = Date.now();
-    const idNumber = formData.get('id_number').replace(/[^a-zA-Z0-9]/g, '');
-    
-    const payload = {
-      full_name: formData.get('full_name'),
-      email: formData.get('email'),
-      id_number: formData.get('id_number'),
-      phone: formData.get('phone'),
-      address: formData.get('address'),
-      data_consent: true,
-      consent_timestamp: new Date().toISOString(),
-      file_ids: {
-        id_front: `TEST_${idNumber}_front_${timestamp}`,
-        id_back: `TEST_${idNumber}_back_${timestamp}`,
-        poa: `TEST_${idNumber}_poa_${timestamp}`,
-        passport_photo: `TEST_${idNumber}_photo_${timestamp}`
-      },
-      file_metadata: {
-        id_front: { name: idFrontFile.name, size: idFrontFile.size, type: idFrontFile.type },
-        id_back: { name: idBackFile.name, size: idBackFile.size, type: idBackFile.type },
-        poa: { name: poaFile.name, size: poaFile.size, type: poaFile.type },
-        passport_photo: { name: passportFile.name, size: passportFile.size, type: passportFile.type }
-      }
-    };
-
-    updateProgress(70);
-
-    const response = await fetch(WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+    // Compression Logic (keeps PC from crashing)
+    const compressed = await new Promise((resolve) => {
+        if (file.type === "application/pdf") resolve(file);
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (e) => {
+            const img = new Image();
+            img.src = e.target.result;
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                const MAX = 1200;
+                let w = img.width, h = img.height;
+                if (w > MAX) { h *= MAX / w; w = MAX; }
+                canvas.width = w; canvas.height = h;
+                canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+                canvas.toBlob((blob) => resolve(new File([blob], file.name, {type: 'image/jpeg'})), 'image/jpeg', 0.7);
+            };
+        };
     });
 
-    updateProgress(90);
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`Server error: ${response.status}`);
-    }
+    input.compressedFile = compressed;
+    document.getElementById(nameId).textContent = "✓ " + compressed.name;
     
-    const result = await response.json();
-    updateProgress(100);
-    
-    // Display success message
-    if (result.applicationId) {
-      updateStatus(`✅ Application Submitted! ID: ${result.applicationId}`, 'success');
-    } else {
-      updateStatus('✅ Application submitted successfully!', 'success');
+    if (isPreview) {
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(compressed);
+        document.getElementById('photoPreview').innerHTML = '';
+        document.getElementById('photoPreview').appendChild(img);
     }
+}
 
-  } catch (error) {
-    console.error('Submission error:', error);
-    updateStatus('❌ Error: ' + error.message, 'error');
-    submitBtn.disabled = false;
-  }
-});
+document.getElementById('id_front').onchange = (e) => processFile(e.target, 'name_id_front');
+document.getElementById('passport_photo').onchange = (e) => processFile(e.target, 'name_passport', true);
+
+// Submit
+document.getElementById('onboardingForm').onsubmit = async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const status = document.getElementById('status');
+    btn.disabled = true;
+    status.textContent = "Uploading...";
+
+    try {
+        const toB64 = (f) => new Promise(r => {
+            const rd = new FileReader();
+            rd.onload = () => r(rd.result.split(',')[1]);
+            rd.readAsDataURL(f);
+        });
+
+        const f1 = document.getElementById('id_front').compressedFile;
+        const f4 = document.getElementById('passport_photo').compressedFile;
+
+        const payload = {
+            full_name: document.getElementById('full_name').value,
+            files: {
+                id_front: { data: await toB64(f1), filename: f1.name },
+                passport: { data: await toB64(f4), filename: f4.name }
+            }
+        };
+
+        const res = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+            status.style.color = "green";
+            status.textContent = "✅ Application Sent!";
+        } else {
+            throw new Error("Server error");
+        }
+    } catch (err) {
+        status.style.color = "red";
+        status.textContent = "❌ Error: " + err.message;
+        btn.disabled = false;
+    }
+};
 </script>
 </body>
 </html>
