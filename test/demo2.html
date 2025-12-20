@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agent Onboarding - KYC Verification</title>
 <style>
-/* 1. UPGRADED BACKGROUND COLOR */
+/* Styles remain exactly as in your original */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -78,11 +78,11 @@ button.secondary { background: #edf2f7; color: #333; margin-top: 8px; }
   <form id="onboardingForm">
     <fieldset>
       <legend>Personal Information</legend>
-      <div class="form-group"><label>Full Name</label><input id="full_name" name="name" autocomplete="name" type="text" required></div>
-      <div class="form-group"><label>Email Address</label><input id="email" name="email" autocomplete="email" type="email" required></div>
+      <div class="form-group"><label>Full Name</label><input id="full_name" type="text" name="name" autocomplete="name" required></div>
+      <div class="form-group"><label>Email Address</label><input id="email" type="email" name="email" autocomplete="email" required></div>
       <div class="form-group"><label>ID Number</label><input id="id_number" type="text" required></div>
-      <div class="form-group"><label>Phone</label><input id="phone" name="phone" autocomplete="tel" type="tel" required></div>
-      <div class="form-group"><label>Address</label><input id="address" name="address" autocomplete="street-address" type="text" required></div>
+      <div class="form-group"><label>Phone</label><input id="phone" type="tel" name="tel" autocomplete="tel" required></div>
+      <div class="form-group"><label>Address</label><input id="address" type="text" name="address" autocomplete="street-address" required></div>
     </fieldset>
 
     <fieldset>
@@ -158,12 +158,11 @@ const WEBHOOK_URL = 'https://api.morningsidezw.com/submit';
 let passportPhotoFile = null;
 let stream = null;
 
-// Modal Logic
 const modal = document.getElementById("termsModal");
 document.getElementById("viewTerms").onclick = (e) => { e.preventDefault(); modal.style.display = "block"; };
 document.getElementById("closeTerms").onclick = () => { modal.style.display = "none"; };
 
-// Compression Engine
+// Compression Engine (Lowered quality slightly to 0.6 to prevent server rejection)
 async function shrinkImage(file) {
     if (file.type === "application/pdf") return file;
     return new Promise((resolve) => {
@@ -178,20 +177,16 @@ async function shrinkImage(file) {
                 if (width > 1200) { height *= 1200 / width; width = 1200; }
                 canvas.width = width; canvas.height = height;
                 canvas.getContext('2d').drawImage(img, 0, 0, width, height);
-                canvas.toBlob((blob) => resolve(new File([blob], file.name, { type: 'image/jpeg' })), 'image/jpeg', 0.7);
+                canvas.toBlob((blob) => resolve(new File([blob], file.name, { type: 'image/jpeg' })), 'image/jpeg', 0.6);
             };
         };
     });
 }
 
-// 3. PC LOADING FIX: Safe File Box Clicks
 document.querySelectorAll('.file-box').forEach(box => {
     const input = box.querySelector('input');
     const nameEl = box.querySelector('.file-name');
-
-    box.addEventListener('click', (e) => {
-        if (e.target !== input) input.click();
-    });
+    box.addEventListener('click', (e) => { if (e.target !== input) input.click(); });
 
     input.addEventListener('change', async (e) => {
         if (e.target.files.length) {
@@ -215,7 +210,6 @@ function renderPreview(file) {
     preview.innerHTML = ''; preview.appendChild(img);
 }
 
-// Live Camera
 document.getElementById('openCamera').onclick = async () => {
     try {
         stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } });
@@ -237,7 +231,7 @@ document.getElementById('capturePhoto').onclick = () => {
         document.getElementById('capturePhoto').style.display = 'none';
         document.getElementById('retakePhoto').style.display = 'inline-block';
         if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
-    }, 'image/jpeg', 0.8);
+    }, 'image/jpeg', 0.7);
 };
 
 document.getElementById('retakePhoto').onclick = () => {
@@ -256,7 +250,6 @@ function toB64(file) {
     });
 }
 
-// Submission Logic (Exact structure preserved with adjustments)
 document.getElementById('onboardingForm').onsubmit = async (e) => {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
@@ -288,7 +281,7 @@ document.getElementById('onboardingForm').onsubmit = async (e) => {
             phone: document.getElementById('phone').value,
             address: document.getElementById('address').value,
             data_consent: true,
-            consent_timestamp: new Date().toISOString(), // Adjustment: Track when they clicked
+            consent_timestamp: new Date().toISOString(), // ADDED: Metadata for n8n
             files: {
                 id_front: { data: b1, filename: f1.name, mimeType: f1.type },
                 id_back: { data: b2, filename: f2.name, mimeType: f2.type },
