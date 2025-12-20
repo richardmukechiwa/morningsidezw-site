@@ -1,164 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agent Onboarding - KYC Verification</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px;
-        }
-        .container { background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); width: 100%; max-width: 520px; padding: 30px; max-height: 95vh; overflow-y: auto; }
-        h1 { text-align: center; color: #333; margin-bottom: 5px; }
-        .subtitle { text-align: center; color: #666; margin-bottom: 20px; font-size: 14px; }
-        fieldset { border: none; margin-bottom: 25px; }
-        legend { font-size: 18px; font-weight: 700; color: #333; margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; width: 100%; padding-bottom: 5px; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; font-weight: 600; margin-bottom: 8px; color: #444; font-size: 14px; }
-        input[type="text"], input[type="tel"], input[type="email"] { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e0; font-size: 14px; }
-        
-        .file-box {
-            border: 2px dashed #cbd5e0; border-radius: 8px; padding: 20px;
-            text-align: center; cursor: pointer; background: #f9fafb; transition: 0.2s;
-            position: relative; overflow: hidden;
-        }
-        .file-box:hover { border-color: #667eea; background: #f3f4f6; }
-        .file-box.has-file { border-color: #48bb78; background: #f0fff4; border-style: solid; }
-        .file-box input[type="file"] { position: absolute; top: 0; left: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
-        .file-name { font-size: 12px; margin-top: 8px; color: #2f855a; font-weight: 600; word-break: break-all; }
-        
-        button {
-            width: 100%; padding: 15px; border-radius: 8px; border: none;
-            background: linear-gradient(135deg, #334155 0%, #0f172a 100%);
-            color: #fff; font-weight: 700; cursor: pointer; font-size: 15px;
-        }
-        button:disabled { opacity: 0.5; cursor: not-allowed; }
-        #overallStatus { margin-top: 20px; padding: 12px; border-radius: 8px; text-align: center; font-weight: 600; display: none; }
-        .progress-bar { width: 100%; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden; margin-top: 10px; display: none; }
-        .progress-fill { height: 100%; background: #48bb78; width: 0%; transition: width 0.3s; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Onboarding - KYC Verification</title>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 520px;
+  padding: 30px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+h1 { text-align: center; margin-bottom: 6px; color: #333; }
+.subtitle { text-align: center; color: #666; margin-bottom: 20px; font-size: 14px; }
+fieldset { border: none; margin-bottom: 24px; padding: 0; }
+legend { font-size: 18px; font-weight: 700; color: #333; margin-bottom: 12px; }
+.form-group { margin-bottom: 18px; }
+label { display: block; font-weight: 600; margin-bottom: 6px; color: #444; font-size: 14px; }
+input[type="text"], input[type="tel"], input[type="email"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e0;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+input[type="text"]:focus, input[type="tel"]:focus, input[type="email"]:focus {
+  outline: none;
+  border-color: #667eea;
+}
+.file-box {
+  border: 2px dashed #cbd5e0;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: #f9fafb;
+  position: relative;
+}
+.file-box:hover { border-color: #667eea; background: #f3f4f6; }
+.file-box.has-file { border-color: #48bb78; background: #f0fff4; border-style: solid; }
+.file-box input { 
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+.file-name { font-size: 12px; margin-top: 6px; color: #2f855a; font-weight: 600; }
+button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  transition: transform 0.2s, opacity 0.3s;
+}
+button:hover { transform: translateY(-1px); opacity: 0.95; }
+button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+#overallStatus {
+  margin-top: 20px;
+  font-weight: 600;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  display: none;
+}
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 8px;
+  display: none;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.3s;
+  width: 0%;
+}
+.consent-box {
+  background: #f8f9fa;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  padding: 16px;
+}
+.consent-label {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.consent-label input[type="checkbox"] {
+  margin-top: 4px;
+  margin-right: 12px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.consent-text { color: #444; }
+.consent-text ul { margin: 10px 0 0 20px; padding: 0; }
+.consent-text li { margin: 6px 0; color: #666; }
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>🔐 Agent Onboarding</h1>
-        <p class="subtitle">Complete KYC Verification</p>
-        <form id="onboardingForm">
-            <fieldset>
-                <legend>Personal Details</legend>
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" name="full_name" autocomplete="name" required>
-                </div>
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" name="email" autocomplete="email" required>
-                </div>
-                <div class="form-group">
-                    <label>ID Number</label>
-                    <input type="text" name="id_number" autocomplete="off" required>
-                </div>
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" name="phone" autocomplete="tel" required>
-                </div>
-                <div class="form-group">
-                    <label>Address</label>
-                    <input type="text" name="address" autocomplete="street-address" required>
-                </div>
-            </fieldset>
+<div class="container">
+<h1>🔐 Agent Onboarding</h1>
+<p class="subtitle">Complete KYC verification to get started</p>
 
-            <fieldset>
-                <legend>Documents</legend>
-                <div class="form-group">
-                    <label>ID Front</label>
-                    <div class="file-box">
-                        <input type="file" name="id_front" accept=".jpg,.jpeg,.png,.pdf" required>
-                        <span>📄 Click to Upload ID Front</span>
-                        <div class="file-name"></div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>ID Back</label>
-                    <div class="file-box">
-                        <input type="file" name="id_back" accept=".jpg,.jpeg,.png,.pdf" required>
-                        <span>📄 Click to Upload ID Back</span>
-                        <div class="file-name"></div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Passport Photo</label>
-                    <div class="file-box">
-                        <input type="file" name="passport_photo" accept=".jpg,.jpeg,.png" required>
-                        <span>📷 Click to Upload Photo</span>
-                        <div class="file-name"></div>
-                    </div>
-                </div>
-            </fieldset>
-
-            <button type="submit" id="submitBtn">Submit Application</button>
-            <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
-            <div id="overallStatus"></div>
-        </form>
+<form id="onboardingForm">
+  <fieldset>
+    <legend>Personal Information</legend>
+    <div class="form-group">
+      <label for="full_name">Full Name</label>
+      <input id="full_name" type="text" name="full_name" autocomplete="name" required>
     </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input id="email" type="email" name="email" autocomplete="email" required>
+    </div>
+    <div class="form-group">
+      <label for="id_number">ID Number</label>
+      <input id="id_number" type="text" name="id_number" autocomplete="off" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input id="phone" type="tel" name="phone" autocomplete="tel" required>
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input id="address" type="text" name="address" autocomplete="street-address" required>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Required Documents</legend>
+    <div class="form-group">
+      <label for="id_front">ID Front (Government-issued)</label>
+      <div class="file-box" id="idFrontBox">
+        <input type="file" id="id_front" accept="image/*,.pdf" autocomplete="off" required>
+        <span>📄 Click to Upload ID Front</span>
+        <div class="file-name" id="idFrontName"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="id_back">ID Back</label>
+      <div class="file-box" id="idBackBox">
+        <input type="file" id="id_back" accept="image/*,.pdf" autocomplete="off" required>
+        <span>📄 Click to Upload ID Back</span>
+        <div class="file-name" id="idBackName"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="proof_of_address">Proof of Address</label>
+      <div class="file-box" id="poaBox">
+        <input type="file" id="proof_of_address" accept="image/*,.pdf" autocomplete="off" required>
+        <span>📄 Click to Upload Proof of Address</span>
+        <div class="file-name" id="poaName"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="passport_photo">Passport Photo (Selfie)</label>
+      <div class="file-box" id="passportBox">
+        <input type="file" id="passport_photo" accept="image/*" autocomplete="off" required>
+        <span>📷 Click to Upload Photo</span>
+        <div class="file-name" id="passportName"></div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Data Protection & Consent</legend>
+    <div class="consent-box">
+      <label class="consent-label">
+        <input type="checkbox" id="data_consent" required>
+        <span class="consent-text">
+          I consent to the collection, processing, and storage of my personal data for KYC verification purposes.
+          <ul>
+            <li>Data will be securely stored and encrypted</li>
+            <li>Documents analyzed using AI verification</li>
+            <li>I can request data deletion at any time</li>
+          </ul>
+        </span>
+      </label>
+    </div>
+  </fieldset>
+
+  <button type="submit" id="submitBtn">Submit Application</button>
+
+  <div class="progress-bar" id="progressBar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  <div id="overallStatus"></div>
+</form>
+</div>
 
 <script>
-    const WEBHOOK_URL = 'https://api.morningsidezw.com/submit';
+// ⚠️ UPDATE THIS WITH YOUR ACTUAL WEBHOOK URL
+const WEBHOOK_URL = 'https://api.morningsidezw.com/submit';
 
-    // UI logic for file names
-    document.querySelectorAll('input[type="file"]').forEach(input => {
-        input.addEventListener('change', (e) => {
-            const box = e.target.parentElement;
-            const nameEl = box.querySelector('.file-name');
-            if (e.target.files.length > 0) {
-                box.classList.add('has-file');
-                nameEl.textContent = '✓ ' + e.target.files[0].name;
-            }
-        });
+const fileBoxes = [
+  ['id_front', 'idFrontBox', 'idFrontName'],
+  ['id_back', 'idBackBox', 'idBackName'],
+  ['proof_of_address', 'poaBox', 'poaName'],
+  ['passport_photo', 'passportBox', 'passportName']
+];
+
+fileBoxes.forEach(([inputId, boxId, nameId]) => {
+  const input = document.getElementById(inputId);
+  const box = document.getElementById(boxId);
+  const nameEl = document.getElementById(nameId);
+  
+  if (!input || !box) return;
+  
+  input.addEventListener('change', (e) => {
+    if (e.target.files.length) {
+      box.classList.add('has-file');
+      const file = e.target.files[0];
+      const sizeMB = (file.size / 1024 / 1024).toFixed(1);
+      nameEl.textContent = `✓ ${file.name} (${sizeMB}MB)`;
+    }
+  });
+});
+
+function updateProgress(percent) {
+  const progressBar = document.getElementById('progressBar');
+  const progressFill = document.getElementById('progressFill');
+  progressBar.style.display = 'block';
+  progressFill.style.width = percent + '%';
+}
+
+function updateStatus(message, type = 'info') {
+  const statusDiv = document.getElementById('overallStatus');
+  statusDiv.style.display = 'block';
+  statusDiv.textContent = message;
+  
+  const colors = {
+    info: { bg: '#fff3cd', color: '#856404' },
+    success: { bg: '#d4edda', color: '#2f855a' },
+    error: { bg: '#f8d7da', color: '#721c24' }
+  };
+  
+  statusDiv.style.background = colors[type].bg;
+  statusDiv.style.color = colors[type].color;
+}
+
+document.getElementById('onboardingForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const submitBtn = document.getElementById('submitBtn');
+  submitBtn.disabled = true;
+
+  try {
+    const consentCheckbox = document.getElementById('data_consent');
+    if (!consentCheckbox.checked) {
+      alert('Please accept the data protection consent');
+      submitBtn.disabled = false;
+      return;
+    }
+
+    updateStatus('Submitting application...');
+    updateProgress(30);
+
+    const formData = new FormData(e.target);
+    
+    // Check if files are selected
+    const idFrontFile = document.getElementById('id_front').files[0];
+    const idBackFile = document.getElementById('id_back').files[0];
+    const poaFile = document.getElementById('proof_of_address').files[0];
+    const passportFile = document.getElementById('passport_photo').files[0];
+
+    if (!idFrontFile || !idBackFile || !poaFile || !passportFile) {
+      alert('Please upload all required documents');
+      submitBtn.disabled = false;
+      return;
+    }
+
+    // Generate fake file IDs for testing
+    const timestamp = Date.now();
+    const idNumber = formData.get('id_number').replace(/[^a-zA-Z0-9]/g, '');
+    
+    const payload = {
+      full_name: formData.get('full_name'),
+      email: formData.get('email'),
+      id_number: formData.get('id_number'),
+      phone: formData.get('phone'),
+      address: formData.get('address'),
+      data_consent: true,
+      consent_timestamp: new Date().toISOString(),
+      file_ids: {
+        id_front: `TEST_${idNumber}_front_${timestamp}`,
+        id_back: `TEST_${idNumber}_back_${timestamp}`,
+        poa: `TEST_${idNumber}_poa_${timestamp}`,
+        passport_photo: `TEST_${idNumber}_photo_${timestamp}`
+      },
+      file_metadata: {
+        id_front: { name: idFrontFile.name, size: idFrontFile.size, type: idFrontFile.type },
+        id_back: { name: idBackFile.name, size: idBackFile.size, type: idBackFile.type },
+        poa: { name: poaFile.name, size: poaFile.size, type: poaFile.type },
+        passport_photo: { name: passportFile.name, size: passportFile.size, type: passportFile.type }
+      }
+    };
+
+    updateProgress(70);
+
+    const response = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
     });
 
-    // Form Submission using FormData (Streaming)
-    document.getElementById('onboardingForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const btn = document.getElementById('submitBtn');
-        const status = document.getElementById('overallStatus');
-        const bar = document.getElementById('progressBar');
-        const fill = document.getElementById('progressFill');
+    updateProgress(90);
 
-        btn.disabled = true;
-        status.style.display = 'block';
-        status.textContent = "Uploading... please wait.";
-        status.style.background = "#fff3cd";
-        status.style.color = "#856404";
-        bar.style.display = 'block';
-        fill.style.width = '30%';
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Server error: ${response.status}`);
+    }
+    
+    const result = await response.json();
+    updateProgress(100);
+    
+    // Display success message
+    if (result.applicationId) {
+      updateStatus(`✅ Application Submitted! ID: ${result.applicationId}`, 'success');
+    } else {
+      updateStatus('✅ Application submitted successfully!', 'success');
+    }
 
-        try {
-            // Using FormData prevents memory spikes that cause "Not Responding" errors
-            const formData = new FormData(e.target);
-            fill.style.width = '60%';
-
-            const response = await fetch(WEBHOOK_URL, {
-                method: 'POST',
-                body: formData 
-            });
-
-            if (!response.ok) throw new Error("Upload failed. Check connection.");
-
-            fill.style.width = '100%';
-            status.textContent = "✅ Success! Application Sent.";
-            status.style.background = "#d4edda";
-            status.style.color = "#155724";
-            
-        } catch (err) {
-            status.textContent = "❌ " + err.message;
-            status.style.background = "#f8d7da";
-            status.style.color = "#721c24";
-            btn.disabled = false;
-        }
-    });
+  } catch (error) {
+    console.error('Submission error:', error);
+    updateStatus('❌ Error: ' + error.message, 'error');
+    submitBtn.disabled = false;
+  }
+});
 </script>
 </body>
 </html>
