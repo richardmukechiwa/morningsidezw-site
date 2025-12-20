@@ -37,7 +37,7 @@ input[type="text"], input[type="tel"], input[type="email"] {
 }
 input:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
 .file-box {
-  display: block; /* Ensures label behaves like a box */
+  display: block; 
   border: 2px dashed #cbd5e0; border-radius: 8px; padding: 16px; text-align: center; cursor: pointer; transition: all 0.3s; background: #f9fafb;
 }
 .file-box.has-file { border-color: #48bb78; background: #f0fff4; border-style: solid; }
@@ -88,28 +88,28 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
       <div class="form-group">
         <label>ID Front (Government-issued)</label>
         <label class="file-box" for="id_front">
-          <input type="file" id="id_front" accept="image/*,.pdf" required>
+          <input type="file" id="id_front" accept=".jpg,.jpeg,.png,.pdf" required>
           <span>📄 Click to Upload ID Front</span><div class="file-name"></div>
         </label>
       </div>
       <div class="form-group">
         <label>ID Back</label>
         <label class="file-box" for="id_back">
-          <input type="file" id="id_back" accept="image/*,.pdf" required>
+          <input type="file" id="id_back" accept=".jpg,.jpeg,.png,.pdf" required>
           <span>📄 Click to Upload ID Back</span><div class="file-name"></div>
         </label>
       </div>
       <div class="form-group">
         <label>Proof of Address</label>
         <label class="file-box" for="proof_of_address">
-          <input type="file" id="proof_of_address" accept="image/*,.pdf" required>
+          <input type="file" id="proof_of_address" accept=".jpg,.jpeg,.png,.pdf" required>
           <span>📄 Click to Upload Proof</span><div class="file-name"></div>
         </label>
       </div>
       <div class="form-group">
         <label>Selfie Verification</label>
         <label class="file-box" for="passport_photo">
-          <input type="file" id="passport_photo" accept="image/*" required>
+          <input type="file" id="passport_photo" accept=".jpg,.jpeg,.png" required>
           <span>📷 Click to Take/Upload Selfie</span><div class="file-name"></div>
         </label>
       </div>
@@ -213,7 +213,7 @@ document.getElementById('onboardingForm').onsubmit = async (e) => {
 
         const res = await fetch(WEBHOOK_URL, {
             method: 'POST',
-            mode: 'cors', // Fixes PC connection handshake
+            mode: 'cors',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(payload)
         });
