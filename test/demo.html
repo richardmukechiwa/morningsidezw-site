@@ -8,7 +8,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            /* Updated Background Color to Professional Banking Navy */
+            /* Updated Background Color */
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             min-height: 100vh;
             display: flex;
@@ -16,38 +16,102 @@
             align-items: center;
             padding: 20px;
         }
-        .container { background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); width: 100%; max-width: 520px; padding: 30px; max-height: 90vh; overflow-y: auto; }
+        .container {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 520px;
+            padding: 30px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
         h1 { text-align: center; margin-bottom: 6px; color: #333; }
         .subtitle { text-align: center; color: #666; margin-bottom: 20px; font-size: 14px; }
         fieldset { border: none; margin-bottom: 24px; padding: 0; }
         legend { font-size: 18px; font-weight: 700; color: #333; margin-bottom: 12px; }
         .form-group { margin-bottom: 18px; }
         label { display: block; font-weight: 600; margin-bottom: 6px; color: #444; font-size: 14px; }
-        input[type="text"], input[type="tel"], input[type="email"] { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e0; font-size: 14px; transition: border-color 0.3s; }
-        input[type="text"]:focus, input[type="tel"]:focus, input[type="email"]:focus { outline: none; border-color: #667eea; }
-        .file-box { border: 2px dashed #cbd5e0; border-radius: 8px; padding: 16px; text-align: center; cursor: pointer; transition: all 0.3s; background: #f9fafb; }
+        input[type="text"], input[type="tel"], input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e0;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus, input[type="tel"]:focus, input[type="email"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .file-box {
+            border: 2px dashed #cbd5e0;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #f9fafb;
+        }
         .file-box:hover { border-color: #667eea; background: #f3f4f6; }
         .file-box.has-file { border-color: #48bb78; background: #f0fff4; border-style: solid; }
         .file-box input { display: none; }
         .file-name { font-size: 12px; margin-top: 6px; color: #2f855a; font-weight: 600; }
         .info-text { color: #666; font-size: 13px; margin: 10px 0; line-height: 1.5; }
+        .camera-section { margin-top: 12px; }
+        #cameraContainer { margin-top: 12px; }
+        .camera-preview {
+            width: 100%;
+            max-width: 320px;
+            border: 2px solid #cbd5e0;
+            border-radius: 8px;
+            margin: 10px auto;
+            display: block;
+        }
+        #video { display: block; }
+        #canvas { display: none; }
+        #photoPreview { margin-top: 12px; text-align: center; }
+        #photoPreview img {
+            max-width: 320px;
+            border-radius: 8px;
+            border: 2px solid #48bb78;
+            display: block;
+            margin: 0 auto;
+        }
         button {
-            width: 100%; padding: 14px; border-radius: 8px; border: none;
-            /* Updated Button Color to Match New Theme */
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            border: none;
+            /* Updated Button Color */
             background: linear-gradient(135deg, #334155 0%, #0f172a 100%);
-            color: #fff; font-weight: 600; cursor: pointer; font-size: 14px; transition: transform 0.2s, opacity 0.3s;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            transition: transform 0.2s, opacity 0.3s;
         }
         button:hover { transform: translateY(-1px); opacity: 0.95; }
         button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-        #overallStatus { margin-top: 20px; font-weight: 600; text-align: center; padding: 12px; border-radius: 8px; font-size: 14px; display: none; }
-        .progress-bar { width: 100%; height: 4px; background: #e2e8f0; border-radius: 2px; overflow: hidden; margin-top: 8px; display: none; }
-        .progress-fill { height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: width 0.3s; width: 0%; }
+        button.secondary { background: #edf2f7; color: #333; margin-top: 8px; }
+        button.secondary:hover { background: #e2e8f0; }
+        .status { font-size: 13px; margin-top: 6px; padding: 8px; border-radius: 6px; text-align: center; }
+        .status.ok { background: #d4edda; color: #2f855a; }
+        .status.error { background: #f8d7da; color: #721c24; }
+        .status.uploading { background: #fff3cd; color: #856404; }
+        #overallStatus { margin-top: 20px; font-weight: 600; text-align: center; padding: 12px; border-radius: 8px; font-size: 14px; }
+        .divider { text-align: center; margin: 15px 0; color: #999; font-size: 13px; font-weight: 600; }
+        .progress-bar { width: 100%; height: 4px; background: #e2e8f0; border-radius: 2px; overflow: hidden; margin-top: 8px; }
+        .progress-fill { height: 100%; background: #48bb78; transition: width 0.3s; width: 0%; }
         .consent-box { background: #f8f9fa; border: 1px solid #cbd5e0; border-radius: 8px; padding: 16px; }
         .consent-label { display: flex; align-items: flex-start; cursor: pointer; font-size: 13px; line-height: 1.6; }
         .consent-label input[type="checkbox"] { margin-top: 4px; margin-right: 12px; width: 18px; height: 18px; cursor: pointer; flex-shrink: 0; }
         .consent-text { color: #444; }
         .consent-text ul { margin: 10px 0 0 20px; padding: 0; }
         .consent-text li { margin: 6px 0; color: #666; }
+        .privacy-link { margin-top: 12px; font-size: 12px; text-align: center; }
+        .privacy-link a { color: #334155; text-decoration: none; font-weight: 600; }
+        .privacy-link a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -82,9 +146,9 @@
             <fieldset>
                 <legend>Required Documents</legend>
                 <div class="form-group">
-                    <label for="id_front">ID Front</label>
+                    <label for="id_front">ID Front (Government-issued)</label>
                     <div class="file-box" id="idFrontBox">
-                        <input type="file" id="id_front" accept="image/*,.pdf" required>
+                        <input type="file" id="id_front" accept=".jpg,.jpeg,.png,.pdf" required>
                         <span>📄 Upload ID Front</span>
                         <div class="file-name" id="idFrontName"></div>
                     </div>
@@ -92,7 +156,7 @@
                 <div class="form-group">
                     <label for="id_back">ID Back</label>
                     <div class="file-box" id="idBackBox">
-                        <input type="file" id="id_back" accept="image/*,.pdf" required>
+                        <input type="file" id="id_back" accept=".jpg,.jpeg,.png,.pdf" required>
                         <span>📄 Upload ID Back</span>
                         <div class="file-name" id="idBackName"></div>
                     </div>
@@ -100,17 +164,9 @@
                 <div class="form-group">
                     <label for="proof_of_address">Proof of Address</label>
                     <div class="file-box" id="poaBox">
-                        <input type="file" id="proof_of_address" accept="image/*,.pdf" required>
+                        <input type="file" id="proof_of_address" accept=".jpg,.jpeg,.png,.pdf" required>
                         <span>📄 Upload Proof of Address</span>
                         <div class="file-name" id="poaName"></div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="passport_photo">Passport Photo (Selfie)</label>
-                    <div class="file-box" id="passportBox">
-                        <input type="file" id="passport_photo" accept="image/*" required>
-                        <span>📷 Upload Photo</span>
-                        <div class="file-name" id="passportName"></div>
                     </div>
                 </div>
             </fieldset>
@@ -119,130 +175,228 @@
                 <legend>Data Protection & Consent</legend>
                 <div class="consent-box">
                     <label class="consent-label">
-                        <input type="checkbox" id="data_consent" required>
+                        <input type="checkbox" id="data_consent" name="data_consent" required>
                         <span class="consent-text">
-                            I consent to the collection, processing, and storage of my personal data for KYC verification purposes.
+                            I consent to the collection, processing, and storage of my personal data and identity documents for KYC verification purposes. I understand that:
                             <ul>
-                                <li>Data will be securely stored and encrypted</li>
-                                <li>Documents analyzed using AI verification</li>
-                                <li>I can request data deletion at any time</li>
+                                <li>My data will be securely stored and used only for identity verification</li>
+                                <li>My documents will be analyzed using AI-powered verification systems</li>
+                                <li>I have the right to access, correct, or request deletion of my data</li>
                             </ul>
                         </span>
                     </label>
+                    <p class="privacy-link">
+                        <a href="/privacy-policy" target="_blank">Read our full Privacy Policy</a>
+                    </p>
                 </div>
             </fieldset>
 
-            <button type="submit" id="submitBtn">Submit Application</button>
+            <fieldset>
+                <legend>Identity Verification</legend>
+                <p class="info-text">Take a clear selfie or upload a recent passport-style photo.</p>
+                <div class="camera-section">
+                    <button type="button" class="secondary" id="openCamera">📷 Take Photo</button>
+                    <div id="cameraContainer" style="display:none;">
+                        <video id="video" class="camera-preview" autoplay></video>
+                        <canvas id="canvas" class="camera-preview"></canvas>
+                        <button type="button" id="capturePhoto">Capture</button>
+                        <button type="button" class="secondary" id="retakePhoto" style="display:none;">Retake</button>
+                    </div>
+                </div>
+                <div class="divider">OR</div>
+                <div class="form-group">
+                    <div class="file-box" id="passportBox">
+                        <input type="file" id="passport_photo" accept=".jpg,.jpeg,.png">
+                        <span>📷 Upload Photo</span>
+                        <div class="file-name" id="passportName"></div>
+                    </div>
+                </div>
+                <div id="photoPreview"></div>
+            </fieldset>
 
-            <div class="progress-bar" id="progressBar">
+            <button type="submit" id="submitBtn">Submit Application</button>
+            <div class="progress-bar" id="progressBar" style="display:none;">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
             <div id="overallStatus"></div>
         </form>
     </div>
 
-    <script>
-        const WEBHOOK_URL = 'https://your-n8n-instance.com/webhook/submit-test';
-        const fileBoxes = [
-            ['id_front', 'idFrontBox', 'idFrontName'],
-            ['id_back', 'idBackBox', 'idBackName'],
-            ['proof_of_address', 'poaBox', 'poaName'],
-            ['passport_photo', 'passportBox', 'passportName']
-        ];
+<script>
+const WEBHOOK_URL = 'https://api.morningsidezw.com/submit';
+let passportPhotoFile = null;
+let stream = null;
 
-        fileBoxes.forEach(([inputId, boxId, nameId]) => {
-            const input = document.getElementById(inputId);
-            const box = document.getElementById(boxId);
-            const nameEl = document.getElementById(nameId);
-            if (!input || !box) return;
-            box.addEventListener('click', () => input.click());
-            input.addEventListener('change', (e) => {
-                if (e.target.files.length) {
-                    box.classList.add('has-file');
-                    const file = e.target.files[0];
-                    const sizeMB = (file.size / 1024 / 1024).toFixed(1);
-                    nameEl.textContent = `✓ ${file.name} (${sizeMB}MB)`;
-                }
-            });
-        });
+const fileBoxes = [
+    ['id_front', 'idFrontBox', 'idFrontName'],
+    ['id_back', 'idBackBox', 'idBackName'],
+    ['proof_of_address', 'poaBox', 'poaName'],
+    ['passport_photo', 'passportBox', 'passportName']
+];
 
-        function updateProgress(percent) {
-            const progressBar = document.getElementById('progressBar');
-            const progressFill = document.getElementById('progressFill');
-            progressBar.style.display = 'block';
-            progressFill.style.width = percent + '%';
+fileBoxes.forEach(([inputId, boxId, nameId]) => {
+    const input = document.getElementById(inputId);
+    const box = document.getElementById(boxId);
+    const nameEl = document.getElementById(nameId);
+    if (!input || !box) return;
+    box.addEventListener('click', () => input.click());
+    input.addEventListener('change', (e) => {
+        if (e.target.files.length) {
+            box.classList.add('has-file');
+            nameEl.textContent = '✓ ' + e.target.files[0].name;
         }
+    });
+});
 
-        function updateStatus(message, type = 'info') {
-            const statusDiv = document.getElementById('overallStatus');
-            statusDiv.style.display = 'block';
-            statusDiv.textContent = message;
-            const colors = {
-                info: { bg: '#fff3cd', color: '#856404' },
-                success: { bg: '#d4edda', color: '#2f855a' },
-                error: { bg: '#f8d7da', color: '#721c24' }
-            };
-            statusDiv.style.background = colors[type].bg;
-            statusDiv.style.color = colors[type].color;
-        }
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const context = canvas.getContext('2d');
+const openCameraBtn = document.getElementById('openCamera');
+const captureBtn = document.getElementById('capturePhoto');
+const retakeBtn = document.getElementById('retakePhoto');
+const cameraContainer = document.getElementById('cameraContainer');
+const photoPreview = document.getElementById('photoPreview');
 
-        document.getElementById('onboardingForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.disabled = true;
+openCameraBtn.addEventListener('click', async () => {
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480, facingMode: 'user' } });
+        video.srcObject = stream;
+        cameraContainer.style.display = 'block';
+        openCameraBtn.style.display = 'none';
+    } catch (err) { alert('Camera access denied: ' + err.message); }
+});
 
-            try {
-                const consentCheckbox = document.getElementById('data_consent');
-                if (!consentCheckbox.checked) {
-                    alert('Please accept the data protection consent');
-                    submitBtn.disabled = false;
-                    return;
-                }
+captureBtn.addEventListener('click', () => {
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    context.drawImage(video, 0, 0);
+    canvas.toBlob((blob) => {
+        passportPhotoFile = new File([blob], 'passport_photo.jpg', { type: 'image/jpeg' });
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(blob);
+        photoPreview.innerHTML = '';
+        photoPreview.appendChild(img);
+        video.style.display = 'none';
+        canvas.style.display = 'block';
+        captureBtn.style.display = 'none';
+        retakeBtn.style.display = 'inline-block';
+        if (stream) { stream.getTracks().forEach(track => track.stop()); stream = null; }
+    }, 'image/jpeg', 0.9);
+});
 
-                updateStatus('Submitting application...');
-                updateProgress(30);
+retakeBtn.addEventListener('click', async () => {
+    video.style.display = 'block';
+    canvas.style.display = 'none';
+    captureBtn.style.display = 'inline-block';
+    retakeBtn.style.display = 'none';
+    photoPreview.innerHTML = '';
+    passportPhotoFile = null;
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480, facingMode: 'user' } });
+        video.srcObject = stream;
+    } catch (err) { alert('Camera access denied'); }
+});
 
-                const formData = new FormData(e.target);
-                const payload = {
-                    full_name: formData.get('full_name'),
-                    email: formData.get('email'),
-                    id_number: formData.get('id_number'),
-                    phone: formData.get('phone'),
-                    address: formData.get('address'),
-                    data_consent: true,
-                    consent_timestamp: new Date().toISOString(),
-                    file_ids: {
-                        id_front: '1test_id_front_fake',
-                        id_back: '1test_id_back_fake',
-                        poa: '1test_poa_fake',
-                        passport_photo: '1test_passport_fake'
-                    }
-                };
+document.getElementById('passport_photo').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        passportPhotoFile = file;
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        photoPreview.innerHTML = '';
+        photoPreview.appendChild(img);
+        if (stream) { stream.getTracks().forEach(track => track.stop()); cameraContainer.style.display = 'none'; openCameraBtn.style.display = 'inline-block'; }
+    }
+});
 
-                updateProgress(70);
+function updateProgress(percent) {
+    const progressBar = document.getElementById('progressBar');
+    const progressFill = document.getElementById('progressFill');
+    progressBar.style.display = 'block';
+    progressFill.style.width = percent + '%';
+}
 
-                const response = await fetch(WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
+function updateStatus(message, type = 'info') {
+    const statusDiv = document.getElementById('overallStatus');
+    statusDiv.style.display = 'block';
+    statusDiv.textContent = message;
+    const colors = {
+        info: { bg: '#fff3cd', color: '#856404' },
+        success: { bg: '#d4edda', color: '#2f855a' },
+        error: { bg: '#f8d7da', color: '#721c24' }
+    };
+    statusDiv.style.background = colors[type].bg;
+    statusDiv.style.color = colors[type].color;
+}
 
-                updateProgress(90);
+function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result.split(',')[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+    });
+}
 
-                if (!response.ok) {
-                    throw new Error(`Server error: ${response.status}`);
-                }
+document.getElementById('onboardingForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
 
-                const result = await response.json();
-                updateProgress(100);
-                updateStatus(`✅ Application Submitted! ID: ${result.applicationId || 'Processing'}`, 'success');
+    try {
+        if (!passportPhotoFile) { alert('Please take or upload a passport photo'); submitBtn.disabled = false; return; }
+        updateStatus('Preparing documents...');
+        updateProgress(10);
 
-            } catch (error) {
-                console.error('Error:', error);
-                updateStatus('❌ Error: ' + error.message, 'error');
-                submitBtn.disabled = false;
+        const formData = new FormData(e.target);
+        const idFrontFile = document.getElementById('id_front').files[0];
+        const idBackFile = document.getElementById('id_back').files[0];
+        const poaFile = document.getElementById('proof_of_address').files[0];
+
+        updateStatus('Encoding documents...');
+        updateProgress(30);
+
+        const [idFrontBase64, idBackBase64, poaBase64, passportBase64] = await Promise.all([
+            fileToBase64(idFrontFile),
+            fileToBase64(idBackFile),
+            fileToBase64(poaFile),
+            fileToBase64(passportPhotoFile)
+        ]);
+
+        const payload = {
+            full_name: formData.get('full_name'),
+            email: formData.get('email'),
+            id_number: formData.get('id_number'),
+            phone: formData.get('phone'),
+            address: formData.get('address'),
+            data_consent: true,
+            consent_timestamp: new Date().toISOString(),
+            files: {
+                id_front: { data: idFrontBase64, filename: idFrontFile.name, mimeType: idFrontFile.type },
+                id_back: { data: idBackBase64, filename: idBackFile.name, mimeType: idBackFile.type },
+                proof_of_address: { data: poaBase64, filename: poaFile.name, mimeType: poaFile.type },
+                passport_photo: { data: passportBase64, filename: passportPhotoFile.name, mimeType: passportPhotoFile.type }
             }
+        };
+
+        updateStatus('Submitting application...');
+        updateProgress(70);
+
+        const response = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
         });
-    </script>
+
+        if (!response.ok) throw new Error('Submission failed');
+        const result = await response.json();
+        updateProgress(100);
+        updateStatus('✅ Application Submitted!', 'success');
+    } catch (error) {
+        updateStatus('❌ Error: ' + error.message, 'error');
+        submitBtn.disabled = false;
+    }
+});
+</script>
 </body>
 </html>
