@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>KYC Admin Dashboard</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f5f7fa;
+  padding: 20px;
+}
+.dashboard {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.metric-card {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.metric-card h3 {
+  font-size: 14px;
+  color: #718096;
+  margin-bottom: 12px;
+}
+.metric-card .value {
+  font-size: 36px;
+  font-weight: 700;
+  color: #2d3748;
+}
+.metric-card .change {
+  font-size: 14px;
+  margin-top: 8px;
+}
+.change.positive { color: #48bb78; }
+.change.negative { color: #f56565; }
+.filters {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.filters select, .filters input, .filters button {
+  padding: 10px 16px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.filters button {
+  background: #667eea;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.table-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+thead {
+  background: #f7fafc;
+}
+th, td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+th {
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.status-approved { background: #c6f6d5; color: #22543d; }
+.status-pending { background: #feebc8; color: #7c2d12; }
+.status-rejected { background: #fed7d7; color: #742a2a; }
+.action-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-right: 5px;
+}
+.btn-view { background: #ebf8ff; color: #2c5282; }
+.btn-approve { background: #c6f6d5; color: #22543d; }
+.btn-reject { background: #fed7d7; color: #742a2a; }
+</style>
+</head>
+<body>
+
+<div class="dashboard">
+  <div class="header">
+    <h1>KYC Admin Dashboard</h1>
+    <p>Real-time application monitoring and management</p>
+  </div>
+
+  <div class="metrics-grid" id="metrics">
+    <!-- Metrics loaded dynamically -->
+  </div>
+
+  <div class="filters">
+    <select id="statusFilter">
+      <option value="">All Statuses</option>
+      <option value="APPROVED">Approved</option>
+      <option value="MANUAL_REVIEW">Under Review</option>
+      <option value="REJECTED">Rejected</option>
+    </select>
+    <input type="date" id="dateFrom" placeholder="From Date">
+    <input type="date" id="dateTo" placeholder="To Date">
+    <input type="text" id="searchQuery" placeholder="Search by name or ID...">
+    <button onclick="loadApplications()">Filter</button>
+    <button onclick="exportCSV()">Export CSV</button>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Application ID</th>
+          <th>Full Name</th>
+          <th>ID Number</th>
+          <th>Status</th>
+          <th>Face Match</th>
+          <th>Submitted</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="applicationsTable">
+        <!-- Applications loaded dynamically -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+const CONFIG = {
+  GOOGLE_SHEET_ID: 'YOUR_SHEET_ID',
+  GOOGLE_API_KEY: 'YOUR_API_KEY'
+};
+
+const statusClassMap = {
+  APPROVED: 'status-approved',
+  MANUAL_REVIEW: 'status-pending',
+  REJECTED: 'status-rejected'
+};
+
+async function loadMetrics() {
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${CONFIG.GOOGLE_SHEET_ID}/values/Agents?key=${CONFIG.GOOGLE_API_KEY}`;
+  const response = await fetch(url);
+  const data = await response.json();
+
+  const rows = data.values.slice(1);
+
+  const total = rows.length;
+  const approved = rows.filter(r => r[5] === 'APPROVED').length;
+  const pending = rows.filter(r => r[5] === 'MANUAL_REVIEW').length;
+  const rejected = rows.filter(r => r[5] === 'REJECTED').length;
+
+  const pct = (value) => total ? ((value / total) * 100).toFixed(1) : '0.0';
+
+  const metricsHTML = `
+    <div class="metric-card">
+      <h3>Total Applications</h3>
+      <div class="value">${total}</div>
+      <div class="change positive">+12% from last week</div>
+    </div>
+    <div class="metric-card">
+      <h3>Approved</h3>
+      <div class="value">${approved}</div>
+      <div class="change positive">${pct(approved)}%</div>
+    </div>
+    <div class="metric-card">
+      <h3>Under Review</h3>
+      <div class="value">${pending}</div>
+      <div class="change">${pct(pending)}%</div>
+    </div>
+    <div class="metric-card">
+      <h3>Rejected</h3>
+      <div class="value">${rejected}</div>
+      <div class="change negative">${pct(rejected)}%</div>
+    </div>
+  `;
+
+  document.getElementById('metrics').innerHTML = metricsHTML;
+}
+
+async function loadApplications() {
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${CONFIG.GOOGLE_SHEET_ID}/values/Agents?key=${CONFIG.GOOGLE_API_KEY}`;
+  const response = await fetch(url);
+  const data = await response.json();
+
+  const rows = data.values.slice(1);
+
+  const statusFilter = document.getElementById('statusFilter').value;
+  const searchQuery = document.getElementById('searchQuery').value.toLowerCase();
+
+  let filtered = rows;
+
+  if (statusFilter) {
+    filtered = filtered.filter(r => r[5] === statusFilter);
+  }
+
+  if (searchQuery) {
+    filtered = filtered.filter(r =>
+      r[2]?.toLowerCase().includes(searchQuery) ||
+      r[1]?.toLowerCase().includes(searchQuery)
+    );
+  }
+
+  const tableHTML = filtered.map(row => {
+    const actions =
+      row[5] === 'MANUAL_REVIEW'
+        ? '<button class="action-btn btn-approve" onclick="approveApplication(\'' + row[0] + '\')">Approve</button>' +
+          '<button class="action-btn btn-reject" onclick="rejectApplication(\'' + row[0] + '\')">Reject</button>'
+        : '';
+
+    return `
+      <tr>
+        <td>${row[0]}</td>
+        <td>${row[2]}</td>
+        <td>${row[1]}</td>
+        <td>
+          <span class="status-badge ${statusClassMap[row[5]] || ''}">
+            ${row[5]}
+          </span>
+        </td>
+        <td>${row[7]}</td>
+        <td>${new Date(row[11]).toLocaleDateString()}</td>
+        <td>
+          <button class="action-btn btn-view" onclick="viewApplication('${row[0]}')">View</button>
+          ${actions}
+        </td>
+      </tr>
+    `;
+  }).join('');
+
+  document.getElementById('applicationsTable').innerHTML = tableHTML;
+}
+
+function viewApplication(appId) {
+  alert('View details for: ' + appId);
+}
+
+function approveApplication(appId) {
+  if (confirm('Approve this application?')) {
+    alert('Application approved: ' + appId);
+  }
+}
+
+function rejectApplication(appId) {
+  const reason = prompt('Rejection reason:');
+  if (reason) {
+    alert('Application rejected: ' + appId);
+  }
+}
+
+function exportCSV() {
+  alert('Exporting to CSV...');
+}
+
+loadMetrics();
+loadApplications();
+setInterval(loadApplications, 30000);
+</script>
